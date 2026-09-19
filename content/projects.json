@@ -1,0 +1,176 @@
+[
+  {
+    "slug": "agentic-datasets",
+    "title": "Agentic Datasets",
+    "lede": "A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": null,
+    "body": [
+      "An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.",
+      "The contract is fifteen normative assertions expressed as eighty-five language-neutral vector steps, which is what makes it checkable against an implementation without access to that implementation's internals. The reference architecture passes all fifteen across four runtimes and two dataset boundaries; a second implementation sharing no code with it passes all fifteen as well.",
+      "Mutation analysis is the part that keeps the suite honest: seventeen targeted violations, seventeen detected, with every assertion independently exercised. Mean detecting assertions per mutant is reported at 2.2 and deliberately not treated as an optimization metric, because tuning a suite to raise it would measure the suite rather than the contract."
+    ],
+    "links": [
+      { "label": "agenticdatasets.org", "url": "https://agenticdatasets.org" },
+      { "label": "Reference implementation", "url": "https://github.com/agentic-datasets/reference" },
+      { "label": "agentic-dataset-conformance on PyPI", "url": "https://pypi.org/project/agentic-dataset-conformance/", "mono": true }
+    ]
+  },
+  {
+    "slug": "per-task-admission-control",
+    "title": "Per-task admission control for genomics pipelines",
+    "lede": "A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": null,
+    "body": [
+      "Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.",
+      "The finding was not the latency. AWS's own Nextflow linter listed the hook the gate depends on among directives their managed service does not support, which would have put per-task governance out of reach. That file was two years stale and already contradicted by AWS's current documentation for a neighbouring directive. Treated as a hypothesis and probed against a local control: it runs. The gate now permits and refuses per task on the managed service.",
+      "Transferable principle: when an enforcement boundary matters, validate it experimentally rather than assume the documented boundary is the real one."
+    ],
+    "links": [
+      { "label": "Zenodo 10.5281/zenodo.22016112", "url": "https://doi.org/10.5281/zenodo.22016112" },
+      { "label": "ok-nfcore-admission-gate", "url": "https://github.com/doytsujin/ok-nfcore-admission-gate", "mono": true }
+    ]
+  },
+  {
+    "slug": "croissant-policy-profile",
+    "title": "A policy profile for Croissant, the MLCommons dataset descriptor",
+    "lede": "Croissant can write down data-use conditions. No version of it specifies how any of them is evaluated.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": null,
+    "body": [
+      "No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.",
+      "This profile closes that: a dataset declares the operations it admits and the conditions under which it admits them, from a closed set of five operators, so a gate can decide from the descriptor alone and leave a decision record. Two carriers that decide identically are compared as whole decision records.",
+      "The measured result is the interesting one. Caller-side authority and data-side conditions disagree in both directions — each refuses requests the other admits, and neither permit set contains the other. Overhead disclosed rather than assumed: +0.0 µs warm, +11.7 µs cold per decision. All emitted documents load under <code>mlcroissant</code> 1.1.0 with zero errors.",
+      "Full-length article under review at the Journal of Web Semantics."
+    ],
+    "links": [
+      { "label": "Zenodo 10.5281/zenodo.22018156", "url": "https://doi.org/10.5281/zenodo.22018156" },
+      { "label": "w3id.org/croissant-policy/0.1.0", "url": "https://w3id.org/croissant-policy/0.1.0" },
+      { "label": "ok-croissant-policy-profile", "url": "https://github.com/doytsujin/ok-croissant-policy-profile", "mono": true }
+    ]
+  },
+  {
+    "slug": "selective-visual-inference",
+    "title": "Selective visual inference with observable decisions",
+    "lede": "The descriptor decides whether to look again — and the decision, not only the detection, is what gets recorded.",
+    "period": "2025 – present",
+    "affiliation": "Independent project, unaffiliated with any employer.",
+    "image": "project-agentic-vision.jpg",
+    "caption": "The measurement's own overlay on a frame of road footage: the descriptor matched, the previous interpretation was reused, no model was called — while the scene developed around a road user at the kerb.",
+    "body": [
+      "Vision models are normally run on every frame. That is the safe default and an expensive one. The narrower question is whether a cheap scene descriptor can decide when the previous interpretation still holds, and whether the cost of being wrong about that can be measured rather than assumed.",
+      "Across 1,712 contiguous dashcam frames at 5 Hz, a class-count descriptor skipped 43.6% of candidate model calls and left 28.5% of material scene changes without refreshed perception. Adding spatial and scale information brought the second figure to 9.1%, and cost reuse to do it. The result worth reporting is not a single optimum but that the tradeoff is measurable, which turns scene representation into an explicit engineering parameter rather than an implementation detail.",
+      "A second, independent detector evaluates the same frames, so the measurement does not rest on the detector that also defines the state being evaluated. The two disagreed about the presence of vulnerable road users on 9.5% of frames. Neither is ground truth — both are detectors — so that figure is disagreement, not an error rate, and it is reported as such.",
+      "Stated on the site rather than left to be discovered: no vision model is invoked in the measurement itself. The replay determines when a call would occur and what deferring it costs. Nothing here has been validated for use in a vehicle.",
+      "Transferable principle: a cache that hides a state change is not a performance question but a governance one, and the reuse decision has to be observable before anyone can argue about it."
+    ],
+    "links": [
+      { "label": "vision.agenticdatasets.org", "url": "https://vision.agenticdatasets.org" }
+    ]
+  },
+  {
+    "slug": "certified-reuse-quantum",
+    "title": "Certified reuse of quantum results, with refusal as a visible outcome",
+    "lede": "A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.",
+    "period": "2025 – present",
+    "affiliation": null,
+    "image": null,
+    "body": [
+      "Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.",
+      "The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.",
+      "Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.",
+      "The companion control plane is offered to be attacked rather than admired: it runs entirely in the browser with no backend, so every verdict it reaches can be reproduced by the reader."
+    ],
+    "links": [
+      { "label": "qubit.agenticdatasets.org", "url": "https://qubit.agenticdatasets.org" },
+      { "label": "ok-quantum-biology-demos", "url": "https://github.com/doytsujin/ok-quantum-biology-demos", "mono": true },
+      { "label": "Zenodo 10.5281/zenodo.22741061", "url": "https://doi.org/10.5281/zenodo.22741061" }
+    ]
+  },
+  {
+    "slug": "semantic-graph-mcp-gateway",
+    "title": "Semantic graph and MCP gateway for laboratory infrastructure",
+    "lede": "Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": "project-semantic-graph-mcp-gateway.png",
+    "caption": "The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.",
+    "no_url_reason": "No public URL — internal system.",
+    "body": [
+      "A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.",
+      "Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.",
+      "Architecturally the point is that it is a repointing, not a rebuild: the same ingestion, entity graph, ontology, retrieval and capability mesh moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and the capability mesh are the product."
+    ],
+    "links": []
+  },
+  {
+    "slug": "governed-clinical-variable-mapping",
+    "title": "Governed clinical variable mapping with browser-local reasoning",
+    "lede": "Mappings proposed, not applied — 426 nodes, 332 edges, 0 of 84 approved. A mapping waits for a reviewer.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": "project-governed-clinical-variable-mapping.png",
+    "caption": "426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it.",
+    "no_url_reason": "No public URL — paper under review.",
+    "body": [
+      "Mapping study variables to analysis variables is slow, manual and repeated per study. A model can propose mappings, but a proposal accepted because the model sounded confident is not a mapping — it is a guess with provenance attached.",
+      "Built on the public CDISC pilot: embedding retrieval over a 415-variable candidate pool against 110 gold pairs, with identical cached embeddings across every run so comparisons mean something. Candidate scoring runs in-page over WebGPU, so the data does not leave the browser. A mapping is always a proposal a reviewer accepts, never something applied automatically.",
+      "On the derivation split — the hard half — top-1 accuracy is 0.400 for a frontier model against 0.220 lexical and 0.140 on-premises. Across all 110 pairs the spread narrows considerably, which is why the split is the number worth quoting.",
+      "Four-page paper under review at IEEE BIBM 2026."
+    ],
+    "links": []
+  },
+  {
+    "slug": "reproducible-spectral-scoring",
+    "title": "Reproducible spectral scoring with a fit-quality gate",
+    "lede": "A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": "project-reproducible-spectral-scoring.png",
+    "caption": "Reproducible spectral scoring with a fit-quality gate.",
+    "no_url_reason": "No public URL — internal system.",
+    "body": [
+      "Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.",
+      "The finding is the part worth carrying anywhere. A post-fit rescaling step matched each component to the data independently, ignoring overlapping neighbours; in dense spectra the rescaled components summed to about 35 times the data. Shape correlation still read around 0.9, so every visual check passed — while R² had collapsed to −608 and every derived ratio was untrustworthy, with nothing reporting an error. The underlying fit had been correct all along.",
+      "A quality metric that measures only shape will not notice a magnitude error. Two checks that fail differently are worth more than one check that passes twice. The fix adopts the rescaling only when it does not worsen the residual: R² −608 to 0.98."
+    ],
+    "links": []
+  },
+  {
+    "slug": "chromatography-fraction-pooling",
+    "title": "Chromatography fraction pooling that ends by driving a robot",
+    "lede": "An algorithm proposes, an operator admits — eight chromatograms with pool suggestions, each pending Approve, Reject or Combine.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": "project-chromatography-fraction-pooling.png",
+    "caption": "Eight Robocolumn chromatograms with the algorithm's pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run.",
+    "no_url_reason": "No public URL — internal system.",
+    "body": [
+      "Reads plate-reader output, generates per-column chromatograms, proposes pools with a second-derivative detection algorithm, and lets an operator approve, reject, combine or edit before exporting a bundle that drives the next robotic run.",
+      "Generic peak detection found bands opportunistically, and when a diagnostic band was missed the ratio depending on it came back absent — reported as missing data rather than as a detection failure. The rebuild bridges noisy interior dips so one peak does not split into two, derives cut points from shoulder valleys and inflections, and harmonizes bands across samples so ratios are computed over canonical windows rather than per-sample ones. A previously failing sample went from R² 0.26 to 0.98; an implausible aggregation-index range of 1.3–2.7 fell to 0.09–0.53.",
+      "Said plainly in the report: harmonization fixes consistency, not detection. Where the fit still misses a band the ratio is genuinely absent — not estimated, not quietly interpolated.",
+      "This tool was agentic before the word: an algorithm proposes, a human admits, a robot acts. Any autonomous version does not add a gate, it replaces one that was already load-bearing — a far higher bar than automating something ungoverned. And because the output actuates, a gate beside the execution path is worthless."
+    ],
+    "links": []
+  },
+  {
+    "slug": "batch-records-as-typed-programs",
+    "title": "Batch records as typed programs",
+    "lede": "Approval is a node, not a convention — typed ports, only same-typed ones connect, and human approval sits inside the grammar.",
+    "period": "2025 – present",
+    "affiliation": "AstraZeneca",
+    "image": "project-batch-records-as-typed-programs.png",
+    "caption": "The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention.",
+    "no_url_reason": "No public URL — internal system.",
+    "body": [
+      "Batch records are authored as documents and executed as programs, and the gap between the two is where validation effort goes. This is a visual builder for master and executed batch records in Rust and React, including a browser-only build with no backend at all, so the authoring surface works where a server cannot be deployed.",
+      "The grammar is a visual pipeline with a type system: boxes are nodes, arrows are typed edges — rows, table, scalar, signal — and only same-typed ports may be wired. Every recipe instantiates one spine: source, pre-process, reason (AI), approve (human), sink. Human approval is a first-class node in the grammar rather than a workflow convention bolted on afterwards — the same conclusion as the pooling gate above, reached independently in a different domain. Records are governed in git: review, environment promotion, rollback.",
+      "Underneath it, twenty years back to pharmaceutical manufacturing execution systems in validated GxP environments."
+    ],
+    "links": []
+  }
+]

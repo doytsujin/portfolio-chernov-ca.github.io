@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Agentic Datasets",
+    "url": "https://agenticdatasets.org",
+    "kind": "site",
+    "blurb": "A machine-readable contract that lets datasets declare what agents can do, as 15 normative assertions with language-neutral conformance vectors."
+  },
+  {
+    "name": "Agentic Vision",
+    "url": "https://vision.agenticdatasets.org",
+    "kind": "site",
+    "blurb": "Selective visual inference with observable decisions, replayed over 1,712 contiguous dashcam frames."
+  },
+  {
+    "name": "Agentic Qubit",
+    "url": "https://qubit.agenticdatasets.org",
+    "kind": "site",
+    "blurb": "A control plane that refuses quantum results it cannot certify, running entirely in the browser with no backend."
+  },
+  {
+    "name": "Semantic Field Canvas",
+    "url": "https://doytsujin.github.io/ok-graph-canvas/",
+    "kind": "site",
+    "blurb": "A renderer for fields of nodes and links whose build fails if domain vocabulary appears anywhere in its source."
+  },
+  {
+    "name": "agentic-dataset-conformance",
+    "url": "https://pypi.org/project/agentic-dataset-conformance/",
+    "kind": "PyPI",
+    "mono": true,
+    "blurb": "The contract as executable vectors, with a runner that needs no access to an implementation's internals. Apache-2.0 code, CC0 vectors."
+  },
+  {
+    "name": "authorized-recall",
+    "url": "https://pypi.org/project/authorized-recall/",
+    "kind": "PyPI",
+    "mono": true,
+    "blurb": "Retrieval quality measured over the subset a principal is permitted to use. Apache-2.0."
+  },
+  {
+    "name": "@agent-scope-ca/graph-canvas",
+    "url": "https://www.npmjs.com/package/@agent-scope-ca/graph-canvas",
+    "kind": "npm",
+    "mono": true,
+    "blurb": "The Semantic Field Canvas renderer as a React package. Apache-2.0."
+  }
+]

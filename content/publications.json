@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Policy-Aware Supervisory Control for Observable Embodied Biomedical Robotic Systems",
+    "venue": "IEEE CBS 2026 — Cyborg & Bionic Systems, Munich",
+    "date": "September 2026",
+    "note": "Accepted; camera-ready.",
+    "links": []
+  },
+  {
+    "title": "Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows",
+    "venue": "IEEE BigDataService 2026 (CISOSE Congress), Fukuoka",
+    "date": "July 2026",
+    "note": "IEEE, pp. 125–129.",
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1109/BigDataService70481.2026.00025" },
+      { "label": "IEEE Xplore", "url": "https://ieeexplore.ieee.org/document/11654230" }
+    ]
+  },
+  {
+    "title": "Dataset Descriptors for Autonomous and Observable Biomedical Data Pipelines",
+    "venue": "IEEE EMBC 2026, Toronto",
+    "date": "July 2026",
+    "note": "Presented and in the conference proceedings.",
+    "links": []
+  },
+  {
+    "title": "Agentic Datasets as an Engineering Control Plane",
+    "venue": "IEEE CCECE 2026, Montreal",
+    "date": "May 2026",
+    "note": "IEEE, pp. 326–332.",
+    "links": [
+      { "label": "DOI", "url": "https://doi.org/10.1109/CCECE68150.2026.11610344" },
+      { "label": "IEEE Xplore", "url": "https://ieeexplore.ieee.org/document/11610344" }
+    ]
+  },
+  {
+    "title": "Agentic Datasets as a Control-Plane Abstraction for Data-Intensive Systems",
+    "venue": "ANNSIM 2026 (SCS) — Work-in-Progress track",
+    "date": "May 2026",
+    "note": "SCS Digital Library and conference proceedings.",
+    "links": []
+  }
+]

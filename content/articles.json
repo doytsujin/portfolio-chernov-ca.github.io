@@ -1,0 +1,80 @@
+[
+  {
+    "title": "Harmless AI Is Not a Property of the Model",
+    "date": null,
+    "slug": "harmless-ai-not-the-model",
+    "linkedin": null
+  },
+  {
+    "title": "At 100,000 Devices, Nothing Fails at the Average",
+    "date": "2026-09-01",
+    "slug": "nothing-fails-at-the-average",
+    "linkedin": "https://www.linkedin.com/pulse/100000-devices-nothing-fails-average-alexander-chernov-cdcec/"
+  },
+  {
+    "title": "At 100,000 Devices, Throughput Is the Easy Part",
+    "date": "2026-08-31",
+    "slug": "throughput-is-the-easy-part",
+    "linkedin": "https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/"
+  },
+  {
+    "title": "From Governed Data to Governed Motion: A Control Plane for Biomedical Robots",
+    "date": "2026-08-25",
+    "slug": "governed-motion",
+    "linkedin": "https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/"
+  },
+  {
+    "title": "A Game Is a Data Problem: What Reimplementing an Engine Taught Me About Silent Contract Failure",
+    "date": "2026-08-23",
+    "slug": "a-game-is-a-data-problem",
+    "linkedin": "https://www.linkedin.com/pulse/game-data-problem-what-reimplementing-engine-taught-me-chernov-2smsc/"
+  },
+  {
+    "title": "Should You Argue With an LLM?",
+    "date": "2026-08-22",
+    "slug": "should-you-argue-with-an-llm",
+    "linkedin": "https://www.linkedin.com/pulse/should-you-argue-llm-alexander-chernov-qmqgc/"
+  },
+  {
+    "title": "Every Stage Reported Success. The Data Was Wrong.",
+    "date": "2026-08-16",
+    "slug": "every-stage-reported-success",
+    "linkedin": "https://www.linkedin.com/pulse/every-stage-reported-success-data-wrong-alexander-chernov-yablc/"
+  },
+  {
+    "title": "Governing a Quantum Pipeline, Part 2",
+    "date": "2026-06-06",
+    "slug": "governed-quantum-pipeline-part-2",
+    "linkedin": "https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/"
+  },
+  {
+    "title": "Governing a Quantum Pipeline, Part 1",
+    "date": "2026-06-03",
+    "slug": "governed-quantum-pipeline-part-1",
+    "linkedin": "https://www.linkedin.com/pulse/governing-quantum-pipeline-part-1-alexander-chernov-8s1ae/"
+  },
+  {
+    "title": "Physics Reproducible by Agentic Construction",
+    "date": "2026-05-31",
+    "slug": "agentic-research-bichromatic-ionization",
+    "linkedin": "https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/"
+  },
+  {
+    "title": "From Data to AI to Quantum-Enabled Biology",
+    "date": "2026-05-30",
+    "slug": "quantum-enabled-biology",
+    "linkedin": "https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/"
+  },
+  {
+    "title": "AI Amplifies People Who Know How to Think",
+    "date": "2026-05-10",
+    "slug": "ai-new-calculator",
+    "linkedin": "https://www.linkedin.com/pulse/ai-amplifies-people-who-know-how-think-alexander-chernov-qffpe/"
+  },
+  {
+    "title": "From Protocols to Control Planes: What MCP Teaches Us About Building Agentic Systems at Scale",
+    "date": "2026-03-29",
+    "slug": "from-protocols-to-control-planes",
+    "linkedin": "https://www.linkedin.com/pulse/from-protocols-control-planes-what-mcp-teaches-us-building-chernov-qswse/"
+  }
+]
