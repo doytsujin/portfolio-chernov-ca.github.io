@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov</title>
-<meta name="description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<meta name="description" content="Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute f">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/certified-reuse-quantum.html">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Alexander Chernov — Portfolio">
 <meta property="og:title" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
-<meta property="og:description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<meta property="og:description" content="Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute f">
 <meta property="og:url" content="https://portfolio.chernov.ca/p/certified-reuse-quantum.html">
 <meta property="og:image" content="https://portfolio.chernov.ca/og/certified-reuse-quantum.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
-<meta name="twitter:description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<meta name="twitter:description" content="Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute f">
 <meta name="twitter:image" content="https://portfolio.chernov.ca/og/certified-reuse-quantum.png">
 <script>
 (function(){try{var t=localStorage.getItem('pf-theme');
@@ -102,7 +102,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -183,6 +185,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="../p/certified-reuse-quantum.html" aria-label="Copy link to Certified reuse of quantum results, with refusal as a visible outcome" title="Copy link to Certified reuse of quantum results, with refusal as a visible outcome"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.</p>
+<p class="summary">Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute force, and verified.</p>
 <p>Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.</p>
 <p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
 <p>Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.</p>

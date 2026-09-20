@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reproducible spectral scoring with a fit-quality gate — Alexander Chernov</title>
-<meta name="description" content="A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.">
+<meta name="description" content="Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &amp;minus;608 with noth">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/reproducible-spectral-scoring.html">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Alexander Chernov — Portfolio">
 <meta property="og:title" content="Reproducible spectral scoring with a fit-quality gate — Alexander Chernov">
-<meta property="og:description" content="A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.">
+<meta property="og:description" content="Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &amp;minus;608 with noth">
 <meta property="og:url" content="https://portfolio.chernov.ca/p/reproducible-spectral-scoring.html">
 <meta property="og:image" content="https://portfolio.chernov.ca/og/reproducible-spectral-scoring.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Reproducible spectral scoring with a fit-quality gate — Alexander Chernov">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Reproducible spectral scoring with a fit-quality gate — Alexander Chernov">
-<meta name="twitter:description" content="A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.">
+<meta name="twitter:description" content="Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &amp;minus;608 with noth">
 <meta name="twitter:image" content="https://portfolio.chernov.ca/og/reproducible-spectral-scoring.png">
 <script>
 (function(){try{var t=localStorage.getItem('pf-theme');
@@ -102,7 +102,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -183,6 +185,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="../p/reproducible-spectral-scoring.html" aria-label="Copy link to Reproducible spectral scoring with a fit-quality gate" title="Copy link to Reproducible spectral scoring with a fit-quality gate"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.</p>
+<p class="summary">Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.</p>
 <figure><img src="../img/project-reproducible-spectral-scoring.png" alt="Reproducible spectral scoring with a fit-quality gate." loading="lazy" decoding="async">
 <figcaption>Reproducible spectral scoring with a fit-quality gate.</figcaption>
 </figure>

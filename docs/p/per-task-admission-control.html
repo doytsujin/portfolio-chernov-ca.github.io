@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Per-task admission control for genomics pipelines — Alexander Chernov</title>
-<meta name="description" content="A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.">
+<meta name="description" content="A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &amp;micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS&#x27;s managed service honours a directive it">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/per-task-admission-control.html">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Alexander Chernov — Portfolio">
 <meta property="og:title" content="Per-task admission control for genomics pipelines — Alexander Chernov">
-<meta property="og:description" content="A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.">
+<meta property="og:description" content="A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &amp;micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS&#x27;s managed service honours a directive it">
 <meta property="og:url" content="https://portfolio.chernov.ca/p/per-task-admission-control.html">
 <meta property="og:image" content="https://portfolio.chernov.ca/og/per-task-admission-control.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Per-task admission control for genomics pipelines — Alexander Chernov">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Per-task admission control for genomics pipelines — Alexander Chernov">
-<meta name="twitter:description" content="A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.">
+<meta name="twitter:description" content="A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &amp;micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS&#x27;s managed service honours a directive it">
 <meta name="twitter:image" content="https://portfolio.chernov.ca/og/per-task-admission-control.png">
 <script>
 (function(){try{var t=localStorage.getItem('pf-theme');
@@ -102,7 +102,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -183,6 +185,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="../p/per-task-admission-control.html" aria-label="Copy link to Per-task admission control for genomics pipelines" title="Copy link to Per-task admission control for genomics pipelines"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.</p>
+<p class="summary">A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS's managed service honours a directive its own linter called unsupported.</p>
 <p>Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.</p>
 <p>The finding was not the latency. AWS's own Nextflow linter listed the hook the gate depends on among directives their managed service does not support, which would have put per-task governance out of reach. That file was two years stale and already contradicted by AWS's current documentation for a neighbouring directive. Treated as a hypothesis and probed against a local control: it runs. The gate now permits and refuses per task on the managed service.</p>
 <p>Transferable principle: when an enforcement boundary matters, validate it experimentally rather than assume the documented boundary is the real one.</p>

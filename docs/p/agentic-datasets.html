@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Agentic Datasets — Alexander Chernov</title>
-<meta name="description" content="A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.">
+<meta name="description" content="Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &amp;mdash; every one of them passing, with seventeen delibera">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/agentic-datasets.html">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Alexander Chernov — Portfolio">
 <meta property="og:title" content="Agentic Datasets — Alexander Chernov">
-<meta property="og:description" content="A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.">
+<meta property="og:description" content="Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &amp;mdash; every one of them passing, with seventeen delibera">
 <meta property="og:url" content="https://portfolio.chernov.ca/p/agentic-datasets.html">
 <meta property="og:image" content="https://portfolio.chernov.ca/og/agentic-datasets.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Agentic Datasets — Alexander Chernov">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Agentic Datasets — Alexander Chernov">
-<meta name="twitter:description" content="A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.">
+<meta name="twitter:description" content="Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &amp;mdash; every one of them passing, with seventeen delibera">
 <meta name="twitter:image" content="https://portfolio.chernov.ca/og/agentic-datasets.png">
 <script>
 (function(){try{var t=localStorage.getItem('pf-theme');
@@ -102,7 +102,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -183,6 +185,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="../p/agentic-datasets.html" aria-label="Copy link to Agentic Datasets" title="Copy link to Agentic Datasets"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.</p>
+<p class="summary">Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &mdash; every one of them passing, with seventeen deliberately broken variants all caught.</p>
 <p>An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.</p>
 <p>The contract is fifteen normative assertions expressed as eighty-five language-neutral vector steps, which is what makes it checkable against an implementation without access to that implementation's internals. The reference architecture passes all fifteen across four runtimes and two dataset boundaries; a second implementation sharing no code with it passes all fifteen as well.</p>
 <p>Mutation analysis is the part that keeps the suite honest: seventeen targeted violations, seventeen detected, with every assertion independently exercised. Mean detecting assertions per mutant is reported at 2.2 and deliberately not treated as an optimization metric, because tuning a suite to raise it would measure the suite rather than the contract.</p>

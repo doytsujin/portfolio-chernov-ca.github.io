@@ -136,6 +136,8 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
 
     if p.get("lede"):
         parts.append(f'<p class="lede">{p["lede"]}</p>')
+    if p.get("summary"):
+        parts.append(f'<p class="summary">{p["summary"]}</p>')
 
     if p.get("image"):
         alt = esc(p.get("caption") or p["title"])
@@ -301,7 +303,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -559,7 +563,7 @@ def build_project_page(p: dict, index: int) -> str:
 """
     return shell(
         title=f'{p["title"]} — Alexander Chernov',
-        description=strip_tags(p.get("lede") or p["body"][0])[:300],
+        description=strip_tags(p.get("summary") or p.get("lede") or p["body"][0])[:300],
         canonical=f'{SITE}/p/{p["slug"]}.html',
         og_image=f'{SITE}/og/{p["slug"]}.png',
         og_type="article", prefix=pre, body=body,

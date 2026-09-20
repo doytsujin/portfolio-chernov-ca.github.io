@@ -102,7 +102,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -192,6 +194,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/agentic-datasets.html" aria-label="Copy link to Agentic Datasets" title="Copy link to Agentic Datasets"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.</p>
+<p class="summary">Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &mdash; every one of them passing, with seventeen deliberately broken variants all caught.</p>
 <p>An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.</p>
 <p>The contract is fifteen normative assertions expressed as eighty-five language-neutral vector steps, which is what makes it checkable against an implementation without access to that implementation's internals. The reference architecture passes all fifteen across four runtimes and two dataset boundaries; a second implementation sharing no code with it passes all fifteen as well.</p>
 <p>Mutation analysis is the part that keeps the suite honest: seventeen targeted violations, seventeen detected, with every assertion independently exercised. Mean detecting assertions per mutant is reported at 2.2 and deliberately not treated as an optimization metric, because tuning a suite to raise it would measure the suite rather than the contract.</p>
@@ -207,6 +210,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/per-task-admission-control.html" aria-label="Copy link to Per-task admission control for genomics pipelines" title="Copy link to Per-task admission control for genomics pipelines"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.</p>
+<p class="summary">A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS's managed service honours a directive its own linter called unsupported.</p>
 <p>Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.</p>
 <p>The finding was not the latency. AWS's own Nextflow linter listed the hook the gate depends on among directives their managed service does not support, which would have put per-task governance out of reach. That file was two years stale and already contradicted by AWS's current documentation for a neighbouring directive. Treated as a hypothesis and probed against a local control: it runs. The gate now permits and refuses per task on the managed service.</p>
 <p>Transferable principle: when an enforcement boundary matters, validate it experimentally rather than assume the documented boundary is the real one.</p>
@@ -222,6 +226,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/croissant-policy-profile.html" aria-label="Copy link to A policy profile for Croissant, the MLCommons dataset descriptor" title="Copy link to A policy profile for Croissant, the MLCommons dataset descriptor"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">Croissant can write down data-use conditions. No version of it specifies how any of them is evaluated.</p>
+<p class="summary">What the descriptor leaves open, this closes: five operators, one verdict per request, and an audit trail behind it. Authority and conditions turn out to disagree in both directions, neither permit set containing the other, and the price of deciding is published rather than estimated at +0.0 &micro;s warm, +11.7 &micro;s cold.</p>
 <p>No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.</p>
 <p>This profile closes that: a dataset declares the operations it admits and the conditions under which it admits them, from a closed set of five operators, so a gate can decide from the descriptor alone and leave a decision record. Two carriers that decide identically are compared as whole decision records.</p>
 <p>The measured result is the interesting one. Caller-side authority and data-side conditions disagree in both directions — each refuses requests the other admits, and neither permit set contains the other. Overhead disclosed rather than assumed: +0.0 µs warm, +11.7 µs cold per decision. All emitted documents load under <code>mlcroissant</code> 1.1.0 with zero errors.</p>
@@ -238,6 +243,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/selective-visual-inference.html" aria-label="Copy link to Selective visual inference with observable decisions" title="Copy link to Selective visual inference with observable decisions"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">The descriptor decides whether to look again — and the decision, not only the detection, is what gets recorded.</p>
+<p class="summary">1,712 consecutive frames of road footage, five per second. Skipping 43.6% of model calls left 28.5% of real scene changes stale; a richer descriptor cut that to 9.1% and bought fewer skips in exchange. A separate detector checks the result, so the thing being measured is not also the judge.</p>
 <figure><img src="img/project-agentic-vision.jpg" alt="The measurement&#x27;s own overlay on a frame of road footage: the descriptor matched, the previous interpretation was reused, no model was called — while the scene developed around a road user at the kerb." loading="lazy" decoding="async">
 <figcaption>The measurement's own overlay on a frame of road footage: the descriptor matched, the previous interpretation was reused, no model was called — while the scene developed around a road user at the kerb.</figcaption>
 </figure>
@@ -258,6 +264,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/certified-reuse-quantum.html" aria-label="Copy link to Certified reuse of quantum results, with refusal as a visible outcome" title="Copy link to Certified reuse of quantum results, with refusal as a visible outcome"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.</p>
+<p class="summary">Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute force, and verified.</p>
 <p>Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.</p>
 <p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
 <p>Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.</p>
@@ -274,6 +281,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/semantic-graph-mcp-gateway.html" aria-label="Copy link to Semantic graph and MCP gateway for laboratory infrastructure" title="Copy link to Semantic graph and MCP gateway for laboratory infrastructure"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.</p>
+<p class="summary">Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.</p>
 <figure><img src="img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn." loading="lazy" decoding="async">
 <figcaption>The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.</figcaption>
 </figure>
@@ -293,6 +301,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/governed-clinical-variable-mapping.html" aria-label="Copy link to Governed clinical variable mapping with browser-local reasoning" title="Copy link to Governed clinical variable mapping with browser-local reasoning"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">Mappings proposed, not applied — 426 nodes, 332 edges, 0 of 84 approved. A mapping waits for a reviewer.</p>
+<p class="summary">Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU. On derivations a frontier model reaches 0.400 top-1, lexical 0.220, on-premises 0.140.</p>
 <figure><img src="img/project-governed-clinical-variable-mapping.png" alt="426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it." loading="lazy" decoding="async">
 <figcaption>426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it.</figcaption>
 </figure>
@@ -313,6 +322,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/reproducible-spectral-scoring.html" aria-label="Copy link to Reproducible spectral scoring with a fit-quality gate" title="Copy link to Reproducible spectral scoring with a fit-quality gate"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.</p>
+<p class="summary">Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.</p>
 <figure><img src="img/project-reproducible-spectral-scoring.png" alt="Reproducible spectral scoring with a fit-quality gate." loading="lazy" decoding="async">
 <figcaption>Reproducible spectral scoring with a fit-quality gate.</figcaption>
 </figure>
@@ -332,6 +342,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/chromatography-fraction-pooling.html" aria-label="Copy link to Chromatography fraction pooling that ends by driving a robot" title="Copy link to Chromatography fraction pooling that ends by driving a robot"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">An algorithm proposes, an operator admits — eight chromatograms with pool suggestions, each pending Approve, Reject or Combine.</p>
+<p class="summary">Takes plate-reader output, draws per-column traces, suggests cut points from second derivatives, and puts an approve-or-edit step in front of the robot. Detection was rebuilt rather than tuned: one sample recovered from 0.26 to 0.98, and an aggregation index that had spanned 1.3&ndash;2.7 settled to 0.09&ndash;0.53.</p>
 <figure><img src="img/project-chromatography-fraction-pooling.png" alt="Eight Robocolumn chromatograms with the algorithm&#x27;s pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run." loading="lazy" decoding="async">
 <figcaption>Eight Robocolumn chromatograms with the algorithm's pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run.</figcaption>
 </figure>
@@ -352,6 +363,7 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/batch-records-as-typed-programs.html" aria-label="Copy link to Batch records as typed programs" title="Copy link to Batch records as typed programs"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">Approval is a node, not a convention — typed ports, only same-typed ones connect, and human approval sits inside the grammar.</p>
+<p class="summary">Rust and React, with a no-backend browser build for places that will not host a server. One spine underlies every recipe &mdash; source, pre-process, reason, approve, sink &mdash; and the records live in version control, so review, promotion and rollback are the ordinary git ones.</p>
 <figure><img src="img/project-batch-records-as-typed-programs.png" alt="The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention." loading="lazy" decoding="async">
 <figcaption>The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention.</figcaption>
 </figure>
