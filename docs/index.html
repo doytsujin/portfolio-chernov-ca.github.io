@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -8,18 +8,37 @@
 <link rel="canonical" href="https://portfolio.chernov.ca/">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta property="og:type" content="profile">
+<meta property="og:site_name" content="Alexander Chernov — Portfolio">
 <meta property="og:title" content="Alexander Chernov — Portfolio">
 <meta property="og:description" content="Projects, publications, talks and writing: control planes, admission gates and observable decisions for scientific and regulated systems.">
 <meta property="og:url" content="https://portfolio.chernov.ca/">
+<meta property="og:image" content="https://portfolio.chernov.ca/og/site.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Alexander Chernov — Portfolio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Alexander Chernov — Portfolio">
+<meta name="twitter:description" content="Projects, publications, talks and writing: control planes, admission gates and observable decisions for scientific and regulated systems.">
+<meta name="twitter:image" content="https://portfolio.chernov.ca/og/site.png">
+<script>
+(function(){try{var t=localStorage.getItem('pf-theme');
+document.documentElement.dataset.theme=(t==='dark'||t==='system')?t:'light';}
+catch(e){document.documentElement.dataset.theme='light';}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet"
   href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
 <style>
-:root{--bg:#000;--panel:#0f172a;--card:#1e293b;--ink:#f8fafc;--muted:#94a3b8;
---line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;--radius:.5rem}
-@media (prefers-color-scheme:light){:root{--bg:#f1f5f9;--panel:#fff;--card:#f8fafc;
---ink:#0f172a;--muted:#475569;--line:#e2e8f0;--accent:#dc2626;--link:#1d4ed8}}
+:root{--bg:#f1f5f9;--panel:#fff;--card:#f8fafc;--ink:#0f172a;--muted:#475569;
+--line:#e2e8f0;--accent:#dc2626;--link:#1d4ed8;--radius:.5rem;color-scheme:light}
+:root[data-theme="dark"],
+:root[data-theme="system"]:is(.prefers-dark){--bg:#000;--panel:#0f172a;--card:#1e293b;
+--ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;
+color-scheme:dark}
+@media (prefers-color-scheme:dark){
+:root[data-theme="system"]{--bg:#000;--panel:#0f172a;--card:#1e293b;--ink:#f8fafc;
+--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;color-scheme:dark}}
 *{box-sizing:border-box}
 html{font-size:clamp(15px,.5vw+11px,19px);scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);
@@ -28,38 +47,62 @@ font:1rem/1.65 "Roboto Slab",Georgia,"Times New Roman",serif;
 .wrap{width:min(60rem,100% - 2rem);margin-inline:auto}
 a{color:var(--link)}
 code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
-code{background:rgba(148,163,184,.16);padding:.1em .35em;border-radius:.25rem}
+code{background:rgba(148,163,184,.2);padding:.1em .35em;border-radius:.25rem}
 
 header.top{background:var(--panel);border-bottom:1px solid var(--line);
-padding-block:clamp(2.5rem,6vw,4.5rem)}
-.eyebrow{margin:0 0 .5rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+padding-block:clamp(2rem,5vw,3.6rem)}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+margin-bottom:.6rem}
+.eyebrow{margin:0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
 color:var(--muted)}
-h1{margin:0 0 .4rem;font-size:clamp(2rem,6vw,3.4rem);font-weight:700;letter-spacing:-.02em;
-line-height:1.1}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);
+overflow:hidden;flex-shrink:0}
+.theme button{font:inherit;font-size:.72rem;padding:.3rem .65rem;cursor:pointer;
+background:transparent;color:var(--muted);border:0}
+.theme button+button{border-left:1px solid var(--line)}
+.theme button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:700}
+h1{margin:0 0 .4rem;font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:700;
+letter-spacing:-.02em;line-height:1.15}
 h1 .sur{color:var(--accent)}
-.role{margin:0 0 1.4rem;font-size:clamp(1rem,2.2vw,1.3rem);color:var(--muted)}
+.role{margin:0 0 1.4rem;font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted)}
 .question{margin:0 0 1.6rem;padding-left:1rem;border-left:3px solid var(--accent);
-font-size:clamp(1.05rem,2.4vw,1.35rem);font-style:italic}
-.question span{display:block;margin-top:.5rem;font-size:.86rem;font-style:normal;
+font-size:clamp(1.02rem,2.3vw,1.3rem);font-style:italic}
+.question span{display:block;margin-top:.5rem;font-size:.85rem;font-style:normal;
 color:var(--muted)}
 nav.jump{display:flex;flex-wrap:wrap;gap:.5rem}
 nav.jump a{display:inline-block;padding:.4rem .8rem;border:1px solid var(--line);
-border-radius:var(--radius);background:var(--card);color:var(--ink);text-decoration:none;
-font-size:.85rem}
+border-radius:var(--radius);background:var(--card);color:var(--ink);
+text-decoration:none;font-size:.85rem}
 nav.jump a:hover{border-color:var(--accent)}
 
 main{padding-block:clamp(2rem,4vw,3.5rem)}
 section{margin-bottom:clamp(2.5rem,6vw,4.5rem);scroll-margin-top:1rem}
-h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:0 0 .3rem;letter-spacing:-.01em}
+.section-head{display:flex;align-items:baseline;gap:.75rem;margin:0 0 .3rem}
+h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;letter-spacing:-.01em}
 .section-note{margin:0 0 1.6rem;color:var(--muted);font-size:.92rem}
 
-.project{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-padding:clamp(1rem,2.5vw,1.8rem);margin-bottom:1.2rem}
-.project-head{display:flex;gap:.9rem;align-items:baseline;margin-bottom:.6rem}
-.num{color:var(--accent);font-size:.9rem;font-weight:700;flex-shrink:0}
-.project h3{margin:0;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.25}
+.copy{font:inherit;font-size:.72rem;line-height:1;padding:.32rem .55rem;cursor:pointer;
+background:var(--card);color:var(--muted);border:1px solid var(--line);
+border-radius:var(--radius);display:inline-flex;align-items:center;gap:.3rem;
+flex-shrink:0;white-space:nowrap}
+.copy:hover{border-color:var(--accent);color:var(--ink)}
+.copy-icon{font-weight:700;color:var(--accent)}
+.copy.done{border-color:var(--accent);color:var(--ink)}
+.copy.done .copy-icon{content:""}
+
+.project{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:clamp(1rem,2.5vw,1.8rem);margin-bottom:1.2rem;
+scroll-margin-top:1rem}
+.project-head{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.6rem}
+.num{color:var(--accent);font-size:.9rem;font-weight:700;flex-shrink:0;
+padding-top:.35rem}
+.project-title{flex:1;min-width:0}
+.project h1,.project h3{margin:0;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.25}
+.project h1{font-size:clamp(1.5rem,4vw,2.2rem)}
+a.self{color:inherit;text-decoration:none}
+a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
-.lede{margin:0 0 1rem;font-size:1.02em;color:var(--ink);font-style:italic}
+.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
 .project p{margin:0 0 .9rem}
 .project figure{margin:0 0 1rem}
 .project img{display:block;width:100%;height:auto;border:1px solid var(--line);
@@ -77,7 +120,6 @@ ul.entries{list-style:none;margin:0;padding:0}
 .entry:first-child{border-top:0}
 .when{flex:0 0 9.5rem;color:var(--muted);font-size:.85rem}
 .what{flex:1;min-width:0}
-.what strong{font-weight:700}
 .where{display:block;color:var(--muted);font-size:.87rem;margin-top:.15rem}
 .note{display:block;color:var(--muted);font-size:.82rem;margin-top:.15rem}
 .tag{display:inline-block;margin-left:.5rem;padding:.05rem .4rem;border-radius:.25rem;
@@ -88,22 +130,23 @@ text-transform:uppercase;vertical-align:middle}
 
 ul.artifacts{list-style:none;margin:0;padding:0;display:grid;gap:.8rem;
 grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
-.artifact{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
-padding:.9rem 1rem}
+.artifact{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:.9rem 1rem}
 .artifact .name{font-weight:700;text-decoration:none}
-.artifact .kind{display:inline-block;margin-left:.5rem;font-size:.7rem;color:var(--muted);
-text-transform:uppercase;letter-spacing:.06em}
+.artifact .kind{display:inline-block;margin-left:.5rem;font-size:.7rem;
+color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
 
-footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;color:var(--muted);
-font-size:.85rem}
+.backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+
+footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;
+color:var(--muted);font-size:.85rem}
 footer.bottom p{margin:0 0 .5rem}
-footer.bottom a{color:var(--link)}
 
 @media (max-width:34rem){
 .entry{flex-direction:column;gap:.15rem}
 .when{flex:none}
-.project-head{flex-direction:column;gap:.15rem}
+.copy-text{display:none}
 }
 </style>
 </head>
@@ -111,13 +154,16 @@ footer.bottom a{color:var(--link)}
 
 <header class="top">
   <div class="wrap">
-    <p class="eyebrow">Portfolio</p>
+    <div class="topbar"><p class="eyebrow">Portfolio</p><div class="theme" role="group" aria-label="Color scheme">
+<button type="button" data-theme="light" aria-pressed="true">Light</button>
+<button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+<button type="button" data-theme="system" aria-pressed="false">System</button>
+</div></div>
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">Something proposes under uncertainty &mdash; what decides whether it may
-      act?<span>Ten systems, one question. Two of the ten are not neural networks, which is the
-      point rather than an omission.</span></p>
+    <p class="question">Something proposes under uncertainty — what decides whether it may act?<span>Ten systems, one question. Two of the ten are not
+      neural networks, which is the point rather than an omission.</span></p>
     <nav class="jump">
       <a href="#projects">Projects</a>
       <a href="#live">Live &amp; installable</a>
@@ -130,19 +176,21 @@ footer.bottom a{color:var(--link)}
 </header>
 
 <main class="wrap">
-
   <section id="projects">
-    <h2>Projects</h2>
+    <div class="section-head"><h2>Projects</h2><button class="copy" type="button" data-copy="index.html#projects" aria-label="Copy link to Projects" title="Copy link to Projects"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button></div>
     <p class="section-note">The public ones first &mdash; they are the only entries a reader can
       verify, and a verifiable entry earns the ones that follow it. Where a project has no public
-      URL that is stated rather than hidden behind a link that returns 404.</p>
+      URL that is stated rather than hidden behind a link that returns 404. Each title is also a
+      page of its own, which is what the copy button hands you.</p>
     <article class="project" id="agentic-datasets">
 <div class="project-head">
 <span class="num">01</span>
-<div>
-<h3>Agentic Datasets</h3>
+<div class="project-title">
+<h3><a class="self" href="p/agentic-datasets.html">Agentic Datasets</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/agentic-datasets.html" aria-label="Copy link to Agentic Datasets" title="Copy link to Agentic Datasets"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.</p>
 <p>An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.</p>
 <p>The contract is fifteen normative assertions expressed as eighty-five language-neutral vector steps, which is what makes it checkable against an implementation without access to that implementation's internals. The reference architecture passes all fifteen across four runtimes and two dataset boundaries; a second implementation sharing no code with it passes all fifteen as well.</p>
@@ -152,10 +200,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="per-task-admission-control">
 <div class="project-head">
 <span class="num">02</span>
-<div>
-<h3>Per-task admission control for genomics pipelines</h3>
+<div class="project-title">
+<h3><a class="self" href="p/per-task-admission-control.html">Per-task admission control for genomics pipelines</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/per-task-admission-control.html" aria-label="Copy link to Per-task admission control for genomics pipelines" title="Copy link to Per-task admission control for genomics pipelines"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.</p>
 <p>Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.</p>
 <p>The finding was not the latency. AWS's own Nextflow linter listed the hook the gate depends on among directives their managed service does not support, which would have put per-task governance out of reach. That file was two years stale and already contradicted by AWS's current documentation for a neighbouring directive. Treated as a hypothesis and probed against a local control: it runs. The gate now permits and refuses per task on the managed service.</p>
@@ -165,10 +215,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="croissant-policy-profile">
 <div class="project-head">
 <span class="num">03</span>
-<div>
-<h3>A policy profile for Croissant, the MLCommons dataset descriptor</h3>
+<div class="project-title">
+<h3><a class="self" href="p/croissant-policy-profile.html">A policy profile for Croissant, the MLCommons dataset descriptor</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/croissant-policy-profile.html" aria-label="Copy link to A policy profile for Croissant, the MLCommons dataset descriptor" title="Copy link to A policy profile for Croissant, the MLCommons dataset descriptor"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">Croissant can write down data-use conditions. No version of it specifies how any of them is evaluated.</p>
 <p>No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.</p>
 <p>This profile closes that: a dataset declares the operations it admits and the conditions under which it admits them, from a closed set of five operators, so a gate can decide from the descriptor alone and leave a decision record. Two carriers that decide identically are compared as whole decision records.</p>
@@ -179,10 +231,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="selective-visual-inference">
 <div class="project-head">
 <span class="num">04</span>
-<div>
-<h3>Selective visual inference with observable decisions</h3>
+<div class="project-title">
+<h3><a class="self" href="p/selective-visual-inference.html">Selective visual inference with observable decisions</a></h3>
 <p class="meta">2025 – present · Independent project, unaffiliated with any employer.</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/selective-visual-inference.html" aria-label="Copy link to Selective visual inference with observable decisions" title="Copy link to Selective visual inference with observable decisions"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">The descriptor decides whether to look again — and the decision, not only the detection, is what gets recorded.</p>
 <figure><img src="img/project-agentic-vision.jpg" alt="The measurement&#x27;s own overlay on a frame of road footage: the descriptor matched, the previous interpretation was reused, no model was called — while the scene developed around a road user at the kerb." loading="lazy" decoding="async">
 <figcaption>The measurement's own overlay on a frame of road footage: the descriptor matched, the previous interpretation was reused, no model was called — while the scene developed around a road user at the kerb.</figcaption>
@@ -197,10 +251,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="certified-reuse-quantum">
 <div class="project-head">
 <span class="num">05</span>
-<div>
-<h3>Certified reuse of quantum results, with refusal as a visible outcome</h3>
+<div class="project-title">
+<h3><a class="self" href="p/certified-reuse-quantum.html">Certified reuse of quantum results, with refusal as a visible outcome</a></h3>
 <p class="meta">2025 – present</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/certified-reuse-quantum.html" aria-label="Copy link to Certified reuse of quantum results, with refusal as a visible outcome" title="Copy link to Certified reuse of quantum results, with refusal as a visible outcome"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.</p>
 <p>Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.</p>
 <p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
@@ -211,10 +267,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="semantic-graph-mcp-gateway">
 <div class="project-head">
 <span class="num">06</span>
-<div>
-<h3>Semantic graph and MCP gateway for laboratory infrastructure</h3>
+<div class="project-title">
+<h3><a class="self" href="p/semantic-graph-mcp-gateway.html">Semantic graph and MCP gateway for laboratory infrastructure</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/semantic-graph-mcp-gateway.html" aria-label="Copy link to Semantic graph and MCP gateway for laboratory infrastructure" title="Copy link to Semantic graph and MCP gateway for laboratory infrastructure"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.</p>
 <figure><img src="img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn." loading="lazy" decoding="async">
 <figcaption>The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.</figcaption>
@@ -228,10 +286,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="governed-clinical-variable-mapping">
 <div class="project-head">
 <span class="num">07</span>
-<div>
-<h3>Governed clinical variable mapping with browser-local reasoning</h3>
+<div class="project-title">
+<h3><a class="self" href="p/governed-clinical-variable-mapping.html">Governed clinical variable mapping with browser-local reasoning</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/governed-clinical-variable-mapping.html" aria-label="Copy link to Governed clinical variable mapping with browser-local reasoning" title="Copy link to Governed clinical variable mapping with browser-local reasoning"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">Mappings proposed, not applied — 426 nodes, 332 edges, 0 of 84 approved. A mapping waits for a reviewer.</p>
 <figure><img src="img/project-governed-clinical-variable-mapping.png" alt="426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it." loading="lazy" decoding="async">
 <figcaption>426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it.</figcaption>
@@ -246,10 +306,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="reproducible-spectral-scoring">
 <div class="project-head">
 <span class="num">08</span>
-<div>
-<h3>Reproducible spectral scoring with a fit-quality gate</h3>
+<div class="project-title">
+<h3><a class="self" href="p/reproducible-spectral-scoring.html">Reproducible spectral scoring with a fit-quality gate</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/reproducible-spectral-scoring.html" aria-label="Copy link to Reproducible spectral scoring with a fit-quality gate" title="Copy link to Reproducible spectral scoring with a fit-quality gate"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.</p>
 <figure><img src="img/project-reproducible-spectral-scoring.png" alt="Reproducible spectral scoring with a fit-quality gate." loading="lazy" decoding="async">
 <figcaption>Reproducible spectral scoring with a fit-quality gate.</figcaption>
@@ -263,10 +325,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="chromatography-fraction-pooling">
 <div class="project-head">
 <span class="num">09</span>
-<div>
-<h3>Chromatography fraction pooling that ends by driving a robot</h3>
+<div class="project-title">
+<h3><a class="self" href="p/chromatography-fraction-pooling.html">Chromatography fraction pooling that ends by driving a robot</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/chromatography-fraction-pooling.html" aria-label="Copy link to Chromatography fraction pooling that ends by driving a robot" title="Copy link to Chromatography fraction pooling that ends by driving a robot"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">An algorithm proposes, an operator admits — eight chromatograms with pool suggestions, each pending Approve, Reject or Combine.</p>
 <figure><img src="img/project-chromatography-fraction-pooling.png" alt="Eight Robocolumn chromatograms with the algorithm&#x27;s pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run." loading="lazy" decoding="async">
 <figcaption>Eight Robocolumn chromatograms with the algorithm's pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run.</figcaption>
@@ -281,10 +345,12 @@ footer.bottom a{color:var(--link)}
 <article class="project" id="batch-records-as-typed-programs">
 <div class="project-head">
 <span class="num">10</span>
-<div>
-<h3>Batch records as typed programs</h3>
+<div class="project-title">
+<h3><a class="self" href="p/batch-records-as-typed-programs.html">Batch records as typed programs</a></h3>
 <p class="meta">2025 – present · AstraZeneca</p>
-</div></div>
+</div>
+<button class="copy" type="button" data-copy="p/batch-records-as-typed-programs.html" aria-label="Copy link to Batch records as typed programs" title="Copy link to Batch records as typed programs"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
 <p class="lede">Approval is a node, not a convention — typed ports, only same-typed ones connect, and human approval sits inside the grammar.</p>
 <figure><img src="img/project-batch-records-as-typed-programs.png" alt="The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention." loading="lazy" decoding="async">
 <figcaption>The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention.</figcaption>
@@ -298,42 +364,32 @@ footer.bottom a{color:var(--link)}
   </section>
 
   <section id="live">
-    <h2>Live &amp; installable</h2>
+    <div class="section-head"><h2>Live &amp; installable</h2><button class="copy" type="button" data-copy="index.html#live" aria-label="Copy link to Live &amp;amp; installable" title="Copy link to Live &amp;amp; installable"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button></div>
     <p class="section-note">Running pages and published packages. Nothing here needs an
       introduction from me to be checked.</p>
-    <ul class="artifacts">
-      <li class="artifact"><a class="name" href="https://agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Datasets</a><span class="kind">site</span><span class="blurb">A machine-readable contract that lets datasets declare what agents can do, as 15 normative assertions with language-neutral conformance vectors.</span></li><li class="artifact"><a class="name" href="https://vision.agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Vision</a><span class="kind">site</span><span class="blurb">Selective visual inference with observable decisions, replayed over 1,712 contiguous dashcam frames.</span></li><li class="artifact"><a class="name" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Qubit</a><span class="kind">site</span><span class="blurb">A control plane that refuses quantum results it cannot certify, running entirely in the browser with no backend.</span></li><li class="artifact"><a class="name" href="https://doytsujin.github.io/ok-graph-canvas/" target="_blank" rel="noopener noreferrer">Semantic Field Canvas</a><span class="kind">site</span><span class="blurb">A renderer for fields of nodes and links whose build fails if domain vocabulary appears anywhere in its source.</span></li><li class="artifact"><a class="name mono" href="https://pypi.org/project/agentic-dataset-conformance/" target="_blank" rel="noopener noreferrer">agentic-dataset-conformance</a><span class="kind">PyPI</span><span class="blurb">The contract as executable vectors, with a runner that needs no access to an implementation&#x27;s internals. Apache-2.0 code, CC0 vectors.</span></li><li class="artifact"><a class="name mono" href="https://pypi.org/project/authorized-recall/" target="_blank" rel="noopener noreferrer">authorized-recall</a><span class="kind">PyPI</span><span class="blurb">Retrieval quality measured over the subset a principal is permitted to use. Apache-2.0.</span></li><li class="artifact"><a class="name mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a><span class="kind">npm</span><span class="blurb">The Semantic Field Canvas renderer as a React package. Apache-2.0.</span></li>
-    </ul>
+    <ul class="artifacts"><li class="artifact"><a class="name" href="https://agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Datasets</a><span class="kind">site</span><span class="blurb">A machine-readable contract that lets datasets declare what agents can do, as 15 normative assertions with language-neutral conformance vectors.</span></li><li class="artifact"><a class="name" href="https://vision.agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Vision</a><span class="kind">site</span><span class="blurb">Selective visual inference with observable decisions, replayed over 1,712 contiguous dashcam frames.</span></li><li class="artifact"><a class="name" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">Agentic Qubit</a><span class="kind">site</span><span class="blurb">A control plane that refuses quantum results it cannot certify, running entirely in the browser with no backend.</span></li><li class="artifact"><a class="name" href="https://doytsujin.github.io/ok-graph-canvas/" target="_blank" rel="noopener noreferrer">Semantic Field Canvas</a><span class="kind">site</span><span class="blurb">A renderer for fields of nodes and links whose build fails if domain vocabulary appears anywhere in its source.</span></li><li class="artifact"><a class="name mono" href="https://pypi.org/project/agentic-dataset-conformance/" target="_blank" rel="noopener noreferrer">agentic-dataset-conformance</a><span class="kind">PyPI</span><span class="blurb">The contract as executable vectors, with a runner that needs no access to an implementation&#x27;s internals. Apache-2.0 code, CC0 vectors.</span></li><li class="artifact"><a class="name mono" href="https://pypi.org/project/authorized-recall/" target="_blank" rel="noopener noreferrer">authorized-recall</a><span class="kind">PyPI</span><span class="blurb">Retrieval quality measured over the subset a principal is permitted to use. Apache-2.0.</span></li><li class="artifact"><a class="name mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a><span class="kind">npm</span><span class="blurb">The Semantic Field Canvas renderer as a React package. Apache-2.0.</span></li></ul>
   </section>
 
   <section id="publications">
-    <h2>Publications</h2>
+    <div class="section-head"><h2>Publications</h2><button class="copy" type="button" data-copy="index.html#publications" aria-label="Copy link to Publications" title="Copy link to Publications"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button></div>
     <p class="section-note">Peer-reviewed, newest first.</p>
-    <ul class="entries">
-      <li class="entry"><span class="when">September 2026</span><span class="what"><strong>Policy-Aware Supervisory Control for Observable Embodied Biomedical Robotic Systems</strong><span class="where">IEEE CBS 2026 — Cyborg &amp; Bionic Systems, Munich</span><span class="note">Accepted; camera-ready.</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows</strong><span class="where">IEEE BigDataService 2026 (CISOSE Congress), Fukuoka</span><span class="note">IEEE, pp. 125–129.</span><span class="links inline"><a class="lnk" href="https://doi.org/10.1109/BigDataService70481.2026.00025" target="_blank" rel="noopener noreferrer">DOI</a><a class="lnk" href="https://ieeexplore.ieee.org/document/11654230" target="_blank" rel="noopener noreferrer">IEEE Xplore</a></span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Dataset Descriptors for Autonomous and Observable Biomedical Data Pipelines</strong><span class="where">IEEE EMBC 2026, Toronto</span><span class="note">Presented and in the conference proceedings.</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as an Engineering Control Plane</strong><span class="where">IEEE CCECE 2026, Montreal</span><span class="note">IEEE, pp. 326–332.</span><span class="links inline"><a class="lnk" href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">DOI</a><a class="lnk" href="https://ieeexplore.ieee.org/document/11610344" target="_blank" rel="noopener noreferrer">IEEE Xplore</a></span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as a Control-Plane Abstraction for Data-Intensive Systems</strong><span class="where">ANNSIM 2026 (SCS) — Work-in-Progress track</span><span class="note">SCS Digital Library and conference proceedings.</span></span></li>
-    </ul>
+    <ul class="entries"><li class="entry"><span class="when">September 2026</span><span class="what"><strong>Policy-Aware Supervisory Control for Observable Embodied Biomedical Robotic Systems</strong><span class="where">IEEE CBS 2026 — Cyborg &amp; Bionic Systems, Munich</span><span class="note">Accepted; camera-ready.</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows</strong><span class="where">IEEE BigDataService 2026 (CISOSE Congress), Fukuoka</span><span class="note">IEEE, pp. 125–129.</span><span class="links inline"><a class="lnk" href="https://doi.org/10.1109/BigDataService70481.2026.00025" target="_blank" rel="noopener noreferrer">DOI</a><a class="lnk" href="https://ieeexplore.ieee.org/document/11654230" target="_blank" rel="noopener noreferrer">IEEE Xplore</a></span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Dataset Descriptors for Autonomous and Observable Biomedical Data Pipelines</strong><span class="where">IEEE EMBC 2026, Toronto</span><span class="note">Presented and in the conference proceedings.</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as an Engineering Control Plane</strong><span class="where">IEEE CCECE 2026, Montreal</span><span class="note">IEEE, pp. 326–332.</span><span class="links inline"><a class="lnk" href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">DOI</a><a class="lnk" href="https://ieeexplore.ieee.org/document/11610344" target="_blank" rel="noopener noreferrer">IEEE Xplore</a></span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as a Control-Plane Abstraction for Data-Intensive Systems</strong><span class="where">ANNSIM 2026 (SCS) — Work-in-Progress track</span><span class="note">SCS Digital Library and conference proceedings.</span></span></li></ul>
   </section>
 
   <section id="talks">
-    <h2>Talks &amp; sessions</h2>
+    <div class="section-head"><h2>Talks &amp; sessions</h2><button class="copy" type="button" data-copy="index.html#talks" aria-label="Copy link to Talks &amp;amp; sessions" title="Copy link to Talks &amp;amp; sessions"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button></div>
     <p class="section-note">Conference and community talks, newest first.</p>
-    <ul class="entries">
-      <li class="entry"><span class="when">November 2026<span class="tag">upcoming</span></span><span class="what"><strong>Agentic Datasets: Giving AI Agents More Autonomy Without Losing Control</strong><span class="where">AI+AI Toronto 2026 — the Agentic AI Summit</span></span></li><li class="entry"><span class="when">September 2026</span><span class="what"><strong>Is Quantum Ready for Biology? What It Would Take to Put a Quantum Step Inside a Regulated Biopharma Pipeline</strong><span class="where">IEEE Quantum Week (QCE) 2026, Toronto — Birds-of-a-Feather, moderated</span><span class="links inline"><a class="lnk" href="https://qubit.agenticdatasets.org/bof" target="_blank" rel="noopener noreferrer">Session page</a></span></span></li><li class="entry"><span class="when">September 2026</span><span class="what"><strong>Policy-Aware Supervisory Control for Observable Embodied Biomedical Robotic Systems</strong><span class="where">IEEE CBS 2026 — Cyborg &amp; Bionic Systems, Munich</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Dataset Descriptors for Autonomous and Observable Biomedical Data Pipelines</strong><span class="where">IEEE EMBC 2026, Toronto</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Agentic Data Services</strong><span class="where">IEEE BigDataService 2026, Fukuoka</span></span></li><li class="entry"><span class="when">June 2026</span><span class="what"><strong>From ClickOps to GitOps</strong><span class="where">DynamicsCon Regional: Toronto</span></span></li><li class="entry"><span class="when">June 2026</span><span class="what"><strong>Making AI Systems Practical</strong><span class="where">Big Data &amp; Analytics Summit Canada, Toronto</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as an Engineering Control Plane</strong><span class="where">IEEE CCECE 2026, Montreal</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as a Control-Plane Abstraction</strong><span class="where">ANNSIM 2026 (SCS)</span></span></li><li class="entry"><span class="when">March 2026</span><span class="what"><strong>Simulated Worlds for Agent Engineering</strong><span class="where">AgentCon 2026, Toronto</span></span></li><li class="entry"><span class="when">March 2026</span><span class="what"><strong>Making Agents Practical</strong><span class="where">AgentCon 2026, Toronto</span></span></li>
-    </ul>
+    <ul class="entries"><li class="entry"><span class="when">November 2026<span class="tag">upcoming</span></span><span class="what"><strong>Agentic Datasets: Giving AI Agents More Autonomy Without Losing Control</strong><span class="where">AI+AI Toronto 2026 — the Agentic AI Summit</span></span></li><li class="entry"><span class="when">September 2026</span><span class="what"><strong>Is Quantum Ready for Biology? What It Would Take to Put a Quantum Step Inside a Regulated Biopharma Pipeline</strong><span class="where">IEEE Quantum Week (QCE) 2026, Toronto — Birds-of-a-Feather, moderated</span><span class="links inline"><a class="lnk" href="https://qubit.agenticdatasets.org/bof" target="_blank" rel="noopener noreferrer">Session page</a></span></span></li><li class="entry"><span class="when">September 2026</span><span class="what"><strong>Policy-Aware Supervisory Control for Observable Embodied Biomedical Robotic Systems</strong><span class="where">IEEE CBS 2026 — Cyborg &amp; Bionic Systems, Munich</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Dataset Descriptors for Autonomous and Observable Biomedical Data Pipelines</strong><span class="where">IEEE EMBC 2026, Toronto</span></span></li><li class="entry"><span class="when">July 2026</span><span class="what"><strong>Agentic Data Services</strong><span class="where">IEEE BigDataService 2026, Fukuoka</span></span></li><li class="entry"><span class="when">June 2026</span><span class="what"><strong>From ClickOps to GitOps</strong><span class="where">DynamicsCon Regional: Toronto</span></span></li><li class="entry"><span class="when">June 2026</span><span class="what"><strong>Making AI Systems Practical</strong><span class="where">Big Data &amp; Analytics Summit Canada, Toronto</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as an Engineering Control Plane</strong><span class="where">IEEE CCECE 2026, Montreal</span></span></li><li class="entry"><span class="when">May 2026</span><span class="what"><strong>Agentic Datasets as a Control-Plane Abstraction</strong><span class="where">ANNSIM 2026 (SCS)</span></span></li><li class="entry"><span class="when">March 2026</span><span class="what"><strong>Simulated Worlds for Agent Engineering</strong><span class="where">AgentCon 2026, Toronto</span></span></li><li class="entry"><span class="when">March 2026</span><span class="what"><strong>Making Agents Practical</strong><span class="where">AgentCon 2026, Toronto</span></span></li></ul>
   </section>
 
   <section id="writing">
-    <h2>Writing</h2>
+    <div class="section-head"><h2>Writing</h2><button class="copy" type="button" data-copy="index.html#writing" aria-label="Copy link to Writing" title="Copy link to Writing"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button></div>
     <p class="section-note">Long-form articles. Each title links to the reprint at
       <a href="https://brainapi.org/articles/" target="_blank" rel="noopener noreferrer">brainapi.org/articles</a>;
       where the piece also ran on LinkedIn, that original is linked beside it.</p>
-    <ul class="entries">
-      <li class="entry"><span class="when"></span><span class="what"><a class="title-link" href="https://brainapi.org/articles/harmless-ai-not-the-model.html" target="_blank" rel="noopener noreferrer">Harmless AI Is Not a Property of the Model</a></span></li><li class="entry"><span class="when">2026-09-01</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/nothing-fails-at-the-average.html" target="_blank" rel="noopener noreferrer">At 100,000 Devices, Nothing Fails at the Average</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/100000-devices-nothing-fails-average-alexander-chernov-cdcec/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-31</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/throughput-is-the-easy-part.html" target="_blank" rel="noopener noreferrer">At 100,000 Devices, Throughput Is the Easy Part</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-25</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-motion.html" target="_blank" rel="noopener noreferrer">From Governed Data to Governed Motion: A Control Plane for Biomedical Robots</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-23</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/a-game-is-a-data-problem.html" target="_blank" rel="noopener noreferrer">A Game Is a Data Problem: What Reimplementing an Engine Taught Me About Silent Contract Failure</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/game-data-problem-what-reimplementing-engine-taught-me-chernov-2smsc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-22</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/should-you-argue-with-an-llm.html" target="_blank" rel="noopener noreferrer">Should You Argue With an LLM?</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/should-you-argue-llm-alexander-chernov-qmqgc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-16</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/every-stage-reported-success.html" target="_blank" rel="noopener noreferrer">Every Stage Reported Success. The Data Was Wrong.</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/every-stage-reported-success-data-wrong-alexander-chernov-yablc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-06-06</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-quantum-pipeline-part-2.html" target="_blank" rel="noopener noreferrer">Governing a Quantum Pipeline, Part 2</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-06-03</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-quantum-pipeline-part-1.html" target="_blank" rel="noopener noreferrer">Governing a Quantum Pipeline, Part 1</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-1-alexander-chernov-8s1ae/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-31</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/agentic-research-bichromatic-ionization.html" target="_blank" rel="noopener noreferrer">Physics Reproducible by Agentic Construction</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-30</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/quantum-enabled-biology.html" target="_blank" rel="noopener noreferrer">From Data to AI to Quantum-Enabled Biology</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-10</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/ai-new-calculator.html" target="_blank" rel="noopener noreferrer">AI Amplifies People Who Know How to Think</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/ai-amplifies-people-who-know-how-think-alexander-chernov-qffpe/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-03-29</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/from-protocols-to-control-planes.html" target="_blank" rel="noopener noreferrer">From Protocols to Control Planes: What MCP Teaches Us About Building Agentic Systems at Scale</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-protocols-control-planes-what-mcp-teaches-us-building-chernov-qswse/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li>
-    </ul>
+    <ul class="entries"><li class="entry"><span class="when"></span><span class="what"><a class="title-link" href="https://brainapi.org/articles/harmless-ai-not-the-model.html" target="_blank" rel="noopener noreferrer">Harmless AI Is Not a Property of the Model</a></span></li><li class="entry"><span class="when">2026-09-01</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/nothing-fails-at-the-average.html" target="_blank" rel="noopener noreferrer">At 100,000 Devices, Nothing Fails at the Average</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/100000-devices-nothing-fails-average-alexander-chernov-cdcec/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-31</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/throughput-is-the-easy-part.html" target="_blank" rel="noopener noreferrer">At 100,000 Devices, Throughput Is the Easy Part</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-25</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-motion.html" target="_blank" rel="noopener noreferrer">From Governed Data to Governed Motion: A Control Plane for Biomedical Robots</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-23</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/a-game-is-a-data-problem.html" target="_blank" rel="noopener noreferrer">A Game Is a Data Problem: What Reimplementing an Engine Taught Me About Silent Contract Failure</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/game-data-problem-what-reimplementing-engine-taught-me-chernov-2smsc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-22</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/should-you-argue-with-an-llm.html" target="_blank" rel="noopener noreferrer">Should You Argue With an LLM?</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/should-you-argue-llm-alexander-chernov-qmqgc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-08-16</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/every-stage-reported-success.html" target="_blank" rel="noopener noreferrer">Every Stage Reported Success. The Data Was Wrong.</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/every-stage-reported-success-data-wrong-alexander-chernov-yablc/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-06-06</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-quantum-pipeline-part-2.html" target="_blank" rel="noopener noreferrer">Governing a Quantum Pipeline, Part 2</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-06-03</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/governed-quantum-pipeline-part-1.html" target="_blank" rel="noopener noreferrer">Governing a Quantum Pipeline, Part 1</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-1-alexander-chernov-8s1ae/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-31</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/agentic-research-bichromatic-ionization.html" target="_blank" rel="noopener noreferrer">Physics Reproducible by Agentic Construction</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-30</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/quantum-enabled-biology.html" target="_blank" rel="noopener noreferrer">From Data to AI to Quantum-Enabled Biology</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-05-10</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/ai-new-calculator.html" target="_blank" rel="noopener noreferrer">AI Amplifies People Who Know How to Think</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/ai-amplifies-people-who-know-how-think-alexander-chernov-qffpe/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li><li class="entry"><span class="when">2026-03-29</span><span class="what"><a class="title-link" href="https://brainapi.org/articles/from-protocols-to-control-planes.html" target="_blank" rel="noopener noreferrer">From Protocols to Control Planes: What MCP Teaches Us About Building Agentic Systems at Scale</a><span class="links inline"><a class="lnk" href="https://www.linkedin.com/pulse/from-protocols-control-planes-what-mcp-teaches-us-building-chernov-qswse/" target="_blank" rel="noopener noreferrer">LinkedIn</a></span></span></li></ul>
   </section>
-
 </main>
-
 <footer class="bottom">
   <div class="wrap">
     <p><a href="https://chernov.ca">chernov.ca</a> &middot;
@@ -346,5 +402,42 @@ footer.bottom a{color:var(--link)}
   </div>
 </footer>
 
+<script>
+(function(){
+  var root=document.documentElement;
+  function paint(){
+    var cur=root.dataset.theme||'light';
+    document.querySelectorAll('.theme button').forEach(function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.theme===cur));});
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.theme button');
+    if(t){root.dataset.theme=t.dataset.theme;
+      try{localStorage.setItem('pf-theme',t.dataset.theme);}catch(err){}
+      paint();return;}
+
+    var c=e.target.closest('[data-copy]');
+    if(!c)return;
+    var url=new URL(c.dataset.copy,location.href).href;
+    var done=function(){var s=c.querySelector('.copy-text');var was=s?s.textContent:'';
+      c.classList.add('done');if(s)s.textContent='Copied';
+      setTimeout(function(){c.classList.remove('done');if(s)s.textContent=was;},1600);};
+    // The async clipboard needs a secure context and permission; where it is
+    // refused the link still has to end up on the clipboard, so fall back
+    // rather than failing silently.
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done,function(){legacy(url,done);});
+    }else{legacy(url,done);}
+  });
+  function legacy(text,ok){
+    var ta=document.createElement('textarea');ta.value=text;
+    ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');ok();}catch(e){window.prompt('Copy this link:',text);}
+    document.body.removeChild(ta);
+  }
+  paint();
+})();
+</script>
 </body>
 </html>

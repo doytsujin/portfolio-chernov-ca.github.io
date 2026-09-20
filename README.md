@@ -13,13 +13,56 @@ returns 404.
 ## Build
 
 ```sh
-make build      # render content/*.json -> docs/index.html
+make build      # render content/*.json -> docs/
+make og         # re-render the link-preview cards (needs Chrome)
 make serve      # build, then serve docs/ on 127.0.0.1:8000
 ```
 
 `build.py` is standard library only. There is no framework, no bundler and no
-install step: the output is one self-contained HTML file plus the images it
-references.
+install step: the output is self-contained HTML plus the images it references.
+
+    docs/index.html      the whole portfolio
+    docs/p/<slug>.html   one page per project
+    docs/og/<slug>.png   its 1200x630 link-preview card
+
+## Two hostnames, one canonical
+
+`portfolio.chernov.ca` and `portfolio.alexander.chernov.ca` serve the same tree
+from one Caddy block. Every page carries `<link rel="canonical">` pointing at
+`portfolio.chernov.ca`, so a crawler or a link preview arriving by the alias
+still resolves to one address.
+
+## Why each project has its own page
+
+LinkedIn strips the fragment before it fetches a link. Ten anchors into one
+page would all preview as the same card, which defeats the point of linking to
+a particular project from a profile. Its own URL is what gives a project its
+own title, description and image.
+
+`make og` renders the cards in Chrome rather than drawing them with PIL, so
+they use the same Roboto Slab as the site without vendoring a copy of the font.
+They are committed, so an ordinary build never needs Chrome; rerun it when a
+title, lede or image changes.
+
+## Theme
+
+Light by default. The light tokens sit on bare `:root`, so a visitor with no
+stored choice gets light whatever their OS reports — dark arrives only by being
+asked for. The toggle offers Light, Dark and System, and stores the choice in
+`localStorage`; `System` is the setting that defers to `prefers-color-scheme`.
+
+A pre-paint inline script applies the stored value before first paint, or the
+page flashes light and then corrects itself.
+
+## Copy link
+
+Every section heading and every project carries a copy button. A project's
+button copies its own page URL, not an anchor, because that is the link worth
+pasting into a profile. Section buttons copy `index.html#<section>`.
+
+The async clipboard needs a secure context and permission; where it is refused
+the button falls back to a hidden textarea, and to a prompt if even that fails,
+because a copy button that silently does nothing is worse than none.
 
 ## The build refuses rather than publishes something broken
 
@@ -31,11 +74,13 @@ before writing it and exits non-zero on:
 - unbalanced or crossed tags (void elements excepted),
 - an `href` that is neither `https:`, a same-page anchor, nor a local path,
 - an `<img>` whose file is not present under `docs/`,
-- a `target="_blank"` link missing `rel="noopener"`.
+- a `target="_blank"` link missing `rel="noopener"`,
+- an `og:image` that is not on the canonical origin or not present on disk,
+- a copy button pointing at a page that does not exist.
 
-Verified by sabotage rather than by assumption: introducing an unclosed
-`<em>`, an `http://` link and a missing image produced nine errors and no
-output file.
+Verified by sabotage rather than by assumption: an unclosed `<em>`, an
+`http://` link and a missing image produced nine errors and no output; removing
+one preview card produced the `og:image` error and exit 1.
 
 ## Content
 

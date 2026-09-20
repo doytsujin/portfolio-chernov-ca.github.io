@@ -1,4 +1,4 @@
-.PHONY: build check deploy deploy-dry serve help
+.PHONY: build og check deploy deploy-dry serve help
 
 # --- deploy to the edge ---------------------------------------------------
 # Same Akamai/Linode node as chernov.ca, provisioned in dk-semantic-backend-host.
@@ -20,6 +20,9 @@ help: ## Show this help
 build: ## Render content/*.json into docs/index.html
 	@python3 build.py
 
+og: ## Re-render docs/og/*.png link-preview cards (needs Chrome; cards are committed)
+	@python3 make_og.py
+
 serve: build ## Build, then serve docs/ on http://127.0.0.1:8000
 	@cd $(DIST) && python3 -m http.server 8000 --bind 127.0.0.1
 
@@ -30,6 +33,8 @@ check: ## Verify the payload before anything leaves this machine
 		|| { echo "refusing: no $(DIST)/index.html -- wrong DIST, or nothing built"; exit 1; }
 	@test -f "$(DIST)/CNAME" \
 		|| { echo "refusing: no $(DIST)/CNAME -- GitHub Pages would drop the domain"; exit 1; }
+	@test -f "$(DIST)/og/site.png" \
+		|| { echo "refusing: no $(DIST)/og/site.png -- every link would preview blank"; exit 1; }
 
 deploy: build ## Build and publish to the edge
 	@$(MAKE) check

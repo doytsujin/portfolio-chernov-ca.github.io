@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov</title>
+<meta name="description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<link rel="canonical" href="https://portfolio.chernov.ca/p/certified-reuse-quantum.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alexander Chernov — Portfolio">
+<meta property="og:title" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
+<meta property="og:description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<meta property="og:url" content="https://portfolio.chernov.ca/p/certified-reuse-quantum.html">
+<meta property="og:image" content="https://portfolio.chernov.ca/og/certified-reuse-quantum.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Certified reuse of quantum results, with refusal as a visible outcome — Alexander Chernov">
+<meta name="twitter:description" content="A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.">
+<meta name="twitter:image" content="https://portfolio.chernov.ca/og/certified-reuse-quantum.png">
+<script>
+(function(){try{var t=localStorage.getItem('pf-theme');
+document.documentElement.dataset.theme=(t==='dark'||t==='system')?t:'light';}
+catch(e){document.documentElement.dataset.theme='light';}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
+<style>
+:root{--bg:#f1f5f9;--panel:#fff;--card:#f8fafc;--ink:#0f172a;--muted:#475569;
+--line:#e2e8f0;--accent:#dc2626;--link:#1d4ed8;--radius:.5rem;color-scheme:light}
+:root[data-theme="dark"],
+:root[data-theme="system"]:is(.prefers-dark){--bg:#000;--panel:#0f172a;--card:#1e293b;
+--ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;
+color-scheme:dark}
+@media (prefers-color-scheme:dark){
+:root[data-theme="system"]{--bg:#000;--panel:#0f172a;--card:#1e293b;--ink:#f8fafc;
+--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(15px,.5vw+11px,19px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:1rem/1.65 "Roboto Slab",Georgia,"Times New Roman",serif;
+-webkit-font-smoothing:antialiased}
+.wrap{width:min(60rem,100% - 2rem);margin-inline:auto}
+a{color:var(--link)}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+code{background:rgba(148,163,184,.2);padding:.1em .35em;border-radius:.25rem}
+
+header.top{background:var(--panel);border-bottom:1px solid var(--line);
+padding-block:clamp(2rem,5vw,3.6rem)}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+margin-bottom:.6rem}
+.eyebrow{margin:0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+color:var(--muted)}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);
+overflow:hidden;flex-shrink:0}
+.theme button{font:inherit;font-size:.72rem;padding:.3rem .65rem;cursor:pointer;
+background:transparent;color:var(--muted);border:0}
+.theme button+button{border-left:1px solid var(--line)}
+.theme button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:700}
+h1{margin:0 0 .4rem;font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:700;
+letter-spacing:-.02em;line-height:1.15}
+h1 .sur{color:var(--accent)}
+.role{margin:0 0 1.4rem;font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted)}
+.question{margin:0 0 1.6rem;padding-left:1rem;border-left:3px solid var(--accent);
+font-size:clamp(1.02rem,2.3vw,1.3rem);font-style:italic}
+.question span{display:block;margin-top:.5rem;font-size:.85rem;font-style:normal;
+color:var(--muted)}
+nav.jump{display:flex;flex-wrap:wrap;gap:.5rem}
+nav.jump a{display:inline-block;padding:.4rem .8rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);color:var(--ink);
+text-decoration:none;font-size:.85rem}
+nav.jump a:hover{border-color:var(--accent)}
+
+main{padding-block:clamp(2rem,4vw,3.5rem)}
+section{margin-bottom:clamp(2.5rem,6vw,4.5rem);scroll-margin-top:1rem}
+.section-head{display:flex;align-items:baseline;gap:.75rem;margin:0 0 .3rem}
+h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;letter-spacing:-.01em}
+.section-note{margin:0 0 1.6rem;color:var(--muted);font-size:.92rem}
+
+.copy{font:inherit;font-size:.72rem;line-height:1;padding:.32rem .55rem;cursor:pointer;
+background:var(--card);color:var(--muted);border:1px solid var(--line);
+border-radius:var(--radius);display:inline-flex;align-items:center;gap:.3rem;
+flex-shrink:0;white-space:nowrap}
+.copy:hover{border-color:var(--accent);color:var(--ink)}
+.copy-icon{font-weight:700;color:var(--accent)}
+.copy.done{border-color:var(--accent);color:var(--ink)}
+.copy.done .copy-icon{content:""}
+
+.project{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:clamp(1rem,2.5vw,1.8rem);margin-bottom:1.2rem;
+scroll-margin-top:1rem}
+.project-head{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.6rem}
+.num{color:var(--accent);font-size:.9rem;font-weight:700;flex-shrink:0;
+padding-top:.35rem}
+.project-title{flex:1;min-width:0}
+.project h1,.project h3{margin:0;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.25}
+.project h1{font-size:clamp(1.5rem,4vw,2.2rem)}
+a.self{color:inherit;text-decoration:none}
+a.self:hover{color:var(--accent)}
+.meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
+.lede{margin:0 0 1rem;font-size:1.02em;font-style:italic}
+.project p{margin:0 0 .9rem}
+.project figure{margin:0 0 1rem}
+.project img{display:block;width:100%;height:auto;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card)}
+figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
+.no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
+.links.inline{margin:.35rem 0 0}
+.lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);text-decoration:none;font-size:.82rem}
+.lnk:hover{border-color:var(--accent)}
+
+ul.entries{list-style:none;margin:0;padding:0}
+.entry{display:flex;gap:1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.entry:first-child{border-top:0}
+.when{flex:0 0 9.5rem;color:var(--muted);font-size:.85rem}
+.what{flex:1;min-width:0}
+.where{display:block;color:var(--muted);font-size:.87rem;margin-top:.15rem}
+.note{display:block;color:var(--muted);font-size:.82rem;margin-top:.15rem}
+.tag{display:inline-block;margin-left:.5rem;padding:.05rem .4rem;border-radius:.25rem;
+background:var(--accent);color:#fff;font-size:.68rem;letter-spacing:.04em;
+text-transform:uppercase;vertical-align:middle}
+.title-link{text-decoration:none;font-weight:700}
+.title-link:hover{text-decoration:underline}
+
+ul.artifacts{list-style:none;margin:0;padding:0;display:grid;gap:.8rem;
+grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.artifact{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:.9rem 1rem}
+.artifact .name{font-weight:700;text-decoration:none}
+.artifact .kind{display:inline-block;margin-left:.5rem;font-size:.7rem;
+color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
+
+.backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+
+footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;
+color:var(--muted);font-size:.85rem}
+footer.bottom p{margin:0 0 .5rem}
+
+@media (max-width:34rem){
+.entry{flex-direction:column;gap:.15rem}
+.when{flex:none}
+.copy-text{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">Portfolio · Project 05</p><div class="theme" role="group" aria-label="Color scheme">
+<button type="button" data-theme="light" aria-pressed="true">Light</button>
+<button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+<button type="button" data-theme="system" aria-pressed="false">System</button>
+</div></div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems</p>
+    <nav class="jump">
+      <a href="../index.html">All projects</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#talks">Talks</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="../index.html">&larr; the whole portfolio</a>
+  <div class="project">
+<div class="project-head">
+<span class="num">05</span>
+<div class="project-title">
+<h1>Certified reuse of quantum results, with refusal as a visible outcome</h1>
+<p class="meta">2025 – present</p>
+</div>
+<button class="copy" type="button" data-copy="../p/certified-reuse-quantum.html" aria-label="Copy link to Certified reuse of quantum results, with refusal as a visible outcome" title="Copy link to Certified reuse of quantum results, with refusal as a visible outcome"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
+<p class="lede">A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.</p>
+<p>Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.</p>
+<p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
+<p>Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.</p>
+<p>The companion control plane is offered to be attacked rather than admired: it runs entirely in the browser with no backend, so every verdict it reaches can be reproduced by the reader.</p>
+<p class="links"><a class="lnk" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">qubit.agenticdatasets.org</a><a class="lnk mono" href="https://github.com/doytsujin/ok-quantum-biology-demos" target="_blank" rel="noopener noreferrer">ok-quantum-biology-demos</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22741061</a></p>
+</div>
+</main>
+<footer class="bottom">
+  <div class="wrap">
+    <p><a href="https://chernov.ca">chernov.ca</a> &middot;
+      <a href="https://github.com/doytsujin" target="_blank" rel="noopener noreferrer">github.com/doytsujin</a> &middot;
+      <a href="https://orcid.org/0009-0007-3198-2712" target="_blank" rel="noopener noreferrer">ORCID 0009-0007-3198-2712</a> &middot;
+      <a href="https://www.linkedin.com/in/thedoytsujin" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p>Employer-associated entries describe work done in that role and are not published by or on
+      behalf of an employer. Entries marked as independent are unaffiliated with any employer.</p>
+    <p>&copy; 2024&ndash;2026 Alexander Chernov. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function paint(){
+    var cur=root.dataset.theme||'light';
+    document.querySelectorAll('.theme button').forEach(function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.theme===cur));});
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.theme button');
+    if(t){root.dataset.theme=t.dataset.theme;
+      try{localStorage.setItem('pf-theme',t.dataset.theme);}catch(err){}
+      paint();return;}
+
+    var c=e.target.closest('[data-copy]');
+    if(!c)return;
+    var url=new URL(c.dataset.copy,location.href).href;
+    var done=function(){var s=c.querySelector('.copy-text');var was=s?s.textContent:'';
+      c.classList.add('done');if(s)s.textContent='Copied';
+      setTimeout(function(){c.classList.remove('done');if(s)s.textContent=was;},1600);};
+    // The async clipboard needs a secure context and permission; where it is
+    // refused the link still has to end up on the clipboard, so fall back
+    // rather than failing silently.
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done,function(){legacy(url,done);});
+    }else{legacy(url,done);}
+  });
+  function legacy(text,ok){
+    var ta=document.createElement('textarea');ta.value=text;
+    ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');ok();}catch(e){window.prompt('Copy this link:',text);}
+    document.body.removeChild(ta);
+  }
+  paint();
+})();
+</script>
+</body>
+</html>
