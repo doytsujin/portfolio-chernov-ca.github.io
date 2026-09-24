@@ -192,8 +192,8 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Mapping study variables to analysis variables is slow, manual and repeated per study. A model can propose mappings, but a proposal accepted because the model sounded confident is not a mapping — it is a guess with provenance attached.</p>
 <p>Built on the public CDISC pilot: embedding retrieval over a 415-variable candidate pool against 110 gold pairs, with identical cached embeddings across every run so comparisons mean something. Candidate scoring runs in-page over WebGPU, so the data does not leave the browser. A mapping is always a proposal a reviewer accepts, never something applied automatically.</p>
 <p>On the derivation split, the hard half, lexical and embedding retrieval reach top-1 accuracy of 0.06 and 0.08; a frontier model reranking the same candidates reaches 0.38, replicated across three fresh runs, and a 7B on-premises model 0.10. The benchmark was rebuilt after the gold answers were found leaking into the baselines' candidate text. The gain depends on CDISC variable names, and recall is now the constraint: the right answer is in the top 25 for 31 of 50 derivations.</p>
-<p>To be presented at an IEEE BIBM 2026 workshop.</p>
-<p class="no-url">No public URL yet — workshop paper forthcoming.</p>
+<p>Under review at the IEEE BIBM 2026 LLMBDA workshop.</p>
+<p class="no-url">No public URL yet — paper under review.</p>
 
 </div>
 </main>
