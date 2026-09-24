@@ -12,7 +12,9 @@ SITE        ?= portfolio-chernov
 DIST        ?= docs
 REMOTE_ROOT ?= /var/www/$(SITE)
 
-RSYNC_FLAGS := -az --delete --chmod=D755,F644 --exclude .git --exclude .keep
+# /for/ holds unlisted pages published from outside this repo; --delete must
+# not remove them, and an excluded path is exempt from --delete.
+RSYNC_FLAGS := -az --delete --chmod=D755,F644 --exclude .git --exclude .keep --exclude /for/
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-12s\033[0m %s\n", $$1, $$2}'
