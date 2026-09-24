@@ -301,13 +301,13 @@ footer.bottom p{margin:0 0 .5rem}
 <button class="copy" type="button" data-copy="p/governed-clinical-variable-mapping.html" aria-label="Copy link to Governed clinical variable mapping with browser-local reasoning" title="Copy link to Governed clinical variable mapping with browser-local reasoning"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
 <p class="lede">Mappings proposed, not applied — 426 nodes, 332 edges, 0 of 84 approved. A mapping waits for a reviewer.</p>
-<p class="summary">Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU, and every mapping waits for a reviewer.</p>
+<p class="summary">Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU. On derivations a frontier model reaches 0.38 top-1 against 0.06 lexical, on a leak-free benchmark.</p>
 <figure><img src="img/project-governed-clinical-variable-mapping.png" alt="426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it." loading="lazy" decoding="async">
 <figcaption>426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it.</figcaption>
 </figure>
 <p>Mapping study variables to analysis variables is slow, manual and repeated per study. A model can propose mappings, but a proposal accepted because the model sounded confident is not a mapping — it is a guess with provenance attached.</p>
 <p>Built on the public CDISC pilot: embedding retrieval over a 415-variable candidate pool against 110 gold pairs, with identical cached embeddings across every run so comparisons mean something. Candidate scoring runs in-page over WebGPU, so the data does not leave the browser. A mapping is always a proposal a reviewer accepts, never something applied automatically.</p>
-<p>The derivation split is the hard half: the mapping has to be inferred from what the variable means, not matched on its name. That is where a model earns its place over lexical and embedding retrieval, and where the evaluation is being made final. Figures will follow it here.</p>
+<p>On the derivation split, the hard half, lexical and embedding retrieval reach top-1 accuracy of 0.06 and 0.08; a frontier model reranking the same candidates reaches 0.38, replicated across three fresh runs, and a 7B on-premises model 0.10. The benchmark was rebuilt after the gold answers were found leaking into the baselines' candidate text. The gain depends on CDISC variable names, and recall is now the constraint: the right answer is in the top 25 for 31 of 50 derivations.</p>
 <p>To be presented at an IEEE BIBM 2026 workshop.</p>
 <p class="no-url">No public URL yet — workshop paper forthcoming.</p>
 
