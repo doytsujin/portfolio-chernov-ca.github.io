@@ -157,17 +157,17 @@
     "slug": "governed-clinical-variable-mapping",
     "title": "Governed clinical variable mapping with browser-local reasoning",
     "lede": "Mappings proposed, not applied — 426 nodes, 332 edges, 0 of 84 approved. A mapping waits for a reviewer.",
-    "summary": "Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU. On derivations a frontier model reaches 0.400 top-1, lexical 0.220, on-premises 0.140.",
+    "summary": "Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU, and every mapping waits for a reviewer.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-governed-clinical-variable-mapping.png",
     "caption": "426 nodes and 332 edges over the CDISC SDTM and ADaM specifications, 0 of 84 mappings approved — a mapping is a proposal until a reviewer accepts it.",
-    "no_url_reason": "No public URL — paper under review.",
+    "no_url_reason": "No public URL yet — workshop paper forthcoming.",
     "body": [
       "Mapping study variables to analysis variables is slow, manual and repeated per study. A model can propose mappings, but a proposal accepted because the model sounded confident is not a mapping — it is a guess with provenance attached.",
       "Built on the public CDISC pilot: embedding retrieval over a 415-variable candidate pool against 110 gold pairs, with identical cached embeddings across every run so comparisons mean something. Candidate scoring runs in-page over WebGPU, so the data does not leave the browser. A mapping is always a proposal a reviewer accepts, never something applied automatically.",
-      "On the derivation split — the hard half — top-1 accuracy is 0.400 for a frontier model against 0.220 lexical and 0.140 on-premises. Across all 110 pairs the spread narrows considerably, which is why the split is the number worth quoting.",
-      "Four-page paper under review at IEEE BIBM 2026."
+      "The derivation split is the hard half: the mapping has to be inferred from what the variable means, not matched on its name. That is where a model earns its place over lexical and embedding retrieval, and where the evaluation is being made final. Figures will follow it here.",
+      "To be presented at an IEEE BIBM 2026 workshop."
     ],
     "links": []
   },
