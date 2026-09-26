@@ -60,10 +60,10 @@
     "video": {
       "src": "img/video/agentic-datasets-admission.mp4",
       "poster": "img/video/agentic-datasets-admission-poster.jpg",
-      "width": 780,
-      "height": 810,
-      "alt": "Screen recording of the Admission showcase: the same request from four principals, the verdict and deciding clause changing with each.",
-      "caption": "Recorded from the live showcase at agenticdatasets.org. The same request from four principals: the process engineer and the analyst are GRANTED; the clinical reviewer and the external auditor are REFUSED with <code>INSUFFICIENT_PRIVILEGE</code> under clause AD-POL-005, and each decision leaves an evidence row. Computed in the page, with no server and no model."
+      "width": 1600,
+      "height": 900,
+      "alt": "Screen recording of the Admission showcase with side notes: who is asking, what is asked, the verdict and deciding clause, what ran, and the evidence row, changing across eight states.",
+      "caption": "Recorded from the live Admission showcase at agenticdatasets.org; the notes either side are read off the page at each state. Four principals send the same request: two are GRANTED and two REFUSED under clause AD-POL-005. Then the process engineer asks for yield and for outliers, and the analyst is refused <code>detect_outliers</code>. Every decision leaves an evidence row. Computed in the page, with no server and no model."
     }
   },
   {

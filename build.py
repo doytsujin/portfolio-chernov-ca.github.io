@@ -388,7 +388,7 @@ border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
 .clip{margin:0 0 1rem}
-.clip video{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;
+.clip video{display:block;width:100%;height:auto;margin:0 auto;
 border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
 .deck{margin:0 0 1rem}
 .deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
