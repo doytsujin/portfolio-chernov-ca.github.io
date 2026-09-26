@@ -139,7 +139,7 @@
   {
     "slug": "semantic-graph-mcp-gateway",
     "title": "Semantic graph and MCP gateway for laboratory infrastructure",
-    "lede": "Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.",
+    "lede": "Lab assets as a queryable graph — 4,115 records, one entity graph, 10 MCP tools.",
     "summary": "Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
