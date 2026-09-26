@@ -186,8 +186,8 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.</p>
 <p class="summary">Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.</p>
-<figure><img src="../img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn." loading="lazy" decoding="async">
-<figcaption>The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.</figcaption>
+<figure><img src="../img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real." loading="lazy" decoding="async">
+<figcaption>The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.</figcaption>
 </figure>
 <p>A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.</p>
 <p>Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.</p>

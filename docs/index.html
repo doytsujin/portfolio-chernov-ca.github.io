@@ -282,8 +282,8 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">Lab assets as a queryable graph — 181 instruments, one entity graph, 10 MCP tools.</p>
 <p class="summary">Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.</p>
-<figure><img src="img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn." loading="lazy" decoding="async">
-<figcaption>The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.</figcaption>
+<figure><img src="img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real." loading="lazy" decoding="async">
+<figcaption>The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.</figcaption>
 </figure>
 <p>A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.</p>
 <p>Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.</p>
@@ -321,10 +321,10 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <button class="copy" type="button" data-copy="p/reproducible-spectral-scoring.html" aria-label="Copy link to Reproducible spectral scoring with a fit-quality gate" title="Copy link to Reproducible spectral scoring with a fit-quality gate"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
-<p class="lede">A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.</p>
+<p class="lede">A gate decides whether a score may exist — six spectra all fit at R² 0.988 or better. The reference scores 100; the five stressed samples score 25.4 to 54.0.</p>
 <p class="summary">Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.</p>
-<figure><img src="img/project-reproducible-spectral-scoring.png" alt="Reproducible spectral scoring with a fit-quality gate." loading="lazy" decoding="async">
-<figcaption>Reproducible spectral scoring with a fit-quality gate.</figcaption>
+<figure><img src="img/project-reproducible-spectral-scoring.png" alt="Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A." loading="lazy" decoding="async">
+<figcaption>Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A.</figcaption>
 </figure>
 <p>Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.</p>
 <p>The finding is the part worth carrying anywhere. A post-fit rescaling step matched each component to the data independently, ignoring overlapping neighbours; in dense spectra the rescaled components summed to about 35 times the data. Shape correlation still read around 0.9, so every visual check passed — while R² had collapsed to −608 and every derived ratio was untrustworthy, with nothing reporting an error. The underlying fit had been correct all along.</p>
@@ -343,8 +343,8 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">An algorithm proposes, an operator admits — eight chromatograms with pool suggestions, each pending Approve, Reject or Combine.</p>
 <p class="summary">Takes plate-reader output, draws per-column traces, suggests cut points from second derivatives, and puts an approve-or-edit step in front of the robot. Detection was rebuilt rather than tuned: one sample recovered from 0.26 to 0.98, and an aggregation index that had spanned 1.3&ndash;2.7 settled to 0.09&ndash;0.53.</p>
-<figure><img src="img/project-chromatography-fraction-pooling.png" alt="Eight Robocolumn chromatograms with the algorithm&#x27;s pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run." loading="lazy" decoding="async">
-<figcaption>Eight Robocolumn chromatograms with the algorithm's pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run.</figcaption>
+<figure><img src="img/project-chromatography-fraction-pooling.png" alt="Eight Robocolumn chromatograms across two plates, with the algorithm&#x27;s 16 pool proposals beside them, each awaiting Approve, Reject, Combine or Edit. Synthetic run." loading="lazy" decoding="async">
+<figcaption>Eight Robocolumn chromatograms across two plates, with the algorithm's 16 pool proposals beside them, each awaiting Approve, Reject, Combine or Edit. Synthetic run.</figcaption>
 </figure>
 <p>Reads plate-reader output, generates per-column chromatograms, proposes pools with a second-derivative detection algorithm, and lets an operator approve, reject, combine or edit before exporting a bundle that drives the next robotic run.</p>
 <p>Generic peak detection found bands opportunistically, and when a diagnostic band was missed the ratio depending on it came back absent — reported as missing data rather than as a detection failure. The rebuild bridges noisy interior dips so one peak does not split into two, derives cut points from shoulder valleys and inflections, and harmonizes bands across samples so ratios are computed over canonical windows rather than per-sample ones. A previously failing sample went from R² 0.26 to 0.98; an implausible aggregation-index range of 1.3–2.7 fell to 0.09–0.53.</p>

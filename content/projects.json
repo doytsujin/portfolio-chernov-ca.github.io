@@ -144,7 +144,7 @@
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-semantic-graph-mcp-gateway.png",
-    "caption": "The entity graph over a synthetic asset corpus of 181 invented instruments, tagged SYN-nnnn.",
+    "caption": "The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.",
     "no_url_reason": "No public URL — internal system.",
     "body": [
       "A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.",
@@ -174,12 +174,12 @@
   {
     "slug": "reproducible-spectral-scoring",
     "title": "Reproducible spectral scoring with a fit-quality gate",
-    "lede": "A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.",
+    "lede": "A gate decides whether a score may exist — six spectra all fit at R² 0.988 or better. The reference scores 100; the five stressed samples score 25.4 to 54.0.",
     "summary": "Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-reproducible-spectral-scoring.png",
-    "caption": "Reproducible spectral scoring with a fit-quality gate.",
+    "caption": "Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A.",
     "no_url_reason": "No public URL — internal system.",
     "body": [
       "Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.",
@@ -196,7 +196,7 @@
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-chromatography-fraction-pooling.png",
-    "caption": "Eight Robocolumn chromatograms with the algorithm's pool proposals below, each awaiting Approve, Reject, Combine or Edit. Synthetic run.",
+    "caption": "Eight Robocolumn chromatograms across two plates, with the algorithm's 16 pool proposals beside them, each awaiting Approve, Reject, Combine or Edit. Synthetic run.",
     "no_url_reason": "No public URL — internal system.",
     "body": [
       "Reads plate-reader output, generates per-column chromatograms, proposes pools with a second-derivative detection algorithm, and lets an operator approve, reject, combine or edit before exporting a bundle that drives the next robotic run.",

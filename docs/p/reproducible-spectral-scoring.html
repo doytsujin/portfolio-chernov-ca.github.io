@@ -184,10 +184,10 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <button class="copy" type="button" data-copy="../p/reproducible-spectral-scoring.html" aria-label="Copy link to Reproducible spectral scoring with a fit-quality gate" title="Copy link to Reproducible spectral scoring with a fit-quality gate"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
-<p class="lede">A gate decides whether a score may exist — two spectra fit equally well, R² 0.998 and 0.999. One scores 100, the other 42.6.</p>
+<p class="lede">A gate decides whether a score may exist — six spectra all fit at R² 0.988 or better. The reference scores 100; the five stressed samples score 25.4 to 54.0.</p>
 <p class="summary">Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.</p>
-<figure><img src="../img/project-reproducible-spectral-scoring.png" alt="Reproducible spectral scoring with a fit-quality gate." loading="lazy" decoding="async">
-<figcaption>Reproducible spectral scoring with a fit-quality gate.</figcaption>
+<figure><img src="../img/project-reproducible-spectral-scoring.png" alt="Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A." loading="lazy" decoding="async">
+<figcaption>Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A.</figcaption>
 </figure>
 <p>Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.</p>
 <p>The finding is the part worth carrying anywhere. A post-fit rescaling step matched each component to the data independently, ignoring overlapping neighbours; in dense spectra the rescaled components summed to about 35 times the data. Shape correlation still read around 0.9, so every visual check passed — while R² had collapsed to −608 and every derived ratio was untrustworthy, with nothing reporting an error. The underlying fit had been correct all along.</p>
