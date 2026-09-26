@@ -111,6 +111,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
@@ -192,6 +198,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.</p>
 <p>The finding is the part worth carrying anywhere. A post-fit rescaling step matched each component to the data independently, ignoring overlapping neighbours; in dense spectra the rescaled components summed to about 35 times the data. Shape correlation still read around 0.9, so every visual check passed — while R² had collapsed to −608 and every derived ratio was untrustworthy, with nothing reporting an error. The underlying fit had been correct all along.</p>
 <p>A quality metric that measures only shape will not notice a magnitude error. Two checks that fail differently are worth more than one check that passes twice. The fix adopts the rescaling only when it does not worsen the residual: R² −608 to 0.98.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Butler et al. (2016). Using Raman spectroscopy to characterize biological materials. <span class="venue">Nature Protocols 11(4), 664–687</span>. <a href="https://doi.org/10.1038/nprot.2016.036" target="_blank" rel="noopener noreferrer">doi:10.1038/nprot.2016.036</a></li><li>Newville et al. (2014). LMFIT: Non-linear least-squares minimization and curve-fitting for Python. <span class="venue">Zenodo</span>. <a href="https://doi.org/10.5281/zenodo.11813" target="_blank" rel="noopener noreferrer">doi:10.5281/zenodo.11813</a></li></ol></section>
 <p class="no-url">No public URL — internal system.</p>
 
 </div>

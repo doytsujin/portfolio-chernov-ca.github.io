@@ -111,6 +111,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
@@ -193,6 +199,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Built on the public CDISC pilot: embedding retrieval over a 415-variable candidate pool against 110 gold pairs, with identical cached embeddings across every run so comparisons mean something. Candidate scoring runs in-page over WebGPU, so the data does not leave the browser. A mapping is always a proposal a reviewer accepts, never something applied automatically.</p>
 <p>On the derivation split, the hard half, lexical and embedding retrieval reach top-1 accuracy of 0.06 and 0.08; a frontier model reranking the same candidates reaches 0.38, replicated across three fresh runs, and a 7B on-premises model 0.10. The benchmark was rebuilt after the gold answers were found leaking into the baselines' candidate text. The gain depends on CDISC variable names, and recall is now the constraint: the right answer is in the top 25 for 31 of 50 derivations.</p>
 <p>Under review at the IEEE BIBM 2026 LLMBDA workshop.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>CDISC. Analysis Data Model (ADaM). <span class="venue">CDISC foundational standard</span>. <a href="https://www.cdisc.org/standards/foundational/adam" target="_blank" rel="noopener noreferrer">cdisc.org</a></li><li>CDISC. SDTM/ADaM pilot project. <span class="venue">GitHub, cdisc-org</span>. <a href="https://github.com/cdisc-org/sdtm-adam-pilot-project" target="_blank" rel="noopener noreferrer">github.com/cdisc-org</a></li><li>Reimers and Gurevych (2019). Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks. <span class="venue">EMNLP-IJCNLP 2019, 3980–3990</span>. <a href="https://doi.org/10.18653/v1/D19-1410" target="_blank" rel="noopener noreferrer">doi:10.18653/v1/D19-1410</a></li></ol></section>
 <p class="no-url">No public URL yet — paper under review.</p>
 
 </div>

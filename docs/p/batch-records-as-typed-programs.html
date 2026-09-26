@@ -111,6 +111,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
@@ -192,6 +198,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Batch records are authored as documents and executed as programs, and the gap between the two is where validation effort goes. This is a visual builder in Rust and React where the MBR is authored as a graph and every run of it yields the EBR, including a browser-only build with no backend at all, so the authoring surface works where a server cannot be deployed.</p>
 <p>The grammar is a visual pipeline with a type system: boxes are nodes, arrows are typed edges — rows, table, scalar, signal — and only same-typed ports may be wired. Every recipe instantiates one spine: source, pre-process, reason (AI), approve (human), sink. Human approval is a first-class node in the grammar rather than a workflow convention bolted on afterwards — the same conclusion as the pooling gate above, reached independently in a different domain. Records are governed in git: review, environment promotion, rollback.</p>
 <p>Underneath it, twenty years back to pharmaceutical manufacturing execution systems in validated GxP environments.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>IEC (1997). IEC 61512-1: Batch control — Part 1: Models and terminology (ISA-88). <span class="venue">International standard</span>. <a href="https://webstore.iec.ch/en/publication/5528" target="_blank" rel="noopener noreferrer">webstore.iec.ch</a></li><li>U.S. FDA. 21 CFR Part 11: Electronic records; electronic signatures. <span class="venue">Code of Federal Regulations</span>. <a href="https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11" target="_blank" rel="noopener noreferrer">ecfr.gov</a></li><li>Kelley (2009). Industrialization of mAb production technology: The bioprocessing industry at a crossroads. <span class="venue">mAbs 1(5), 443–452</span>. <a href="https://doi.org/10.4161/mabs.1.5.9448" target="_blank" rel="noopener noreferrer">doi:10.4161/mabs.1.5.9448</a></li></ol></section>
 <p class="no-url">No public URL — internal system.</p>
 
 </div>

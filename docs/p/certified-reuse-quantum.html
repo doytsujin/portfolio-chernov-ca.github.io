@@ -111,6 +111,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
@@ -190,6 +196,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
 <p>Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.</p>
 <p>The companion control plane is offered to be attacked rather than admired: it runs entirely in the browser with no backend, so every verdict it reaches can be reproduced by the reader.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Cerezo et al. (2021). Variational quantum algorithms. <span class="venue">Nature Reviews Physics 3(9), 625–644</span>. <a href="https://doi.org/10.1038/s42254-021-00348-9" target="_blank" rel="noopener noreferrer">doi:10.1038/s42254-021-00348-9</a></li><li>Preskill (2018). Quantum Computing in the NISQ era and beyond. <span class="venue">Quantum 2, 79</span>. <a href="https://doi.org/10.22331/q-2018-08-06-79" target="_blank" rel="noopener noreferrer">doi:10.22331/q-2018-08-06-79</a></li><li>Bergholm et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1811.04968" target="_blank" rel="noopener noreferrer">arXiv:1811.04968</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">qubit.agenticdatasets.org</a><a class="lnk mono" href="https://github.com/doytsujin/ok-quantum-biology-demos" target="_blank" rel="noopener noreferrer">ok-quantum-biology-demos</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22741061</a></p>
 </div>
 </main>

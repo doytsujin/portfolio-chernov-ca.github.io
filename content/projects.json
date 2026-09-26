@@ -26,6 +26,32 @@
         "url": "https://pypi.org/project/agentic-dataset-conformance/",
         "mono": true
       }
+    ],
+    "references": [
+      {
+        "authors": "Gebru et al.",
+        "year": 2021,
+        "title": "Datasheets for datasets",
+        "venue": "Communications of the ACM 64(12), 86–92",
+        "url": "https://doi.org/10.1145/3458723",
+        "label": "doi:10.1145/3458723"
+      },
+      {
+        "authors": "Wilkinson et al.",
+        "year": 2016,
+        "title": "The FAIR Guiding Principles for scientific data management and stewardship",
+        "venue": "Scientific Data 3(1), 160018",
+        "url": "https://doi.org/10.1038/sdata.2016.18",
+        "label": "doi:10.1038/sdata.2016.18"
+      },
+      {
+        "authors": "Jia and Harman",
+        "year": 2011,
+        "title": "An Analysis and Survey of the Development of Mutation Testing",
+        "venue": "IEEE Transactions on Software Engineering 37(5), 649–678",
+        "url": "https://doi.org/10.1109/TSE.2010.62",
+        "label": "doi:10.1109/TSE.2010.62"
+      }
     ]
   },
   {
@@ -50,6 +76,24 @@
         "label": "ok-nfcore-admission-gate",
         "url": "https://github.com/doytsujin/ok-nfcore-admission-gate",
         "mono": true
+      }
+    ],
+    "references": [
+      {
+        "authors": "Di Tommaso et al.",
+        "year": 2017,
+        "title": "Nextflow enables reproducible computational workflows",
+        "venue": "Nature Biotechnology 35(4), 316–319",
+        "url": "https://doi.org/10.1038/nbt.3820",
+        "label": "doi:10.1038/nbt.3820"
+      },
+      {
+        "authors": "Ewels et al.",
+        "year": 2020,
+        "title": "The nf-core framework for community-curated bioinformatics pipelines",
+        "venue": "Nature Biotechnology 38(3), 276–278",
+        "url": "https://doi.org/10.1038/s41587-020-0439-x",
+        "label": "doi:10.1038/s41587-020-0439-x"
       }
     ]
   },
@@ -81,6 +125,32 @@
         "url": "https://github.com/doytsujin/ok-croissant-policy-profile",
         "mono": true
       }
+    ],
+    "references": [
+      {
+        "authors": "Akhtar et al.",
+        "year": 2024,
+        "title": "Croissant: A Metadata Format for ML-Ready Datasets",
+        "venue": "DEEM '24, SIGMOD/PODS workshop, 1–6",
+        "url": "https://doi.org/10.1145/3650203.3663326",
+        "label": "doi:10.1145/3650203.3663326"
+      },
+      {
+        "authors": "W3C",
+        "year": 2018,
+        "title": "ODRL Information Model 2.2",
+        "venue": "W3C Recommendation",
+        "url": "https://www.w3.org/TR/odrl-model/",
+        "label": "w3.org/TR/odrl-model"
+      },
+      {
+        "authors": "Lawson et al.",
+        "year": 2021,
+        "title": "The Data Use Ontology to streamline responsible access to human biomedical datasets",
+        "venue": "Cell Genomics 1(2), 100028",
+        "url": "https://doi.org/10.1016/j.xgen.2021.100028",
+        "label": "doi:10.1016/j.xgen.2021.100028"
+      }
     ]
   },
   {
@@ -103,6 +173,24 @@
       {
         "label": "vision.agenticdatasets.org",
         "url": "https://vision.agenticdatasets.org"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Kang et al.",
+        "year": 2017,
+        "title": "NoScope: Optimizing neural network queries over video at scale",
+        "venue": "Proceedings of the VLDB Endowment 10(11), 1586–1597",
+        "url": "https://doi.org/10.14778/3137628.3137664",
+        "label": "doi:10.14778/3137628.3137664"
+      },
+      {
+        "authors": "Geifman and El-Yaniv",
+        "year": 2017,
+        "title": "Selective classification for deep neural networks",
+        "venue": "NeurIPS 2017",
+        "url": "https://arxiv.org/abs/1705.08500",
+        "label": "arXiv:1705.08500"
       }
     ]
   },
@@ -134,6 +222,32 @@
         "label": "Zenodo 10.5281/zenodo.22741061",
         "url": "https://doi.org/10.5281/zenodo.22741061"
       }
+    ],
+    "references": [
+      {
+        "authors": "Cerezo et al.",
+        "year": 2021,
+        "title": "Variational quantum algorithms",
+        "venue": "Nature Reviews Physics 3(9), 625–644",
+        "url": "https://doi.org/10.1038/s42254-021-00348-9",
+        "label": "doi:10.1038/s42254-021-00348-9"
+      },
+      {
+        "authors": "Preskill",
+        "year": 2018,
+        "title": "Quantum Computing in the NISQ era and beyond",
+        "venue": "Quantum 2, 79",
+        "url": "https://doi.org/10.22331/q-2018-08-06-79",
+        "label": "doi:10.22331/q-2018-08-06-79"
+      },
+      {
+        "authors": "Bergholm et al.",
+        "year": 2018,
+        "title": "PennyLane: Automatic differentiation of hybrid quantum-classical computations",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/1811.04968",
+        "label": "arXiv:1811.04968"
+      }
     ]
   },
   {
@@ -151,7 +265,33 @@
       "Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.",
       "Architecturally the point is that it is a repointing, not a rebuild: the same ingestion, entity graph, ontology, retrieval and capability mesh moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and the capability mesh are the product."
     ],
-    "links": []
+    "links": [],
+    "references": [
+      {
+        "authors": "Hogan et al.",
+        "year": 2021,
+        "title": "Knowledge Graphs",
+        "venue": "ACM Computing Surveys 54(4), 1–37",
+        "url": "https://doi.org/10.1145/3447772",
+        "label": "doi:10.1145/3447772"
+      },
+      {
+        "authors": "Lewis et al.",
+        "year": 2020,
+        "title": "Retrieval-augmented generation for knowledge-intensive NLP tasks",
+        "venue": "NeurIPS 2020",
+        "url": "https://arxiv.org/abs/2005.11401",
+        "label": "arXiv:2005.11401"
+      },
+      {
+        "authors": "Model Context Protocol",
+        "year": 2025,
+        "title": "Model Context Protocol specification, revision 2025-06-18",
+        "venue": "modelcontextprotocol.io",
+        "url": "https://modelcontextprotocol.io/specification/2025-06-18",
+        "label": "modelcontextprotocol.io"
+      }
+    ]
   },
   {
     "slug": "governed-clinical-variable-mapping",
@@ -169,7 +309,33 @@
       "On the derivation split, the hard half, lexical and embedding retrieval reach top-1 accuracy of 0.06 and 0.08; a frontier model reranking the same candidates reaches 0.38, replicated across three fresh runs, and a 7B on-premises model 0.10. The benchmark was rebuilt after the gold answers were found leaking into the baselines' candidate text. The gain depends on CDISC variable names, and recall is now the constraint: the right answer is in the top 25 for 31 of 50 derivations.",
       "Under review at the IEEE BIBM 2026 LLMBDA workshop."
     ],
-    "links": []
+    "links": [],
+    "references": [
+      {
+        "authors": "CDISC",
+        "year": null,
+        "title": "Analysis Data Model (ADaM)",
+        "venue": "CDISC foundational standard",
+        "url": "https://www.cdisc.org/standards/foundational/adam",
+        "label": "cdisc.org"
+      },
+      {
+        "authors": "CDISC",
+        "year": null,
+        "title": "SDTM/ADaM pilot project",
+        "venue": "GitHub, cdisc-org",
+        "url": "https://github.com/cdisc-org/sdtm-adam-pilot-project",
+        "label": "github.com/cdisc-org"
+      },
+      {
+        "authors": "Reimers and Gurevych",
+        "year": 2019,
+        "title": "Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks",
+        "venue": "EMNLP-IJCNLP 2019, 3980–3990",
+        "url": "https://doi.org/10.18653/v1/D19-1410",
+        "label": "doi:10.18653/v1/D19-1410"
+      }
+    ]
   },
   {
     "slug": "reproducible-spectral-scoring",
@@ -186,7 +352,25 @@
       "The finding is the part worth carrying anywhere. A post-fit rescaling step matched each component to the data independently, ignoring overlapping neighbours; in dense spectra the rescaled components summed to about 35 times the data. Shape correlation still read around 0.9, so every visual check passed — while R² had collapsed to −608 and every derived ratio was untrustworthy, with nothing reporting an error. The underlying fit had been correct all along.",
       "A quality metric that measures only shape will not notice a magnitude error. Two checks that fail differently are worth more than one check that passes twice. The fix adopts the rescaling only when it does not worsen the residual: R² −608 to 0.98."
     ],
-    "links": []
+    "links": [],
+    "references": [
+      {
+        "authors": "Butler et al.",
+        "year": 2016,
+        "title": "Using Raman spectroscopy to characterize biological materials",
+        "venue": "Nature Protocols 11(4), 664–687",
+        "url": "https://doi.org/10.1038/nprot.2016.036",
+        "label": "doi:10.1038/nprot.2016.036"
+      },
+      {
+        "authors": "Newville et al.",
+        "year": 2014,
+        "title": "LMFIT: Non-linear least-squares minimization and curve-fitting for Python",
+        "venue": "Zenodo",
+        "url": "https://doi.org/10.5281/zenodo.11813",
+        "label": "doi:10.5281/zenodo.11813"
+      }
+    ]
   },
   {
     "slug": "chromatography-fraction-pooling",
@@ -204,7 +388,33 @@
       "Said plainly in the report: harmonization fixes consistency, not detection. Where the fit still misses a band the ratio is genuinely absent — not estimated, not quietly interpolated.",
       "This tool was agentic before the word: an algorithm proposes, a human admits, a robot acts. Any autonomous version does not add a gate, it replaces one that was already load-bearing — a far higher bar than automating something ungoverned. And because the output actuates, a gate beside the execution path is worthless."
     ],
-    "links": []
+    "links": [],
+    "references": [
+      {
+        "authors": "Shukla et al.",
+        "year": 2007,
+        "title": "Downstream processing of monoclonal antibodies—Application of platform approaches",
+        "venue": "Journal of Chromatography B 848(1), 28–39",
+        "url": "https://doi.org/10.1016/j.jchromb.2006.09.026",
+        "label": "doi:10.1016/j.jchromb.2006.09.026"
+      },
+      {
+        "authors": "Wiendahl et al.",
+        "year": 2008,
+        "title": "High Throughput Screening for the Design and Optimization of Chromatographic Processes – Miniaturization, Automation and Parallelization of Breakthrough and Elution Studies",
+        "venue": "Chemical Engineering & Technology 31(6), 893–903",
+        "url": "https://doi.org/10.1002/ceat.200800167",
+        "label": "doi:10.1002/ceat.200800167"
+      },
+      {
+        "authors": "Chinn et al.",
+        "year": 2023,
+        "title": "A comprehensive assessment of the applicability of RoboColumn as a chromatography scale-down model for use in biopharmaceutical process validation",
+        "venue": "Journal of Chromatography A 1710, 464391",
+        "url": "https://doi.org/10.1016/j.chroma.2023.464391",
+        "label": "doi:10.1016/j.chroma.2023.464391"
+      }
+    ]
   },
   {
     "slug": "batch-records-as-typed-programs",
@@ -221,6 +431,32 @@
       "The grammar is a visual pipeline with a type system: boxes are nodes, arrows are typed edges — rows, table, scalar, signal — and only same-typed ports may be wired. Every recipe instantiates one spine: source, pre-process, reason (AI), approve (human), sink. Human approval is a first-class node in the grammar rather than a workflow convention bolted on afterwards — the same conclusion as the pooling gate above, reached independently in a different domain. Records are governed in git: review, environment promotion, rollback.",
       "Underneath it, twenty years back to pharmaceutical manufacturing execution systems in validated GxP environments."
     ],
-    "links": []
+    "links": [],
+    "references": [
+      {
+        "authors": "IEC",
+        "year": 1997,
+        "title": "IEC 61512-1: Batch control — Part 1: Models and terminology (ISA-88)",
+        "venue": "International standard",
+        "url": "https://webstore.iec.ch/en/publication/5528",
+        "label": "webstore.iec.ch"
+      },
+      {
+        "authors": "U.S. FDA",
+        "year": null,
+        "title": "21 CFR Part 11: Electronic records; electronic signatures",
+        "venue": "Code of Federal Regulations",
+        "url": "https://www.ecfr.gov/current/title-21/chapter-I/subchapter-A/part-11",
+        "label": "ecfr.gov"
+      },
+      {
+        "authors": "Kelley",
+        "year": 2009,
+        "title": "Industrialization of mAb production technology: The bioprocessing industry at a crossroads",
+        "venue": "mAbs 1(5), 443–452",
+        "url": "https://doi.org/10.4161/mabs.1.5.9448",
+        "label": "doi:10.4161/mabs.1.5.9448"
+      }
+    ]
   }
 ]

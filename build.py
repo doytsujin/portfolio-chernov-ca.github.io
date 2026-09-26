@@ -152,11 +152,33 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
     for para in p["body"]:
         parts.append(f"<p>{para}</p>")
 
+    parts.append(reference_list(p.get("references", [])))
+
     if p.get("no_url_reason"):
         parts.append(f'<p class="no-url">{esc(p["no_url_reason"])}</p>')
     parts.append(link_list(p.get("links", [])))
     parts.append(f"</{tag}>")
     return "\n".join(parts)
+
+
+def reference_list(refs: list) -> str:
+    """Supporting literature under a project: author (year), title, venue, and a
+    resolvable identifier. Empty when a project carries none."""
+    if not refs:
+        return ""
+    items = []
+    for r in refs:
+        year = f" ({r['year']})" if r.get("year") else ""
+        items.append(
+            f'<li>{esc(r["authors"])}{year}. {esc(r["title"])}. '
+            f'<span class="venue">{esc(r["venue"])}</span>. '
+            f'<a href="{esc(r["url"])}" target="_blank" rel="noopener noreferrer">'
+            f'{esc(r["label"])}</a></li>'
+        )
+    return (
+        '<section class="refs" aria-label="References"><h4>References</h4>'
+        f'<ol>{"".join(items)}</ol></section>'
+    )
 
 
 def render_publication(pub: dict) -> str:
@@ -312,6 +334,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);

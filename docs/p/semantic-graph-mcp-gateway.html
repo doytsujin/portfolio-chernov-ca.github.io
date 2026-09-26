@@ -111,6 +111,12 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
 .links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
 .links.inline{margin:.35rem 0 0}
 .lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
@@ -192,6 +198,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.</p>
 <p>Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.</p>
 <p>Architecturally the point is that it is a repointing, not a rebuild: the same ingestion, entity graph, ontology, retrieval and capability mesh moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and the capability mesh are the product.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Hogan et al. (2021). Knowledge Graphs. <span class="venue">ACM Computing Surveys 54(4), 1–37</span>. <a href="https://doi.org/10.1145/3447772" target="_blank" rel="noopener noreferrer">doi:10.1145/3447772</a></li><li>Lewis et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <span class="venue">NeurIPS 2020</span>. <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">arXiv:2005.11401</a></li><li>Model Context Protocol (2025). Model Context Protocol specification, revision 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li></ol></section>
 <p class="no-url">No public URL — internal system.</p>
 
 </div>
