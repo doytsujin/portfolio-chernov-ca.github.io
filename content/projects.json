@@ -104,7 +104,7 @@
     "summary": "What the descriptor leaves open, this closes: five operators, one verdict per request, and an audit trail behind it. Authority and conditions turn out to disagree in both directions, neither permit set containing the other, and the price of deciding is published rather than estimated at +0.0 &micro;s warm, +11.7 &micro;s cold.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
-    "image": null,
+    "image": "project-croissant-policy-profile.webp",
     "body": [
       "No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.",
       "This profile closes that: a dataset declares the operations it admits and the conditions under which it admits them, from a closed set of five operators, so a gate can decide from the descriptor alone and leave a decision record. Two carriers that decide identically are compared as whole decision records.",
@@ -151,7 +151,8 @@
         "url": "https://doi.org/10.1016/j.xgen.2021.100028",
         "label": "doi:10.1016/j.xgen.2021.100028"
       }
-    ]
+    ],
+    "caption": "A dataset whose descriptor carries its conditions in the profile&rsquo;s five operators, a gate that decides a request from them alone, and the record it prints either way &mdash; here a refusal. Illustration; the overhead figures are the measured ones."
   },
   {
     "slug": "selective-visual-inference",
