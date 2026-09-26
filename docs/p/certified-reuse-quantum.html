@@ -111,6 +111,19 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.deck{margin:0 0 1rem}
+.deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
+border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
+.deck-frame:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.project .deck-frame img{width:100%;height:100%;object-fit:contain;border:0;border-radius:0}
+.deck-nav{display:none;align-items:center;justify-content:center;gap:.8rem;margin:.55rem 0 0}
+.js .deck-nav{display:flex}
+.deck-nav button{font:inherit;font-size:1rem;line-height:1;padding:.4rem .8rem;cursor:pointer;
+border:1px solid var(--line);border-radius:var(--radius);background:var(--card);color:inherit}
+.deck-nav button:hover:not(:disabled){border-color:var(--accent)}
+.deck-nav button:disabled{opacity:.35;cursor:default}
+.deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
+font-variant-numeric:tabular-nums}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -192,12 +205,13 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.</p>
 <p class="summary">Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute force, and verified.</p>
+<figure class="deck" data-deck data-base="../img/deck/qce26-bof-2099/" data-count="50" data-title="Is Quantum Ready for Biology?"><div class="deck-frame" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Is Quantum Ready for Biology?, 50 slides; use the arrow keys"><img src="../img/deck/qce26-bof-2099/01.webp" alt="Is Quantum Ready for Biology?, slide 1 of 50" width="1280" height="720" loading="lazy" decoding="async"></div><div class="deck-nav"><button type="button" data-step="-1" aria-label="Previous slide" disabled>&larr;</button><span class="deck-count" aria-live="polite">1 / 50</span><button type="button" data-step="1" aria-label="Next slide">&rarr;</button></div><figcaption>The 50-slide deck from BOF-2099, the Birds-of-a-Feather session at IEEE Quantum Week 2026 in Toronto: what evidence a quantum result must carry before a regulated biopharmaceutical workflow can evaluate it, with both demos as supporting material. <a href="https://doi.org/10.5281/zenodo.22841352" target="_blank" rel="noopener noreferrer">Full deck on Zenodo, 10.5281/zenodo.22841352</a>.</figcaption></figure>
 <p>Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.</p>
 <p>The second is deliberately not quantum: a mechanistic fed-batch CHO bioreactor under a contract of in-process limits, with a search controller that picks a feed plan from 256 candidates and writes the decision artifact. It is the yardstick — the kind of decision record a regulated bioprocess step already has to leave behind.</p>
 <p>Neither demo claims quantum advantage. Every instance is small enough to check classically, and each one is checked. The demos are seeded and run offline, so the reported numbers repeat.</p>
 <p>The companion control plane is offered to be attacked rather than admired: it runs entirely in the browser with no backend, so every verdict it reaches can be reproduced by the reader.</p>
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Cerezo et al. (2021). Variational quantum algorithms. <span class="venue">Nature Reviews Physics 3(9), 625–644</span>. <a href="https://doi.org/10.1038/s42254-021-00348-9" target="_blank" rel="noopener noreferrer">doi:10.1038/s42254-021-00348-9</a></li><li>Preskill (2018). Quantum Computing in the NISQ era and beyond. <span class="venue">Quantum 2, 79</span>. <a href="https://doi.org/10.22331/q-2018-08-06-79" target="_blank" rel="noopener noreferrer">doi:10.22331/q-2018-08-06-79</a></li><li>Bergholm et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1811.04968" target="_blank" rel="noopener noreferrer">arXiv:1811.04968</a></li></ol></section>
-<p class="links"><a class="lnk" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">qubit.agenticdatasets.org</a><a class="lnk mono" href="https://github.com/doytsujin/ok-quantum-biology-demos" target="_blank" rel="noopener noreferrer">ok-quantum-biology-demos</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22741061</a></p>
+<p class="links"><a class="lnk" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">qubit.agenticdatasets.org</a><a class="lnk mono" href="https://github.com/doytsujin/ok-quantum-biology-demos" target="_blank" rel="noopener noreferrer">ok-quantum-biology-demos</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22741061</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22841352" target="_blank" rel="noopener noreferrer">Slides: Zenodo 10.5281/zenodo.22841352</a></p>
 </div>
 </main>
 <footer class="bottom">
@@ -247,6 +261,37 @@ footer.bottom p{margin:0 0 .5rem}
     document.body.removeChild(ta);
   }
   paint();
+
+  // Slide decks: one slide in the DOM, the neighbours prefetched.
+  root.classList.add('js');
+  document.querySelectorAll('[data-deck]').forEach(function(deck){
+    var base=deck.dataset.base, n=+deck.dataset.count, title=deck.dataset.title, i=1;
+    var img=deck.querySelector('img'), count=deck.querySelector('.deck-count');
+    var prev=deck.querySelector('[data-step="-1"]'), next=deck.querySelector('[data-step="1"]');
+    var frame=deck.querySelector('.deck-frame');
+    function url(k){return base+(k<10?'0':'')+k+'.webp';}
+    function warm(k){if(k>=1&&k<=n){var p=new Image();p.src=url(k);}}
+    function show(k){
+      i=Math.max(1,Math.min(n,k));
+      img.src=url(i);img.alt=title+', slide '+i+' of '+n;
+      count.textContent=i+' / '+n;prev.disabled=i===1;next.disabled=i===n;
+      warm(i+1);warm(i-1);
+    }
+    deck.addEventListener('click',function(e){
+      var b=e.target.closest('[data-step]');if(b)show(i+ +b.dataset.step);});
+    frame.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){show(i+1);e.preventDefault();}
+      else if(e.key==='ArrowLeft'){show(i-1);e.preventDefault();}
+      else if(e.key==='Home'){show(1);e.preventDefault();}
+      else if(e.key==='End'){show(n);e.preventDefault();}});
+    var x0=null;
+    frame.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    frame.addEventListener('touchend',function(e){
+      if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>40)show(i+(dx<0?1:-1));},{passive:true});
+    frame.addEventListener('click',function(e){
+      var r=frame.getBoundingClientRect();show(i+(e.clientX-r.left>r.width/2?1:-1));});
+  });
 })();
 </script>
 </body>

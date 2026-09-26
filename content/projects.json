@@ -221,6 +221,10 @@
       {
         "label": "Zenodo 10.5281/zenodo.22741061",
         "url": "https://doi.org/10.5281/zenodo.22741061"
+      },
+      {
+        "label": "Slides: Zenodo 10.5281/zenodo.22841352",
+        "url": "https://doi.org/10.5281/zenodo.22841352"
       }
     ],
     "references": [
@@ -248,7 +252,19 @@
         "url": "https://arxiv.org/abs/1811.04968",
         "label": "arXiv:1811.04968"
       }
-    ]
+    ],
+    "carousel": {
+      "dir": "img/deck/qce26-bof-2099",
+      "count": 50,
+      "width": 1280,
+      "height": 720,
+      "title": "Is Quantum Ready for Biology?",
+      "caption": "The 50-slide deck from BOF-2099, the Birds-of-a-Feather session at IEEE Quantum Week 2026 in Toronto: what evidence a quantum result must carry before a regulated biopharmaceutical workflow can evaluate it, with both demos as supporting material.",
+      "source": {
+        "label": "Full deck on Zenodo, 10.5281/zenodo.22841352",
+        "url": "https://doi.org/10.5281/zenodo.22841352"
+      }
+    }
   },
   {
     "slug": "semantic-graph-mcp-gateway",
