@@ -214,6 +214,10 @@
         "url": "https://qubit.agenticdatasets.org"
       },
       {
+        "label": "BOF-2099 session page",
+        "url": "https://qubit.agenticdatasets.org/bof/"
+      },
+      {
         "label": "ok-quantum-biology-demos",
         "url": "https://github.com/doytsujin/ok-quantum-biology-demos",
         "mono": true
