@@ -111,6 +111,9 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.clip{margin:0 0 1rem}
+.clip video{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;
+border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
 .deck{margin:0 0 1rem}
 .deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
 border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
@@ -261,6 +264,12 @@ footer.bottom p{margin:0 0 .5rem}
     document.body.removeChild(ta);
   }
   paint();
+
+  // Clips: no autoplay for reduced motion; controls instead.
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[data-clip]').forEach(function(v){
+      v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
 
   // Slide decks: one slide in the DOM, the neighbours prefetched.
   root.classList.add('js');

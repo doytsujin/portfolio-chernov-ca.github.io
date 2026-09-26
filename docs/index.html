@@ -111,6 +111,9 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.clip{margin:0 0 1rem}
+.clip video{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;
+border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
 .deck{margin:0 0 1rem}
 .deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
 border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
@@ -214,11 +217,12 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A dataset that states what agents may do with it, and a contract that can be checked without seeing inside the implementation.</p>
 <p class="summary">Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &mdash; every one of them passing, with seventeen deliberately broken variants all caught.</p>
+<figure class="clip"><video data-clip src="img/video/agentic-datasets-admission.mp4" poster="img/video/agentic-datasets-admission-poster.jpg" width="780" height="810" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the Admission showcase: the same request from four principals, the verdict and deciding clause changing with each."></video><figcaption>Recorded from the live showcase at agenticdatasets.org. The same request from four principals: the process engineer and the analyst are GRANTED; the clinical reviewer and the external auditor are REFUSED with <code>INSUFFICIENT_PRIVILEGE</code> under clause AD-POL-005, and each decision leaves an evidence row. Computed in the page, with no server and no model.</figcaption></figure>
 <p>An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.</p>
 <p>The contract is fifteen normative assertions expressed as eighty-five language-neutral vector steps, which is what makes it checkable against an implementation without access to that implementation's internals. The reference architecture passes all fifteen across four runtimes and two dataset boundaries; a second implementation sharing no code with it passes all fifteen as well.</p>
 <p>Mutation analysis is the part that keeps the suite honest: seventeen targeted violations, seventeen detected, with every assertion independently exercised. Mean detecting assertions per mutant is reported at 2.2 and deliberately not treated as an optimization metric, because tuning a suite to raise it would measure the suite rather than the contract.</p>
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Gebru et al. (2021). Datasheets for datasets. <span class="venue">Communications of the ACM 64(12), 86–92</span>. <a href="https://doi.org/10.1145/3458723" target="_blank" rel="noopener noreferrer">doi:10.1145/3458723</a></li><li>Wilkinson et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. <span class="venue">Scientific Data 3(1), 160018</span>. <a href="https://doi.org/10.1038/sdata.2016.18" target="_blank" rel="noopener noreferrer">doi:10.1038/sdata.2016.18</a></li><li>Jia and Harman (2011). An Analysis and Survey of the Development of Mutation Testing. <span class="venue">IEEE Transactions on Software Engineering 37(5), 649–678</span>. <a href="https://doi.org/10.1109/TSE.2010.62" target="_blank" rel="noopener noreferrer">doi:10.1109/TSE.2010.62</a></li></ol></section>
-<p class="links"><a class="lnk" href="https://agenticdatasets.org" target="_blank" rel="noopener noreferrer">agenticdatasets.org</a><a class="lnk" href="https://github.com/agentic-datasets/reference" target="_blank" rel="noopener noreferrer">Reference implementation</a><a class="lnk mono" href="https://pypi.org/project/agentic-dataset-conformance/" target="_blank" rel="noopener noreferrer">agentic-dataset-conformance on PyPI</a></p>
+<p class="links"><a class="lnk" href="https://agenticdatasets.org" target="_blank" rel="noopener noreferrer">agenticdatasets.org</a><a class="lnk" href="https://agenticdatasets.org/showcase/" target="_blank" rel="noopener noreferrer">Live showcases</a><a class="lnk" href="https://github.com/agentic-datasets/reference" target="_blank" rel="noopener noreferrer">Reference implementation</a><a class="lnk mono" href="https://pypi.org/project/agentic-dataset-conformance/" target="_blank" rel="noopener noreferrer">agentic-dataset-conformance on PyPI</a></p>
 </article>
 <article class="project" id="per-task-admission-control">
 <div class="project-head">
@@ -485,6 +489,12 @@ footer.bottom p{margin:0 0 .5rem}
     document.body.removeChild(ta);
   }
   paint();
+
+  // Clips: no autoplay for reduced motion; controls instead.
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[data-clip]').forEach(function(v){
+      v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
 
   // Slide decks: one slide in the DOM, the neighbours prefetched.
   root.classList.add('js');

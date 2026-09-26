@@ -149,6 +149,9 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
             parts.append(f"<figcaption>{p['caption']}</figcaption>")
         parts.append("</figure>")
 
+    if p.get("video"):
+        parts.append(project_video(p["video"], prefix))
+
     if p.get("carousel"):
         parts.append(slide_carousel(p["carousel"], prefix))
 
@@ -162,6 +165,23 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
     parts.append(link_list(p.get("links", [])))
     parts.append(f"</{tag}>")
     return "\n".join(parts)
+
+
+def project_video(v: dict, prefix: str) -> str:
+    """A short silent screen recording, looped like an image. It does not
+    autoplay for readers who ask for reduced motion; the script gives them
+    controls instead."""
+    src = f'{prefix}{v["src"]}'
+    poster = f'{prefix}{v["poster"]}'
+    return (
+        '<figure class="clip">'
+        f'<video data-clip src="{esc(src)}" poster="{esc(poster)}" '
+        f'width="{int(v["width"])}" height="{int(v["height"])}" '
+        'autoplay muted loop playsinline preload="metadata" '
+        f'aria-label="{esc(v["alt"])}"></video>'
+        f'<figcaption>{v["caption"]}</figcaption>'
+        '</figure>'
+    )
 
 
 def slide_carousel(c: dict, prefix: str) -> str:
@@ -367,6 +387,9 @@ font-size:.94em;color:var(--muted)}
 border-radius:var(--radius);background:var(--card)}
 figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
 .no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.clip{margin:0 0 1rem}
+.clip video{display:block;width:100%;max-width:560px;height:auto;margin:0 auto;
+border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
 .deck{margin:0 0 1rem}
 .deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
 border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
@@ -470,6 +493,12 @@ BEHAVIOUR = """
     document.body.removeChild(ta);
   }
   paint();
+
+  // Clips: no autoplay for reduced motion; controls instead.
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[data-clip]').forEach(function(v){
+      v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
 
   // Slide decks: one slide in the DOM, the neighbours prefetched.
   root.classList.add('js');
