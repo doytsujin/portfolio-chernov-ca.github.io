@@ -61,7 +61,7 @@
     "summary": "A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS's managed service honours a directive its own linter called unsupported.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
-    "image": null,
+    "image": "project-per-task-admission-control.webp",
     "body": [
       "Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.",
       "The finding was not the latency. AWS's own Nextflow linter listed the hook the gate depends on among directives their managed service does not support, which would have put per-task governance out of reach. That file was two years stale and already contradicted by AWS's current documentation for a neighbouring directive. Treated as a hypothesis and probed against a local control: it runs. The gate now permits and refuses per task on the managed service.",
@@ -95,7 +95,8 @@
         "url": "https://doi.org/10.1038/s41587-020-0439-x",
         "label": "doi:10.1038/s41587-020-0439-x"
       }
-    ]
+    ],
+    "caption": "Two tasks of nf-core/demo at the gate, which runs through Nextflow&rsquo;s <code>process.beforeScript</code> hook before each task script: FASTQC admitted, SEQTK_TRIM refused because the offered minimum read length is 10 where the descriptor requires 20. A record is written either way. Illustration; the figures are the measured ones."
   },
   {
     "slug": "croissant-policy-profile",
