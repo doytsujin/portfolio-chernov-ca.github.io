@@ -109,7 +109,7 @@ def main() -> None:
             eyebrow=f"Project {i:02d}",
             title=p["title"],
             lede=p.get("lede", ""),
-            image=p.get("image"))))
+            image=p.get("og_image") or p.get("image") or (p.get("video") or {}).get("poster", "").removeprefix("img/") or None)))
 
     for name, doc in cards:
         (TMP / f"{name}.html").write_text(doc, encoding="utf-8")

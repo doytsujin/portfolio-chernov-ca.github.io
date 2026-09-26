@@ -1,4 +1,4 @@
-.PHONY: build og clip check deploy deploy-dry serve help
+.PHONY: build og clip varscope-clip check deploy deploy-dry serve help
 
 # --- deploy to the edge ---------------------------------------------------
 # Same Akamai/Linode node as chernov.ca, provisioned in dk-semantic-backend-host.
@@ -37,6 +37,21 @@ clip: ## Re-record and compose the Agentic Datasets clip (needs Chrome, ffmpeg, 
 	@python3 image-prompts/compose_admission.py image-src/admission-rec $(CLIP_OUT)
 	@ffmpeg -y -loglevel error -ss 0.5 -i $(CLIP_OUT) -frames:v 1 -q:v 3 $(CLIP_POSTER)
 	@echo "clip -> $(CLIP_OUT)"
+
+# The clinical-mapping clip: recorded from the browser build of the mapping tool,
+# which this repository does not hold. Serve that build's static output on
+# VARSCOPE_URL first. Needs a headed Chrome with a WebGPU-capable GPU, since the
+# model runs in the tab; the first run downloads it (786 MB).
+VARSCOPE_URL ?= http://127.0.0.1:8793/
+VS_OUT       ?= docs/img/video/varscope-suggest.mp4
+VS_POSTER    ?= docs/img/video/varscope-suggest-poster.jpg
+
+varscope-clip: ## Re-record and compose the clinical-mapping clip (needs VARSCOPE_URL, GPU, ffmpeg)
+	@rm -rf image-src/varscope-rec
+	@node image-prompts/record_varscope.mjs $(VARSCOPE_URL) image-src/varscope-rec
+	@python3 image-prompts/compose_varscope.py image-src/varscope-rec $(VS_OUT)
+	@ffmpeg -y -loglevel error -sseof -1 -i $(VS_OUT) -frames:v 1 -q:v 3 $(VS_POSTER)
+	@echo "clip -> $(VS_OUT)"
 
 serve: build ## Build, then serve docs/ on http://127.0.0.1:8000
 	@cd $(DIST) && python3 -m http.server 8000 --bind 127.0.0.1
