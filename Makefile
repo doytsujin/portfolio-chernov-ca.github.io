@@ -1,4 +1,4 @@
-.PHONY: build og check deploy deploy-dry serve help
+.PHONY: build og clip check deploy deploy-dry serve help
 
 # --- deploy to the edge ---------------------------------------------------
 # Same Akamai/Linode node as chernov.ca, provisioned in dk-semantic-backend-host.
@@ -24,6 +24,19 @@ build: ## Render content/*.json into docs/index.html
 
 og: ## Re-render docs/og/*.png link-preview cards (needs Chrome; cards are committed)
 	@python3 make_og.py
+
+# The Agentic Datasets clip: re-recorded from the live showcase, then composed
+# with its side notes. Needs Chrome, ffmpeg and the network; frames go to the
+# ignored image-src/. The clip and its poster are committed, like the OG cards.
+CLIP_OUT    ?= docs/img/video/agentic-datasets-admission.mp4
+CLIP_POSTER ?= docs/img/video/agentic-datasets-admission-poster.jpg
+
+clip: ## Re-record and compose the Agentic Datasets clip (needs Chrome, ffmpeg, network)
+	@rm -rf image-src/admission-rec
+	@node image-prompts/record_admission.mjs image-src/admission-rec
+	@python3 image-prompts/compose_admission.py image-src/admission-rec $(CLIP_OUT)
+	@ffmpeg -y -loglevel error -ss 0.5 -i $(CLIP_OUT) -frames:v 1 -q:v 3 $(CLIP_POSTER)
+	@echo "clip -> $(CLIP_OUT)"
 
 serve: build ## Build, then serve docs/ on http://127.0.0.1:8000
 	@cd $(DIST) && python3 -m http.server 8000 --bind 127.0.0.1
