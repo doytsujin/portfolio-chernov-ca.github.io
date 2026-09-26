@@ -210,14 +210,14 @@
     "slug": "batch-records-as-typed-programs",
     "title": "Batch records as typed programs",
     "lede": "Approval is a node, not a convention — typed ports, only same-typed ones connect, and human approval sits inside the grammar.",
-    "summary": "Rust and React, with a no-backend browser build for places that will not host a server. One spine underlies every recipe &mdash; source, pre-process, reason, approve, sink &mdash; and the records live in version control, so review, promotion and rollback are the ordinary git ones.",
+    "summary": "A designer for master batch records (MBR) that executes them as electronic batch records (EBR), in Rust and React, with a no-backend browser build for places that will not host a server. One spine underlies every recipe &mdash; source, pre-process, reason, approve, sink &mdash; and the records live in version control, so review, promotion and rollback are the ordinary git ones.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-batch-records-as-typed-programs.png",
-    "caption": "The node-graph designer: typed ports on the left, a process-model node feeding an LLM reason node, and Approval as a first-class node in the Control group rather than a workflow convention.",
+    "caption": "A platform mAb downstream purification MBR, executed in the browser build: nine unit operations joined to their in-process controls, checked against five MBR limits, then held at a QA approval node. The executed record on the right flags one step &mdash; viral-inactivation hold above its 120-minute limit. Illustrative batch values; limits follow published platform ranges.",
     "no_url_reason": "No public URL — internal system.",
     "body": [
-      "Batch records are authored as documents and executed as programs, and the gap between the two is where validation effort goes. This is a visual builder for master and executed batch records in Rust and React, including a browser-only build with no backend at all, so the authoring surface works where a server cannot be deployed.",
+      "Batch records are authored as documents and executed as programs, and the gap between the two is where validation effort goes. This is a visual builder in Rust and React where the MBR is authored as a graph and every run of it yields the EBR, including a browser-only build with no backend at all, so the authoring surface works where a server cannot be deployed.",
       "The grammar is a visual pipeline with a type system: boxes are nodes, arrows are typed edges — rows, table, scalar, signal — and only same-typed ports may be wired. Every recipe instantiates one spine: source, pre-process, reason (AI), approve (human), sink. Human approval is a first-class node in the grammar rather than a workflow convention bolted on afterwards — the same conclusion as the pooling gate above, reached independently in a different domain. Records are governed in git: review, environment promotion, rollback.",
       "Underneath it, twenty years back to pharmaceutical manufacturing execution systems in validated GxP environments."
     ],
