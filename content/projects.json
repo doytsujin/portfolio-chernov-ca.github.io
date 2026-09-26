@@ -376,7 +376,7 @@
       "width": 1600,
       "height": 900,
       "alt": "Screen recording of the browser build: an SDTM variable is selected, a small language model loads into the tab and runs on the GPU, and the mapping it proposes is shown as a proposal, not applied.",
-      "caption": "Recorded live in the browser build, on the public CDISC pilot. AE.AEACN is selected; Qwen2.5-0.5B-Instruct (q4) loads into the tab (786 MB, first use only) and runs on the GPU through WebGPU; it proposes ADAE.AEACN at 80%. The panel says so outright &mdash; proposal only, not applied &mdash; and 0 of 84 mappings are approved. Every caption is read off the page."
+      "caption": "Keyframes recorded live in the browser build, on the public CDISC pilot; the notes either side are read off the page. AE.AEACN is selected, Qwen2.5-0.5B-Instruct (q4) loads into the tab (786 MB, first use only) and runs on the GPU through WebGPU, and proposes ADAE.AEACN at 80%. The panel says so outright &mdash; proposal only, not applied &mdash; and 0 of 84 mappings are approved. Time is compressed; the timings on the cards are the measured ones."
     },
     "og_image": "video/varscope-og.jpg"
   },

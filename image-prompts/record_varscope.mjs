@@ -1,5 +1,10 @@
-// Record VarScope's browser-local suggestion in headed WebGPU Chrome.
-// Saves screencast frames plus, per phase, the texts and rects the captions use.
+// Record the mapping tool's browser-local suggestion as KEYFRAMES: one clean
+// screenshot per state the detail panel passes through, taken live. A shot is
+// kept only if the panel text is the same before and after the capture, so
+// every keyframe is labelled with the state it actually shows. Timings are the
+// real ones, recorded beside each keyframe.
+//
+//   node record_varscope.mjs <url> <outDir>
 import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { Cdp, openPage, evaluate, sleep } from "./cdp.mjs";
@@ -20,96 +25,75 @@ await ev(`[...document.querySelectorAll('button')].find(b => /^SDTM.ADaM$/.test(
 await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 420, y: 560 }, s);
 await sleep(3000);
 
-const PROBE = String.raw`
-  const R = (e) => { if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; };
-  const leaf = (re) => [...document.querySelectorAll('body *')].find(e => e.children.length === 0 && re.test(e.textContent.trim()));
-  const inPanel = (re) => [...document.querySelectorAll('body *')].filter(e => re.test(e.textContent) && e.getBoundingClientRect().left > 1200 && e.getBoundingClientRect().width > 0).sort((a, b) => a.textContent.length - b.textContent.length)[0] || null;
-  const top = document.body.innerText.match(/nodes\s*·\s*(\d+)[\s\S]*?edges\s*·\s*(\d+)[\s\S]*?mapped\s*·\s*(\d+\/\d+)/);
+// Panel text between ADAM MAPPING and CONNECTED NODES, plus what the cards quote.
+const PANEL = String.raw`
   const t = document.body.innerText;
-  const i = t.indexOf('ADAM MAPPING');
-  const panel = i >= 0 ? t.slice(i, i + 500).split('\n').map(x => x.trim()).filter(Boolean) : [];
-  const model = inPanel(/browser\/Qwen/);
-  const only = inPanel(/Proposal only/);
-  const mapped = leaf(/^mapped/) || leaf(/mapped\s*·/);
+  const i = t.indexOf('ADAM MAPPING'), j = t.indexOf('CONNECTED NODES');
+  return JSON.stringify(i >= 0 ? t.slice(i + 13, j > i ? j : i + 300).replace(/\s+/g, ' ').trim() : '');`;
+const PROBE = String.raw`
+  const t = document.body.innerText;
+  const R = (e) => { if (!e) return null; const r = e.getBoundingClientRect(); return [r.left, r.top, r.width, r.height]; };
+  const inPanel = (re) => [...document.querySelectorAll('body *')].filter(e => re.test(e.textContent) && e.getBoundingClientRect().left > 1200 && e.getBoundingClientRect().width > 0).sort((a, b) => a.textContent.length - b.textContent.length)[0] || null;
+  const top = t.match(/nodes\s*·\s*(\d+)[\s\S]*?edges\s*·\s*(\d+)[\s\S]*?mapped\s*·\s*(\d+\/\d+)/);
+  const head = inPanel(/^\s*ADAM MAPPING\s*$/i);
   const pct = inPanel(/^\s*\d+%\s*$/);
-  const target = pct ? pct.previousElementSibling || pct.parentElement : null;
-  const progress = [...document.querySelectorAll('body *')].filter(e => e.children.length === 0 && /load|download|%|progress|model/i.test(e.textContent) && e.getBoundingClientRect().left > 1200).map(e => e.textContent.trim()).slice(0, 4);
+  const model = inPanel(/browser\/Qwen/);
+  const only = inPanel(/^\s*Proposal only/);
   return JSON.stringify({
+    selected: (t.match(/\n(AE\.[A-Z]+)\n\s*VARIABLE/) || [])[1] || null,
     domain: (t.match(/DOMAIN\s*\n\s*(\S+)/) || [])[1] || null,
     nodes: top && top[1], edges: top && top[2], mapped: top && top[3],
-    selected: (leaf(/^AE\.AEACN$/) || {}).textContent || null,
-    panel, model: model && model.textContent.trim(), proposalOnly: only && only.textContent.trim(),
-    pct: pct && pct.textContent.trim(), target: target && target.textContent.trim(),
-    rects: { model: R(model), only: R(only), mapped: R(mapped), pct: R(pct), target: R(target && target.parentElement) },
-    progress,
+    pct: pct && pct.textContent.trim(),
+    target: pct && pct.previousElementSibling ? pct.previousElementSibling.textContent.trim() : null,
+    model: model && model.textContent.trim(),
+    rects: { head: R(head), pct: R(pct), target: R(pct && pct.parentElement), model: R(model), only: R(only) },
   });`;
 
-const frames = []; let n = 0; let polling = true; let paused = false;
-const origOn = cdp._onData.bind(cdp);
-cdp.read.removeAllListeners("data");
-cdp.read.on("data", (chunk) => {
-  const text = Buffer.concat([cdp.buf, chunk]).toString("utf8");
-  for (const part of text.split("\0")) {
-    if (!part.includes('"Page.screencastFrame"')) continue;
-    try {
-      const m = JSON.parse(part); const p = m.params; n += 1;
-      const f = join(out, `s-${String(n).padStart(4, "0")}.jpg`);
-      writeFileSync(f, Buffer.from(p.data, "base64"));
-      frames.push({ file: f, t: p.metadata.timestamp, src: "cast" });
-      cdp.write.write(JSON.stringify({ id: 900000 + n, method: "Page.screencastFrameAck", params: { sessionId: p.sessionId }, sessionId: m.sessionId }) + "\0");
-    } catch { /* partial */ }
-  }
-  origOn(chunk);
-});
-const poller = (async () => {
-  while (polling) {
-    if (paused) { await sleep(20); continue; }
-    const t1 = Date.now();
-    try {
-      const { data } = await cdp.send("Page.captureScreenshot", { format: "jpeg", quality: 88 }, s);
-      n += 1;
-      const f = join(out, `f-${String(n).padStart(4, "0")}.jpg`);
+const keys = [];
+const shoot = async (name) => {
+  for (let tries = 0; tries < 6; tries++) {
+    const before = JSON.parse(await ev(PANEL));
+    const t = Date.now() / 1000;
+    const { data } = await cdp.send("Page.captureScreenshot", { format: "png" }, s);
+    const after = JSON.parse(await ev(PANEL));
+    if (before === after) {
+      const f = join(out, `k-${String(keys.length + 1).padStart(2, "0")}.png`);
       writeFileSync(f, Buffer.from(data, "base64"));
-      frames.push({ file: f, t: t1 / 1000 });
-    } catch { /* a slow frame; take the next */ }
-    const dt = Date.now() - t1;
-    if (dt < 120) await sleep(120 - dt);
+      const st = JSON.parse(await ev(PROBE));
+      keys.push({ name, file: f, t, panel: after, ...st });
+      console.log(name.padEnd(10), after.slice(0, 70));
+      return after;
+    }
   }
-})();
-const phases = [];
-const mark = async (name) => { const st = JSON.parse(await ev(PROBE)); st.name = name; st.t = Date.now() / 1000; phases.push(st); console.log(name, JSON.stringify({ mapped: st.mapped, pct: st.pct, target: st.target, model: st.model, progress: st.progress }).slice(0, 300)); };
+  return null;
+};
 const click = async ([x, y]) => {
-  paused = true; await sleep(250);
   await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x, y }, s); await sleep(150);
   await cdp.send("Input.dispatchMouseEvent", { type: "mousePressed", x, y, button: "left", clickCount: 1 }, s); await sleep(70);
   await cdp.send("Input.dispatchMouseEvent", { type: "mouseReleased", x, y, button: "left", clickCount: 1 }, s);
-  await sleep(150); paused = false;
 };
 
-await cdp.send("Page.startScreencast", { format: "jpeg", quality: 90, everyNthFrame: 1 }, s);
-const t0 = Date.now() / 1000;
-await mark("overview");
-await sleep(3500);
-await click(NODE); await sleep(900); await mark("selected");
-await sleep(2600);
-const sug = JSON.parse(await ev(`const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Suggest mapping'); if(!b) return JSON.stringify(null); const r=b.getBoundingClientRect(); return JSON.stringify([r.left+r.width/2, r.top+r.height/2]);`));
-await click(sug); await sleep(700); await mark("reasoning");
+await shoot("overview");
+await click(NODE); await sleep(1500);
+await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 420, y: 560 }, s); await sleep(400);
+await shoot("selected");
+const sug = JSON.parse(await ev(`const b=[...document.querySelectorAll('button')].find(b=>b.textContent.trim()==='Suggest mapping'); const r=b.getBoundingClientRect(); return JSON.stringify([r.left+r.width/2, r.top+r.height/2]);`));
+const tClick = Date.now() / 1000;
+await click(sug);
+await cdp.send("Input.dispatchMouseEvent", { type: "mouseMoved", x: 420, y: 560 }, s);
+let last = "";
 const tw = Date.now();
-const timeline = [];
 while (Date.now() - tw < 240000) {
-  const txt = await ev(`const t=document.body.innerText; const i=t.indexOf('ADAM MAPPING'); const j=t.indexOf('CONNECTED NODES'); return i>=0 ? t.slice(i+13, j>i ? j : i+300).replace(/\\s+/g,' ').trim() : ''`);
-  if (!timeline.length || timeline.at(-1).text !== txt) timeline.push({ t: Date.now() / 1000, text: txt });
-  if (/Proposal only|No mapping proposed/.test(txt)) break;
-  await sleep(300);
+  const cur = JSON.parse(await ev(PANEL));
+  if (cur !== last) {
+    const name = /^Loading model/.test(cur) ? "loading" : /^Reasoning/.test(cur) ? "reasoning" : /Proposal only|No mapping proposed/.test(cur) ? "proposal" : "other";
+    const got = await shoot(name);
+    last = got ?? cur;
+    if (name === "proposal") break;
+  }
+  await sleep(120);
 }
-await sleep(400); await mark("proposal");
-await sleep(6000);
-polling = false; await poller;
-await cdp.send("Page.stopScreencast", {}, s); await sleep(300);
-frames.sort((a, b) => a.t - b.t);
-writeFileSync(join(out, "frames.json"), JSON.stringify(frames));
-writeFileSync(join(out, "phases.json"), JSON.stringify({ t0, suggestButton: sug, node: NODE, phases, timeline }, null, 1));
-console.log("timeline", timeline.length, JSON.stringify(timeline.map(x => x.text.slice(0, 60))).slice(0, 900));
-console.log("frames", frames.length, "span", frames.length ? (frames.at(-1).t - frames[0].t).toFixed(1) : 0, "reasoning took", (phases[3].t - phases[2].t).toFixed(1));
+writeFileSync(join(out, "keys.json"), JSON.stringify({ node: NODE, suggest: sug, tClick, keys }, null, 1));
+console.log("keyframes", keys.length);
 child.kill("SIGKILL");
 process.exit(0);
