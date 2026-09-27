@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Semantic graph and MCP gateway for laboratory infrastructure — Alexander Chernov</title>
-<meta name="description" content="Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &amp;mdash; an existing document pipeline was aimed at equipment instead.">
+<title>Semantic gateway: search, graph and MCP over any data source — Alexander Chernov</title>
+<meta name="description" content="Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/semantic-graph-mcp-gateway.html">
 <link rel="icon" type="image/x-icon" href="../favicon.ico">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Alexander Chernov — Portfolio">
-<meta property="og:title" content="Semantic graph and MCP gateway for laboratory infrastructure — Alexander Chernov">
-<meta property="og:description" content="Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &amp;mdash; an existing document pipeline was aimed at equipment instead.">
+<meta property="og:title" content="Semantic gateway: search, graph and MCP over any data source — Alexander Chernov">
+<meta property="og:description" content="Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.">
 <meta property="og:url" content="https://portfolio.chernov.ca/p/semantic-graph-mcp-gateway.html">
 <meta property="og:image" content="https://portfolio.chernov.ca/og/semantic-graph-mcp-gateway.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Semantic graph and MCP gateway for laboratory infrastructure — Alexander Chernov">
+<meta property="og:image:alt" content="Semantic gateway: search, graph and MCP over any data source — Alexander Chernov">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Semantic graph and MCP gateway for laboratory infrastructure — Alexander Chernov">
-<meta name="twitter:description" content="Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &amp;mdash; an existing document pipeline was aimed at equipment instead.">
+<meta name="twitter:title" content="Semantic gateway: search, graph and MCP over any data source — Alexander Chernov">
+<meta name="twitter:description" content="Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.">
 <meta name="twitter:image" content="https://portfolio.chernov.ca/og/semantic-graph-mcp-gateway.png">
 <script>
 (function(){try{var t=localStorage.getItem('pf-theme');
@@ -201,20 +201,22 @@ footer.bottom p{margin:0 0 .5rem}
 <div class="project-head">
 <span class="num">06</span>
 <div class="project-title">
-<h1>Semantic graph and MCP gateway for laboratory infrastructure</h1>
+<h1>Semantic gateway: search, graph and MCP over any data source</h1>
 <p class="meta">2025 – present · AstraZeneca</p>
 </div>
-<button class="copy" type="button" data-copy="../p/semantic-graph-mcp-gateway.html" aria-label="Copy link to Semantic graph and MCP gateway for laboratory infrastructure" title="Copy link to Semantic graph and MCP gateway for laboratory infrastructure"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+<button class="copy" type="button" data-copy="../p/semantic-graph-mcp-gateway.html" aria-label="Copy link to Semantic gateway: search, graph and MCP over any data source" title="Copy link to Semantic gateway: search, graph and MCP over any data source"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
 </div>
-<p class="lede">Lab assets as a queryable graph — 4,115 records, one entity graph, 10 MCP tools.</p>
-<p class="summary">Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.</p>
+<p class="lede">One engine over any source — search, grounded chat, an entity graph and MCP, governed on every surface.</p>
+<p class="summary">Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.</p>
 <figure><img src="../img/project-semantic-graph-mcp-gateway.png" alt="The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real." loading="lazy" decoding="async">
 <figcaption>The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.</figcaption>
 </figure>
-<p>A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.</p>
-<p>Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.</p>
-<p>Architecturally the point is that it is a repointing, not a rebuild: the same ingestion, entity graph, ontology, retrieval and capability mesh moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and the capability mesh are the product.</p>
-<section class="refs" aria-label="References"><h4>References</h4><ol><li>Hogan et al. (2021). Knowledge Graphs. <span class="venue">ACM Computing Surveys 54(4), 1–37</span>. <a href="https://doi.org/10.1145/3447772" target="_blank" rel="noopener noreferrer">doi:10.1145/3447772</a></li><li>Lewis et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <span class="venue">NeurIPS 2020</span>. <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">arXiv:2005.11401</a></li><li>Model Context Protocol (2025). Model Context Protocol specification, revision 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li></ol></section>
+<p>A Rust and React semantic gateway. One engine — extract, chunk, embed, index, serve — turns a data source into four surfaces: semantic search, grounded chat with citations, an interactive entity graph, and a Model Context Protocol surface of tools, resources and code-generation prompts for Copilot and any MCP client. Desktop through Tauri, web through WebAssembly. A document is anything a source yields: a file, a database record, an instrument run, an API response.</p>
+<p>Sources connect rather than fork. Connectors cover SharePoint, S3, Postgres, SQL Server, local files, a laboratory asset platform's REST API and chromatography systems, and the view is data-driven per source, so adding one is a profile and a connector. Demonstrated on a 4,115-asset corpus.</p>
+<p>The graph is a knowledge graph: entity kinds are classes, typed fields are properties, and relations are edges to follow. The ontology is derived live from the data, so it cannot drift from what is there, and a source can declare vocabulary hints — SNOMED CT, FHIR, MeSH, DCAT.</p>
+<p>Governance holds on every surface. Attribute-based access control trims search, chat, graph and MCP results to the reader; every typed field keeps its change history; and authentication is configuration — open on a desktop, reverse-proxy SSO, API keys, or per-user OIDC such as Microsoft Entra. Documents can also be embedded in published pages as a card, a detail pane or the full body, resolved on every view and trimmed to the reader's access: a window on the source, not a copy of it.</p>
+<p>Architecturally it is a repointing, not a rebuild: the same ingestion, entity graph, ontology and retrieval moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and its governance are the product.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Hogan et al. (2021). Knowledge Graphs. <span class="venue">ACM Computing Surveys 54(4), 1–37</span>. <a href="https://doi.org/10.1145/3447772" target="_blank" rel="noopener noreferrer">doi:10.1145/3447772</a></li><li>Lewis et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <span class="venue">NeurIPS 2020</span>. <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">arXiv:2005.11401</a></li><li>Model Context Protocol (2025). Model Context Protocol specification, revision 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li><li>Chernov (2026). Agentic Datasets as an Engineering Control Plane. <span class="venue">IEEE CCECE 2026, 326–332</span>. <a href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">doi:10.1109/CCECE68150.2026.11610344</a></li><li>Chernov (2026). Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows. <span class="venue">IEEE BigDataService 2026, 125–129</span>. <a href="https://doi.org/10.1109/BigDataService70481.2026.00025" target="_blank" rel="noopener noreferrer">doi:10.1109/BigDataService70481.2026.00025</a></li></ol></section>
 <p class="no-url">No public URL — internal system.</p>
 
 </div>

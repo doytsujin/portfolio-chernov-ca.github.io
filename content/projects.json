@@ -286,18 +286,20 @@
   },
   {
     "slug": "semantic-graph-mcp-gateway",
-    "title": "Semantic graph and MCP gateway for laboratory infrastructure",
-    "lede": "Lab assets as a queryable graph — 4,115 records, one entity graph, 10 MCP tools.",
-    "summary": "Rust and React, shipped both as a Tauri desktop app and as a WebAssembly build, over a corpus of 4,115 assets. The interesting claim is architectural: nothing was redesigned to get here &mdash; an existing document pipeline was aimed at equipment instead.",
+    "title": "Semantic gateway: search, graph and MCP over any data source",
+    "lede": "One engine over any source — search, grounded chat, an entity graph and MCP, governed on every surface.",
+    "summary": "Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
     "image": "project-semantic-graph-mcp-gateway.png",
     "caption": "The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.",
     "no_url_reason": "No public URL — internal system.",
     "body": [
-      "A Rust and React gateway that ingests laboratory assets from an asset platform's REST API, builds a semantic entity graph and index, and serves it through search, retrieval-augmented chat, an equipment view, an interactive graph, and a full Model Context Protocol surface — 10 tools, 2 resources, 5 code-generation prompts — consumable directly by Copilot and Claude. Desktop through Tauri, web through WebAssembly. Demonstrated on a 4,115-asset corpus.",
-      "Lab equipment data exists but is not reasonable over. Asking which instruments can run an assay and which are due for calibration means knowing where to look rather than knowing the question.",
-      "Architecturally the point is that it is a repointing, not a rebuild: the same ingestion, entity graph, ontology, retrieval and capability mesh moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and the capability mesh are the product."
+      "A Rust and React semantic gateway. One engine — extract, chunk, embed, index, serve — turns a data source into four surfaces: semantic search, grounded chat with citations, an interactive entity graph, and a Model Context Protocol surface of tools, resources and code-generation prompts for Copilot and any MCP client. Desktop through Tauri, web through WebAssembly. A document is anything a source yields: a file, a database record, an instrument run, an API response.",
+      "Sources connect rather than fork. Connectors cover SharePoint, S3, Postgres, SQL Server, local files, a laboratory asset platform's REST API and chromatography systems, and the view is data-driven per source, so adding one is a profile and a connector. Demonstrated on a 4,115-asset corpus.",
+      "The graph is a knowledge graph: entity kinds are classes, typed fields are properties, and relations are edges to follow. The ontology is derived live from the data, so it cannot drift from what is there, and a source can declare vocabulary hints — SNOMED CT, FHIR, MeSH, DCAT.",
+      "Governance holds on every surface. Attribute-based access control trims search, chat, graph and MCP results to the reader; every typed field keeps its change history; and authentication is configuration — open on a desktop, reverse-proxy SSO, API keys, or per-user OIDC such as Microsoft Entra. Documents can also be embedded in published pages as a card, a detail pane or the full body, resolved on every view and trimmed to the reader's access: a window on the source, not a copy of it.",
+      "Architecturally it is a repointing, not a rebuild: the same ingestion, entity graph, ontology and retrieval moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and its governance are the product."
     ],
     "links": [],
     "references": [
@@ -324,6 +326,22 @@
         "venue": "modelcontextprotocol.io",
         "url": "https://modelcontextprotocol.io/specification/2025-06-18",
         "label": "modelcontextprotocol.io"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Agentic Datasets as an Engineering Control Plane",
+        "venue": "IEEE CCECE 2026, 326–332",
+        "url": "https://doi.org/10.1109/CCECE68150.2026.11610344",
+        "label": "doi:10.1109/CCECE68150.2026.11610344"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows",
+        "venue": "IEEE BigDataService 2026, 125–129",
+        "url": "https://doi.org/10.1109/BigDataService70481.2026.00025",
+        "label": "doi:10.1109/BigDataService70481.2026.00025"
       }
     ]
   },
