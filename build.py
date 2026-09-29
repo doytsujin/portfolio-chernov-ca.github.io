@@ -19,6 +19,7 @@ card. Its own URL is what gives it its own title, description and image.
 
 from __future__ import annotations
 
+import datetime
 import html
 import json
 import pathlib
@@ -278,7 +279,7 @@ def render_article(a: dict) -> str:
         )
     return (
         '<li class="entry">'
-        f'<span class="when">{esc(a["date"] or "")}</span>'
+        f'<span class="when">{esc(a["date"])}</span>'
         f'<span class="what">'
         f'<a class="title-link" href="{esc(reprint)}" target="_blank" '
         f'rel="noopener noreferrer">{esc(a["title"])}</a>{extra}'
@@ -705,6 +706,28 @@ def build_project_page(p: dict, index: int) -> str:
 
 
 # --------------------------------------------------------------------------
+# Input validation
+# --------------------------------------------------------------------------
+
+def check_articles(articles: list[dict]) -> list[str]:
+    """Every article carries its publication date. An undated entry once went
+    live as a blank cell at the top of Writing, so a missing date is refused
+    here rather than rendered."""
+    problems: list[str] = []
+    for a in articles:
+        d = a.get("date")
+        try:
+            ok = isinstance(d, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d) \
+                and datetime.date.fromisoformat(d)
+        except ValueError:
+            ok = False
+        if not ok:
+            problems.append(f'articles.json: "{a.get("title")}" has no valid date '
+                            f"(got {d!r}); give the publication date as YYYY-MM-DD")
+    return problems
+
+
+# --------------------------------------------------------------------------
 # Output validation
 # --------------------------------------------------------------------------
 
@@ -736,6 +759,9 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
         elif not (DOCS / rel).is_file():
             problems.append(f"{name}: og:image missing on disk: docs/{rel}")
 
+    if '<span class="when"></span>' in doc:
+        problems.append(f"{name}: an entry renders with an empty date")
+
     for tag in re.findall(r"<a [^>]*>", doc):
         if 'target="_blank"' in tag and "noopener" not in tag:
             problems.append(f"{name}: target=_blank without rel=noopener: {tag[:60]}")
@@ -749,10 +775,20 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
     return problems
 
 
+def fail(problems: list[str]) -> None:
+    for p in problems:
+        print(f"  {p}", file=sys.stderr)
+    sys.exit(f"BUILD FAILED -- {len(problems)} problem(s); do not deploy")
+
+
 def main() -> None:
     data = {k: load(k) for k in
             ("projects", "publications", "talks", "articles", "artifacts")}
     projects = data["projects"]
+
+    problems = check_articles(data["articles"])
+    if problems:
+        fail(problems)
 
     (DOCS / "p").mkdir(parents=True, exist_ok=True)
 
@@ -769,14 +805,11 @@ def main() -> None:
     for path, doc, _ in pages:
         path.write_text(doc, encoding="utf-8")
 
-    problems: list[str] = []
     for path, doc, base in pages:
         problems.extend(check(path.relative_to(DOCS).as_posix(), doc, base))
 
     if problems:
-        for p in problems:
-            print(f"  {p}", file=sys.stderr)
-        sys.exit(f"BUILD FAILED -- {len(problems)} problem(s); do not deploy")
+        fail(problems)
 
     total = sum(len(d.encode()) for _, d, _ in pages) / 1024
     print(f"wrote {len(pages)} pages ({total:.1f} kB): index + {len(projects)} projects")
