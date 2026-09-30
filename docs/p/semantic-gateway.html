@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="refresh" content="0; url=semantic-gateway.html">
-<meta name="robots" content="noindex">
 <title>Semantic gateway: search, graph and MCP over any data source — Alexander Chernov</title>
 <meta name="description" content="Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.">
 <link rel="canonical" href="https://portfolio.chernov.ca/p/semantic-gateway.html">
@@ -178,10 +176,60 @@ footer.bottom p{margin:0 0 .5rem}
 </head>
 <body>
 
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">Portfolio · Project 06</p><div class="theme" role="group" aria-label="Color scheme">
+<button type="button" data-theme="light" aria-pressed="true">Light</button>
+<button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+<button type="button" data-theme="system" aria-pressed="false">System</button>
+</div></div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems</p>
+    <nav class="jump">
+      <a href="../index.html">All projects</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#talks">Talks</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>
+
 <main class="wrap">
-  <p class="backlink">This project now lives at
-    <a href="semantic-gateway.html">Semantic gateway: search, graph and MCP over any data source</a>.</p>
+  <a class="backlink" href="../index.html">&larr; the whole portfolio</a>
+  <div class="project">
+<div class="project-head">
+<span class="num">06</span>
+<div class="project-title">
+<h1>Semantic gateway: search, graph and MCP over any data source</h1>
+<p class="meta">2025 – present · AstraZeneca</p>
+</div>
+<button class="copy" type="button" data-copy="../p/semantic-gateway.html" aria-label="Copy link to Semantic gateway: search, graph and MCP over any data source" title="Copy link to Semantic gateway: search, graph and MCP over any data source"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
+<p class="lede">One engine over any source — search, grounded chat, an entity graph and MCP, governed on every surface.</p>
+<p class="summary">Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.</p>
+<figure class="clip"><video data-clip src="../img/video/semantic-gateway.mp4" poster="../img/video/semantic-gateway-poster.jpg" width="1600" height="1000" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the gateway&#x27;s browser build: a natural-language search lit up on the entity graph, a chat answer with its cited sources, the graph under its lab and status lenses, and the capabilities a source publishes over MCP."></video><figcaption>Recorded live, in real time, in the gateway's static browser build, over a pseudonymised corpus of 4,115 lab-asset records: people, sites, labs and entity names are invented; the distributions are real. A search in plain words puts 12 hits on the graph; chat says where a freezer is from the record's own fields and cites 5 sources &mdash; this build has no language model, so the answer is extractive; the graph changes lens to lab, then status; and the source lists the 13 capabilities it publishes over MCP. Record text and identifiers are hidden in the recording; the notes are read off the page.</figcaption></figure>
+<p>A Rust and React semantic gateway. One engine — extract, chunk, embed, index, serve — turns a data source into four surfaces: semantic search, grounded chat with citations, an interactive entity graph, and a Model Context Protocol surface of tools, resources and code-generation prompts for Copilot and any MCP client. Desktop through Tauri, web through WebAssembly. A document is anything a source yields: a file, a database record, an instrument run, an API response.</p>
+<p>Sources connect rather than fork. Connectors cover SharePoint, S3, Postgres, SQL Server, local files, a laboratory asset platform's REST API and chromatography systems, and the view is data-driven per source, so adding one is a profile and a connector. Demonstrated on a 4,115-asset corpus.</p>
+<p>The graph is a knowledge graph: entity kinds are classes, typed fields are properties, and relations are edges to follow. The ontology is derived live from the data, so it cannot drift from what is there, and a source can declare vocabulary hints — SNOMED CT, FHIR, MeSH, DCAT.</p>
+<p>Governance holds on every surface. Attribute-based access control trims search, chat, graph and MCP results to the reader; every typed field keeps its change history; and authentication is configuration — open on a desktop, reverse-proxy SSO, API keys, or per-user OIDC such as Microsoft Entra. Documents can also be embedded in published pages as a card, a detail pane or the full body, resolved on every view and trimmed to the reader's access: a window on the source, not a copy of it.</p>
+<p>Architecturally it is a repointing, not a rebuild: the same ingestion, entity graph, ontology and retrieval moved from documents to equipment without redesign. The thesis is <em>a data foundation, not a chatbot</em> — the conversational surface is the demo, the entity graph and its governance are the product.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Hogan et al. (2021). Knowledge Graphs. <span class="venue">ACM Computing Surveys 54(4), 1–37</span>. <a href="https://doi.org/10.1145/3447772" target="_blank" rel="noopener noreferrer">doi:10.1145/3447772</a></li><li>Lewis et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <span class="venue">NeurIPS 2020</span>. <a href="https://arxiv.org/abs/2005.11401" target="_blank" rel="noopener noreferrer">arXiv:2005.11401</a></li><li>Model Context Protocol (2025). Model Context Protocol specification, revision 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li><li>Chernov (2026). Agentic Datasets as an Engineering Control Plane. <span class="venue">IEEE CCECE 2026, 326–332</span>. <a href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">doi:10.1109/CCECE68150.2026.11610344</a></li><li>Chernov (2026). Agentic Data Services: A Control-Plane Architecture for Adaptive Data Workflows. <span class="venue">IEEE BigDataService 2026, 125–129</span>. <a href="https://doi.org/10.1109/BigDataService70481.2026.00025" target="_blank" rel="noopener noreferrer">doi:10.1109/BigDataService70481.2026.00025</a></li></ol></section>
+<p class="no-url">No public URL — internal system.</p>
+
+</div>
 </main>
+<footer class="bottom">
+  <div class="wrap">
+    <p><a href="https://chernov.ca">chernov.ca</a> &middot;
+      <a href="https://github.com/doytsujin" target="_blank" rel="noopener noreferrer">github.com/doytsujin</a> &middot;
+      <a href="https://orcid.org/0009-0007-3198-2712" target="_blank" rel="noopener noreferrer">ORCID 0009-0007-3198-2712</a> &middot;
+      <a href="https://www.linkedin.com/in/thedoytsujin" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p>Employer-associated entries describe work done in that role and are not published by or on
+      behalf of an employer. Entries marked as independent are unaffiliated with any employer.</p>
+    <p>&copy; 2024&ndash;2026 Alexander Chernov. All rights reserved.</p>
+  </div>
+</footer>
 
 <script>
 (function(){

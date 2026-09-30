@@ -536,13 +536,13 @@ BEHAVIOUR = """
 
 
 def shell(*, title: str, description: str, canonical: str, og_image: str,
-          og_type: str, prefix: str, body: str) -> str:
+          og_type: str, prefix: str, body: str, head_extra: str = "") -> str:
     return f"""<!doctype html>
 <html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{esc(title)}</title>
+{head_extra}<title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
 <link rel="canonical" href="{esc(canonical)}">
 <link rel="icon" type="image/x-icon" href="{prefix}favicon.ico">
@@ -696,12 +696,34 @@ def build_project_page(p: dict, index: int) -> str:
 </main>
 {FOOTER}
 """
-    return shell(
+    return shell(**project_meta(p), prefix=pre, body=body)
+
+
+def project_meta(p: dict) -> dict:
+    return dict(
         title=f'{p["title"]} — Alexander Chernov',
         description=strip_tags(p.get("summary") or p.get("lede") or p["body"][0])[:300],
         canonical=f'{SITE}/p/{p["slug"]}.html',
         og_image=f'{SITE}/og/{p["slug"]}.png',
-        og_type="article", prefix=pre, body=body,
+        og_type="article",
+    )
+
+
+def build_alias_page(p: dict) -> str:
+    """A renamed project's old address. LinkedIn keeps the URL it was given, so
+    the old page stays: it carries the new page's title and card, names the new
+    page as canonical, and sends the reader on to it."""
+    target = f'{p["slug"]}.html'
+    body = f"""
+<main class="wrap">
+  <p class="backlink">This project now lives at
+    <a href="{esc(target)}">{esc(p["title"])}</a>.</p>
+</main>
+"""
+    return shell(
+        **project_meta(p), prefix="../", body=body,
+        head_extra=(f'<meta http-equiv="refresh" content="0; url={esc(target)}">\n'
+                    '<meta name="robots" content="noindex">\n'),
     )
 
 
@@ -766,6 +788,11 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
         if 'target="_blank"' in tag and "noopener" not in tag:
             problems.append(f"{name}: target=_blank without rel=noopener: {tag[:60]}")
 
+    # A forwarding page must forward to a page this build wrote.
+    for target in re.findall(r'http-equiv="refresh" content="0; url=([^"]*)"', doc):
+        if not (base / target).resolve().is_file():
+            problems.append(f"{name}: forwards to a missing page: {target}")
+
     # Every copy button must name something that exists, or it hands out a 404.
     for target in re.findall(r'data-copy="([^"]*)"', doc):
         path = (base / target.split("#")[0]).resolve()
@@ -796,6 +823,8 @@ def main() -> None:
     for i, p in enumerate(projects, start=1):
         pages.append((DOCS / "p" / f'{p["slug"]}.html',
                       build_project_page(p, i), DOCS / "p"))
+        for old in p.get("aliases", []):
+            pages.append((DOCS / "p" / f"{old}.html", build_alias_page(p), DOCS / "p"))
     pages.append((DOCS / "index.html", build_index(data), DOCS))
 
     # Write first, then check: copy-button and inter-page links point at files

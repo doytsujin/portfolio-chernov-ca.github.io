@@ -303,14 +303,22 @@
     }
   },
   {
-    "slug": "semantic-graph-mcp-gateway",
+    "slug": "semantic-gateway",
+    "aliases": ["semantic-graph-mcp-gateway"],
     "title": "Semantic gateway: search, graph and MCP over any data source",
     "lede": "One engine over any source — search, grounded chat, an entity graph and MCP, governed on every surface.",
     "summary": "Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
-    "image": "project-semantic-graph-mcp-gateway.png",
-    "caption": "The entity graph over a pseudonymised corpus of 4,115 lab-asset records — units, equipment and control computers. The labels are invented; the distributions are real.",
+    "og_image": "project-semantic-gateway-card.webp",
+    "video": {
+      "src": "img/video/semantic-gateway.mp4",
+      "poster": "img/video/semantic-gateway-poster.jpg",
+      "width": 1600,
+      "height": 1000,
+      "alt": "Screen recording of the gateway's browser build: a natural-language search lit up on the entity graph, a chat answer with its cited sources, the graph under its lab and status lenses, and the capabilities a source publishes over MCP.",
+      "caption": "Recorded live, in real time, in the gateway's static browser build, over a pseudonymised corpus of 4,115 lab-asset records: people, sites, labs and entity names are invented; the distributions are real. A search in plain words puts 12 hits on the graph; chat says where a freezer is from the record's own fields and cites 5 sources &mdash; this build has no language model, so the answer is extractive; the graph changes lens to lab, then status; and the source lists the 13 capabilities it publishes over MCP. Record text and identifiers are hidden in the recording; the notes are read off the page."
+    },
     "no_url_reason": "No public URL — internal system.",
     "body": [
       "A Rust and React semantic gateway. One engine — extract, chunk, embed, index, serve — turns a data source into four surfaces: semantic search, grounded chat with citations, an interactive entity graph, and a Model Context Protocol surface of tools, resources and code-generation prompts for Copilot and any MCP client. Desktop through Tauri, web through WebAssembly. A document is anything a source yields: a file, a database record, an instrument run, an API response.",

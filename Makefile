@@ -1,4 +1,4 @@
-.PHONY: build og clip varscope-clip check deploy deploy-dry serve help
+.PHONY: build og clip varscope-clip gateway-clip check deploy deploy-dry serve help
 
 # --- deploy to the edge ---------------------------------------------------
 # Same Akamai/Linode node as chernov.ca, provisioned in dk-semantic-backend-host.
@@ -52,6 +52,21 @@ varscope-clip: ## Re-record and compose the clinical-mapping clip (needs VARSCOP
 	@python3 image-prompts/compose_varscope.py image-src/varscope-rec $(VS_OUT)
 	@ffmpeg -y -loglevel error -sseof -1 -i $(VS_OUT) -frames:v 1 -q:v 3 $(VS_POSTER)
 	@echo "clip -> $(VS_OUT)"
+
+# The semantic gateway clip: recorded live from the gateway's static browser
+# build, which this repository does not hold. Serve that build's output on
+# GATEWAY_URL first. compose_gateway.py reads the frames it keeps with OCR and
+# refuses the clip if any shows the product's internal name or a record
+# identifier; that needs tesseract.
+GATEWAY_URL ?= http://127.0.0.1:4181/
+GW_OUT      ?= docs/img/video/semantic-gateway.mp4
+GW_POSTER   ?= docs/img/video/semantic-gateway-poster.jpg
+GW_CARD     ?= docs/img/project-semantic-gateway-card.webp
+
+gateway-clip: ## Re-record and compose the semantic gateway clip (needs GATEWAY_URL, ffmpeg, tesseract)
+	@rm -rf image-src/gateway-rec
+	@node image-prompts/record_gateway.mjs $(GATEWAY_URL) image-src/gateway-rec
+	@python3 image-prompts/compose_gateway.py image-src/gateway-rec $(GW_OUT) $(GW_POSTER) $(GW_CARD)
 
 serve: build ## Build, then serve docs/ on http://127.0.0.1:8000
 	@cd $(DIST) && python3 -m http.server 8000 --bind 127.0.0.1
