@@ -88,6 +88,12 @@ def shoot(port: int, name: str, out: pathlib.Path) -> None:
     )
 
 
+def first_video(p: dict) -> dict:
+    """A project's "video" is one clip or a list; the card uses the first."""
+    v = p.get("video") or {}
+    return v[0] if isinstance(v, list) and v else v if isinstance(v, dict) else {}
+
+
 def main() -> None:
     if CHROME is None:
         sys.exit("refusing: no chrome/chromium on PATH -- cards are committed, "
@@ -102,14 +108,14 @@ def main() -> None:
         eyebrow="Portfolio",
         title='Alexander <span class="sur">CHERNOV</span>',
         lede="Something proposes under uncertainty &mdash; what decides whether it may act? "
-             "Ten systems, one question.",
+             "Eleven systems, one question.",
         image=None))]
     for i, p in enumerate(projects, start=1):
         cards.append((p["slug"], card_html(
             eyebrow=f"Project {i:02d}",
             title=p["title"],
             lede=p.get("lede", ""),
-            image=p.get("og_image") or p.get("image") or (p.get("video") or {}).get("poster", "").removeprefix("img/") or None)))
+            image=p.get("og_image") or p.get("image") or first_video(p).get("poster", "").removeprefix("img/") or None)))
 
     for name, doc in cards:
         (TMP / f"{name}.html").write_text(doc, encoding="utf-8")

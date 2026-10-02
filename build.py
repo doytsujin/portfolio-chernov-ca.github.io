@@ -150,8 +150,10 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
             parts.append(f"<figcaption>{p['caption']}</figcaption>")
         parts.append("</figure>")
 
-    if p.get("video"):
-        parts.append(project_video(p["video"], prefix))
+    # "video" is one clip or a list of them, shown in order.
+    videos = p.get("video") or []
+    for v in [videos] if isinstance(videos, dict) else videos:
+        parts.append(project_video(v, prefix))
 
     if p.get("carousel"):
         parts.append(slide_carousel(p["carousel"], prefix))
@@ -174,11 +176,17 @@ def project_video(v: dict, prefix: str) -> str:
     controls instead."""
     src = f'{prefix}{v["src"]}'
     poster = f'{prefix}{v["poster"]}'
+    # "autoplay": false keeps a second clip on its poster with controls, so two
+    # recordings that open on the same title card do not loop it side by side.
+    autoplay = v.get("autoplay", True)
+    if not isinstance(autoplay, bool):
+        sys.exit(f'refusing: video {v["src"]}: "autoplay" must be true or false')
+    play = "autoplay muted loop" if autoplay else "controls muted"
     return (
         '<figure class="clip">'
         f'<video data-clip src="{esc(src)}" poster="{esc(poster)}" '
         f'width="{int(v["width"])}" height="{int(v["height"])}" '
-        'autoplay muted loop playsinline preload="metadata" '
+        f'{play} playsinline preload="metadata" '
         f'aria-label="{esc(v["alt"])}"></video>'
         f'<figcaption>{v["caption"]}</figcaption>'
         '</figure>'
@@ -614,8 +622,9 @@ def build_index(data: dict) -> str:
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">{esc(QUESTION)}<span>Ten systems, one question. Two of the ten are not
-      neural networks, which is the point rather than an omission.</span></p>
+    <p class="question">{esc(QUESTION)}<span>Eleven systems, one question. The newest,
+      <a href="p/agent-scope.html">Agent Scope</a>, answers it on a live cluster: the agent
+      proposes, the gate decides, and every decision leaves a record.</span></p>
     <nav class="jump">
       <a href="#projects">Projects</a>
       <a href="#live">Live &amp; installable</a>
@@ -771,6 +780,16 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
     for src in re.findall(r'<img src="([^"]*)"', doc):
         if not (base / src).resolve().is_file():
             problems.append(f"{name}: image referenced but not present: {src}")
+
+    # A clip whose file is missing renders as an empty box with no error, so
+    # both the video and its poster have to exist on disk.
+    for tag in re.findall(r"<video [^>]*>", doc):
+        for attr in ("src", "poster"):
+            m = re.search(rf'{attr}="([^"]*)"', tag)
+            if not m:
+                problems.append(f"{name}: video without {attr}: {tag[:60]}")
+            elif not (base / m.group(1)).resolve().is_file():
+                problems.append(f"{name}: video {attr} referenced but not present: {m.group(1)}")
 
     # A card with no image is the failure LinkedIn shows the world, so the
     # referenced file has to exist on disk, not merely be named.

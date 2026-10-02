@@ -18,6 +18,12 @@
     "blurb": "A control plane that refuses quantum results it cannot certify, running entirely in the browser with no backend."
   },
   {
+    "name": "Agent Scope",
+    "url": "https://agentscope.ca",
+    "kind": "site",
+    "blurb": "A control-plane view of agent systems: one node set in ten projections, an operator chat that reads the live cluster, and an admission gate that records every allow and deny, with two recorded demos."
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",
