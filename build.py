@@ -77,6 +77,23 @@ def strip_tags(s: str) -> str:
     return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", s)).strip()
 
 
+def preview_text(s: str, limit: int = 300) -> str:
+    """The description a link preview prints: plain text with entities decoded
+    (the meta tag escapes it again), cut to the last whole sentence that keeps
+    most of the limit, or else at a word boundary with an ellipsis -- never
+    mid-word."""
+    t = html.unescape(strip_tags(s))
+    if len(t) <= limit:
+        return t
+    head = t[:limit]
+    ends = [m.end() for m in re.finditer(r'[.!?…]["”’)\]]*(?=\s)', head)]
+    if ends and ends[-1] >= 0.6 * limit:
+        return head[:ends[-1]]
+    head = head[:limit - 1]
+    cut = head.rfind(" ")
+    return (head[:cut] if cut > 0 else head).rstrip(" ,;:—–-") + "…"
+
+
 def load(name: str):
     path = CONTENT / f"{name}.json"
     try:
@@ -711,7 +728,7 @@ def build_project_page(p: dict, index: int) -> str:
 def project_meta(p: dict) -> dict:
     return dict(
         title=f'{p["title"]} — Alexander Chernov',
-        description=strip_tags(p.get("summary") or p.get("lede") or p["body"][0])[:300],
+        description=preview_text(p.get("summary") or p.get("lede") or p["body"][0]),
         canonical=f'{SITE}/p/{p["slug"]}.html',
         og_image=f'{SITE}/og/{p["slug"]}.png',
         og_type="article",
@@ -790,6 +807,15 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
                 problems.append(f"{name}: video without {attr}: {tag[:60]}")
             elif not (base / m.group(1)).resolve().is_file():
                 problems.append(f"{name}: video {attr} referenced but not present: {m.group(1)}")
+
+    # The description is what a link preview prints under the title. Cut
+    # mid-word it reads as a broken page, so it must end like a sentence or
+    # with an ellipsis.
+    for desc in re.findall(r'<meta property="og:description" content="([^"]*)"', doc):
+        if not re.search(r'[.!?…]["”’)\]]*$', html.unescape(desc).strip()):
+            problems.append(f"{name}: og:description ends mid-sentence: ...{html.unescape(desc)[-40:]!r}")
+        if re.search(r"&(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);", html.unescape(desc)):
+            problems.append(f"{name}: og:description shows a literal entity: {html.unescape(desc)[:60]!r}...")
 
     # A card with no image is the failure LinkedIn shows the world, so the
     # referenced file has to exist on disk, not merely be named.
