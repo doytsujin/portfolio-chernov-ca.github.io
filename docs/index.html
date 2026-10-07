@@ -186,9 +186,11 @@ footer.bottom p{margin:0 0 .5rem}
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">Something proposes under uncertainty — what decides whether it may act?<span>Eleven systems, one question. The newest,
-      <a href="p/agent-scope.html">Agent Scope</a>, answers it on a live cluster: the agent
-      proposes, the gate decides, and every decision leaves a record.</span></p>
+    <p class="question">Something proposes under uncertainty — what decides whether it may act?<span>Twelve systems, one question.
+      <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
+      proposes, the gate decides, and every decision leaves a record.
+      <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer
+      reaches a user only when every check passes.</span></p>
     <nav class="jump">
       <a href="#projects">Projects</a>
       <a href="#live">Live &amp; installable</a>
@@ -435,6 +437,28 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Everything described here runs and is measured on a real cluster: the projections, the read commands, the enforced gate and the decision artifacts, kept on a hash-chained ledger that survives a restart. The site publishes that status row by row, and the next step, reading policy from a cluster resource, goes through the one seam where policy is already assembled. The trace view in both demos is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm.</p>
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Sarkar, Al-Ars and Bertels (2021). QuASeR: Quantum Accelerated de novo DNA sequence reconstruction. <span class="venue">PLOS ONE 16(4), e0249850</span>. <a href="https://doi.org/10.1371/journal.pone.0249850" target="_blank" rel="noopener noreferrer">doi:10.1371/journal.pone.0249850</a></li><li>Griffith et al. (2017). CIViC is a community knowledgebase for expert crowdsourcing the clinical interpretation of variants in cancer. <span class="venue">Nature Genetics 49(2), 170–174</span>. <a href="https://doi.org/10.1038/ng.3774" target="_blank" rel="noopener noreferrer">doi:10.1038/ng.3774</a></li><li>Bergholm et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1811.04968" target="_blank" rel="noopener noreferrer">arXiv:1811.04968</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">agentscope.ca</a><a class="lnk" href="https://genequbit.agentscope.ca" target="_blank" rel="noopener noreferrer">genequbit.agentscope.ca</a><a class="lnk" href="https://infra.agentscope.ca" target="_blank" rel="noopener noreferrer">infra.agentscope.ca</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23006165" target="_blank" rel="noopener noreferrer">Gene-agents video: Zenodo 10.5281/zenodo.23006165</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23006181" target="_blank" rel="noopener noreferrer">Ops-agent video: Zenodo 10.5281/zenodo.23006181</a><a class="lnk mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a><a class="lnk mono" href="https://github.com/doytsujin/ok-admission-gate-demo" target="_blank" rel="noopener noreferrer">ok-admission-gate-demo</a></p>
+</article>
+<article class="project" id="grafferene">
+<div class="project-head">
+<span class="num">12</span>
+<div class="project-title">
+<h3><a class="self" href="p/grafferene.html">Grafferene: measure what a response cache would save before it serves an answer</a></h3>
+<p class="meta">2026 – present · Independent work, unaffiliated with any employer.</p>
+</div>
+<button class="copy" type="button" data-copy="p/grafferene.html" aria-label="Copy link to Grafferene: measure what a response cache would save before it serves an answer" title="Copy link to Grafferene: measure what a response cache would save before it serves an answer"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
+<p class="lede">What a cache saves depends on how much the traffic repeats. So it measures that first, without serving a single cached answer.</p>
+<p class="summary">An LLM response cache that starts by watching. A week of real traffic yields a report of would-be hits and the stored replies it would have returned, and the owner decides from it whether, and how strictly, serving begins.</p>
+<figure><img src="img/project-grafferene.webp" alt="Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca." loading="lazy" decoding="async">
+<figcaption>Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca.</figcaption>
+</figure>
+<p>Grafferene is a response cache for LLM endpoints. In measure-only mode it sits in front of an OpenAI-compatible endpoint for a week, every request still reaches the model, and the report shows what caching would have saved and the answers it would have served, side by side, for the owner to judge.</p>
+<p>When serving is on, an answer comes from the cache only if every check passes: an exact repeat in the same tenant and namespace, or a reworded question asked in the same context as the original, optionally confirmed by a separate verification service. If verification cannot complete, the match is not served. Everything else goes to the model.</p>
+<p>Measured on one node. Against vLLM on a laptop GPU, measure-only mode reported exactly the hits a serving run of the same 32-request trace produced, row by row, while all 32 requests reached the model. On that trace, built to repeat, a strict threshold served 13 of 32 and cut prompt tokens by 41% with no wrong answers on the trace; the same question under different instructions, or in another namespace, always reached the model. Over one million real embeddings (laptop CPU, search only), the approximate index found every match exhaustive search found, at 10 ms per search instead of 87 ms. Savings were checked against the model server&rsquo;s own counters.</p>
+<p>Stated on the site rather than left to be discovered: in public open chat only about 3% of prompts repeat across users, and on human-labeled look-alike question pairs about one similar-question match in five at the default threshold is a different question. That is why the report shows the answers, not only the rate.</p>
+<p>Transferable principle: measure what a change would do on real traffic before letting it act, and show the cases it would get wrong.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>Zhao et al. (2024). WildChat: 1M ChatGPT Interaction Logs in the Wild. <span class="venue">ICLR 2024</span>. <a href="https://arxiv.org/abs/2405.01470" target="_blank" rel="noopener noreferrer">arXiv:2405.01470</a></li><li>Wang et al. (2019). GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding. <span class="venue">ICLR 2019 (source of the QQP question pairs)</span>. <a href="https://arxiv.org/abs/1804.07461" target="_blank" rel="noopener noreferrer">arXiv:1804.07461</a></li><li>Kwon et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. <span class="venue">SOSP 2023, 611–626</span>. <a href="https://doi.org/10.1145/3600006.3613165" target="_blank" rel="noopener noreferrer">doi:10.1145/3600006.3613165</a></li></ol></section>
+<p class="links"><a class="lnk" href="https://grafferene.ca" target="_blank" rel="noopener noreferrer">grafferene.ca</a><a class="lnk" href="https://grafferene.ca/report.html" target="_blank" rel="noopener noreferrer">Sample report</a><a class="lnk" href="https://www.linkedin.com/company/grafferene/" target="_blank" rel="noopener noreferrer">Grafferene on LinkedIn</a></p>
 </article>
   </section>
 

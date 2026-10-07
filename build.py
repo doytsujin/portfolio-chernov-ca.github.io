@@ -639,9 +639,11 @@ def build_index(data: dict) -> str:
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Associate Principal Data Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">{esc(QUESTION)}<span>Eleven systems, one question. The newest,
-      <a href="p/agent-scope.html">Agent Scope</a>, answers it on a live cluster: the agent
-      proposes, the gate decides, and every decision leaves a record.</span></p>
+    <p class="question">{esc(QUESTION)}<span>Twelve systems, one question.
+      <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
+      proposes, the gate decides, and every decision leaves a record.
+      <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer
+      reaches a user only when every check passes.</span></p>
     <nav class="jump">
       <a href="#projects">Projects</a>
       <a href="#live">Live &amp; installable</a>

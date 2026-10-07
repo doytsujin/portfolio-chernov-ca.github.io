@@ -304,7 +304,9 @@
   },
   {
     "slug": "semantic-gateway",
-    "aliases": ["semantic-graph-mcp-gateway"],
+    "aliases": [
+      "semantic-graph-mcp-gateway"
+    ],
     "title": "Semantic gateway: search, graph and MCP over any data source",
     "lede": "One engine over any source — search, grounded chat, an entity graph and MCP, governed on every surface.",
     "summary": "Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.",
@@ -636,6 +638,63 @@
         "venue": "arXiv preprint",
         "url": "https://arxiv.org/abs/1811.04968",
         "label": "arXiv:1811.04968"
+      }
+    ]
+  },
+  {
+    "slug": "grafferene",
+    "title": "Grafferene: measure what a response cache would save before it serves an answer",
+    "lede": "What a cache saves depends on how much the traffic repeats. So it measures that first, without serving a single cached answer.",
+    "summary": "An LLM response cache that starts by watching. A week of real traffic yields a report of would-be hits and the stored replies it would have returned, and the owner decides from it whether, and how strictly, serving begins.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "image": "project-grafferene.webp",
+    "caption": "Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca.",
+    "body": [
+      "Grafferene is a response cache for LLM endpoints. In measure-only mode it sits in front of an OpenAI-compatible endpoint for a week, every request still reaches the model, and the report shows what caching would have saved and the answers it would have served, side by side, for the owner to judge.",
+      "When serving is on, an answer comes from the cache only if every check passes: an exact repeat in the same tenant and namespace, or a reworded question asked in the same context as the original, optionally confirmed by a separate verification service. If verification cannot complete, the match is not served. Everything else goes to the model.",
+      "Measured on one node. Against vLLM on a laptop GPU, measure-only mode reported exactly the hits a serving run of the same 32-request trace produced, row by row, while all 32 requests reached the model. On that trace, built to repeat, a strict threshold served 13 of 32 and cut prompt tokens by 41% with no wrong answers on the trace; the same question under different instructions, or in another namespace, always reached the model. Over one million real embeddings (laptop CPU, search only), the approximate index found every match exhaustive search found, at 10 ms per search instead of 87 ms. Savings were checked against the model server&rsquo;s own counters.",
+      "Stated on the site rather than left to be discovered: in public open chat only about 3% of prompts repeat across users, and on human-labeled look-alike question pairs about one similar-question match in five at the default threshold is a different question. That is why the report shows the answers, not only the rate.",
+      "Transferable principle: measure what a change would do on real traffic before letting it act, and show the cases it would get wrong."
+    ],
+    "links": [
+      {
+        "label": "grafferene.ca",
+        "url": "https://grafferene.ca"
+      },
+      {
+        "label": "Sample report",
+        "url": "https://grafferene.ca/report.html"
+      },
+      {
+        "label": "Grafferene on LinkedIn",
+        "url": "https://www.linkedin.com/company/grafferene/"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Zhao et al.",
+        "year": 2024,
+        "title": "WildChat: 1M ChatGPT Interaction Logs in the Wild",
+        "venue": "ICLR 2024",
+        "url": "https://arxiv.org/abs/2405.01470",
+        "label": "arXiv:2405.01470"
+      },
+      {
+        "authors": "Wang et al.",
+        "year": 2019,
+        "title": "GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding",
+        "venue": "ICLR 2019 (source of the QQP question pairs)",
+        "url": "https://arxiv.org/abs/1804.07461",
+        "label": "arXiv:1804.07461"
+      },
+      {
+        "authors": "Kwon et al.",
+        "year": 2023,
+        "title": "Efficient Memory Management for Large Language Model Serving with PagedAttention",
+        "venue": "SOSP 2023, 611–626",
+        "url": "https://doi.org/10.1145/3600006.3613165",
+        "label": "doi:10.1145/3600006.3613165"
       }
     ]
   }

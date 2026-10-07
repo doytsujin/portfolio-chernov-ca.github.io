@@ -108,7 +108,7 @@ def main() -> None:
         eyebrow="Portfolio",
         title='Alexander <span class="sur">CHERNOV</span>',
         lede="Something proposes under uncertainty &mdash; what decides whether it may act? "
-             "Eleven systems, one question.",
+             "Twelve systems, one question.",
         image=None))]
     for i, p in enumerate(projects, start=1):
         cards.append((p["slug"], card_html(
