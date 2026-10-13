@@ -663,6 +663,10 @@
         "url": "https://grafferene.ca"
       },
       {
+        "label": "demo.grafferene.ca",
+        "url": "https://demo.grafferene.ca"
+      },
+      {
         "label": "Sample report",
         "url": "https://grafferene.ca/report.html"
       },
@@ -695,6 +699,16 @@
         "venue": "SOSP 2023, 611–626",
         "url": "https://doi.org/10.1145/3600006.3613165",
         "label": "doi:10.1145/3600006.3613165"
+      }
+    ],
+    "video": [
+      {
+        "src": "img/video/grafferene-demo.mp4",
+        "poster": "img/video/grafferene-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Grafferene demo: recorded WildChat requests travel from three tenants' users through Grafferene to the semantic cache or on to the model, a visitor's question is decided in the browser, and a retired model version's cached answers are removed in one wave.",
+        "caption": "The demo as recorded: 2 minutes 3 seconds of the deployed demo, in real time, captions on screen and no sound. 962 recorded WildChat turns from 176 users in three tenants are replayed through Grafferene, each request answered from the cache or sent on to the model with its reason on the record. A question typed into the page is decided in the browser by an 8-bit copy of the recording&rsquo;s embedding model. Tenant A retires a model version and its answers leave in one wave: 433 removed, and 2 under a retention hold kept out of service; when a handbook page changes for Tenant B, 252 answers stay in Probation, marked as possibly out of date. Every number in a caption was read off the page as it was recorded."
       }
     ]
   },
