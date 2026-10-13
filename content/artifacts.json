@@ -24,6 +24,12 @@
     "blurb": "A control-plane view of agent systems: one node set in ten projections, an operator chat that reads the live cluster, and an admission gate that records every allow and deny, with two recorded demos."
   },
   {
+    "name": "Agentic Crawl",
+    "url": "https://agenticcrawl.ca",
+    "kind": "site",
+    "blurb": "A goal-driven web crawler that checks every request against the site’s rules before sending it and records every choice with its reason, with a live demo of recorded crawls."
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",

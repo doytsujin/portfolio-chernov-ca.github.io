@@ -697,5 +697,75 @@
         "label": "doi:10.1145/3600006.3613165"
       }
     ]
+  },
+  {
+    "slug": "agentic-crawl",
+    "title": "Agentic Crawl: collect what a goal needs from the web, and nothing the sites’ rules forbid",
+    "lede": "A crawler that reads everything in order spends its budget where the links happen to lead. One with a goal goes straight there, and keeps every site’s rules.",
+    "summary": "A goal-driven web crawler. Given a goal and the sites to read, it follows the most promising link next, checks each request against scope, site terms, robots.txt and AI-crawler rules before sending it, and writes down every choice and refusal with its reason. A recorded demo replays its crawls of a generated test corpus.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agentic-crawl-demo.mp4",
+        "poster": "img/video/agentic-crawl-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agentic Crawl demo: a crawl tree growing from the agent through each site toward the pages a goal calls for, a request lane per site, and the decision trace behind each choice, ending with the run held against the test corpus’s truth.",
+        "caption": "The demo as recorded: 2 minutes 23 seconds of the deployed demo, captions on screen and no sound. One goal, every tent’s price and warranty, from the first request to the crawl’s own stop: a link to the cart refused without a request, two sites left alone because their terms forbid the crawl or are unclear, a session-id trap learned, and the run held against the corpus’s truth. Every number in a caption was read off the page as it was recorded. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Agentic Crawl is a web crawler with a goal. Told what to look for and which sites to read, it reads every start page first, then takes whichever queued link comes closest to the goal. Each link is scored on its own words (its text, its address, the title of the page it sits on) and on the page it was found on, by an embedding model that runs where the crawler runs. When two addresses that differ only by a parameter, such as a session id or a print view, return the same page, the parameter is learned and further copies are skipped. After a run of pages well below the best it has found, the crawl ends by itself and says why. What comes back is the pages, their content as an Agentic Dataset that says where each item came from, and the record.",
+      "The agent chooses the order; it never fetches anything itself. Every request, for every page and every redirect, passes the same checks before it is sent: the crawl’s scope, the site’s terms, its robots.txt and its rules for AI crawlers, none of which the agent can change. A refusal sends nothing and goes on the record with its reason. Each step is written as a Brain API decision record (the links weighed and their scores, what the rules said, what was taken and why) in a hash-chained log that can be verified afterward, and every extracted page carries where and when it was fetched and under which decision.",
+      "Measured on a test corpus built for checking crawlers exactly: nine generated sites and 1,799 pages, with every page’s content, link, rule, trap and change fixed before any crawl starts, and every request read from the sites’ own server logs rather than from the crawler. Across 36 recorded crawls and 39,718 requests, none reached a page that robots.txt, a site’s rules for AI crawlers or its terms put off limits, and each of the 1,210 refusals gave the reason the corpus itself gives. For a goal of 40 product pages, the agent found them all in 90 requests where a breadth-first crawl of the same sites under the same rules needed 1,121; for backup guides, forum advice and library books, 51 vs 297, 61 vs 1,718 and 75 vs 860. Session-id links that never end took two thirds of a breadth-first crawl’s requests; the agent fetched three copies, learned that the parameter changes nothing, and skipped the rest. A second, held-out corpus gives the same picture.",
+      "Extraction and change detection were measured the same way. Extracted text scored 0.972 F1 against the exact content of 1,648 pages, and no page lost more than half of it, including pages built from separate sections, which had lost a third of their text before. Re-crawled a day and a week later, all 1,650 changed-or-unchanged verdicts agreed with what had in fact changed, including on servers that kept reporting &ldquo;unchanged&rdquo; when it was not.",
+      "The demo replays recorded crawls in the browser in three linked views: the crawl as a tree growing from the agent through each site toward the goal’s pages, a request lane per site taken from the servers’ own log, and the decision trace behind each choice, with a Truth tab that holds each run against the corpus’s own answers. The test sites are generated, and their small vocabularies make matching easier than on real sites; a free pilot measures the same things on a customer’s own sites.",
+      "Transferable principle: let the agent choose the order, and keep the decision to send a request in checks it cannot change."
+    ],
+    "links": [
+      {
+        "label": "agenticcrawl.ca",
+        "url": "https://agenticcrawl.ca"
+      },
+      {
+        "label": "demo.agenticcrawl.ca",
+        "url": "https://demo.agenticcrawl.ca"
+      },
+      {
+        "label": "All results, goal by goal",
+        "url": "https://agenticcrawl.ca/results.html"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23328688",
+        "url": "https://doi.org/10.5281/zenodo.23328688"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Chakrabarti et al.",
+        "year": 1999,
+        "title": "Focused crawling: a new approach to topic-specific Web resource discovery",
+        "venue": "Computer Networks 31(11–16), 1623–1640",
+        "url": "https://doi.org/10.1016/S1389-1286(99)00052-3",
+        "label": "doi:10.1016/S1389-1286(99)00052-3"
+      },
+      {
+        "authors": "Koster et al.",
+        "year": 2022,
+        "title": "Robots Exclusion Protocol",
+        "venue": "RFC 9309, IETF",
+        "url": "https://doi.org/10.17487/RFC9309",
+        "label": "doi:10.17487/RFC9309"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.21299",
+        "label": "arXiv:2609.21299"
+      }
+    ]
   }
 ]
