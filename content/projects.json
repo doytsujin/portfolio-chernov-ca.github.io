@@ -785,5 +785,90 @@
         "label": "arXiv:2609.21299"
       }
     ]
+  },
+  {
+    "slug": "adam",
+    "title": "adam: AI-written ADaM derivations, accepted only on an exact match",
+    "lede": "A model writes a clinical derivation in seconds. It counts only when its column reproduces the reference, row for row, in a verdict anyone can re-run.",
+    "summary": "A check for AI-written statistical programs: a model drafts each ADaM column with admiral, the draft runs in isolation on public SDTM data, and the column counts only if it equals the published reference exactly. Programs and verdicts stay on the record with their reasons, and a browser can reproduce every verdict.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/adam-demo.mp4",
+        "poster": "img/video/adam-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the adam demo: the results for gpt-5 and qwen2.5-coder 7B, the table of every variable with each model's verdict, the program gpt-5 wrote for a screen-failure date beside the 7B model's failed attempt, a column gpt-5 filled where the reference is empty, and that verdict re-run in the browser.",
+        "caption": "The demo as recorded: 1 minute 57 seconds of the deployed demo, captions on screen and no sound. An accepted derivation, the screen-failure date gpt-5 derived from the disposition records, with the 7B model&rsquo;s program for the same variable stopping with an error; then AEACN, which the reference leaves empty and gpt-5 filled for all 1,191 adverse events; and that verdict re-run in the browser with webR, reaching the same 1,191 differing rows. Every number in a caption was read off the page as it was recorded. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "adam asks a model to write the <code>{admiral}</code> program for one ADaM variable at a time. The model gets the variable&rsquo;s name, label and required class, and every input column&rsquo;s name, class, label and a few example values; never the reference values of the variable, and never the template code. The program runs in a fresh R process with no network, a two-minute limit and a memory limit, and <code>{diffdf}</code> compares the column it produces with the published reference on the dataset keys. Any differing row, a wrong class, lost rows or an error is a rejection, recorded with its reason. It is the check a statistical programming team runs between a first-line program and its second-line QC, with a model in the first-line seat.",
+      "The data are public: the CDISC pilot study as packaged by pharmaverse. pharmaversesdtm 1.4.0 and admiral 1.4.1 are the exact set that produced pharmaverseadam 1.3.0, and running admiral&rsquo;s own templates on them reproduces both reference datasets with zero differences. The 159 targets are every column of ADSL and ADAE except the keys: 109 copied unchanged from one input column and 50 derived. The protocol was committed before either model was asked anything, and the check passed its own self-test first, accepting 2 known-correct programs and rejecting all 8 planted faults for the planted reason, from a date one day late and a population flag missing placebo to a network call and an endless loop.",
+      "gpt-5 had 118 of 159 columns accepted: 89 of 109 copied and 29 of 50 derived. qwen2.5-coder 7B, running on a laptop GPU, had 35 of 159. On the same variables, 92 were accepted only for gpt-5 and 9 only for the local model (exact McNemar, p &lt; 0.001). The record also shows what a miss looks like. Nine of gpt-5&rsquo;s 38 wrong-value rejections are columns the reference leaves empty, which it filled anyway, with invented dictionary codes, consent dates, and an action taken for every one of the 1,191 adverse events, inferred from the dosing records. An exact comparison catches each of them.",
+      "Any verdict can be re-run in the browser. The demo carries the same data files and the same R comparison code and runs them with webR, so a verdict does not depend on trusting the machine that recorded it. All 318 recorded verdicts reproduced in headless Chrome through the demo&rsquo;s own button. Here the reference is the output of the public admiral templates; in production it would be an independent second-line QC program, and the check is agreement with that reference rather than validation in the GxP sense.",
+      "Transferable principle: let a model write the first-line program, and accept its output only where an independent check reproduces it exactly."
+    ],
+    "links": [
+      {
+        "label": "adam.chernov.ca",
+        "url": "https://adam.chernov.ca"
+      },
+      {
+        "label": "demo.adam.chernov.ca",
+        "url": "https://demo.adam.chernov.ca"
+      },
+      {
+        "label": "Results and limits",
+        "url": "https://adam.chernov.ca/#results"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23361650",
+        "url": "https://doi.org/10.5281/zenodo.23361650"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Straub et al.",
+        "year": 2026,
+        "title": "admiral: ADaM in R Asset Library",
+        "venue": "R package version 1.4.1, CRAN",
+        "url": "https://doi.org/10.32614/CRAN.package.admiral",
+        "label": "doi:10.32614/CRAN.package.admiral"
+      },
+      {
+        "authors": "Gautier et al.",
+        "year": 2026,
+        "title": "pharmaverseadam: ADaM Test Data for the ‘Pharmaverse’ Family of Packages",
+        "venue": "R package version 1.3.0, CRAN",
+        "url": "https://doi.org/10.32614/CRAN.package.pharmaverseadam",
+        "label": "doi:10.32614/CRAN.package.pharmaverseadam"
+      },
+      {
+        "authors": "Patil et al.",
+        "year": 2026,
+        "title": "pharmaversesdtm: SDTM Test Data for the ‘Pharmaverse’ Family of Packages",
+        "venue": "R package version 1.4.0, CRAN",
+        "url": "https://doi.org/10.32614/CRAN.package.pharmaversesdtm",
+        "label": "doi:10.32614/CRAN.package.pharmaversesdtm"
+      },
+      {
+        "authors": "Gower-Page and Martin",
+        "year": 2025,
+        "title": "diffdf: Dataframe Difference Tool",
+        "venue": "R package version 1.1.2, CRAN",
+        "url": "https://doi.org/10.32614/CRAN.package.diffdf",
+        "label": "doi:10.32614/CRAN.package.diffdf"
+      },
+      {
+        "authors": "McNemar",
+        "year": 1947,
+        "title": "Note on the sampling error of the difference between correlated proportions or percentages",
+        "venue": "Psychometrika 12(2), 153–157",
+        "url": "https://doi.org/10.1007/BF02295996",
+        "label": "doi:10.1007/BF02295996"
+      }
+    ]
   }
 ]

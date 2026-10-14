@@ -30,6 +30,12 @@
     "blurb": "A goal-driven web crawler that checks every request against the site’s rules before sending it and records every choice with its reason, with a live demo of recorded crawls."
   },
   {
+    "name": "adam",
+    "url": "https://adam.chernov.ca",
+    "kind": "site",
+    "blurb": "AI-written ADaM derivations accepted only on an exact match with the published reference, with every program and verdict re-runnable in the browser on public pharmaverse data."
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",

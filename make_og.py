@@ -108,7 +108,7 @@ def main() -> None:
         eyebrow="Portfolio",
         title='Alexander <span class="sur">CHERNOV</span>',
         lede="Something proposes under uncertainty &mdash; what decides whether it may act? "
-             "Thirteen systems, one question.",
+             "Fourteen systems, one question.",
         image=None))]
     for i, p in enumerate(projects, start=1):
         cards.append((p["slug"], card_html(
@@ -116,6 +116,15 @@ def main() -> None:
             title=p["title"],
             lede=p.get("lede", ""),
             image=p.get("og_image") or p.get("image") or first_video(p).get("poster", "").removeprefix("img/") or None)))
+
+    # Optional card names on the command line render only those cards
+    # (e.g. `python3 make_og.py site adam`); with none, every card is rendered.
+    wanted = set(sys.argv[1:])
+    unknown = wanted - {name for name, _ in cards}
+    if unknown:
+        sys.exit(f"refusing: no such card: {', '.join(sorted(unknown))}")
+    if wanted:
+        cards = [(name, doc) for name, doc in cards if name in wanted]
 
     for name, doc in cards:
         (TMP / f"{name}.html").write_text(doc, encoding="utf-8")
