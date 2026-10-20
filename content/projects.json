@@ -870,5 +870,86 @@
         "label": "doi:10.1007/BF02295996"
       }
     ]
+  },
+  {
+    "slug": "agentic-loom",
+    "title": "Agentic Loom: governed batch recipes in which every step is admitted before it runs",
+    "lede": "A batch recipe usually runs on the strength of its approval. Here each step asks first, and a refused step goes to a person, on the record.",
+    "summary": "A recipe designer and runner for regulated batch processes. Recipes are built from what each unit of equipment declares, every phase is checked by an admission model while it is written and again at its gate, and a refused step waits for a person who may choose only what the model permits.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agentic-loom-demo.mp4",
+        "poster": "img/video/agentic-loom-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agentic Loom demo: a recipe built from blocks for one unit of equipment, each phase marked admitted or will pause as it is written, the recipe compiled into a graph of gates, an operator panel at a refused step offering accept as is, rework or reject, the batch record with every decision, and planning findings for a contended unit and an excluded material in a lot’s history.",
+        "caption": "The demo as recorded: 4 minutes 22 seconds of a local build on demonstration descriptors, captions on screen and no sound. A recipe built from one unit’s declarations and checked live, phase by phase (1 admitted, 3 will pause on the unit’s recorded state); its plan followed through the unit’s PackML states; the recipe compiled one way into a graph with one gate per phase; a refused step where the panel offers exactly accept as is, rework or reject; the run’s batch record with its 9 decision entries; then the same recipe planned against another recipe that holds the unit, and against a lot history that carries an excluded material. Every number in a caption was read off the page as it was recorded. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Agentic Loom treats a recipe as a sequence of phases on units of equipment, written in the ISA-88 hierarchy of procedure, unit procedure, operation and phase, and lets no phase run on the strength of the recipe alone. The editor’s palette comes from the units’ own descriptors, one block per declared action with each parameter’s limit beside it, so a recipe cannot ask a unit for an action it never declared. As the author types, each phase shows the answer its gate will give at run time: admitted, will pause, or undecided. Where the declarations cannot tell, the editor says so instead of guessing, and an assumption the author makes is marked as one and never used by a run. The recipe then compiles one way into the graph that runs, one gate per phase, and the master recipe is fixed by its hash before it runs.",
+      "At run time a refused step pauses the run. The operator sees why and is offered only the dispositions the admission model allows for that refusal: accept as is with a justification, rework and ask again, or reject with a reason. A refusal that reports missing evidence cannot be waived, because signing it off would turn “we cannot tell” into “it is fine”, and a check that does not answer in time leaves the step undecided, never accepted. The screen offers only what is permitted, and the server checks every decision again before it takes effect. Each decision stays in the batch record under its own name (blocked, reworked, accepted as is, rejected, upheld); a fix that passes the check is a different event from an override, and the refusal remains whatever was decided.",
+      "Agents get the same gates. An agent connected over the Model Context Protocol can start a run and answer a gate, but only through the checks a person faces: an acceptance still needs a justification, and is still refused where the model does not allow it. Each unit’s descriptor is an Agentic Datasets declaration carrying its place in the ISA-88 model, its PackML state model and the command each action issues in each state, so the plan check follows a recipe to its end. While a recipe is planned, Agentic Loom also shows when another recipe holds the same unit over an overlapping window, and when a lot’s history carries a material the procedure excludes; these are findings for the author, and a gate at run time asks only about its own step.",
+      "agenticloom.ca gives each standard its status: ISA-88 recipes and PackML states built, the OPC UA gate measured, batch records in Agentic Loom’s own format, ISA-95 exports and MTP planned. In the recipe editor, each phase’s live verdict matched the decision its gate made when the demonstration recipe ran. At the equipment, an admission gate inside a real OPC UA server checked each call against the unit’s live PackML state: 90 of 90 disallowed calls were refused, none of the refused work ran, and the gate took 49.5 µs per call (median of 30 replicates, simulated units). The recipe runner does not connect to OPC UA yet, every result comes from demonstration descriptors rather than a plant, and compliance with Part 11, Annex 11 or GAMP 5 is a site’s to establish after validation.",
+      "Transferable principle: let agents and people propose, let a model of the plant admit each step, and make every exception a person’s decision, kept with its reason."
+    ],
+    "links": [
+      {
+        "label": "agenticloom.ca",
+        "url": "https://agenticloom.ca"
+      },
+      {
+        "label": "Standards: what is built and what is not yet",
+        "url": "https://agenticloom.ca/#standards"
+      },
+      {
+        "label": "What has been measured",
+        "url": "https://agenticloom.ca/#evidence"
+      },
+      {
+        "label": "Agentic Loom on LinkedIn",
+        "url": "https://www.linkedin.com/company/agenticloom/"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23487481",
+        "url": "https://doi.org/10.5281/zenodo.23487481"
+      }
+    ],
+    "references": [
+      {
+        "authors": "IEC",
+        "year": 1997,
+        "title": "IEC 61512-1: Batch control — Part 1: Models and terminology (ISA-88)",
+        "venue": "International standard",
+        "url": "https://webstore.iec.ch/en/publication/5528",
+        "label": "webstore.iec.ch"
+      },
+      {
+        "authors": "ISA",
+        "year": 2022,
+        "title": "ISA-TR88.00.02-2022, Machine and Unit States: An implementation example of ISA-88.00.01 (PackML)",
+        "venue": "Technical report",
+        "url": "https://www.isa.org/products/isa-tr88-00-02-2022-machine-and-unit-states-an-imp",
+        "label": "isa.org"
+      },
+      {
+        "authors": "IEC",
+        "year": 2025,
+        "title": "IEC 62541-1: OPC Unified Architecture — Part 1: Overview and concepts",
+        "venue": "International standard, edition 1.0",
+        "url": "https://webstore.iec.ch/en/publication/81513",
+        "label": "webstore.iec.ch"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.21299",
+        "label": "arXiv:2609.21299"
+      }
+    ]
   }
 ]

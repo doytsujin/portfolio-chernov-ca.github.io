@@ -639,7 +639,7 @@ def build_index(data: dict) -> str:
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Principal Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">{esc(QUESTION)}<span>Fourteen systems, one question.
+    <p class="question">{esc(QUESTION)}<span>Fifteen systems, one question.
       <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
       proposes, the gate decides, and every decision leaves a record.
       <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer
@@ -647,7 +647,9 @@ def build_index(data: dict) -> str:
       <a href="p/agentic-crawl.html">Agentic Crawl</a> answers it for a crawler: a request
       is sent only when the site&rsquo;s rules allow it.
       <a href="p/adam.html">adam</a> answers it for a clinical program: a model&rsquo;s column
-      is accepted only when it reproduces the reference exactly.</span></p>
+      is accepted only when it reproduces the reference exactly.
+      <a href="p/agentic-loom.html">Agentic Loom</a> answers it on the plant floor: a recipe
+      step runs only when it is admitted or a person takes responsibility for it.</span></p>
     <nav class="jump">
       <a href="#projects">Projects</a>
       <a href="#live">Live &amp; installable</a>
