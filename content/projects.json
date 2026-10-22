@@ -951,5 +951,86 @@
         "label": "arXiv:2609.21299"
       }
     ]
+  },
+  {
+    "slug": "agentic-delivery",
+    "title": "Agentic Delivery: governed software delivery in which agents propose and a gate decides",
+    "lede": "An agent’s word moves nothing here. A gate weighs each release and each call against evidence it verified, and every result is read back.",
+    "summary": "Software delivery with AI agents behind one gate. A coding agent’s change is tested in a sandbox, approved by a person, promoted under a versioned policy and run once; an operations agent’s calls are decided against its grants before they reach the service; and every decision lands on a ledger an auditor can check.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agentic-delivery-demo.mp4",
+        "poster": "img/video/agentic-delivery-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agentic Delivery demo in Agent Scope: a coding agent, a runner, a gate and a person’s approval card on a graph of the release path, a Decision Trace of every step, the standard configuration’s answers beside the gate’s, an operations agent’s calls through a tool layer to an orders service, and an auditor’s view of a ledger checked against its signed checkpoints.",
+        "caption": "The demo as recorded: 3 minutes 55 seconds against a local k3s cluster, captions on screen and no sound. An honest release, from the ticket to the pod’s own answer of 7 orders and 34889 cents; the build-time attempts the gate refers, the agent’s own kubectl refused, and the same builds through cosign and Kyverno; run-time calls decided against the grants, a withdrawn grant met at the next call and a direct call refused with 403; and an auditor’s pass over the ledgers, ending on the measured table. Every result caption is built from the run’s records, and the recording stops if a result differs. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Agentic Delivery puts a gate between AI agents and everything they could change, from the code that ships to the service that runs. A coding agent takes a ticket, reads the code and proposes a change; nothing it says counts as evidence. A runner tests the change in a sandbox, builds the image and signs what it found, including how the change touched the test suite. A person approves from a card that shows what the runner signed, not what the agent said, and the gate promotes the image under a versioned policy, citing the evidence it checked. The deployer checks the image with the gate before it runs it, the cluster’s admission webhook asks the gate about each new object, the same deploy request sent again runs nothing, and the result is read back from the pod itself.",
+      "The gate is built for the changes that look fine to a pipeline. A change that edits the existing tests to agree with it passes its own suite and can win a person’s approval; the gate still refers it and names the tests the change edited. A test module that patches the code back is referred because the tests as they were before the change fail against its code. Measured on 2026-10-21 beside a standard configuration, in which CI signs passing builds with cosign and attaches provenance and a Kyverno policy verifies both, 19 cases that should not get through were run against each: the standard configuration admitted 11, and the gate stopped 18, refusing them or referring them to a person. The one left needs the runner’s signing key, which the agent never holds.",
+      "At run time every call an operations agent makes goes to a tool layer, which asks the gate against the agent’s grants before anything is sent; a denied call is never sent. Per-call limits, refunds split to get past a total, a customer’s note that tells the agent to refund, cancel and scale, and a grant withdrawn between two calls are each decided at the call. A refund whose response was lost is retried under the same call id and executed once, and the agent’s own token, sent straight to the service, is refused, because the service executes only for the tool layer. Given a task to refund two orders in full, the model made two calls: the gate allowed the one within the grants and denied the other, and the call ledger reconciles one to one with the service’s own log.",
+      "Every decision is an entry in a hash-chained ledger whose head is signed as the run goes. An auditor’s pass catches a copy of the call ledger cut back by two decisions, which still verifies as a chain, against its signed checkpoints: by verify, by the reconciliation, and at the next call, which is denied. Any decision opens as its decision record in the Brain API form: what was considered, what was chosen, and why. The recorded demo runs on a local k3s cluster; the build-time attempts are scripted so that their outcome can be checked, and the ticket and the refund task go to a model through an API. The view is Agent Scope, on the published @agent-scope-ca/graph-canvas component.",
+      "Transferable principle: let agents propose, let a gate decide on evidence it checks itself, and take every result from the system that holds it, never from the agent’s report."
+    ],
+    "links": [
+      {
+        "label": "agenticdelivery.ca",
+        "url": "https://agenticdelivery.ca"
+      },
+      {
+        "label": "Every case, measured",
+        "url": "https://agenticdelivery.ca/#build"
+      },
+      {
+        "label": "The limits, stated",
+        "url": "https://agenticdelivery.ca/#limits"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23550941",
+        "url": "https://doi.org/10.5281/zenodo.23550941"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Newman, Meyers and Torres-Arias",
+        "year": 2022,
+        "title": "Sigstore: Software Signing for Everybody",
+        "venue": "Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (CCS ’22), 2353–2367",
+        "url": "https://doi.org/10.1145/3548606.3560596",
+        "label": "doi:10.1145/3548606.3560596"
+      },
+      {
+        "authors": "Zhong, Raghunathan and Carlini",
+        "year": 2025,
+        "title": "ImpossibleBench: Measuring LLMs’ Propensity of Exploiting Test Cases",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2510.20270",
+        "label": "arXiv:2510.20270"
+      },
+      {
+        "authors": "Shi et al.",
+        "year": 2025,
+        "title": "Progent: Securing AI Agents with Privilege Control",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2504.11703",
+        "label": "arXiv:2504.11703"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.21299",
+        "label": "arXiv:2609.21299"
+      }
+    ]
   }
 ]

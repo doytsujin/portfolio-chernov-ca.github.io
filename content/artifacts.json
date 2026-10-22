@@ -42,6 +42,12 @@
     "blurb": "Governed agentic recipes for batch processes: every step admitted before it runs and every exception decided by a person, on the record, with a recorded demo archived on Zenodo."
   },
   {
+    "name": "Agentic Delivery",
+    "url": "https://agenticdelivery.ca",
+    "kind": "site",
+    "blurb": "Governed software delivery: agents propose, and a gate decides each release and each call on evidence it checks itself, with a recorded demo and its measured comparison archived on Zenodo."
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",
