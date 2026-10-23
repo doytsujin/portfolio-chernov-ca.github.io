@@ -48,6 +48,18 @@
     "blurb": "Governed software delivery: agents propose, and a gate decides each release and each call on evidence it checks itself, with a recorded demo and its measured comparison archived on Zenodo."
   },
   {
+    "name": "System One",
+    "url": "https://model.brainapi.org",
+    "kind": "site",
+    "blurb": "A small model trained under Brain API to judge which admitted capability of a dataset a request is for: 98.1% on generated families it never saw, against 92.6% before training, with its results note and carousel archived on Zenodo.",
+    "links": [
+      {
+        "label": "Zenodo record",
+        "url": "https://doi.org/10.5281/zenodo.23586630"
+      }
+    ]
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",

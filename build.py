@@ -314,12 +314,18 @@ def render_article(a: dict) -> str:
 
 def render_artifact(a: dict) -> str:
     cls = "name mono" if a.get("mono") else "name"
+    links = "".join(
+        f'<a class="lnk" href="{esc(l["url"])}" target="_blank" '
+        f'rel="noopener noreferrer">{esc(l["label"])}</a>'
+        for l in a.get("links", [])
+    )
+    links_html = f'<span class="links inline">{links}</span>' if links else ""
     return (
         '<li class="artifact">'
         f'<a class="{cls}" href="{esc(a["url"])}" target="_blank" '
         f'rel="noopener noreferrer">{esc(a["name"])}</a>'
         f'<span class="kind">{esc(a["kind"])}</span>'
-        f'<span class="blurb">{esc(a["blurb"])}</span>'
+        f'<span class="blurb">{esc(a["blurb"])}</span>{links_html}'
         "</li>"
     )
 
