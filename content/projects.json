@@ -1032,5 +1032,86 @@
         "label": "arXiv:2609.21299"
       }
     ]
+  },
+  {
+    "slug": "agentic-lims",
+    "title": "Agentic LIMS: lab data that carries its lineage and decides its own use",
+    "lede": "A lab result here carries the path it took from the sample to the file, and the dataset, not the agent, decides whether a report may use it.",
+    "summary": "Public laboratory results held as an agentic dataset over MCP. Each result keeps its lineage from the monitoring site to the retrieved file, drawn in 3D; an agent assembling a report proposes, a gate inside the dataset rules on every result under a written policy, a person approves what it escalates, and answers drawn from method documents are checked quote by quote.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agentic-lims-demo.mp4",
+        "poster": "img/video/agentic-lims-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agentic LIMS demo in Agent Scope: public lab results drawn in 3D as seven layers above a map of the sampling sites, an agent’s orders in chat, the dataset’s gate admitting, escalating and refusing results for a report, a person’s approval card, a USGS method publication open at the page the results cite with the quoted passage marked, and a Decision Trace of every decision.",
+        "caption": "The demo as recorded: 2 minutes 56 seconds, captions on screen and no sound. Nitrate results at Lake Monona traced from the site to the file; the lab samples that name no laboratory drawn in orange; the gate deciding 778 results for a report and a person approving the 172 it escalated; a model’s plain-language order to add computed values refused by the dataset; a method publication opened at its cited page and asked a question; and the Decision Trace, each decision opened on the dataset’s own evidence. Every number in a caption is read from the run’s records, and the recording stops if a result differs. The turn of the 3D view is filmed frame by frame; everything else plays at the speed it ran. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Agentic LIMS holds 8,542 public laboratory results from the Water Quality Portal, sampled in Dane County, Wisconsin, from April to June 2023, as a dataset that describes itself and decides its own use. Every result keeps the path it took: the monitoring site where it was sampled, the organization that collected it, the laboratory that analyzed it or the provider’s algorithm that computed it, the status the provider gives it, the database that stores it, the portal that served it and the file retrieved. Each node exists because a column of the records says so. The lineage is drawn as seven layers above a map of the sites, in perspective 3D: a trace of the nitrate results at Lake Monona lights one site, one lab, one provider, the portal and the file, and the 1,667 lab samples that name no laboratory are drawn in orange, still reaching the file.",
+      "An agent reaches the dataset only over MCP. It knows nothing until it connects; then it reads what the dataset is, its policy and its revision, and the 11 capabilities it may call. Asked to assemble the nutrient results for a report, it proposes 778 of them, and the dataset’s gate decides each one: 359 admitted, 172 sent to a person and 247 refused, because a computed value is not a measurement and a lab sample that names no laboratory cannot be traced. Of the 172, 121 are results the laboratory itself flagged, 106 of them past their holding time, and 51 are provisional. A person approves them from a card bound to exactly those rows, and 531 are admitted under a new grant. Asked in plain language, through a model, to add the computed values as if measured, the dataset refused all 219 again; the model has no way to approve.",
+      "Each node carries the documents its rows cite or name: its source records, the laboratory’s quality notes, the project records, and the method publications. The anion method opens at p. 19 of USGS Open-File Report 93-125, the page its results cite, served by the dataset over MCP. A question about it is answered only from the passages the dataset’s search returns, and the answer is shown only if every quote in it is found word for word on its page; otherwise it is retried once and then withheld.",
+      "The admitted results are written as a new dataset of 531 records, each with its lineage and the decisions behind it, and read back by sha256. Every decision cites the dataset’s own evidence entry, both ledgers are hash-chained, and an edited line is caught when a ledger loads. The recorded demo runs on one machine over one public slice of data; it shows the lineage of laboratory output and decides its use. The view is Agent Scope, on the published @agent-scope-ca/graph-canvas component.",
+      "Transferable principle: keep the lineage with the data, let the data decide its own use under a written policy, and show an answer only when its quotes hold against the source."
+    ],
+    "links": [
+      {
+        "label": "agenticlims.ca",
+        "url": "https://agenticlims.ca"
+      },
+      {
+        "label": "Decided: the gate and the person",
+        "url": "https://agenticlims.ca/#decided"
+      },
+      {
+        "label": "The limits, stated",
+        "url": "https://agenticlims.ca/#limits"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23625293",
+        "url": "https://doi.org/10.5281/zenodo.23625293"
+      }
+    ],
+    "references": [
+      {
+        "authors": "National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency",
+        "year": 2021,
+        "title": "Water Quality Portal",
+        "venue": "Data portal",
+        "url": "https://doi.org/10.5066/P9QRKUVJ",
+        "label": "doi:10.5066/P9QRKUVJ"
+      },
+      {
+        "authors": "Fishman (ed.)",
+        "year": 1993,
+        "title": "Methods of analysis by the U.S. Geological Survey National Water Quality Laboratory: determination of inorganic and organic constituents in water and fluvial sediments",
+        "venue": "U.S. Geological Survey Open-File Report 93-125",
+        "url": "https://doi.org/10.3133/ofr93125",
+        "label": "doi:10.3133/ofr93125"
+      },
+      {
+        "authors": "Model Context Protocol",
+        "year": 2025,
+        "title": "Specification, version 2025-06-18",
+        "venue": "modelcontextprotocol.io",
+        "url": "https://modelcontextprotocol.io/specification/2025-06-18",
+        "label": "modelcontextprotocol.io"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Agentic Dataset Reference Implementation and Conformance Suite",
+        "venue": "Zenodo",
+        "url": "https://doi.org/10.5281/zenodo.22536342",
+        "label": "doi:10.5281/zenodo.22536342"
+      }
+    ]
   }
 ]

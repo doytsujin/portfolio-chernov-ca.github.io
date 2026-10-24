@@ -48,6 +48,12 @@
     "blurb": "Governed software delivery: agents propose, and a gate decides each release and each call on evidence it checks itself, with a recorded demo and its measured comparison archived on Zenodo."
   },
   {
+    "name": "Agentic LIMS",
+    "url": "https://agenticlims.ca",
+    "kind": "site",
+    "blurb": "Lab data that carries its lineage and decides its own use: public results as an agentic dataset over MCP, a gate per result, a person’s approval, and quotes checked against their page, with a recorded demo archived on Zenodo."
+  },
+  {
     "name": "System One",
     "url": "https://model.brainapi.org",
     "kind": "site",
