@@ -1113,5 +1113,93 @@
         "label": "doi:10.5281/zenodo.22536342"
       }
     ]
+  },
+  {
+    "slug": "system-one",
+    "title": "System One: a small trained model that judges dataset requests",
+    "lede": "Policy decides what may run; a model small enough to train on a laptop then judges which admitted capability a request is for, on the record.",
+    "summary": "A judgment provider for Brain API: LoRA adapters on Qwen2.5-0.5B-Instruct and Qwen2.5-1.5B-Instruct that score a request against every capability a dataset’s policy has already let through, as a probability. The control plane routes on those probabilities and keeps them, with the versions of the model and of the rule that used them.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "og_image": "deck/system-one/01.webp",
+    "carousel": {
+      "dir": "img/deck/system-one",
+      "count": 9,
+      "width": 1080,
+      "height": 1350,
+      "title": "System One: a small trained model that judges dataset requests",
+      "caption": "The carousel archived with the results note: nine slides, every figure generated from the run’s results and checked against them.",
+      "source": {
+        "label": "Carousel and results note on Zenodo, 10.5281/zenodo.23586629",
+        "url": "https://doi.org/10.5281/zenodo.23586629"
+      }
+    },
+    "body": [
+      "System One is trained for one question, asked once for each capability of an Agentic Dataset that policy has admitted: is this request within the scope of this capability? The answer is read from the log-odds of yes against no at the next token. Policy filters the capabilities first and is the only authority on what may run; the model never decides permission. A versioned rule then selects the best-judged capability, or refuses when nothing is in scope, and the control plane writes the decision record.",
+      "The test is whether it learned how a dataset’s contract works or only the data it saw. Twelve dataset families were generated with their truth fixed in advance; eight train and four are held out, and one held-out family, cellar, shares no word of its contract language with the training families. Over two seeds the held-out requests number 3,393, and 540 requests from Bitext, a public customer-support dataset, enter no step of training. The 16,409 training examples are themselves an Agentic Dataset: training read them only through the set’s own MCP boundary, under admission, each page granted and recorded. Thresholds come from out-of-fold scores, and the rules that judge the results were hashed and committed before any model was trained.",
+      "On the held-out families the trained 1.5B selects the right capability 98.1% of the time against 92.6% for the same model prompted with the descriptor, and the trained 0.5B 96.3% against 69.5%. Training wins on every held-out family at both sizes, cellar included: 97.2% against 91.6% for the 1.5B and 93.0% against 73.2% for the 0.5B. A 7B reference asked the same question reaches 98.2%, at a median of 1,499 ms per decision against the 1.5B’s 314 ms. On Bitext the trained 1.5B reaches 88.3% against 47.2% prompted, each at its own threshold, and 78.3% against 71.5% at a fixed threshold of one half. Training also calibrates it: expected calibration error on the held-out families falls from 0.373 to 0.003.",
+      "Every decision leaves a record: the judgments, the adapter’s sha256 as the model’s version, the rule’s version and the dataset policies applied. Over the held-out requests the trained 1.5B wrote 3,393 records; for 524 of them policy admitted nothing and no model was asked. All 3,393 re-derive from their recorded inputs to the same bytes, and 200 of 200 judgments asked again of the running model matched the recorded ones. The final models trained in 11 and 24 minutes on one laptop GPU, an RTX 4060 Laptop with 8 GB, peaking at 4,305 and 6,555 MiB.",
+      "The dataset families are generated, and Bitext is the only outside dataset. Latency is wall-clock time on one laptop GPU, one request at a time; the small models run in-process with Hugging Face Transformers and the 7B in Ollama, which reuses the cached prompt between questions, so the gap is not model size alone, and the 7B’s probabilities, read from its top 20 next tokens, are approximate. Requests that name no capability, such as “do the thing”, are not covered: the trained model can still match one to a capability policy allows. The adapters are not published."
+    ],
+    "links": [
+      {
+        "label": "model.brainapi.org",
+        "url": "https://model.brainapi.org"
+      },
+      {
+        "label": "Results note and carousel: Zenodo 10.5281/zenodo.23586629",
+        "url": "https://doi.org/10.5281/zenodo.23586629"
+      },
+      {
+        "label": "brainapi.org",
+        "url": "https://brainapi.org"
+      },
+      {
+        "label": "Decision-artifact demo",
+        "url": "https://demo.brainapi.org"
+      }
+    ],
+    "references": [
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2609.21299",
+        "label": "arXiv:2609.21299"
+      },
+      {
+        "authors": "Chernov",
+        "year": 2026,
+        "title": "Agentic Datasets as an Engineering Control Plane",
+        "venue": "IEEE Canadian Conference on Electrical and Computer Engineering (CCECE), pp. 326–332",
+        "url": "https://doi.org/10.1109/CCECE68150.2026.11610344",
+        "label": "doi:10.1109/CCECE68150.2026.11610344"
+      },
+      {
+        "authors": "Qwen Team (Yang et al.)",
+        "year": 2024,
+        "title": "Qwen2.5 Technical Report",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2412.15115",
+        "label": "arXiv:2412.15115"
+      },
+      {
+        "authors": "Hu et al.",
+        "year": 2021,
+        "title": "LoRA: Low-Rank Adaptation of Large Language Models",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/2106.09685",
+        "label": "arXiv:2106.09685"
+      },
+      {
+        "authors": "Bitext Innovations",
+        "year": 2024,
+        "title": "Bitext — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants",
+        "venue": "Hugging Face dataset",
+        "url": "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset",
+        "label": "huggingface.co/datasets/bitext"
+      }
+    ]
   }
 ]

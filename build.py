@@ -225,7 +225,11 @@ def slide_carousel(c: dict, prefix: str) -> str:
     return (
         f'<figure class="deck" data-deck data-base="{esc(base)}" data-count="{n}" '
         f'data-title="{title}">'
-        f'<div class="deck-frame" tabindex="0" role="region" aria-roledescription="carousel" '
+        # The frame takes the slides' own shape (16:9 for a talk deck, 4:5 for a
+        # LinkedIn carousel) and never grows taller than 80% of the viewport.
+        f'<div class="deck-frame" style="aspect-ratio:{int(c["width"])}/{int(c["height"])};'
+        f'max-width:calc(80vh * {int(c["width"])} / {int(c["height"])});margin-inline:auto" '
+        f'tabindex="0" role="region" aria-roledescription="carousel" '
         f'aria-label="{title}, {n} slides; use the arrow keys">'
         f'<img src="{esc(base)}01.webp" alt="{title}, slide 1 of {n}" '
         f'width="{int(c["width"])}" height="{int(c["height"])}" loading="lazy" decoding="async">'
@@ -645,7 +649,7 @@ def build_index(data: dict) -> str:
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
     <p class="role">Principal Engineer · Agentic AI &amp; scientific data systems ·
       IEEE member</p>
-    <p class="question">{esc(QUESTION)}<span>Seventeen systems, one question.
+    <p class="question">{esc(QUESTION)}<span>Eighteen systems, one question.
       <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
       proposes, the gate decides, and every decision leaves a record.
       <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer
