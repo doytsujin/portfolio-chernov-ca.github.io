@@ -596,6 +596,14 @@
         "url": "https://infra.agentscope.ca"
       },
       {
+        "label": "massivegpu.ca",
+        "url": "https://massivegpu.ca"
+      },
+      {
+        "label": "semanticgateway.ca",
+        "url": "https://semanticgateway.ca"
+      },
+      {
         "label": "Gene-agents video: Zenodo 10.5281/zenodo.23006165",
         "url": "https://doi.org/10.5281/zenodo.23006165"
       },
@@ -1199,6 +1207,94 @@
         "venue": "Hugging Face dataset",
         "url": "https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset",
         "label": "huggingface.co/datasets/bitext"
+      }
+    ]
+  },
+  {
+    "slug": "massive-gpu",
+    "title": "Massive GPU: a simulated fleet with a real control path",
+    "lede": "Changes to a GPU fleet pass through a gate and a person, and that path was tested by breaking it.",
+    "summary": "A 3D view of a Kubernetes cluster: 1,125 simulated nodes and 1,000 simulated GPUs beside one real GPU serving a real model. A proposed change goes to a gate under written rules, a person approves what the rules send up, and Git or an evict-only executor carries it out.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/massive-gpu-demo.mp4",
+        "poster": "img/video/massive-gpu-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Massive GPU demo in Agent Scope: a Kubernetes cluster drawn in 3D layers from the machines up to the agents that use them, the gate's ledger beside it, and captions for each planted fault and decision.",
+        "caption": "The demo as recorded: 3 minutes 26 seconds, captions on screen and no sound. The page plays back a record of the running system in real time: a ledger edit caught, the gate's pod removed, the Git server removed, a pod deleted, and a drain of 45 pods that a person approves. The captions are the page's own, and people and machines are named by aliases. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "The fleet is simulated on purpose, and the page says so on its first screen. A real Kubernetes (k3s) schedules 50,386 pods; the simulated nodes and the pods on them are real API objects with nothing running in them (KWOK), and the GPUs and their load are a formula published under DCGM's metric names, not a measurement. Beside them stands a real GeForce RTX 4060 Laptop GPU serving Qwen3-4B-AWQ, reached by a LangGraph assistant through llm-d routers.",
+      "What is real is the path a change takes. The assistant or an operator proposes it, and the gate rules on it. A drain of a node running 45 pods is too large for the rules to admit alone, so it waits for a person; once approved, the cordon goes through Git, Argo CD syncs it, and the executor evicts the pods. Every step lands in a hash-chained ledger anchored in Git.",
+      "The recording includes the faults planted to test that path. A ledger record edited on disk is reported as a broken chain, and the gate refuses new records until it is restored. With the gate's pod removed for 43 seconds, nothing is admitted. With the Git server removed, an admitted change fails to commit, the ledger says so, and the change never reaches the cluster.",
+      "The page is a recording, with no server behind it. Its numbers are read from the record, so a number typed into its words fails the build, and it is checked against the watcher's own state at dozens of moments."
+    ],
+    "links": [
+      {
+        "label": "massivegpu.ca",
+        "url": "https://massivegpu.ca"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23890436",
+        "url": "https://doi.org/10.5281/zenodo.23890436"
+      }
+    ],
+    "references": []
+  },
+  {
+    "slug": "semantic-gateway-demo",
+    "title": "Semantic Gateway demo: one data estate behind one policy gate",
+    "lede": "Seven data packs and four ontologies answer as one estate, and each caller's answers are computed only from what the policy admits.",
+    "summary": "A recording of one session with a running host, on public data. Sources become packs that link only where evidence supports it, one query is routed across them, a full read waits for a person, an agent comes in over MCP, and a model's answer appears only if it holds up against what its tools returned.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/semantic-gateway-demo.mp4",
+        "poster": "img/video/semantic-gateway-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Semantic Gateway demo in Agent Scope: public data drawn in 3D layers from sources through documents and packs to concepts and use, a pack refused at the gate, a routed search, a person's approval card, chat answers with their citations, and a decision trace.",
+        "caption": "The demo as recorded: 3 minutes 37 seconds, captions on screen and no sound. A twelve-chapter tour of one session: the estate, its links and concepts, a refused pack, the same estate as another caller, a routed search, a read a person approves, two chat answers and the ledger. The captions are the page's own and every outcome comes from that session's records. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "The estate holds 17,257 documents from public sources: water-quality results, monitoring locations and projects from the Water Quality Portal, USDA fertilizer tables, 40 CFR Part 141, NOAA daily weather and published method documents, with ChEBI, QUDT, WQX and Census vocabularies as ontology packs. Links are computed from declared keys, never inferred: 16,369 of them tie result rows to their locations and projects, and 4 project ids with no record are reported as defects, not dropped. Annotations map records and passages to 752 concepts, which is how one substance is followed across vocabularies.",
+      "One query ranks the packs by their own centroids and opens only the most likely ones. On 40 written questions, opening 4 packs kept 99.5% of what a search of all 12 finds in its top 10. Every hit names its pack and document, and the answer lists each pack it did not open and why.",
+      "Each request passes a versioned policy, and a caller's page is computed from what that policy admits, so a hidden pack answers exactly as one never mounted: the data steward may search 12 packs and the visitor 5. A pack embedded with a model the host does not embed queries with stands apart, refused, with the reason. Search shows passages, while a full record leaves the gate, so a read of result rows goes to a person, bound to the hash of exactly those rows.",
+      "An agent reaches the same estate over MCP, offered 33 tools, and its read waits for a person too; no tool can approve. In the chat, the model sees only the caller's tools, and its answer is withheld unless every quote is in a passage returned that turn and every number is in a tool's result. Every request leaves a line in a hash-chained ledger.",
+      "The host stays on loopback until it has real sign-in, so the public page is one recorded session played back in the browser. Its numbers are read from the session, a typed number fails the build, and a request the session did not make gets a sentence saying so, not an answer."
+    ],
+    "links": [
+      {
+        "label": "semanticgateway.ca",
+        "url": "https://semanticgateway.ca"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23906429",
+        "url": "https://doi.org/10.5281/zenodo.23906429"
+      }
+    ],
+    "references": [
+      {
+        "authors": "National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency",
+        "year": 2021,
+        "title": "Water Quality Portal",
+        "venue": "Data portal",
+        "url": "https://doi.org/10.5066/P9QRKUVJ",
+        "label": "doi:10.5066/P9QRKUVJ"
       }
     ]
   }
