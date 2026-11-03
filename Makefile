@@ -87,8 +87,8 @@ deploy: build ## Build and publish to the edge
 	rsync $(RSYNC_FLAGS) "$(DIST)/" "$(EDGE):$(REMOTE_ROOT)/"
 	@# Provenance, written after the sync because rsync --delete would remove it.
 	@# `dirty=YES` says it was published from a tree with uncommitted changes.
-	@printf 'site=%s\nrepo=%s\ncommit=%s\nbranch=%s\ndirty=%s\nbuilt=%s\n' \
-		"$(SITE)" "$$(basename $$(git rev-parse --show-toplevel))" \
+	@printf 'site=%s\ncommit=%s\nbranch=%s\ndirty=%s\nbuilt=%s\n' \
+		"$(SITE)" \
 		"$$(git rev-parse --short HEAD)" "$$(git rev-parse --abbrev-ref HEAD)" \
 		"$$(test -z "$$(git status --porcelain)" && echo no || echo YES)" \
 		"$$(date -Is)" \
