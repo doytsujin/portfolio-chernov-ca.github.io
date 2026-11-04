@@ -299,7 +299,7 @@ def render_talk(t: dict) -> str:
 
 
 def render_article(a: dict) -> str:
-    reprint = f"https://brainapi.org/articles/{a['slug']}.html"
+    reprint = f"https://chernov.ca/articles/{a['slug']}.html"
     extra = ""
     if a.get("linkedin"):
         extra = (
@@ -707,7 +707,7 @@ def build_index(data: dict) -> str:
   <section id="writing">
     {section_head("writing", "Writing", p)}
     <p class="section-note">Long-form articles. Each title links to the reprint at
-      <a href="https://brainapi.org/articles/" target="_blank" rel="noopener noreferrer">brainapi.org/articles</a>;
+      <a href="https://chernov.ca/articles/" target="_blank" rel="noopener noreferrer">chernov.ca/articles</a>;
       where the piece also ran on LinkedIn, that original is linked beside it.</p>
     <ul class="entries">{"".join(render_article(x) for x in data["articles"])}</ul>
   </section>
