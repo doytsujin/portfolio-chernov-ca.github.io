@@ -1,5 +1,11 @@
 [
   {
+    "title": "Scaling LangGraph, LlamaIndex, and CrewAI, Part 1: State and Recovery",
+    "date": "2026-11-06",
+    "slug": "scaling-agent-frameworks",
+    "linkedin": "https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-1-state-recovery-chernov-msshc/"
+  },
+  {
     "title": "The Semantic Cache Is Where Cost, Governance and Security Meet",
     "date": "2026-10-15",
     "slug": "semantic-cache-governance",
