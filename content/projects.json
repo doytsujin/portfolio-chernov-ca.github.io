@@ -1309,5 +1309,74 @@
         "label": "doi:10.5066/P9QRKUVJ"
       }
     ]
+  },
+  {
+    "slug": "semantic-gateway-pdfs-demo",
+    "title": "Semantic Gateway for PDFs: every value where it stands on its page",
+    "lede": "Folders of public PDFs served the way an API is: typed fields read by declared rules, each value boxed where its page states it, and the documents as a knowledge graph.",
+    "summary": "A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and every request passes the same policy gate as the first Semantic Gateway example.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/semantic-gateway-pdfs-demo.mp4",
+        "poster": "img/video/semantic-gateway-pdfs-demo-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of Semantic Gateway for PDFs in Agent Scope: a certificate's page with each value boxed, a scanned inspection form read by OCR, a date a model filled with its quote on the page, the documents as a knowledge graph in four lenses with the camera zooming in, a vocabulary of declared terms, a routed search, the auditor's view, chat answers with their citations, and the ledger.",
+        "caption": "The demo as recorded: 5 minutes 33 seconds, captions on screen and no sound. A fourteen-chapter tour of one session: the three packs, a value boxed on its page, a scanned form read by OCR, a date the model filled, a medicine's number as written, the Entities, Values and Similarity lenses, the vocabulary, a routed search, the auditor, two chat answers and the ledger. The camera zooms into the graph so its labels can be read. The captions are the page's own, every outcome comes from that session's records, and the file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Folders of public PDFs become 3 packs of 118 documents: NIST reference-material certificates, FDA Form 483 inspection forms and EMA medicine overviews. Declared rules read each document's typed fields, and the FDA forms, which are scans, are recognized page by page with OCR. A model fills only what the rules miss, and a value is kept only when its quote stands on the page: 26 values in the FDA pack.",
+      "Every value opens where its page states it: 773 of 773 values with text to place are boxed on an image of their page, and a page is served only against the reader's own recorded read, its view logged against that read.",
+      "The documents form a knowledge graph built from declared fields, never guessed. 101 entities join each document to what it describes: a reference material by its SRM number, an establishment by its FEI, a medicine by its EMA product number. 14 values are each held by two or more documents, each document is linked to its 3 nearest by the meaning of its text, and 23 declared terms say what the fields mean.",
+      "The same gate as the first example governs every view: the auditor is shown each pack's card and the ledger and no document, an agent reaches the same documents over MCP with 12 tools, and a chat answer is shown only if every quote is in a passage returned that turn and every number is in a tool's result. The session holds 96 hash-chained ledger records, all verifying.",
+      "People named in the documents appear under aliases, signatures are covered, and the recording serves no PDF file. The page is one recorded session played back in the browser; its numbers are read from the session and checked against it on the served copy."
+    ],
+    "links": [
+      {
+        "label": "pdf.semanticgateway.ca",
+        "url": "https://pdf.semanticgateway.ca"
+      },
+      {
+        "label": "semanticgateway.ca",
+        "url": "https://semanticgateway.ca"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.24096624",
+        "url": "https://doi.org/10.5281/zenodo.24096624"
+      }
+    ],
+    "references": [
+      {
+        "authors": "National Institute of Standards and Technology",
+        "year": 2026,
+        "title": "Standard Reference Materials",
+        "venue": "Certificates of analysis",
+        "url": "https://www.nist.gov/srm",
+        "label": "nist.gov/srm"
+      },
+      {
+        "authors": "U.S. Food and Drug Administration",
+        "year": 2026,
+        "title": "OII FOIA Electronic Reading Room",
+        "venue": "Form 483 inspectional observations",
+        "url": "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
+        "label": "fda.gov, electronic reading room"
+      },
+      {
+        "authors": "European Medicines Agency",
+        "year": 2026,
+        "title": "Medicines",
+        "venue": "EPAR medicine overviews",
+        "url": "https://www.ema.europa.eu/en/medicines",
+        "label": "ema.europa.eu/en/medicines"
+      }
+    ]
   }
 ]

@@ -78,6 +78,12 @@
     "blurb": "One data estate behind one policy gate: packs linked by evidence, routed search, a person's approval and a checked chat, as a recorded session with its demo archived on Zenodo."
   },
   {
+    "name": "Semantic Gateway for PDFs",
+    "url": "https://pdf.semanticgateway.ca",
+    "kind": "site",
+    "blurb": "Folders of public PDFs read into typed fields, each value boxed where its page states it, the documents as a knowledge graph behind the same gate, as a recorded session with its demo archived on Zenodo."
+  },
+  {
     "name": "Semantic Field Canvas",
     "url": "https://doytsujin.github.io/ok-graph-canvas/",
     "kind": "site",

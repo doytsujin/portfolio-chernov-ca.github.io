@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Semantic Gateway for PDFs: every value where it stands on its page — Alexander Chernov</title>
+<meta name="description" content="A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and…">
+<link rel="canonical" href="https://portfolio.chernov.ca/p/semantic-gateway-pdfs-demo.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alexander Chernov — Portfolio">
+<meta property="og:title" content="Semantic Gateway for PDFs: every value where it stands on its page — Alexander Chernov">
+<meta property="og:description" content="A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and…">
+<meta property="og:url" content="https://portfolio.chernov.ca/p/semantic-gateway-pdfs-demo.html">
+<meta property="og:image" content="https://portfolio.chernov.ca/og/semantic-gateway-pdfs-demo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Semantic Gateway for PDFs: every value where it stands on its page — Alexander Chernov">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Semantic Gateway for PDFs: every value where it stands on its page — Alexander Chernov">
+<meta name="twitter:description" content="A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and…">
+<meta name="twitter:image" content="https://portfolio.chernov.ca/og/semantic-gateway-pdfs-demo.png">
+<script>
+(function(){try{var t=localStorage.getItem('pf-theme');
+document.documentElement.dataset.theme=(t==='dark'||t==='system')?t:'light';}
+catch(e){document.documentElement.dataset.theme='light';}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
+<style>
+:root{--bg:#f1f5f9;--panel:#fff;--card:#f8fafc;--ink:#0f172a;--muted:#475569;
+--line:#e2e8f0;--accent:#dc2626;--link:#1d4ed8;--radius:.5rem;color-scheme:light}
+:root[data-theme="dark"],
+:root[data-theme="system"]:is(.prefers-dark){--bg:#000;--panel:#0f172a;--card:#1e293b;
+--ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;
+color-scheme:dark}
+@media (prefers-color-scheme:dark){
+:root[data-theme="system"]{--bg:#000;--panel:#0f172a;--card:#1e293b;--ink:#f8fafc;
+--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(15px,.5vw+11px,19px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:1rem/1.65 "Roboto Slab",Georgia,"Times New Roman",serif;
+-webkit-font-smoothing:antialiased}
+.wrap{width:min(60rem,100% - 2rem);margin-inline:auto}
+a{color:var(--link)}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+code{background:rgba(148,163,184,.2);padding:.1em .35em;border-radius:.25rem}
+
+header.top{background:var(--panel);border-bottom:1px solid var(--line);
+padding-block:clamp(2rem,5vw,3.6rem)}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+margin-bottom:.6rem}
+.eyebrow{margin:0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+color:var(--muted)}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);
+overflow:hidden;flex-shrink:0}
+.theme button{font:inherit;font-size:.72rem;padding:.3rem .65rem;cursor:pointer;
+background:transparent;color:var(--muted);border:0}
+.theme button+button{border-left:1px solid var(--line)}
+.theme button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:700}
+h1{margin:0 0 .4rem;font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:700;
+letter-spacing:-.02em;line-height:1.15}
+h1 .sur{color:var(--accent)}
+.role{margin:0 0 1.4rem;font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted)}
+.question{margin:0 0 1.6rem;padding-left:1rem;border-left:3px solid var(--accent);
+font-size:clamp(1.02rem,2.3vw,1.3rem);font-style:italic}
+.question span{display:block;margin-top:.5rem;font-size:.85rem;font-style:normal;
+color:var(--muted)}
+nav.jump{display:flex;flex-wrap:wrap;gap:.5rem}
+nav.jump a{display:inline-block;padding:.4rem .8rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);color:var(--ink);
+text-decoration:none;font-size:.85rem}
+nav.jump a:hover{border-color:var(--accent)}
+
+main{padding-block:clamp(2rem,4vw,3.5rem)}
+section{margin-bottom:clamp(2.5rem,6vw,4.5rem);scroll-margin-top:1rem}
+.section-head{display:flex;align-items:baseline;gap:.75rem;margin:0 0 .3rem}
+h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;letter-spacing:-.01em}
+.section-note{margin:0 0 1.6rem;color:var(--muted);font-size:.92rem}
+
+.copy{font:inherit;font-size:.72rem;line-height:1;padding:.32rem .55rem;cursor:pointer;
+background:var(--card);color:var(--muted);border:1px solid var(--line);
+border-radius:var(--radius);display:inline-flex;align-items:center;gap:.3rem;
+flex-shrink:0;white-space:nowrap}
+.copy:hover{border-color:var(--accent);color:var(--ink)}
+.copy-icon{font-weight:700;color:var(--accent)}
+.copy.done{border-color:var(--accent);color:var(--ink)}
+.copy.done .copy-icon{content:""}
+
+.project{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:clamp(1rem,2.5vw,1.8rem);margin-bottom:1.2rem;
+scroll-margin-top:1rem}
+.project-head{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.6rem}
+.num{color:var(--accent);font-size:.9rem;font-weight:700;flex-shrink:0;
+padding-top:.35rem}
+.project-title{flex:1;min-width:0}
+.project h1,.project h3{margin:0;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.25}
+.project h1{font-size:clamp(1.5rem,4vw,2.2rem)}
+a.self{color:inherit;text-decoration:none}
+a.self:hover{color:var(--accent)}
+.meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
+.project p{margin:0 0 .9rem}
+.project figure{margin:0 0 1rem}
+.project img{display:block;width:100%;height:auto;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card)}
+figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
+.no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.clip{margin:0 0 1rem}
+.clip video{display:block;width:100%;height:auto;margin:0 auto;
+border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
+.deck{margin:0 0 1rem}
+.deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
+border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
+.deck-frame:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.project .deck-frame img{width:100%;height:100%;object-fit:contain;border:0;border-radius:0}
+.deck-nav{display:none;align-items:center;justify-content:center;gap:.8rem;margin:.55rem 0 0}
+.js .deck-nav{display:flex}
+.deck-nav button{font:inherit;font-size:1rem;line-height:1;padding:.4rem .8rem;cursor:pointer;
+border:1px solid var(--line);border-radius:var(--radius);background:var(--card);color:inherit}
+.deck-nav button:hover:not(:disabled){border-color:var(--accent)}
+.deck-nav button:disabled{opacity:.35;cursor:default}
+.deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
+font-variant-numeric:tabular-nums}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
+.links.inline{margin:.35rem 0 0}
+.lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);text-decoration:none;font-size:.82rem}
+.lnk:hover{border-color:var(--accent)}
+
+ul.entries{list-style:none;margin:0;padding:0}
+.entry{display:flex;gap:1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.entry:first-child{border-top:0}
+.when{flex:0 0 9.5rem;color:var(--muted);font-size:.85rem}
+.what{flex:1;min-width:0}
+.where{display:block;color:var(--muted);font-size:.87rem;margin-top:.15rem}
+.note{display:block;color:var(--muted);font-size:.82rem;margin-top:.15rem}
+.tag{display:inline-block;margin-left:.5rem;padding:.05rem .4rem;border-radius:.25rem;
+background:var(--accent);color:#fff;font-size:.68rem;letter-spacing:.04em;
+text-transform:uppercase;vertical-align:middle}
+.title-link{text-decoration:none;font-weight:700}
+.title-link:hover{text-decoration:underline}
+
+ul.artifacts{list-style:none;margin:0;padding:0;display:grid;gap:.8rem;
+grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.artifact{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:.9rem 1rem}
+.artifact .name{font-weight:700;text-decoration:none}
+.artifact .kind{display:inline-block;margin-left:.5rem;font-size:.7rem;
+color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
+
+.backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+
+footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;
+color:var(--muted);font-size:.85rem}
+footer.bottom p{margin:0 0 .5rem}
+
+@media (max-width:34rem){
+.entry{flex-direction:column;gap:.15rem}
+.when{flex:none}
+.copy-text{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">Portfolio · Project 21</p><div class="theme" role="group" aria-label="Color scheme">
+<button type="button" data-theme="light" aria-pressed="true">Light</button>
+<button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+<button type="button" data-theme="system" aria-pressed="false">System</button>
+</div></div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">Principal Engineer · Agentic AI &amp; scientific data systems</p>
+    <nav class="jump">
+      <a href="../index.html">All projects</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#talks">Talks</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="../index.html">&larr; the whole portfolio</a>
+  <div class="project">
+<div class="project-head">
+<span class="num">21</span>
+<div class="project-title">
+<h1>Semantic Gateway for PDFs: every value where it stands on its page</h1>
+<p class="meta">2026 – present · Independent work, unaffiliated with any employer.</p>
+</div>
+<button class="copy" type="button" data-copy="../p/semantic-gateway-pdfs-demo.html" aria-label="Copy link to Semantic Gateway for PDFs: every value where it stands on its page" title="Copy link to Semantic Gateway for PDFs: every value where it stands on its page"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
+<p class="lede">Folders of public PDFs served the way an API is: typed fields read by declared rules, each value boxed where its page states it, and the documents as a knowledge graph.</p>
+<p class="summary">A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and every request passes the same policy gate as the first Semantic Gateway example.</p>
+<figure class="clip"><video data-clip src="../img/video/semantic-gateway-pdfs-demo.mp4" poster="../img/video/semantic-gateway-pdfs-demo-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of Semantic Gateway for PDFs in Agent Scope: a certificate&#x27;s page with each value boxed, a scanned inspection form read by OCR, a date a model filled with its quote on the page, the documents as a knowledge graph in four lenses with the camera zooming in, a vocabulary of declared terms, a routed search, the auditor&#x27;s view, chat answers with their citations, and the ledger."></video><figcaption>The demo as recorded: 5 minutes 33 seconds, captions on screen and no sound. A fourteen-chapter tour of one session: the three packs, a value boxed on its page, a scanned form read by OCR, a date the model filled, a medicine's number as written, the Entities, Values and Similarity lenses, the vocabulary, a routed search, the auditor, two chat answers and the ledger. The camera zooms into the graph so its labels can be read. The captions are the page's own, every outcome comes from that session's records, and the file is the one archived on Zenodo.</figcaption></figure>
+<p>Folders of public PDFs become 3 packs of 118 documents: NIST reference-material certificates, FDA Form 483 inspection forms and EMA medicine overviews. Declared rules read each document's typed fields, and the FDA forms, which are scans, are recognized page by page with OCR. A model fills only what the rules miss, and a value is kept only when its quote stands on the page: 26 values in the FDA pack.</p>
+<p>Every value opens where its page states it: 773 of 773 values with text to place are boxed on an image of their page, and a page is served only against the reader's own recorded read, its view logged against that read.</p>
+<p>The documents form a knowledge graph built from declared fields, never guessed. 101 entities join each document to what it describes: a reference material by its SRM number, an establishment by its FEI, a medicine by its EMA product number. 14 values are each held by two or more documents, each document is linked to its 3 nearest by the meaning of its text, and 23 declared terms say what the fields mean.</p>
+<p>The same gate as the first example governs every view: the auditor is shown each pack's card and the ledger and no document, an agent reaches the same documents over MCP with 12 tools, and a chat answer is shown only if every quote is in a passage returned that turn and every number is in a tool's result. The session holds 96 hash-chained ledger records, all verifying.</p>
+<p>People named in the documents appear under aliases, signatures are covered, and the recording serves no PDF file. The page is one recorded session played back in the browser; its numbers are read from the session and checked against it on the served copy.</p>
+<section class="refs" aria-label="References"><h4>References</h4><ol><li>National Institute of Standards and Technology (2026). Standard Reference Materials. <span class="venue">Certificates of analysis</span>. <a href="https://www.nist.gov/srm" target="_blank" rel="noopener noreferrer">nist.gov/srm</a></li><li>U.S. Food and Drug Administration (2026). OII FOIA Electronic Reading Room. <span class="venue">Form 483 inspectional observations</span>. <a href="https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room" target="_blank" rel="noopener noreferrer">fda.gov, electronic reading room</a></li><li>European Medicines Agency (2026). Medicines. <span class="venue">EPAR medicine overviews</span>. <a href="https://www.ema.europa.eu/en/medicines" target="_blank" rel="noopener noreferrer">ema.europa.eu/en/medicines</a></li></ol></section>
+<p class="links"><a class="lnk" href="https://pdf.semanticgateway.ca" target="_blank" rel="noopener noreferrer">pdf.semanticgateway.ca</a><a class="lnk" href="https://semanticgateway.ca" target="_blank" rel="noopener noreferrer">semanticgateway.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.24096624" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.24096624</a></p>
+</div>
+</main>
+<footer class="bottom">
+  <div class="wrap">
+    <p><a href="https://chernov.ca">chernov.ca</a> &middot;
+      <a href="https://github.com/doytsujin" target="_blank" rel="noopener noreferrer">github.com/doytsujin</a> &middot;
+      <a href="https://orcid.org/0009-0007-3198-2712" target="_blank" rel="noopener noreferrer">ORCID 0009-0007-3198-2712</a> &middot;
+      <a href="https://www.linkedin.com/in/thedoytsujin" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p>Employer-associated entries describe work done in that role and are not published by or on
+      behalf of an employer. Entries marked as independent are unaffiliated with any employer.</p>
+    <p>&copy; 2024&ndash;2026 Alexander Chernov. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function paint(){
+    var cur=root.dataset.theme||'light';
+    document.querySelectorAll('.theme button').forEach(function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.theme===cur));});
+  }
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.theme button');
+    if(t){root.dataset.theme=t.dataset.theme;
+      try{localStorage.setItem('pf-theme',t.dataset.theme);}catch(err){}
+      paint();return;}
+
+    var c=e.target.closest('[data-copy]');
+    if(!c)return;
+    var url=new URL(c.dataset.copy,location.href).href;
+    var done=function(){var s=c.querySelector('.copy-text');var was=s?s.textContent:'';
+      c.classList.add('done');if(s)s.textContent='Copied';
+      setTimeout(function(){c.classList.remove('done');if(s)s.textContent=was;},1600);};
+    // The async clipboard needs a secure context and permission; where it is
+    // refused the link still has to end up on the clipboard, so fall back
+    // rather than failing silently.
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done,function(){legacy(url,done);});
+    }else{legacy(url,done);}
+  });
+  function legacy(text,ok){
+    var ta=document.createElement('textarea');ta.value=text;
+    ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');ok();}catch(e){window.prompt('Copy this link:',text);}
+    document.body.removeChild(ta);
+  }
+  paint();
+
+  // Clips: no autoplay for reduced motion; controls instead.
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[data-clip]').forEach(function(v){
+      v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
+
+  // Slide decks: one slide in the DOM, the neighbours prefetched.
+  root.classList.add('js');
+  document.querySelectorAll('[data-deck]').forEach(function(deck){
+    var base=deck.dataset.base, n=+deck.dataset.count, title=deck.dataset.title, i=1;
+    var img=deck.querySelector('img'), count=deck.querySelector('.deck-count');
+    var prev=deck.querySelector('[data-step="-1"]'), next=deck.querySelector('[data-step="1"]');
+    var frame=deck.querySelector('.deck-frame');
+    function url(k){return base+(k<10?'0':'')+k+'.webp';}
+    function warm(k){if(k>=1&&k<=n){var p=new Image();p.src=url(k);}}
+    function show(k){
+      i=Math.max(1,Math.min(n,k));
+      img.src=url(i);img.alt=title+', slide '+i+' of '+n;
+      count.textContent=i+' / '+n;prev.disabled=i===1;next.disabled=i===n;
+      warm(i+1);warm(i-1);
+    }
+    deck.addEventListener('click',function(e){
+      var b=e.target.closest('[data-step]');if(b)show(i+ +b.dataset.step);});
+    frame.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){show(i+1);e.preventDefault();}
+      else if(e.key==='ArrowLeft'){show(i-1);e.preventDefault();}
+      else if(e.key==='Home'){show(1);e.preventDefault();}
+      else if(e.key==='End'){show(n);e.preventDefault();}});
+    var x0=null;
+    frame.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    frame.addEventListener('touchend',function(e){
+      if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>40)show(i+(dx<0?1:-1));},{passive:true});
+    frame.addEventListener('click',function(e){
+      var r=frame.getBoundingClientRect();show(i+(e.clientX-r.left>r.width/2?1:-1));});
+  });
+})();
+</script>
+</body>
+</html>
