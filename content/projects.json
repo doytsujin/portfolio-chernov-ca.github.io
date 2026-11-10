@@ -604,6 +604,10 @@
         "url": "https://semanticgateway.ca"
       },
       {
+        "label": "pdf.semanticgateway.ca",
+        "url": "https://pdf.semanticgateway.ca"
+      },
+      {
         "label": "Gene-agents video: Zenodo 10.5281/zenodo.23006165",
         "url": "https://doi.org/10.5281/zenodo.23006165"
       },
@@ -1279,12 +1283,20 @@
         "url": "https://semanticgateway.ca"
       },
       {
+        "label": "pdf.semanticgateway.ca",
+        "url": "https://pdf.semanticgateway.ca"
+      },
+      {
         "label": "Agent Scope",
         "url": "https://agentscope.ca"
       },
       {
         "label": "Demo video: Zenodo 10.5281/zenodo.23906429",
         "url": "https://doi.org/10.5281/zenodo.23906429"
+      },
+      {
+        "label": "PDF demo video: Zenodo 10.5281/zenodo.24096624",
+        "url": "https://doi.org/10.5281/zenodo.24096624"
       }
     ],
     "references": [
