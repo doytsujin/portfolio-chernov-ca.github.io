@@ -727,10 +727,12 @@ footer.bottom p{margin:0 0 .5rem}
   // In-page links (the project list, the top links): straight to the target, then held
   // there while the page settles. A smooth scroll aims at where the target was when the
   // link was pressed, and media loading on the way lengthened the page: measured
-  // 2026-11-09, project 19 ended 4,096 px below the top. A reader's own scroll lets go.
+  // 2026-11-09, project 19 ended 4,096 px below the top. The hold lets go the moment
+  // anything else moves the page or the reader presses anything: held through a press
+  // of the up control, it scrolled the page back down to the project (owner, 2026-11-09).
   var hold=null;
-  ['wheel','touchstart','keydown'].forEach(function(k){
-    window.addEventListener(k,function(){hold=null;},{passive:true});});
+  ['wheel','touchstart','keydown','pointerdown'].forEach(function(k){
+    window.addEventListener(k,function(){hold=null;},{passive:true,capture:true});});
   document.addEventListener('click',function(e){
     var a=e.target.closest('.project-index a[href^="#"], nav.jump a[href^="#"]');
     if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey)return;
@@ -738,10 +740,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});};
-    var mine=hold={};go();
+    var mine=hold={},at=0;
+    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
-      if(hold===mine&&Math.abs(el.getBoundingClientRect().top)>24)go();},ms);});
+      if(hold!==mine)return;
+      // The page was moved by something other than this hold: let go.
+      if(Math.abs(window.scrollY-at)>2){hold=null;return;}
+      if(Math.abs(el.getBoundingClientRect().top)>24)go();},ms);});
   });
   document.addEventListener('click',function(e){
     var t=e.target.closest('.theme button');
@@ -779,6 +785,7 @@ footer.bottom p{margin:0 0 .5rem}
     var seen=function(){up.classList.toggle('on',window.scrollY>window.innerHeight*0.8);};
     window.addEventListener('scroll',seen,{passive:true});seen();
     up.addEventListener('click',function(){
+      hold=null;
       window.scrollTo({top:0,behavior:calm?'auto':'smooth'});
       var h=document.querySelector('header.top h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
     });
