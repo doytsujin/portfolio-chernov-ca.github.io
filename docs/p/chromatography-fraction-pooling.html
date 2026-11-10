@@ -162,6 +162,26 @@ color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
 
 .backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+/* Projects: one link per project, under the section's heading. */
+.project-index{margin:0 0 2rem}
+.project-index ol{list-style:none;margin:0;padding:0;display:grid;
+grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.2rem .9rem}
+.project-index a{display:flex;gap:.6rem;align-items:baseline;padding:.3rem .55rem;
+border-radius:var(--radius);text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.35}
+.project-index a:hover{background:var(--panel);color:var(--link)}
+.pi-n{flex:none;min-width:1.5rem;color:var(--accent);font-weight:700;font-size:.78rem}
+.project{scroll-margin-top:1rem}
+/* Up: fixed on the right, shown once the page has been scrolled. */
+.to-top{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));
+z-index:50;display:grid;place-items:center;width:2.9rem;height:2.9rem;padding:0;border-radius:50%;
+border:1px solid var(--line);background:var(--panel);color:var(--accent);cursor:pointer;
+box-shadow:0 4px 14px rgba(15,23,42,.18);opacity:0;visibility:hidden;transform:translateY(.5rem);
+transition:opacity .2s,transform .2s,visibility .2s}
+.to-top.on{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--accent)}
+.to-top:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+.to-top svg{width:1.3rem;height:1.3rem}
+@media (prefers-reduced-motion:reduce){.to-top{transition:none}}
 
 footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;
 color:var(--muted);font-size:.85rem}
@@ -232,6 +252,9 @@ footer.bottom p{margin:0 0 .5rem}
   </div>
 </footer>
 
+<button type="button" class="to-top" aria-label="Back to the top" title="Back to the top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 <script>
 (function(){
   var root=document.documentElement;
@@ -240,6 +263,25 @@ footer.bottom p{margin:0 0 .5rem}
     document.querySelectorAll('.theme button').forEach(function(b){
       b.setAttribute('aria-pressed',String(b.dataset.theme===cur));});
   }
+  // In-page links (the project list, the top links): straight to the target, then held
+  // there while the page settles. A smooth scroll aims at where the target was when the
+  // link was pressed, and media loading on the way lengthened the page: measured
+  // 2026-11-09, project 19 ended 4,096 px below the top. A reader's own scroll lets go.
+  var hold=null;
+  ['wheel','touchstart','keydown'].forEach(function(k){
+    window.addEventListener(k,function(){hold=null;},{passive:true});});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('.project-index a[href^="#"], nav.jump a[href^="#"]');
+    if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey)return;
+    var el=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    if(!el)return;
+    e.preventDefault();
+    history.pushState(null,'',a.getAttribute('href'));
+    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});};
+    var mine=hold={};go();
+    [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
+      if(hold===mine&&Math.abs(el.getBoundingClientRect().top)>24)go();},ms);});
+  });
   document.addEventListener('click',function(e){
     var t=e.target.closest('.theme button');
     if(t){root.dataset.theme=t.dataset.theme;
@@ -267,6 +309,19 @@ footer.bottom p{margin:0 0 .5rem}
     document.body.removeChild(ta);
   }
   paint();
+
+  // Up: shown once the page is scrolled past most of a screen; a press goes back to
+  // the top, at once where the reader has asked for reduced motion.
+  var up=document.querySelector('.to-top');
+  if(up){
+    var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen=function(){up.classList.toggle('on',window.scrollY>window.innerHeight*0.8);};
+    window.addEventListener('scroll',seen,{passive:true});seen();
+    up.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:calm?'auto':'smooth'});
+      var h=document.querySelector('header.top h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
+    });
+  }
 
   // Clips: no autoplay for reduced motion; controls instead.
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
