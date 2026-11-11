@@ -39,6 +39,14 @@ DESCRIPTION = (
 )
 QUESTION = "Something proposes under uncertainty — what decides whether it may act?"
 
+# A small logo shown before an affiliation's name in a project's date line.
+# The name stays as text beside it, so the logo is decorative (alt="").
+# AstraZeneca: the gold symbol cut from its logo SVG, the wordmark left out
+# because the name follows; gold reads on both the light and dark themes.
+AFFILIATION_LOGOS = {
+    "AstraZeneca": "img/logo/astrazeneca-symbol.svg",
+}
+
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
         "meta", "param", "source", "track", "wbr"}
 
@@ -146,7 +154,14 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
         )
     meta = [esc(p["period"])]
     if p.get("affiliation"):
-        meta.append(esc(p["affiliation"]))
+        logo = AFFILIATION_LOGOS.get(p["affiliation"])
+        if logo:
+            meta.append(
+                f'<span class="aff"><img src="{prefix}{logo}" alt="" class="aff-logo" '
+                f'width="37" height="47" decoding="async">{esc(p["affiliation"])}</span>'
+            )
+        else:
+            meta.append(esc(p["affiliation"]))
     parts.append(f'<p class="meta">{" · ".join(meta)}</p>')
     parts.append("</div>")
     parts.append(copy_button(f"{prefix}p/{slug}.html", p["title"]))
@@ -414,6 +429,9 @@ padding-top:.35rem}
 a.self{color:inherit;text-decoration:none}
 a.self:hover{color:var(--accent)}
 .meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
+.aff{white-space:nowrap}
+.meta .aff-logo{display:inline;height:1.25em;width:auto;vertical-align:-.3em;margin-right:.3em;
+border:0;border-radius:0;background:none}
 .lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
 .summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
 font-size:.94em;color:var(--muted)}
