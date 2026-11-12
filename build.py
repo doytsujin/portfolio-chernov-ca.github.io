@@ -822,7 +822,7 @@ def build_project_page(p: dict, index: int) -> str:
   <div class="wrap">
     <div class="topbar"><p class="eyebrow">Portfolio · Project {index:02d}</p>{THEME_WIDGET}</div>
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
-    <p class="role">Principal Engineer · Agentic AI &amp; scientific data systems</p>
+    <p class="role">Software Engineer · Full Stack · Agentic AI &amp; scientific data systems</p>
     <nav class="jump">
       <a href="{pre}index.html">All projects</a>
       <a href="{pre}index.html#publications">Publications</a>
