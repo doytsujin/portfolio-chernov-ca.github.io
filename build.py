@@ -738,10 +738,11 @@ def build_index(data: dict) -> str:
   <div class="wrap">
     <div class="topbar"><p class="eyebrow">Portfolio</p>{THEME_WIDGET}</div>
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
-    <p class="role">Principal Engineer · Agentic AI &amp; scientific data systems ·
-      IEEE member</p>
+    <p class="role">Software Engineer · Full Stack · Agentic AI &amp; scientific data
+      systems · IEEE member</p>
     <p class="motto">While with AstraZeneca, guided by its motto &ldquo;What science can
-      do,&rdquo; I have had the opportunity to contribute to research.</p>
+      do,&rdquo; I have had the opportunity to contribute to research in data, AI and
+      applied AI.</p>
     <p class="question">{esc(QUESTION)}<span>Twenty-one systems, one question.
       <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
       proposes, the gate decides, and every decision leaves a record.
