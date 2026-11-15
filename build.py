@@ -174,9 +174,13 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
 
     if p.get("image"):
         alt = esc(p.get("caption") or p["title"])
+        # The file's own size, so the browser reserves the figure's height
+        # before the lazy image arrives. Without it the page grew under a
+        # reader who had just jumped to a project further down.
+        w, h = image_size(DOCS / "img" / p["image"])
         parts.append(
             f'<figure><img src="{prefix}img/{esc(p["image"])}" alt="{alt}" '
-            f'loading="lazy" decoding="async">'
+            f'width="{w}" height="{h}" loading="lazy" decoding="async">'
         )
         if p.get("caption"):
             parts.append(f"<figcaption>{p['caption']}</figcaption>")
@@ -201,6 +205,45 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
     parts.append(link_list(p.get("links", [])))
     parts.append(f"</{tag}>")
     return "\n".join(parts)
+
+
+def image_size(path: pathlib.Path) -> tuple[int, int]:
+    """Width and height read from a PNG, JPEG or WebP header. Refuses any other
+    file, or one whose header cannot be read, rather than emitting a guess."""
+    try:
+        data = path.read_bytes()
+    except OSError:
+        sys.exit(f"refusing: image not present: {path}")
+    if data[:8] == b"\x89PNG\r\n\x1a\n" and data[12:16] == b"IHDR":
+        return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        chunk = data[12:16]
+        if chunk == b"VP8 " and data[23:26] == b"\x9d\x01\x2a":
+            return (int.from_bytes(data[26:28], "little") & 0x3FFF,
+                    int.from_bytes(data[28:30], "little") & 0x3FFF)
+        if chunk == b"VP8L" and data[20] == 0x2F:
+            b0, b1, b2, b3 = data[21:25]
+            return (1 + (((b1 & 0x3F) << 8) | b0),
+                    1 + (((b3 & 0x0F) << 10) | (b2 << 2) | ((b1 & 0xC0) >> 6)))
+        if chunk == b"VP8X":
+            return (1 + int.from_bytes(data[24:27], "little"),
+                    1 + int.from_bytes(data[27:30], "little"))
+    if data[:2] == b"\xff\xd8":
+        i = 2
+        while i + 9 < len(data):
+            if data[i] != 0xFF:
+                i += 1
+                continue
+            marker = data[i + 1]
+            if marker in (0xD8, 0x01) or 0xD0 <= marker <= 0xD7:
+                i += 2
+                continue
+            seg = int.from_bytes(data[i + 2:i + 4], "big")
+            if 0xC0 <= marker <= 0xCF and marker not in (0xC4, 0xC8, 0xCC):
+                return (int.from_bytes(data[i + 7:i + 9], "big"),
+                        int.from_bytes(data[i + 5:i + 7], "big"))
+            i += 2 + seg
+    sys.exit(f"refusing: cannot read the size of {path} (PNG, JPEG or WebP only)")
 
 
 def project_video(v: dict, prefix: str) -> str:
@@ -598,8 +641,14 @@ BEHAVIOUR = """
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;
@@ -987,6 +1036,12 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
     for src in re.findall(r'<img src="([^"]*)"', doc):
         if not (base / src).resolve().is_file():
             problems.append(f"{name}: image referenced but not present: {src}")
+
+    # An image without its size takes no room until it loads, so everything
+    # below it moves -- including a project the reader just jumped to.
+    for tag in re.findall(r"<img [^>]*>", doc):
+        if not (re.search(r'\swidth="\d+"', tag) and re.search(r'\sheight="\d+"', tag)):
+            problems.append(f"{name}: image without width and height: {tag[:70]}")
 
     # A clip whose file is missing renders as an empty box with no error, so
     # both the video and its poster have to exist on disk.

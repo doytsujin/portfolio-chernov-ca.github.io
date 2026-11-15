@@ -293,8 +293,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

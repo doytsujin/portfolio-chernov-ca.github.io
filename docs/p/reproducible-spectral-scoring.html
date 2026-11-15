@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A gate decides whether a score may exist — six spectra all fit at R² 0.988 or better. The reference scores 100; the five stressed samples score 25.4 to 54.0.</p>
 <p class="summary">Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.</p>
-<figure><img src="../img/project-reproducible-spectral-scoring.png" alt="Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A." loading="lazy" decoding="async">
+<figure><img src="../img/project-reproducible-spectral-scoring.png" alt="Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A." width="1600" height="1000" loading="lazy" decoding="async">
 <figcaption>Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A.</figcaption>
 </figure>
 <p>Spectral scoring done in notebooks is not reproducible across analysts, and the reasoning behind a score is not recoverable afterwards. This is a scoring loop with model, thresholds and provenance pinned, covered by 41 tests, plus a browser-native build running the same Python engine in-page through a Pyodide worker — the port reproduces the native reference exactly.</p>
@@ -296,8 +296,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

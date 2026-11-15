@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">Croissant can write down data-use conditions. No version of it specifies how any of them is evaluated.</p>
 <p class="summary">What the descriptor leaves open, this closes: five operators, one verdict per request, and an audit trail behind it. Authority and conditions turn out to disagree in both directions, neither permit set containing the other, and the price of deciding is published rather than estimated at +0.0 &micro;s warm, +11.7 &micro;s cold.</p>
-<figure><img src="../img/project-croissant-policy-profile.webp" alt="A dataset whose descriptor carries its conditions in the profile&amp;rsquo;s five operators, a gate that decides a request from them alone, and the record it prints either way &amp;mdash; here a refusal. Illustration; the overhead figures are the measured ones." loading="lazy" decoding="async">
+<figure><img src="../img/project-croissant-policy-profile.webp" alt="A dataset whose descriptor carries its conditions in the profile&amp;rsquo;s five operators, a gate that decides a request from them alone, and the record it prints either way &amp;mdash; here a refusal. Illustration; the overhead figures are the measured ones." width="1536" height="1024" loading="lazy" decoding="async">
 <figcaption>A dataset whose descriptor carries its conditions in the profile&rsquo;s five operators, a gate that decides a request from them alone, and the record it prints either way &mdash; here a refusal. Illustration; the overhead figures are the measured ones.</figcaption>
 </figure>
 <p>No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.</p>
@@ -296,8 +296,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

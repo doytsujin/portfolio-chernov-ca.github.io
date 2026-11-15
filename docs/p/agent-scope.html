@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A topology map shows what is connected to what. The question in front of it is usually another: may this run here, and is it ready?</p>
 <p class="summary">A control plane for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Seven recorded demos apply it to gene evidence, cluster operations, software delivery, laboratory data, a GPU fleet, a data estate and a library of PDFs.</p>
-<figure><img src="../img/project-agent-scope-field.webp" alt="The projection switcher on agentscope.ca, in the governance view. The seven nodes and seven edges are the same in every view; only what anchors the layout changes, and here policy distance becomes spatial distance." loading="lazy" decoding="async">
+<figure><img src="../img/project-agent-scope-field.webp" alt="The projection switcher on agentscope.ca, in the governance view. The seven nodes and seven edges are the same in every view; only what anchors the layout changes, and here policy distance becomes spatial distance." width="1924" height="1050" loading="lazy" decoding="async">
 <figcaption>The projection switcher on agentscope.ca, in the governance view. The seven nodes and seven edges are the same in every view; only what anchors the layout changes, and here policy distance becomes spatial distance.</figcaption>
 </figure>
 <p>Agent Scope draws an agent system — the agents, their policies, gateways, data sources and the workloads they act on — as one set of nodes and edges, and lets the viewer choose what anchors the layout. Ten projections ship: eight built in, and two that a Kubernetes profile contributes at runtime, which the client has never heard of and does not need to. Each link carries a small envelope of values the control plane already knows, such as policy compatibility, trust, readiness and provenance, and every value also drives its own visual channel, so one link can read as well governed and poorly provenanced at the same time.</p>
@@ -297,8 +297,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A solution counts here when it is right on inputs it never saw and grows the way the task expects, not when it matches the examples.</p>
 <p class="summary">A coding-practice app with 400 tasks in 19 groups, solved in Python or built from blocks that show the Python they make. A public demo lets anyone browse the tasks and write solutions; a judging server runs each submission in a sandbox and scores it against cases it keeps to itself.</p>
-<figure><img src="../img/project-pseudo.webp" alt="The public demo at pseudo.chernov.ca, task 1 of 400: a solution typed in Python, turned into blocks with one click, and on the right the Python the judge would receive. The demo shows both and runs neither." loading="lazy" decoding="async">
+<figure><img src="../img/project-pseudo.webp" alt="The public demo at pseudo.chernov.ca, task 1 of 400: a solution typed in Python, turned into blocks with one click, and on the right the Python the judge would receive. The demo shows both and runs neither." width="2400" height="1500" loading="lazy" decoding="async">
 <figcaption>The public demo at pseudo.chernov.ca, task 1 of 400: a solution typed in Python, turned into blocks with one click, and on the right the Python the judge would receive. The demo shows both and runs neither.</figcaption>
 </figure>
 <p>The public demo at pseudo.chernov.ca carries all 400 tasks, each with a statement, a signature and worked examples, grouped by technique from hashing and two pointers through trees, graphs and dynamic programming to class design, randomness and questions without code. Exams narrow the list to a set, and a reshuffle draws a new one. A solution can be typed in Python or assembled from blocks: the blocks write the Python beside them, and Python already written can be turned back into blocks. The public demo does not provide free access to the judging server, so nothing written there is run or judged.</p>
@@ -296,8 +296,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

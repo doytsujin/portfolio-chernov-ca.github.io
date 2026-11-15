@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">The descriptor decides whether to look again — and the decision, not only the detection, is what gets recorded.</p>
 <p class="summary">Real drives from two cars, 236,130 frames: a content-triggered refresh hid 2.01 points fewer scene changes than a timer at the same share of skipped model calls. The decision layer now also runs live on ROS 2 and the Vehicle Signal Specification, and a recorded live run replays to the same decision on every frame.</p>
-<figure><img src="../img/project-agentic-vision-stack.webp" alt="The live stack as built, drawn as objects: frames arrive over ROS 2, an admission layer decides for each one whether the gated model runs or an earlier result is reused, an independent detector watches alongside, and every decision goes to a ledger and to a read-only VSS overlay. The three figures on the illustration are measured." loading="lazy" decoding="async">
+<figure><img src="../img/project-agentic-vision-stack.webp" alt="The live stack as built, drawn as objects: frames arrive over ROS 2, an admission layer decides for each one whether the gated model runs or an earlier result is reused, an independent detector watches alongside, and every decision goes to a ledger and to a read-only VSS overlay. The three figures on the illustration are measured." width="1536" height="1024" loading="lazy" decoding="async">
 <figcaption>The live stack as built, drawn as objects: frames arrive over ROS 2, an admission layer decides for each one whether the gated model runs or an earlier result is reused, an independent detector watches alongside, and every decision goes to a ledger and to a read-only VSS overlay. The three figures on the illustration are measured.</figcaption>
 </figure>
 <p>Vision models are normally run on every frame. That is the safe default and an expensive one. The narrower question is whether a cheap scene descriptor can decide when the previous interpretation still holds, and whether the cost of being wrong about that can be measured rather than assumed.</p>
@@ -299,8 +299,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

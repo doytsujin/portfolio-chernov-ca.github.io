@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">Nano cloud computing is the name given in 2022 to one idea: AI built from small units that decide before they act and keep a record.</p>
 <p class="summary">Where the work is offered as products rather than demos. Four of them, each a pilot that runs in the customer’s own environment, stand beside recorded runs that put the gate to work in nine fields and the peer-reviewed research behind it.</p>
-<figure><img src="../img/project-awaw-ai.webp" alt="The opening of awaw.ai under the Graffemeter App Computing name: small models and small units that run on hardware the customer already has, and four products offered as pilots." loading="lazy" decoding="async">
+<figure><img src="../img/project-awaw-ai.webp" alt="The opening of awaw.ai under the Graffemeter App Computing name: small models and small units that run on hardware the customer already has, and four products offered as pilots." width="2400" height="1500" loading="lazy" decoding="async">
 <figcaption>The opening of awaw.ai under the Graffemeter App Computing name: small models and small units that run on hardware the customer already has, and four products offered as pilots.</figcaption>
 </figure>
 <p>awaw.ai presents four products. Grafferene is a response cache for LLM endpoints that begins in measure-only mode, reporting what caching would have saved before it serves anything. Agentic Loom builds governed recipes for batch manufacturing and sits beside the MES, not in place of it. Agentic Crawl collects what a goal needs from the web and nothing the sites’ rules forbid. Agent Scope, in preview, is the control plane in which agents propose and a gate decides. Each card states its limits next to its results.</p>
@@ -294,8 +294,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

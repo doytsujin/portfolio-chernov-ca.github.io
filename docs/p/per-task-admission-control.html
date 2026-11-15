@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.</p>
 <p class="summary">A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS's managed service honours a directive its own linter called unsupported.</p>
-<figure><img src="../img/project-per-task-admission-control.webp" alt="Two tasks of nf-core/demo at the gate, which runs through Nextflow&amp;rsquo;s &lt;code&gt;process.beforeScript&lt;/code&gt; hook before each task script: FASTQC admitted, SEQTK_TRIM refused because the offered minimum read length is 10 where the descriptor requires 20. A record is written either way. Illustration; the figures are the measured ones." loading="lazy" decoding="async">
+<figure><img src="../img/project-per-task-admission-control.webp" alt="Two tasks of nf-core/demo at the gate, which runs through Nextflow&amp;rsquo;s &lt;code&gt;process.beforeScript&lt;/code&gt; hook before each task script: FASTQC admitted, SEQTK_TRIM refused because the offered minimum read length is 10 where the descriptor requires 20. A record is written either way. Illustration; the figures are the measured ones." width="1536" height="1024" loading="lazy" decoding="async">
 <figcaption>Two tasks of nf-core/demo at the gate, which runs through Nextflow&rsquo;s <code>process.beforeScript</code> hook before each task script: FASTQC admitted, SEQTK_TRIM refused because the offered minimum read length is 10 where the descriptor requires 20. A record is written either way. Illustration; the figures are the measured ones.</figcaption>
 </figure>
 <p>Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.</p>
@@ -295,8 +295,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;

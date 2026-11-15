@@ -245,7 +245,7 @@ footer.bottom p{margin:0 0 .5rem}
 </div>
 <p class="lede">What a cache saves depends on how much the traffic repeats. So it measures that first, without serving a single cached answer.</p>
 <p class="summary">An LLM response cache that starts by watching. A week of real traffic yields a report of would-be hits and the stored replies it would have returned, and the owner decides from it whether, and how strictly, serving begins.</p>
-<figure><img src="../img/project-grafferene.webp" alt="Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca." loading="lazy" decoding="async">
+<figure><img src="../img/project-grafferene.webp" alt="Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca." width="1536" height="1024" loading="lazy" decoding="async">
 <figcaption>Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca.</figcaption>
 </figure>
 <figure class="clip"><video data-clip src="../img/video/grafferene-demo.mp4" poster="../img/video/grafferene-demo-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the Grafferene demo: recorded WildChat requests travel from three tenants&#x27; users through Grafferene to the semantic cache or on to the model, a visitor&#x27;s question is decided in the browser, and a retired model version&#x27;s cached answers are removed in one wave."></video><figcaption>The demo as recorded: 2 minutes 3 seconds of the deployed demo, in real time, captions on screen and no sound. 962 recorded WildChat turns from 176 users in three tenants are replayed through Grafferene, each request answered from the cache or sent on to the model with its reason on the record. A question typed into the page is decided in the browser by an 8-bit copy of the recording&rsquo;s embedding model. Tenant A retires a model version and its answers leave in one wave: 433 removed, and 2 under a retention hold kept out of service; when a handbook page changes for Tenant B, 252 answers stay in Probation, marked as possibly out of date. Every number in a caption was read off the page as it was recorded. The file is the one archived on Zenodo.</figcaption></figure>
@@ -298,8 +298,14 @@ footer.bottom p{margin:0 0 .5rem}
     if(!el)return;
     e.preventDefault();
     history.pushState(null,'',a.getAttribute('href'));
-    var mine=hold={},at=0;
-    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    var mine=hold={},at=0,root=document.documentElement;
+    // An instant jump. behavior 'auto' defers to the stylesheet, and html has
+    // scroll-behavior:smooth, so 'auto' alone animated across the whole page,
+    // the hold read the animation as the reader scrolling, let go, and the
+    // project landed thousands of pixels off (owner, 2026-11-15).
+    var go=function(){var was=root.style.scrollBehavior;root.style.scrollBehavior='auto';
+      el.scrollIntoView({behavior:'instant',block:'start'});
+      root.style.scrollBehavior=was;at=window.scrollY;};
     go();
     [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
       if(hold!==mine)return;
