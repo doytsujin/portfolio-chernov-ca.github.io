@@ -758,11 +758,20 @@ def section_head(anchor: str, heading: str, prefix: str) -> str:
     )
 
 
+def index_title(title: str) -> str:
+    """The full title, so every line says what the project does; a name before
+    the colon is set in bold so the list can still be scanned by name."""
+    name, sep, rest = title.partition(":")
+    if not sep:
+        return esc(title)
+    return f"<strong>{esc(name.strip())}</strong>: {esc(rest.strip())}"
+
+
 def project_index(projects: list[dict]) -> str:
-    """One link per project, to its entry below, by the short name before the title's colon."""
+    """One link per project, to its entry below, by its full title."""
     items = "".join(
         f'<li><a href="#{esc(p["slug"])}"><span class="pi-n">{i:02d}</span>'
-        f'<span>{esc(p["title"].split(":", 1)[0].strip())}</span></a></li>'
+        f'<span>{index_title(p["title"])}</span></a></li>'
         for i, p in enumerate(projects, start=1)
     )
     return f'<nav class="project-index" aria-label="Projects on this page"><ol>{items}</ol></nav>'
