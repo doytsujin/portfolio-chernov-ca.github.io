@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Each request passes a versioned policy, and a caller's page is computed from what that policy admits, so a hidden pack answers exactly as one never mounted: the data steward may search 12 packs and the visitor 5. A pack embedded with a model the host does not embed queries with stands apart, refused, with the reason. Search shows passages, while a full record leaves the gate, so a read of result rows goes to a person, bound to the hash of exactly those rows.</p>
 <p>An agent reaches the same estate over MCP, offered 33 tools, and its read waits for a person too; no tool can approve. In the chat, the model sees only the caller's tools, and its answer is withheld unless every quote is in a passage returned that turn and every number is in a tool's result. Every request leaves a line in a hash-chained ledger.</p>
 <p>The host stays on loopback until it has real sign-in, so the public page is one recorded session played back in the browser. Its numbers are read from the session, a typed number fails the build, and a request the session did not make gets a sentence saying so, not an answer.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency (2021). Water Quality Portal. <span class="venue">Data portal</span>. <a href="https://doi.org/10.5066/P9QRKUVJ" target="_blank" rel="noopener noreferrer">doi:10.5066/P9QRKUVJ</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://semanticgateway.ca" target="_blank" rel="noopener noreferrer">semanticgateway.ca</a><a class="lnk" href="https://pdf.semanticgateway.ca" target="_blank" rel="noopener noreferrer">pdf.semanticgateway.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23906429" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23906429</a><a class="lnk" href="https://doi.org/10.5281/zenodo.24096624" target="_blank" rel="noopener noreferrer">PDF demo video: Zenodo 10.5281/zenodo.24096624</a></p>
 </div>

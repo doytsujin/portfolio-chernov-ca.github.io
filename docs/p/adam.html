@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>gpt-5 had 118 of 159 columns accepted: 89 of 109 copied and 29 of 50 derived. qwen2.5-coder 7B, running on a laptop GPU, had 35 of 159. On the same variables, 92 were accepted only for gpt-5 and 9 only for the local model (exact McNemar, p &lt; 0.001). The record also shows what a miss looks like. Nine of gpt-5&rsquo;s 38 wrong-value rejections are columns the reference leaves empty, which it filled anyway, with invented dictionary codes, consent dates, and an action taken for every one of the 1,191 adverse events, inferred from the dosing records. An exact comparison catches each of them.</p>
 <p>Any verdict can be re-run in the browser. The demo carries the same data files and the same R comparison code and runs them with webR, so a verdict does not depend on trusting the machine that recorded it. All 318 recorded verdicts reproduced in headless Chrome through the demo&rsquo;s own button. Here the reference is the output of the public admiral templates; in production it would be an independent second-line QC program, and the check is agreement with that reference rather than validation in the GxP sense.</p>
 <p>Transferable principle: let a model write the first-line program, and accept its output only where an independent check reproduces it exactly.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Straub et al. (2026). admiral: ADaM in R Asset Library. <span class="venue">R package version 1.4.1, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.admiral" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.admiral</a></li><li>Gautier et al. (2026). pharmaverseadam: ADaM Test Data for the ‘Pharmaverse’ Family of Packages. <span class="venue">R package version 1.3.0, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.pharmaverseadam" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.pharmaverseadam</a></li><li>Patil et al. (2026). pharmaversesdtm: SDTM Test Data for the ‘Pharmaverse’ Family of Packages. <span class="venue">R package version 1.4.0, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.pharmaversesdtm" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.pharmaversesdtm</a></li><li>Gower-Page and Martin (2025). diffdf: Dataframe Difference Tool. <span class="venue">R package version 1.1.2, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.diffdf" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.diffdf</a></li><li>McNemar (1947). Note on the sampling error of the difference between correlated proportions or percentages. <span class="venue">Psychometrika 12(2), 153–157</span>. <a href="https://doi.org/10.1007/BF02295996" target="_blank" rel="noopener noreferrer">doi:10.1007/BF02295996</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://adam.chernov.ca" target="_blank" rel="noopener noreferrer">adam.chernov.ca</a><a class="lnk" href="https://demo.adam.chernov.ca" target="_blank" rel="noopener noreferrer">demo.adam.chernov.ca</a><a class="lnk" href="https://adam.chernov.ca/#results" target="_blank" rel="noopener noreferrer">Results and limits</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23361650" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23361650</a></p>
 </div>

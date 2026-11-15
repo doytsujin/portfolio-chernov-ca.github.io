@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -239,6 +252,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Extraction and change detection were measured the same way. Extracted text scored 0.972 F1 against the exact content of 1,648 pages, and no page lost more than half of it, including pages built from separate sections, which had lost a third of their text before. Re-crawled a day and a week later, all 1,650 changed-or-unchanged verdicts agreed with what had in fact changed, including on servers that kept reporting &ldquo;unchanged&rdquo; when it was not.</p>
 <p>The demo replays recorded crawls in the browser in three linked views: the crawl as a tree growing from the agent through each site toward the goal’s pages, a request lane per site taken from the servers’ own log, and the decision trace behind each choice, with a Truth tab that holds each run against the corpus’s own answers. The test sites are generated, and their small vocabularies make matching easier than on real sites; a free pilot measures the same things on a customer’s own sites.</p>
 <p>Transferable principle: let the agent choose the order, and keep the decision to send a request in checks it cannot change.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Chakrabarti et al. (1999). Focused crawling: a new approach to topic-specific Web resource discovery. <span class="venue">Computer Networks 31(11–16), 1623–1640</span>. <a href="https://doi.org/10.1016/S1389-1286(99)00052-3" target="_blank" rel="noopener noreferrer">doi:10.1016/S1389-1286(99)00052-3</a></li><li>Koster et al. (2022). Robots Exclusion Protocol. <span class="venue">RFC 9309, IETF</span>. <a href="https://doi.org/10.17487/RFC9309" target="_blank" rel="noopener noreferrer">doi:10.17487/RFC9309</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticcrawl.ca" target="_blank" rel="noopener noreferrer">agenticcrawl.ca</a><a class="lnk" href="https://demo.agenticcrawl.ca" target="_blank" rel="noopener noreferrer">demo.agenticcrawl.ca</a><a class="lnk" href="https://agenticcrawl.ca/results.html" target="_blank" rel="noopener noreferrer">All results, goal by goal</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23328688" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23328688</a></p>
 </div>

@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Agents get the same gates. An agent connected over the Model Context Protocol can start a run and answer a gate, but only through the checks a person faces: an acceptance still needs a justification, and is still refused where the model does not allow it. Each unit’s descriptor is an Agentic Datasets declaration carrying its place in the ISA-88 model, its PackML state model and the command each action issues in each state, so the plan check follows a recipe to its end. While a recipe is planned, Agentic Loom also shows when another recipe holds the same unit over an overlapping window, and when a lot’s history carries a material the procedure excludes; these are findings for the author, and a gate at run time asks only about its own step.</p>
 <p>agenticloom.ca gives each standard its status: ISA-88 recipes and PackML states built, the OPC UA gate measured, batch records in Agentic Loom’s own format, ISA-95 exports and MTP planned. In the recipe editor, each phase’s live verdict matched the decision its gate made when the demonstration recipe ran. At the equipment, an admission gate inside a real OPC UA server checked each call against the unit’s live PackML state: 90 of 90 disallowed calls were refused, none of the refused work ran, and the gate took 49.5 µs per call (median of 30 replicates, simulated units). The recipe runner does not connect to OPC UA yet, every result comes from demonstration descriptors rather than a plant, and compliance with Part 11, Annex 11 or GAMP 5 is a site’s to establish after validation.</p>
 <p>Transferable principle: let agents and people propose, let a model of the plant admit each step, and make every exception a person’s decision, kept with its reason.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>IEC (1997). IEC 61512-1: Batch control — Part 1: Models and terminology (ISA-88). <span class="venue">International standard</span>. <a href="https://webstore.iec.ch/en/publication/5528" target="_blank" rel="noopener noreferrer">webstore.iec.ch</a></li><li>ISA (2022). ISA-TR88.00.02-2022, Machine and Unit States: An implementation example of ISA-88.00.01 (PackML). <span class="venue">Technical report</span>. <a href="https://www.isa.org/products/isa-tr88-00-02-2022-machine-and-unit-states-an-imp" target="_blank" rel="noopener noreferrer">isa.org</a></li><li>IEC (2025). IEC 62541-1: OPC Unified Architecture — Part 1: Overview and concepts. <span class="venue">International standard, edition 1.0</span>. <a href="https://webstore.iec.ch/en/publication/81513" target="_blank" rel="noopener noreferrer">webstore.iec.ch</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticloom.ca" target="_blank" rel="noopener noreferrer">agenticloom.ca</a><a class="lnk" href="https://agenticloom.ca/#standards" target="_blank" rel="noopener noreferrer">Standards: what is built and what is not yet</a><a class="lnk" href="https://agenticloom.ca/#evidence" target="_blank" rel="noopener noreferrer">What has been measured</a><a class="lnk" href="https://www.linkedin.com/company/agenticloom/" target="_blank" rel="noopener noreferrer">Agentic Loom on LinkedIn</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23487481" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23487481</a></p>
 </div>

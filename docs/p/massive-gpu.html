@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -237,6 +250,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>What is real is the path a change takes. The assistant or an operator proposes it, and the gate rules on it. A drain of a node running 45 pods is too large for the rules to admit alone, so it waits for a person; once approved, the cordon goes through Git, Argo CD syncs it, and the executor evicts the pods. Every step lands in a hash-chained ledger anchored in Git.</p>
 <p>The recording includes the faults planted to test that path. A ledger record edited on disk is reported as a broken chain, and the gate refuses new records until it is restored. With the gate's pod removed for 43 seconds, nothing is admitted. With the Git server removed, an admitted change fails to commit, the ledger says so, and the change never reaches the cluster.</p>
 <p>The page is a recording, with no server behind it. Its numbers are read from the record, so a number typed into its words fails the build, and it is checked against the watcher's own state at dozens of moments.</p>
+
 
 <p class="links"><a class="lnk" href="https://massivegpu.ca" target="_blank" rel="noopener noreferrer">massivegpu.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23890436" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23890436</a></p>
 </div>

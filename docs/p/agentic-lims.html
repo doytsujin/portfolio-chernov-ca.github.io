@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Each node carries the documents its rows cite or name: its source records, the laboratory’s quality notes, the project records, and the method publications. The anion method opens at p. 19 of USGS Open-File Report 93-125, the page its results cite, served by the dataset over MCP. A question about it is answered only from the passages the dataset’s search returns, and the answer is shown only if every quote in it is found word for word on its page; otherwise it is retried once and then withheld.</p>
 <p>The admitted results are written as a new dataset of 531 records, each with its lineage and the decisions behind it, and read back by sha256. Every decision cites the dataset’s own evidence entry, both ledgers are hash-chained, and an edited line is caught when a ledger loads. The recorded demo runs on one machine over one public slice of data; it shows the lineage of laboratory output and decides its use. The view is Agent Scope, on the published @agent-scope-ca/graph-canvas component.</p>
 <p>Transferable principle: keep the lineage with the data, let the data decide its own use under a written policy, and show an answer only when its quotes hold against the source.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency (2021). Water Quality Portal. <span class="venue">Data portal</span>. <a href="https://doi.org/10.5066/P9QRKUVJ" target="_blank" rel="noopener noreferrer">doi:10.5066/P9QRKUVJ</a></li><li>Fishman (ed.) (1993). Methods of analysis by the U.S. Geological Survey National Water Quality Laboratory: determination of inorganic and organic constituents in water and fluvial sediments. <span class="venue">U.S. Geological Survey Open-File Report 93-125</span>. <a href="https://doi.org/10.3133/ofr93125" target="_blank" rel="noopener noreferrer">doi:10.3133/ofr93125</a></li><li>Model Context Protocol (2025). Specification, version 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li><li>Chernov (2026). Agentic Dataset Reference Implementation and Conformance Suite. <span class="venue">Zenodo</span>. <a href="https://doi.org/10.5281/zenodo.22536342" target="_blank" rel="noopener noreferrer">doi:10.5281/zenodo.22536342</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticlims.ca" target="_blank" rel="noopener noreferrer">agenticlims.ca</a><a class="lnk" href="https://agenticlims.ca/#decided" target="_blank" rel="noopener noreferrer">Decided: the gate and the person</a><a class="lnk" href="https://agenticlims.ca/#limits" target="_blank" rel="noopener noreferrer">The limits, stated</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23625293" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23625293</a></p>
 </div>

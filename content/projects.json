@@ -552,35 +552,68 @@
     "slug": "agent-scope",
     "title": "Agent Scope: a live map of agents, policies and the gate they must pass",
     "lede": "A topology map shows what is connected to what. The question in front of it is usually another: may this run here, and is it ready?",
-    "summary": "A control-plane view for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Two recorded demos: gene agents with a quantum capability, and an ops agent on live Kubernetes.",
+    "summary": "A control plane for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Seven recorded demos apply it to gene evidence, cluster operations, software delivery, laboratory data, a GPU fleet, a data estate and a library of PDFs.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
-    "video": [
-      {
-        "src": "img/video/agent-scope-ops.mp4",
-        "poster": "img/video/agent-scope-ops-poster.jpg",
-        "width": 1920,
-        "height": 1080,
-        "alt": "Screen recording of the Agent Scope ops-agent demo: an operator's orders in chat, the gate's decision on each, and the cluster read back after every order, on a graph of the operator, agent, gateway, gate and workloads.",
-        "caption": "The ops-agent demo as recorded: 136 seconds against a running k3s cluster, captions burned in, and each result caption quoting the read-back the run stored. On screen the graph of operator, agent, gateway, gate and workloads changes as each order is decided, next to the chat and the trail of decision records behind it. The file is the one archived on Zenodo."
-      },
-      {
-        "src": "img/video/agent-scope-gene.mp4",
-        "autoplay": false,
-        "poster": "img/video/agent-scope-gene-poster.jpg",
-        "width": 1920,
-        "height": 1080,
-        "alt": "Screen recording of the Agent Scope gene-agents demo: evidence items flowing from three CIViC feeds to the EGFR, TP53 and BRCA1 agents, their states changing, a capability request passing through the gateway, and the trace of each decision.",
-        "caption": "The gene-agents demo as recorded: about 100 seconds from the running system, every caption quoting the record it describes. Evidence reaches the three agents in the order CIViC's curators reviewed it, each agent decides under its own policy file, and one capability request goes through the gateway to the quantum step. The file is the one archived on Zenodo."
-      }
-    ],
+    "image": "project-agent-scope-field.webp",
+    "caption": "The projection switcher on agentscope.ca, in the governance view. The seven nodes and seven edges are the same in every view; only what anchors the layout changes, and here policy distance becomes spatial distance.",
     "body": [
       "Agent Scope draws an agent system — the agents, their policies, gateways, data sources and the workloads they act on — as one set of nodes and edges, and lets the viewer choose what anchors the layout. Ten projections ship: eight built in, and two that a Kubernetes profile contributes at runtime, which the client has never heard of and does not need to. Each link carries a small envelope of values the control plane already knows, such as policy compatibility, trust, readiness and provenance, and every value also drives its own visual channel, so one link can read as well governed and poorly provenanced at the same time.",
       "Questions asked in words are answered by issuing real read commands against the live cluster — pods, events, logs, nodes, namespaces — and reporting what came back, not by inferring from the prompt. Asked which pods in a namespace were not ready, it named six, and <code>kubectl</code> showed the same six.",
       "Mutations pass an admission gate first. In the recorded run, scaling a standard-tier workload from 2 to 4 replicas was admitted and reached the cluster; the same request against a critical-tier workload was refused, and its replica count stayed at 3. The only difference was a label on the resource, so the decision is made on data rather than in code. A mutation needs a proof-of-admission token that only the gate can construct; a request no rule matches is refused; and allows and denials alike leave a decision artifact with the rule, the reason and a trace id.",
-      "The first demo puts three agents on real clinical-evidence records from CIViC for EGFR, TP53 and BRCA1. Each agent holds a versioned policy file and cites its id, version and sha256 on every decision; at the default evidence floor, 140 of 269 EGFR items are refused for therapy claims, because the finding stands but using it to say a treatment will work does not. TP53 may request one capability, a QAOA contig assembly following the published QuASeR method on a simulator, and only through a gateway with its own allow-list. The run returns the correct ordering, reported with its margin of 0.0005 over the runner-up, and a request for real quantum hardware is refused by the gateway before anything is submitted.",
-      "The second demo gives an operations agent seven orders in chat on a live k3s cluster that it reaches only through a scoped service account. A read is answered from the cluster; an ordinary scale and an ordinary create are allowed; scaling a critical workload is escalated and changes nothing; a create that labels itself critical is refused as a claim by the order rather than a fact; a manifest from a public repository is decided object by object, one applied and two refused; and asked whether the cluster matches its repository, it answers true only when both sides answer. Every order ends with the cluster read back, and every record goes to a hash-chained ledger that catches an edited or dropped line on restart.",
-      "Everything described here runs and is measured on a real cluster: the projections, the read commands, the enforced gate and the decision artifacts, kept on a hash-chained ledger that survives a restart. The site publishes that status row by row, and the next step, reading policy from a cluster resource, goes through the one seam where policy is already assembled. The trace view in both demos is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm."
+      "Seven demos put the same gate and the same decision record in front of a different agent in a different domain. Each was recorded from the running system and archived on Zenodo, and each has its own live site and its own entry in this portfolio, listed below.",
+      "Everything described here runs and is measured on a real cluster: the projections, the read commands, the enforced gate and the decision artifacts, kept on a hash-chained ledger that survives a restart. The site publishes that status row by row, and the next step, reading policy from a cluster resource, goes through the one seam where policy is already assembled. The trace view in the gene-agent and ops-agent demos is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm."
+    ],
+    "use_cases": [
+      {
+        "kind": "Gene agents + a quantum capability",
+        "name": "Gene agents that hold their own policy",
+        "text": "Three agents read real clinical-evidence records for EGFR, TP53 and BRCA1. Each holds a versioned policy file and reaches a quantum capability only through a gateway.",
+        "page": "agent-scope-gene-agents",
+        "site": "https://genequbit.agentscope.ca"
+      },
+      {
+        "kind": "Infrastructure",
+        "name": "An ops agent that asks before it acts",
+        "text": "An operator gives orders in chat. The agent asks a gate that holds a policy file, makes the one call the gate admits on a live Kubernetes cluster, and reads the cluster back.",
+        "page": "agent-scope-ops-agent",
+        "site": "https://infra.agentscope.ca"
+      },
+      {
+        "kind": "Software delivery",
+        "name": "Agents propose, a gate decides",
+        "text": "A coding agent’s change is tested, approved by a person, promoted and run once; an operations agent’s calls are decided before they reach the service. Measured beside cosign and Kyverno.",
+        "page": "agentic-delivery",
+        "site": "https://agenticdelivery.ca"
+      },
+      {
+        "kind": "Laboratory data",
+        "name": "Agentic LIMS: every result traced, every use decided",
+        "text": "Public lab results held as an agentic dataset over MCP. An agent assembles a report; the dataset decides each result under its policy, a person approves what it escalates, and answers from method documents are checked quote by quote.",
+        "page": "agentic-lims",
+        "site": "https://agenticlims.ca"
+      },
+      {
+        "kind": "GPU fleet",
+        "name": "Massive GPU: simulated fleet, real control path",
+        "text": "1,125 simulated nodes and 1,000 simulated GPUs on a real Kubernetes, beside a real GPU serving a real model. A gate decides each proposed change, a person approves what the rules send to one, and every step is in a hash-chained ledger. Recorded with the faults planted to test it.",
+        "page": "massive-gpu",
+        "site": "https://massivegpu.ca"
+      },
+      {
+        "kind": "Data estate",
+        "name": "Semantic Gateway: one estate behind one gate",
+        "text": "Seven packs built from public sources and four ontology packs, 17,257 documents in all, linked only where evidence supports a link. One query is routed across them, each caller gets only what the policy admits, a person approves full reads, and every request is in a hash-chained ledger.",
+        "page": "semantic-gateway-demo",
+        "site": "https://semanticgateway.ca"
+      },
+      {
+        "kind": "Documents",
+        "name": "Semantic Gateway for PDFs: every value on its page",
+        "text": "118 public PDFs from NIST, FDA and EMA, read into typed fields by declared rules, with a model only for what the rules miss. Each value opens boxed where its page states it, the documents form a knowledge graph, and every request passes the same gate.",
+        "page": "semantic-gateway-pdfs-demo",
+        "site": "https://pdf.semanticgateway.ca"
+      }
     ],
     "links": [
       {
@@ -588,68 +621,13 @@
         "url": "https://agentscope.ca"
       },
       {
-        "label": "genequbit.agentscope.ca",
-        "url": "https://genequbit.agentscope.ca"
-      },
-      {
-        "label": "infra.agentscope.ca",
-        "url": "https://infra.agentscope.ca"
-      },
-      {
-        "label": "massivegpu.ca",
-        "url": "https://massivegpu.ca"
-      },
-      {
-        "label": "semanticgateway.ca",
-        "url": "https://semanticgateway.ca"
-      },
-      {
-        "label": "pdf.semanticgateway.ca",
-        "url": "https://pdf.semanticgateway.ca"
-      },
-      {
-        "label": "Gene-agents video: Zenodo 10.5281/zenodo.23006165",
-        "url": "https://doi.org/10.5281/zenodo.23006165"
-      },
-      {
-        "label": "Ops-agent video: Zenodo 10.5281/zenodo.23006181",
-        "url": "https://doi.org/10.5281/zenodo.23006181"
+        "label": "Agent Scope on LinkedIn",
+        "url": "https://www.linkedin.com/company/agentscope-ca/"
       },
       {
         "label": "@agent-scope-ca/graph-canvas",
         "url": "https://www.npmjs.com/package/@agent-scope-ca/graph-canvas",
         "mono": true
-      },
-      {
-        "label": "ok-admission-gate-demo",
-        "url": "https://github.com/doytsujin/ok-admission-gate-demo",
-        "mono": true
-      }
-    ],
-    "references": [
-      {
-        "authors": "Sarkar, Al-Ars and Bertels",
-        "year": 2021,
-        "title": "QuASeR: Quantum Accelerated de novo DNA sequence reconstruction",
-        "venue": "PLOS ONE 16(4), e0249850",
-        "url": "https://doi.org/10.1371/journal.pone.0249850",
-        "label": "doi:10.1371/journal.pone.0249850"
-      },
-      {
-        "authors": "Griffith et al.",
-        "year": 2017,
-        "title": "CIViC is a community knowledgebase for expert crowdsourcing the clinical interpretation of variants in cancer",
-        "venue": "Nature Genetics 49(2), 170–174",
-        "url": "https://doi.org/10.1038/ng.3774",
-        "label": "doi:10.1038/ng.3774"
-      },
-      {
-        "authors": "Bergholm et al.",
-        "year": 2018,
-        "title": "PennyLane: Automatic differentiation of hybrid quantum-classical computations",
-        "venue": "arXiv preprint",
-        "url": "https://arxiv.org/abs/1811.04968",
-        "label": "arXiv:1811.04968"
       }
     ]
   },
@@ -1376,6 +1354,149 @@
         "venue": "EPAR medicine overviews",
         "url": "https://www.ema.europa.eu/en/medicines",
         "label": "ema.europa.eu/en/medicines"
+      }
+    ]
+  },
+  {
+    "slug": "agent-scope-gene-agents",
+    "title": "Gene agents: clinical evidence decided under each agent’s own policy, with a gated quantum step",
+    "lede": "Three agents read the same clinical evidence, and each decides by a policy file it holds and cites; the one quantum call passes a gateway.",
+    "summary": "An Agent Scope demo on real CIViC evidence for three genes. No controller assigns work, every agent moves only along its state machine, and TP53’s single capability, a QAOA contig assembly on a simulator, is reached through a gateway that keeps its own allow-list.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agent-scope-gene.mp4",
+        "poster": "img/video/agent-scope-gene-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agent Scope gene-agents demo: evidence items flowing from three CIViC feeds to the EGFR, TP53 and BRCA1 agents, their states changing, a capability request passing through the gateway, and the trace of each decision.",
+        "caption": "The gene-agents demo as recorded: about 100 seconds from the running system, every caption quoting the record it describes. Evidence reaches the three agents in the order CIViC's curators reviewed it, each agent decides under its own policy file, and one capability request goes through the gateway to the quantum step. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "Three agents work on real clinical-evidence records from CIViC, one each for EGFR, TP53 and BRCA1. Items arrive in the order CIViC’s curators reviewed them, every item goes to every agent, and each agent decides for itself whether an item concerns it. An agent is Idle, Reasoning, Publishing or Cooldown, and every transition is a record with the state before and after, so the color on screen is the state the agent was in.",
+      "Each agent loads a versioned policy file once and cites its id, version and sha256 on every decision. At the default evidence floor, 140 of 269 EGFR items are refused for therapy claims, because the finding stands but using it to say a treatment will work does not.",
+      "TP53 may request one capability: de novo assembly of a short contig as QAOA, following the published QuASeR method, with three reads and nine qubits on PennyLane’s <code>default.qubit</code> simulator. The agents hold no network code, so the call can only go to the gateway, which refuses a backend that is not on its list, serves an exact repeat from cache, or runs the call. The run returns <code>GCGCA</code>, checked against the brute-force optimum and reported with its margin of 0.0005 over the runner-up, and a request for <code>ibm_hardware</code> is refused before anything is submitted.",
+      "The trace view is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm, and the assembly code comes from the public quantum-biology demos."
+    ],
+    "references": [
+      {
+        "authors": "Sarkar, Al-Ars and Bertels",
+        "year": 2021,
+        "title": "QuASeR: Quantum Accelerated de novo DNA sequence reconstruction",
+        "venue": "PLOS ONE 16(4), e0249850",
+        "url": "https://doi.org/10.1371/journal.pone.0249850",
+        "label": "doi:10.1371/journal.pone.0249850"
+      },
+      {
+        "authors": "Griffith et al.",
+        "year": 2017,
+        "title": "CIViC is a community knowledgebase for expert crowdsourcing the clinical interpretation of variants in cancer",
+        "venue": "Nature Genetics 49(2), 170–174",
+        "url": "https://doi.org/10.1038/ng.3774",
+        "label": "doi:10.1038/ng.3774"
+      },
+      {
+        "authors": "Bergholm et al.",
+        "year": 2018,
+        "title": "PennyLane: Automatic differentiation of hybrid quantum-classical computations",
+        "venue": "arXiv preprint",
+        "url": "https://arxiv.org/abs/1811.04968",
+        "label": "arXiv:1811.04968"
+      }
+    ],
+    "links": [
+      {
+        "label": "genequbit.agentscope.ca",
+        "url": "https://genequbit.agentscope.ca"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23006165",
+        "url": "https://doi.org/10.5281/zenodo.23006165"
+      },
+      {
+        "label": "Quantum-biology demos: Zenodo 10.5281/zenodo.22741061",
+        "url": "https://doi.org/10.5281/zenodo.22741061"
+      },
+      {
+        "label": "@agent-scope-ca/graph-canvas",
+        "url": "https://www.npmjs.com/package/@agent-scope-ca/graph-canvas",
+        "mono": true
+      }
+    ]
+  },
+  {
+    "slug": "agent-scope-ops-agent",
+    "title": "Ops agent: orders in chat, decided by a gate and read back from a live cluster",
+    "lede": "An operations agent makes only the call a gate admits, and every order ends with the cluster read back, so the last word is the cluster’s.",
+    "summary": "An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "video": [
+      {
+        "src": "img/video/agent-scope-ops.mp4",
+        "poster": "img/video/agent-scope-ops-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the Agent Scope ops-agent demo: an operator's orders in chat, the gate's decision on each, and the cluster read back after every order, on a graph of the operator, agent, gateway, gate and workloads.",
+        "caption": "The ops-agent demo as recorded: 136 seconds against a running k3s cluster, captions burned in, and each result caption quoting the read-back the run stored. On screen the graph of operator, agent, gateway, gate and workloads changes as each order is decided, next to the chat and the trail of decision records behind it. The file is the one archived on Zenodo."
+      }
+    ],
+    "body": [
+      "The seven orders cover what a gate has to get right. A read is answered from the cluster; an ordinary scale and an ordinary create are allowed; scaling a critical workload is escalated and changes nothing; a create that labels itself critical is refused as a claim by the order rather than a fact; a manifest from a public repository is decided object by object, one applied and two refused; and asked whether the cluster matches its repository, it answers true only when both sides answer.",
+      "For an existing workload the gate decides on labels read off the live object, so an order cannot choose its own answer. A create has no live object, so its labels can only come from the order, and the gate is told so. Deny outranks escalation, escalation outranks allow, and anything no rule admits is refused.",
+      "There are two enforcement points: the gateway’s own policy file limits where it may write, and the cluster applies the service account’s permissions on top, so loosening one leaves the other still refusing. With plain language on, a model turns a sentence into one order; the model call is a record, the order cites it, and the gate decides exactly as it does for a typed order.",
+      "Every record is appended to a hash-chained ledger, and a restart reads it back and catches an edited or dropped line. The trace view is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm."
+    ],
+    "links": [
+      {
+        "label": "infra.agentscope.ca",
+        "url": "https://infra.agentscope.ca"
+      },
+      {
+        "label": "Agent Scope",
+        "url": "https://agentscope.ca"
+      },
+      {
+        "label": "Demo video: Zenodo 10.5281/zenodo.23006181",
+        "url": "https://doi.org/10.5281/zenodo.23006181"
+      },
+      {
+        "label": "ok-admission-gate-demo",
+        "url": "https://github.com/doytsujin/ok-admission-gate-demo",
+        "mono": true
+      },
+      {
+        "label": "@agent-scope-ca/graph-canvas",
+        "url": "https://www.npmjs.com/package/@agent-scope-ca/graph-canvas",
+        "mono": true
+      }
+    ]
+  },
+  {
+    "slug": "pseudo",
+    "title": "Pseudo: coding practice in Python or in blocks, judged on cases the solver never sees",
+    "lede": "A solution counts here when it is right on inputs it never saw and grows the way the task expects, not when it matches the examples.",
+    "summary": "A coding-practice app with 400 tasks in 19 groups, solved in Python or built from blocks that show the Python they make. A public demo lets anyone browse the tasks and write solutions; a judging server runs each submission in a sandbox and scores it against cases it keeps to itself.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "image": "project-pseudo.webp",
+    "caption": "The public demo at pseudo.chernov.ca, task 1 of 400: a solution typed in Python, turned into blocks with one click, and on the right the Python the judge would receive. The demo shows both and runs neither.",
+    "body": [
+      "The public demo at pseudo.chernov.ca carries all 400 tasks, each with a statement, a signature and worked examples, grouped by technique from hashing and two pointers through trees, graphs and dynamic programming to class design, randomness and questions without code. Exams narrow the list to a set, and a reshuffle draws a new one. A solution can be typed in Python or assembled from blocks: the blocks write the Python beside them, and Python already written can be turned back into blocks. The public demo does not provide free access to the judging server, so nothing written there is run or judged.",
+      "On the judging server, every submission runs in its own throwaway gVisor container with no network and a read-only root, under time and memory limits. Before it runs, a static read rejects code that reaches for the network, the file system or dynamic evaluation, and catches a “solution” that is a table of the answers. It is then run on hidden cases generated from a reference solution, which never leave the server, so code that fits the visible examples but not the task fails.",
+      "Passing is not the whole verdict. The judge times the solution inside the sandbox at sizes that grow by a fixed factor and reads the growth as one of six classes, from constant to cubic; a correct solution that is too slow for the task, fails on a large input or goes over its memory budget is accepted with a flag and a lower score. The submitter sees how many cases passed, which kind of case failed, how slow it was and the complexity reading, but never the hidden inputs or the expected values, because those would let a solution special-case them.",
+      "Each user’s exam is derived from the user and the exam: 20 to 30 percent of the tasks, balanced by difficulty, with held-out cases kept for the final attempt. A second mode, the arena, answers the code with inputs: each family of inputs is a column, and the adversary picks the one the submission handles worst. Sign-in is through GitHub with read-only profile access, a submission made with an AI assistant is marked as such, and a capacity gate in front of the sandbox admits a submission, holds it in a bounded queue, or refuses it with a time to retry."
+    ],
+    "links": [
+      {
+        "label": "pseudo.chernov.ca",
+        "url": "https://pseudo.chernov.ca"
       }
     ]
   }

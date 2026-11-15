@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>The documents form a knowledge graph built from declared fields, never guessed. 101 entities join each document to what it describes: a reference material by its SRM number, an establishment by its FEI, a medicine by its EMA product number. 14 values are each held by two or more documents, each document is linked to its 3 nearest by the meaning of its text, and 23 declared terms say what the fields mean.</p>
 <p>The same gate as the first example governs every view: the auditor is shown each pack's card and the ledger and no document, an agent reaches the same documents over MCP with 12 tools, and a chat answer is shown only if every quote is in a passage returned that turn and every number is in a tool's result. The session holds 96 hash-chained ledger records, all verifying.</p>
 <p>People named in the documents appear under aliases, signatures are covered, and the recording serves no PDF file. The page is one recorded session played back in the browser; its numbers are read from the session and checked against it on the served copy.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Institute of Standards and Technology (2026). Standard Reference Materials. <span class="venue">Certificates of analysis</span>. <a href="https://www.nist.gov/srm" target="_blank" rel="noopener noreferrer">nist.gov/srm</a></li><li>U.S. Food and Drug Administration (2026). OII FOIA Electronic Reading Room. <span class="venue">Form 483 inspectional observations</span>. <a href="https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room" target="_blank" rel="noopener noreferrer">fda.gov, electronic reading room</a></li><li>European Medicines Agency (2026). Medicines. <span class="venue">EPAR medicine overviews</span>. <a href="https://www.ema.europa.eu/en/medicines" target="_blank" rel="noopener noreferrer">ema.europa.eu/en/medicines</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://pdf.semanticgateway.ca" target="_blank" rel="noopener noreferrer">pdf.semanticgateway.ca</a><a class="lnk" href="https://semanticgateway.ca" target="_blank" rel="noopener noreferrer">semanticgateway.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.24096624" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.24096624</a></p>
 </div>

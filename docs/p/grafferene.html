@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -241,6 +254,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>Measured on one node. Against vLLM on a laptop GPU, measure-only mode reported exactly the hits a serving run of the same 32-request trace produced, row by row, while all 32 requests reached the model. On that trace, built to repeat, a strict threshold served 13 of 32 and cut prompt tokens by 41% with no wrong answers on the trace; the same question under different instructions, or in another namespace, always reached the model. Over one million real embeddings (laptop CPU, search only), the approximate index found every match exhaustive search found, at 10 ms per search instead of 87 ms. Savings were checked against the model server&rsquo;s own counters.</p>
 <p>Stated on the site rather than left to be discovered: in public open chat only about 3% of prompts repeat across users, and on human-labeled look-alike question pairs about one similar-question match in five at the default threshold is a different question. That is why the report shows the answers, not only the rate.</p>
 <p>Transferable principle: measure what a change would do on real traffic before letting it act, and show the cases it would get wrong.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Zhao et al. (2024). WildChat: 1M ChatGPT Interaction Logs in the Wild. <span class="venue">ICLR 2024</span>. <a href="https://arxiv.org/abs/2405.01470" target="_blank" rel="noopener noreferrer">arXiv:2405.01470</a></li><li>Wang et al. (2019). GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding. <span class="venue">ICLR 2019 (source of the QQP question pairs)</span>. <a href="https://arxiv.org/abs/1804.07461" target="_blank" rel="noopener noreferrer">arXiv:1804.07461</a></li><li>Kwon et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. <span class="venue">SOSP 2023, 611–626</span>. <a href="https://doi.org/10.1145/3600006.3613165" target="_blank" rel="noopener noreferrer">doi:10.1145/3600006.3613165</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://grafferene.ca" target="_blank" rel="noopener noreferrer">grafferene.ca</a><a class="lnk" href="https://demo.grafferene.ca" target="_blank" rel="noopener noreferrer">demo.grafferene.ca</a><a class="lnk" href="https://grafferene.ca/report.html" target="_blank" rel="noopener noreferrer">Sample report</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23329121" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23329121</a><a class="lnk" href="https://www.linkedin.com/company/grafferene/" target="_blank" rel="noopener noreferrer">Grafferene on LinkedIn</a></p>
 </div>

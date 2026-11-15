@@ -21,7 +21,7 @@
     "name": "Agent Scope",
     "url": "https://agentscope.ca",
     "kind": "site",
-    "blurb": "A control-plane view of agent systems: one node set in ten projections, an operator chat that reads the live cluster, and an admission gate that records every allow and deny, with two recorded demos."
+    "blurb": "A control-plane view of agent systems: one node set in ten projections, an operator chat that reads the live cluster, and an admission gate that records every allow and deny, with seven recorded demos."
   },
   {
     "name": "Agentic Crawl",
@@ -109,5 +109,11 @@
     "kind": "npm",
     "mono": true,
     "blurb": "The Semantic Field Canvas renderer as a React package. Apache-2.0."
+  },
+  {
+    "name": "Pseudo",
+    "url": "https://pseudo.chernov.ca",
+    "kind": "site",
+    "blurb": "A coding-practice demo: 400 tasks to browse and solve in Python or in blocks that write the Python. Solutions are judged on a separate server that the demo does not open."
   }
 ]

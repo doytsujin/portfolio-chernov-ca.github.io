@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>At run time every call an operations agent makes goes to a tool layer, which asks the gate against the agent’s grants before anything is sent; a denied call is never sent. Per-call limits, refunds split to get past a total, a customer’s note that tells the agent to refund, cancel and scale, and a grant withdrawn between two calls are each decided at the call. A refund whose response was lost is retried under the same call id and executed once, and the agent’s own token, sent straight to the service, is refused, because the service executes only for the tool layer. Given a task to refund two orders in full, the model made two calls: the gate allowed the one within the grants and denied the other, and the call ledger reconciles one to one with the service’s own log.</p>
 <p>Every decision is an entry in a hash-chained ledger whose head is signed as the run goes. An auditor’s pass catches a copy of the call ledger cut back by two decisions, which still verifies as a chain, against its signed checkpoints: by verify, by the reconciliation, and at the next call, which is denied. Any decision opens as its decision record in the Brain API form: what was considered, what was chosen, and why. The recorded demo runs on a local k3s cluster; the build-time attempts are scripted so that their outcome can be checked, and the ticket and the refund task go to a model through an API. The view is Agent Scope, on the published @agent-scope-ca/graph-canvas component.</p>
 <p>Transferable principle: let agents propose, let a gate decide on evidence it checks itself, and take every result from the system that holds it, never from the agent’s report.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Newman, Meyers and Torres-Arias (2022). Sigstore: Software Signing for Everybody. <span class="venue">Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (CCS ’22), 2353–2367</span>. <a href="https://doi.org/10.1145/3548606.3560596" target="_blank" rel="noopener noreferrer">doi:10.1145/3548606.3560596</a></li><li>Zhong, Raghunathan and Carlini (2025). ImpossibleBench: Measuring LLMs’ Propensity of Exploiting Test Cases. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2510.20270" target="_blank" rel="noopener noreferrer">arXiv:2510.20270</a></li><li>Shi et al. (2025). Progent: Securing AI Agents with Privilege Control. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2504.11703" target="_blank" rel="noopener noreferrer">arXiv:2504.11703</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticdelivery.ca" target="_blank" rel="noopener noreferrer">agenticdelivery.ca</a><a class="lnk" href="https://agenticdelivery.ca/#build" target="_blank" rel="noopener noreferrer">Every case, measured</a><a class="lnk" href="https://agenticdelivery.ca/#limits" target="_blank" rel="noopener noreferrer">The limits, stated</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23550941" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23550941</a></p>
 </div>

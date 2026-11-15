@@ -131,6 +131,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -238,6 +251,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p>On the held-out families the trained 1.5B selects the right capability 98.1% of the time against 92.6% for the same model prompted with the descriptor, and the trained 0.5B 96.3% against 69.5%. Training wins on every held-out family at both sizes, cellar included: 97.2% against 91.6% for the 1.5B and 93.0% against 73.2% for the 0.5B. A 7B reference asked the same question reaches 98.2%, at a median of 1,499 ms per decision against the 1.5B’s 314 ms. On Bitext the trained 1.5B reaches 88.3% against 47.2% prompted, each at its own threshold, and 78.3% against 71.5% at a fixed threshold of one half. Training also calibrates it: expected calibration error on the held-out families falls from 0.373 to 0.003.</p>
 <p>Every decision leaves a record: the judgments, the adapter’s sha256 as the model’s version, the rule’s version and the dataset policies applied. Over the held-out requests the trained 1.5B wrote 3,393 records; for 524 of them policy admitted nothing and no model was asked. All 3,393 re-derive from their recorded inputs to the same bytes, and 200 of 200 judgments asked again of the running model matched the recorded ones. The final models trained in 11 and 24 minutes on one laptop GPU, an RTX 4060 Laptop with 8 GB, peaking at 4,305 and 6,555 MiB.</p>
 <p>The dataset families are generated, and Bitext is the only outside dataset. Latency is wall-clock time on one laptop GPU, one request at a time; the small models run in-process with Hugging Face Transformers and the 7B in Ollama, which reuses the cached prompt between questions, so the gap is not model size alone, and the 7B’s probabilities, read from its top 20 next tokens, are approximate. Requests that name no capability, such as “do the thing”, are not covered: the trained model can still match one to a capability policy allows. The adapters are not published.</p>
+
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li><li>Chernov (2026). Agentic Datasets as an Engineering Control Plane. <span class="venue">IEEE Canadian Conference on Electrical and Computer Engineering (CCECE), pp. 326–332</span>. <a href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">doi:10.1109/CCECE68150.2026.11610344</a></li><li>Qwen Team (Yang et al.) (2024). Qwen2.5 Technical Report. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2412.15115" target="_blank" rel="noopener noreferrer">arXiv:2412.15115</a></li><li>Hu et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">arXiv:2106.09685</a></li><li>Bitext Innovations (2024). Bitext — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants. <span class="venue">Hugging Face dataset</span>. <a href="https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset" target="_blank" rel="noopener noreferrer">huggingface.co/datasets/bitext</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://model.brainapi.org" target="_blank" rel="noopener noreferrer">model.brainapi.org</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23586629" target="_blank" rel="noopener noreferrer">Results note and carousel: Zenodo 10.5281/zenodo.23586629</a><a class="lnk" href="https://brainapi.org" target="_blank" rel="noopener noreferrer">brainapi.org</a><a class="lnk" href="https://demo.brainapi.org" target="_blank" rel="noopener noreferrer">Decision-artifact demo</a></p>
 </div>

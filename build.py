@@ -193,6 +193,7 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
     for para in p["body"]:
         parts.append(f"<p>{para}</p>")
 
+    parts.append(use_case_list(p.get("use_cases", []), prefix))
     parts.append(reference_list(p.get("references", [])))
 
     if p.get("no_url_reason"):
@@ -256,6 +257,33 @@ def slide_carousel(c: dict, prefix: str) -> str:
         '</div>'
         f'<figcaption>{c["caption"]}{source}</figcaption>'
         '</figure>'
+    )
+
+
+# slug -> position on the index, filled by main() before any page renders, so a
+# use case can name the entry it points at by its number.
+PROJECT_NUMBERS: dict[str, int] = {}
+
+
+def use_case_list(cases: list, prefix: str) -> str:
+    """A platform's applications, each with its live site and its own entry here.
+    Empty when a project carries none."""
+    if not cases:
+        return ""
+    items = []
+    for c in cases:
+        n = PROJECT_NUMBERS[c["page"]]
+        items.append(
+            f'<li><p class="uc-name"><span class="uc-kind">{esc(c["kind"])}</span>'
+            f'{esc(c["name"])}</p><p>{c["text"]}</p>'
+            '<p class="links inline">'
+            f'<a class="lnk" href="{prefix}p/{esc(c["page"])}.html">Project {n:02d}</a>'
+            f'<a class="lnk" href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">'
+            f'{esc(c["site"].removeprefix("https://").rstrip("/"))}</a></p></li>'
+        )
+    return (
+        '<section class="uses" aria-label="Use cases"><h4>Use cases</h4>'
+        f'<ol>{"".join(items)}</ol></section>'
     )
 
 
@@ -458,6 +486,19 @@ border:1px solid var(--line);border-radius:var(--radius);background:var(--card);
 .deck-nav button:disabled{opacity:.35;cursor:default}
 .deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
 font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
 .refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
 .refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
 color:var(--muted);font-weight:600}
@@ -742,7 +783,7 @@ def build_index(data: dict) -> str:
     <p class="motto">While with AstraZeneca, guided by its motto &ldquo;What science can
       do,&rdquo; I have had the opportunity to contribute to research in data, AI and
       applied AI.</p>
-    <p class="question">{esc(QUESTION)}<span>Twenty-one systems, one question.
+    <p class="question">{esc(QUESTION)}<span>Twenty-four systems, one question.
       <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
       proposes, the gate decides, and every decision leaves a record.
       <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer
@@ -891,6 +932,30 @@ def check_articles(articles: list[dict]) -> list[str]:
     return problems
 
 
+def check_use_cases(projects: list[dict]) -> list[str]:
+    """A use case points at another entry on this site and at a live page. An
+    entry that is not here would render as a link to a missing page, and a
+    use case that points at its own entry links the reader in a circle."""
+    problems: list[str] = []
+    for p in projects:
+        for c in p.get("use_cases", []):
+            missing = [k for k in ("kind", "name", "text", "page", "site") if not c.get(k)]
+            if missing:
+                problems.append(f'projects.json: {p["slug"]}: use case {c.get("name")!r} '
+                                f'lacks {", ".join(missing)}')
+                continue
+            if c["page"] not in PROJECT_NUMBERS:
+                problems.append(f'projects.json: {p["slug"]}: use case {c["name"]!r} names '
+                                f'no project here: {c["page"]}')
+            elif c["page"] == p["slug"]:
+                problems.append(f'projects.json: {p["slug"]}: use case {c["name"]!r} '
+                                'points at its own entry')
+            if not c["site"].startswith("https://"):
+                problems.append(f'projects.json: {p["slug"]}: use case {c["name"]!r} '
+                                f'site is not https: {c["site"]}')
+    return problems
+
+
 # --------------------------------------------------------------------------
 # Output validation
 # --------------------------------------------------------------------------
@@ -974,7 +1039,9 @@ def main() -> None:
             ("projects", "publications", "talks", "articles", "artifacts")}
     projects = data["projects"]
 
-    problems = check_articles(data["articles"])
+    PROJECT_NUMBERS.update({p["slug"]: i for i, p in enumerate(projects, start=1)})
+
+    problems = check_articles(data["articles"]) + check_use_cases(projects)
     if problems:
         fail(problems)
 

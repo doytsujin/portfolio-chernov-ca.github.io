@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ops agent: orders in chat, decided by a gate and read back from a live cluster — Alexander Chernov</title>
+<meta name="description" content="An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.">
+<link rel="canonical" href="https://portfolio.chernov.ca/p/agent-scope-ops-agent.html">
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Alexander Chernov — Portfolio">
+<meta property="og:title" content="Ops agent: orders in chat, decided by a gate and read back from a live cluster — Alexander Chernov">
+<meta property="og:description" content="An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.">
+<meta property="og:url" content="https://portfolio.chernov.ca/p/agent-scope-ops-agent.html">
+<meta property="og:image" content="https://portfolio.chernov.ca/og/agent-scope-ops-agent.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Ops agent: orders in chat, decided by a gate and read back from a live cluster — Alexander Chernov">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ops agent: orders in chat, decided by a gate and read back from a live cluster — Alexander Chernov">
+<meta name="twitter:description" content="An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.">
+<meta name="twitter:image" content="https://portfolio.chernov.ca/og/agent-scope-ops-agent.png">
+<script>
+(function(){try{var t=localStorage.getItem('pf-theme');
+document.documentElement.dataset.theme=(t==='dark'||t==='system')?t:'light';}
+catch(e){document.documentElement.dataset.theme='light';}})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap">
+<style>
+:root{--bg:#f1f5f9;--panel:#fff;--card:#f8fafc;--ink:#0f172a;--muted:#475569;
+--line:#e2e8f0;--accent:#dc2626;--link:#1d4ed8;--radius:.5rem;color-scheme:light}
+:root[data-theme="dark"],
+:root[data-theme="system"]:is(.prefers-dark){--bg:#000;--panel:#0f172a;--card:#1e293b;
+--ink:#f8fafc;--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;
+color-scheme:dark}
+@media (prefers-color-scheme:dark){
+:root[data-theme="system"]{--bg:#000;--panel:#0f172a;--card:#1e293b;--ink:#f8fafc;
+--muted:#94a3b8;--line:#1e293b;--accent:#ff2d2d;--link:#93c5fd;color-scheme:dark}}
+*{box-sizing:border-box}
+html{font-size:clamp(15px,.5vw+11px,19px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);
+font:1rem/1.65 "Roboto Slab",Georgia,"Times New Roman",serif;
+-webkit-font-smoothing:antialiased}
+.wrap{width:min(60rem,100% - 2rem);margin-inline:auto}
+a{color:var(--link)}
+code,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em}
+code{background:rgba(148,163,184,.2);padding:.1em .35em;border-radius:.25rem}
+
+header.top{background:var(--panel);border-bottom:1px solid var(--line);
+padding-block:clamp(2rem,5vw,3.6rem)}
+.topbar{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+margin-bottom:.6rem}
+.eyebrow{margin:0;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+color:var(--muted)}
+.theme{display:inline-flex;border:1px solid var(--line);border-radius:var(--radius);
+overflow:hidden;flex-shrink:0}
+.theme button{font:inherit;font-size:.72rem;padding:.3rem .65rem;cursor:pointer;
+background:transparent;color:var(--muted);border:0}
+.theme button+button{border-left:1px solid var(--line)}
+.theme button[aria-pressed="true"]{background:var(--accent);color:#fff;font-weight:700}
+h1{margin:0 0 .4rem;font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:700;
+letter-spacing:-.02em;line-height:1.15}
+h1 .sur{color:var(--accent)}
+.role{margin:0 0 1.4rem;font-size:clamp(1rem,2.2vw,1.25rem);color:var(--muted)}
+.motto{margin:-.8rem 0 1.4rem;font-size:clamp(.92rem,1.9vw,1.05rem);font-style:italic;color:var(--muted)}
+.question{margin:0 0 1.6rem;padding-left:1rem;border-left:3px solid var(--accent);
+font-size:clamp(1.02rem,2.3vw,1.3rem);font-style:italic}
+.question span{display:block;margin-top:.5rem;font-size:.85rem;font-style:normal;
+color:var(--muted)}
+nav.jump{display:flex;flex-wrap:wrap;gap:.5rem}
+nav.jump a{display:inline-block;padding:.4rem .8rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);color:var(--ink);
+text-decoration:none;font-size:.85rem}
+nav.jump a:hover{border-color:var(--accent)}
+
+main{padding-block:clamp(2rem,4vw,3.5rem)}
+section{margin-bottom:clamp(2.5rem,6vw,4.5rem);scroll-margin-top:1rem}
+.section-head{display:flex;align-items:baseline;gap:.75rem;margin:0 0 .3rem}
+h2{font-size:clamp(1.35rem,3vw,1.9rem);margin:0;letter-spacing:-.01em}
+.section-note{margin:0 0 1.6rem;color:var(--muted);font-size:.92rem}
+
+.copy{font:inherit;font-size:.72rem;line-height:1;padding:.32rem .55rem;cursor:pointer;
+background:var(--card);color:var(--muted);border:1px solid var(--line);
+border-radius:var(--radius);display:inline-flex;align-items:center;gap:.3rem;
+flex-shrink:0;white-space:nowrap}
+.copy:hover{border-color:var(--accent);color:var(--ink)}
+.copy-icon{font-weight:700;color:var(--accent)}
+.copy.done{border-color:var(--accent);color:var(--ink)}
+.copy.done .copy-icon{content:""}
+
+.project{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:clamp(1rem,2.5vw,1.8rem);margin-bottom:1.2rem;
+scroll-margin-top:1rem}
+.project-head{display:flex;gap:.9rem;align-items:flex-start;margin-bottom:.6rem}
+.num{color:var(--accent);font-size:.9rem;font-weight:700;flex-shrink:0;
+padding-top:.35rem}
+.project-title{flex:1;min-width:0}
+.project h1,.project h3{margin:0;font-size:clamp(1.1rem,2.4vw,1.45rem);line-height:1.25}
+.project h1{font-size:clamp(1.5rem,4vw,2.2rem)}
+a.self{color:inherit;text-decoration:none}
+a.self:hover{color:var(--accent)}
+.meta{margin:.2rem 0 0;font-size:.82rem;color:var(--muted)}
+.aff{white-space:nowrap}
+.meta .aff-logo{display:inline;height:1.25em;width:auto;vertical-align:-.3em;margin-right:.3em;
+border:0;border-radius:0;background:none}
+.lede{margin:0 0 .7rem;font-size:1.02em;font-style:italic}
+.summary{margin:0 0 1.1rem;padding-left:.9rem;border-left:2px solid var(--line);
+font-size:.94em;color:var(--muted)}
+.project p{margin:0 0 .9rem}
+.project figure{margin:0 0 1rem}
+.project img{display:block;width:100%;height:auto;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card)}
+figcaption{margin-top:.45rem;font-size:.8rem;color:var(--muted)}
+.no-url{font-size:.85rem;color:var(--muted);font-style:italic}
+.clip{margin:0 0 1rem}
+.clip video{display:block;width:100%;height:auto;margin:0 auto;
+border:1px solid var(--line);border-radius:var(--radius);background:#f5f5f4}
+.deck{margin:0 0 1rem}
+.deck-frame{position:relative;aspect-ratio:16/9;border:1px solid var(--line);
+border-radius:var(--radius);background:#fff;overflow:hidden;touch-action:pan-y}
+.deck-frame:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.project .deck-frame img{width:100%;height:100%;object-fit:contain;border:0;border-radius:0}
+.deck-nav{display:none;align-items:center;justify-content:center;gap:.8rem;margin:.55rem 0 0}
+.js .deck-nav{display:flex}
+.deck-nav button{font:inherit;font-size:1rem;line-height:1;padding:.4rem .8rem;cursor:pointer;
+border:1px solid var(--line);border-radius:var(--radius);background:var(--card);color:inherit}
+.deck-nav button:hover:not(:disabled){border-color:var(--accent)}
+.deck-nav button:disabled{opacity:.35;cursor:default}
+.deck-count{min-width:4.5rem;text-align:center;font-size:.85rem;color:var(--muted);
+font-variant-numeric:tabular-nums}
+.uses{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.uses h4{margin:0 0 .6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.uses ol{margin:0;padding:0;list-style:none;counter-reset:uc}
+.uses li{counter-increment:uc;margin:0 0 .9rem;padding:0 0 .9rem 2rem;position:relative;
+border-bottom:1px solid var(--line)}
+.uses li:last-child{border-bottom:0;padding-bottom:0}
+.uses li::before{content:counter(uc);position:absolute;left:0;top:.05rem;color:var(--accent);
+font-weight:700;font-size:.9rem}
+.project .uses p{margin:0 0 .35rem}
+.uc-name{font-weight:600}
+.uc-kind{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs{margin:1.1rem 0 .9rem;padding-top:.7rem;border-top:1px solid var(--line)}
+.refs h4{margin:0 0 .35rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+color:var(--muted);font-weight:600}
+.refs ol{margin:0;padding-left:1.3rem;font-size:.8rem;color:var(--muted);line-height:1.5}
+.refs li{margin:0 0 .25rem;overflow-wrap:anywhere}
+.refs .venue{font-style:italic}
+.links{display:flex;flex-wrap:wrap;gap:.5rem;margin:.9rem 0 0}
+.links.inline{margin:.35rem 0 0}
+.lnk{display:inline-block;padding:.28rem .6rem;border:1px solid var(--line);
+border-radius:var(--radius);background:var(--card);text-decoration:none;font-size:.82rem}
+.lnk:hover{border-color:var(--accent)}
+
+ul.entries{list-style:none;margin:0;padding:0}
+.entry{display:flex;gap:1rem;padding:.8rem 0;border-top:1px solid var(--line)}
+.entry:first-child{border-top:0}
+.when{flex:0 0 9.5rem;color:var(--muted);font-size:.85rem}
+.what{flex:1;min-width:0}
+.where{display:block;color:var(--muted);font-size:.87rem;margin-top:.15rem}
+.note{display:block;color:var(--muted);font-size:.82rem;margin-top:.15rem}
+.tag{display:inline-block;margin-left:.5rem;padding:.05rem .4rem;border-radius:.25rem;
+background:var(--accent);color:#fff;font-size:.68rem;letter-spacing:.04em;
+text-transform:uppercase;vertical-align:middle}
+.title-link{text-decoration:none;font-weight:700}
+.title-link:hover{text-decoration:underline}
+
+ul.artifacts{list-style:none;margin:0;padding:0;display:grid;gap:.8rem;
+grid-template-columns:repeat(auto-fit,minmax(17rem,1fr))}
+.artifact{background:var(--panel);border:1px solid var(--line);
+border-radius:var(--radius);padding:.9rem 1rem}
+.artifact .name{font-weight:700;text-decoration:none}
+.artifact .kind{display:inline-block;margin-left:.5rem;font-size:.7rem;
+color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
+
+.backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+/* Projects: one link per project, under the section's heading. */
+.project-index{margin:0 0 2rem}
+.project-index ol{list-style:none;margin:0;padding:0;display:grid;
+grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.2rem .9rem}
+.project-index a{display:flex;gap:.6rem;align-items:baseline;padding:.3rem .55rem;
+border-radius:var(--radius);text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.35}
+.project-index a:hover{background:var(--panel);color:var(--link)}
+.pi-n{flex:none;min-width:1.5rem;color:var(--accent);font-weight:700;font-size:.78rem}
+.project{scroll-margin-top:1rem}
+/* Up: fixed on the right, shown once the page has been scrolled. */
+.to-top{position:fixed;right:max(1rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));
+z-index:50;display:grid;place-items:center;width:2.9rem;height:2.9rem;padding:0;border-radius:50%;
+border:1px solid var(--line);background:var(--panel);color:var(--accent);cursor:pointer;
+box-shadow:0 4px 14px rgba(15,23,42,.18);opacity:0;visibility:hidden;transform:translateY(.5rem);
+transition:opacity .2s,transform .2s,visibility .2s}
+.to-top.on{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--accent)}
+.to-top:focus-visible{outline:2px solid var(--link);outline-offset:3px}
+.to-top svg{width:1.3rem;height:1.3rem}
+@media (prefers-reduced-motion:reduce){.to-top{transition:none}}
+
+footer.bottom{border-top:1px solid var(--line);padding-block:2.5rem;
+color:var(--muted);font-size:.85rem}
+footer.bottom p{margin:0 0 .5rem}
+
+@media (max-width:34rem){
+.entry{flex-direction:column;gap:.15rem}
+.when{flex:none}
+.copy-text{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">Portfolio · Project 23</p><div class="theme" role="group" aria-label="Color scheme">
+<button type="button" data-theme="light" aria-pressed="true">Light</button>
+<button type="button" data-theme="dark" aria-pressed="false">Dark</button>
+<button type="button" data-theme="system" aria-pressed="false">System</button>
+</div></div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">🤖 Link-Think-Act · Principal Engineer · AI &amp; Data Infrastructure · Agentic Datasets · Semantic Gateways · Agentic AI &amp; Scientific Data Systems · IEEE Member · Research &amp; Technical Speaker</p>
+    <nav class="jump">
+      <a href="../index.html">All projects</a>
+      <a href="../index.html#publications">Publications</a>
+      <a href="../index.html#talks">Talks</a>
+      <a href="../index.html#writing">Writing</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="../index.html">&larr; the whole portfolio</a>
+  <div class="project">
+<div class="project-head">
+<span class="num">23</span>
+<div class="project-title">
+<h1>Ops agent: orders in chat, decided by a gate and read back from a live cluster</h1>
+<p class="meta">2026 – present · Independent work, unaffiliated with any employer.</p>
+</div>
+<button class="copy" type="button" data-copy="../p/agent-scope-ops-agent.html" aria-label="Copy link to Ops agent: orders in chat, decided by a gate and read back from a live cluster" title="Copy link to Ops agent: orders in chat, decided by a gate and read back from a live cluster"><span class="copy-icon" aria-hidden="true">#</span><span class="copy-text">Copy link</span></button>
+</div>
+<p class="lede">An operations agent makes only the call a gate admits, and every order ends with the cluster read back, so the last word is the cluster’s.</p>
+<p class="summary">An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.</p>
+<figure class="clip"><video data-clip src="../img/video/agent-scope-ops.mp4" poster="../img/video/agent-scope-ops-poster.jpg" width="1920" height="1080" autoplay muted loop playsinline preload="metadata" aria-label="Screen recording of the Agent Scope ops-agent demo: an operator&#x27;s orders in chat, the gate&#x27;s decision on each, and the cluster read back after every order, on a graph of the operator, agent, gateway, gate and workloads."></video><figcaption>The ops-agent demo as recorded: 136 seconds against a running k3s cluster, captions burned in, and each result caption quoting the read-back the run stored. On screen the graph of operator, agent, gateway, gate and workloads changes as each order is decided, next to the chat and the trail of decision records behind it. The file is the one archived on Zenodo.</figcaption></figure>
+<p>The seven orders cover what a gate has to get right. A read is answered from the cluster; an ordinary scale and an ordinary create are allowed; scaling a critical workload is escalated and changes nothing; a create that labels itself critical is refused as a claim by the order rather than a fact; a manifest from a public repository is decided object by object, one applied and two refused; and asked whether the cluster matches its repository, it answers true only when both sides answer.</p>
+<p>For an existing workload the gate decides on labels read off the live object, so an order cannot choose its own answer. A create has no live object, so its labels can only come from the order, and the gate is told so. Deny outranks escalation, escalation outranks allow, and anything no rule admits is refused.</p>
+<p>There are two enforcement points: the gateway’s own policy file limits where it may write, and the cluster applies the service account’s permissions on top, so loosening one leaves the other still refusing. With plain language on, a model turns a sentence into one order; the model call is a record, the order cites it, and the gate decides exactly as it does for a typed order.</p>
+<p>Every record is appended to a hash-chained ledger, and a restart reads it back and catches an edited or dropped line. The trace view is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm.</p>
+
+
+<p class="links"><a class="lnk" href="https://infra.agentscope.ca" target="_blank" rel="noopener noreferrer">infra.agentscope.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23006181" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23006181</a><a class="lnk mono" href="https://github.com/doytsujin/ok-admission-gate-demo" target="_blank" rel="noopener noreferrer">ok-admission-gate-demo</a><a class="lnk mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a></p>
+</div>
+</main>
+<footer class="bottom">
+  <div class="wrap">
+    <p><a href="https://chernov.ca">chernov.ca</a> &middot;
+      <a href="https://github.com/doytsujin" target="_blank" rel="noopener noreferrer">github.com/doytsujin</a> &middot;
+      <a href="https://orcid.org/0009-0007-3198-2712" target="_blank" rel="noopener noreferrer">ORCID 0009-0007-3198-2712</a> &middot;
+      <a href="https://www.linkedin.com/in/thedoytsujin" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    <p>Employer-associated entries describe work done in that role and are not published by or on
+      behalf of an employer. Entries marked as independent are unaffiliated with any employer.</p>
+    <p>&copy; 2024&ndash;2026 Alexander Chernov. All rights reserved.</p>
+  </div>
+</footer>
+
+<button type="button" class="to-top" aria-label="Back to the top" title="Back to the top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script>
+(function(){
+  var root=document.documentElement;
+  function paint(){
+    var cur=root.dataset.theme||'light';
+    document.querySelectorAll('.theme button').forEach(function(b){
+      b.setAttribute('aria-pressed',String(b.dataset.theme===cur));});
+  }
+  // In-page links (the project list, the top links): straight to the target, then held
+  // there while the page settles. A smooth scroll aims at where the target was when the
+  // link was pressed, and media loading on the way lengthened the page: measured
+  // 2026-11-09, project 19 ended 4,096 px below the top. The hold lets go the moment
+  // anything else moves the page or the reader presses anything: held through a press
+  // of the up control, it scrolled the page back down to the project (owner, 2026-11-09).
+  var hold=null;
+  ['wheel','touchstart','keydown','pointerdown'].forEach(function(k){
+    window.addEventListener(k,function(){hold=null;},{passive:true,capture:true});});
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('.project-index a[href^="#"], nav.jump a[href^="#"]');
+    if(!a||e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey)return;
+    var el=document.getElementById(decodeURIComponent(a.getAttribute('href').slice(1)));
+    if(!el)return;
+    e.preventDefault();
+    history.pushState(null,'',a.getAttribute('href'));
+    var mine=hold={},at=0;
+    var go=function(){el.scrollIntoView({behavior:'auto',block:'start'});at=window.scrollY;};
+    go();
+    [150,400,800,1500,2500].forEach(function(ms){setTimeout(function(){
+      if(hold!==mine)return;
+      // The page was moved by something other than this hold: let go.
+      if(Math.abs(window.scrollY-at)>2){hold=null;return;}
+      if(Math.abs(el.getBoundingClientRect().top)>24)go();},ms);});
+  });
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.theme button');
+    if(t){root.dataset.theme=t.dataset.theme;
+      try{localStorage.setItem('pf-theme',t.dataset.theme);}catch(err){}
+      paint();return;}
+
+    var c=e.target.closest('[data-copy]');
+    if(!c)return;
+    var url=new URL(c.dataset.copy,location.href).href;
+    var done=function(){var s=c.querySelector('.copy-text');var was=s?s.textContent:'';
+      c.classList.add('done');if(s)s.textContent='Copied';
+      setTimeout(function(){c.classList.remove('done');if(s)s.textContent=was;},1600);};
+    // The async clipboard needs a secure context and permission; where it is
+    // refused the link still has to end up on the clipboard, so fall back
+    // rather than failing silently.
+    if(navigator.clipboard&&window.isSecureContext){
+      navigator.clipboard.writeText(url).then(done,function(){legacy(url,done);});
+    }else{legacy(url,done);}
+  });
+  function legacy(text,ok){
+    var ta=document.createElement('textarea');ta.value=text;
+    ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+    document.body.appendChild(ta);ta.select();
+    try{document.execCommand('copy');ok();}catch(e){window.prompt('Copy this link:',text);}
+    document.body.removeChild(ta);
+  }
+  paint();
+
+  // Up: shown once the page is scrolled past most of a screen; a press goes back to
+  // the top, at once where the reader has asked for reduced motion.
+  var up=document.querySelector('.to-top');
+  if(up){
+    var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var seen=function(){up.classList.toggle('on',window.scrollY>window.innerHeight*0.8);};
+    window.addEventListener('scroll',seen,{passive:true});seen();
+    up.addEventListener('click',function(){
+      hold=null;
+      window.scrollTo({top:0,behavior:calm?'auto':'smooth'});
+      var h=document.querySelector('header.top h1');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
+    });
+  }
+
+  // Clips: no autoplay for reduced motion; controls instead.
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('video[data-clip]').forEach(function(v){
+      v.removeAttribute('autoplay');v.pause();v.controls=true;});
+  }
+
+  // Slide decks: one slide in the DOM, the neighbours prefetched.
+  root.classList.add('js');
+  document.querySelectorAll('[data-deck]').forEach(function(deck){
+    var base=deck.dataset.base, n=+deck.dataset.count, title=deck.dataset.title, i=1;
+    var img=deck.querySelector('img'), count=deck.querySelector('.deck-count');
+    var prev=deck.querySelector('[data-step="-1"]'), next=deck.querySelector('[data-step="1"]');
+    var frame=deck.querySelector('.deck-frame');
+    function url(k){return base+(k<10?'0':'')+k+'.webp';}
+    function warm(k){if(k>=1&&k<=n){var p=new Image();p.src=url(k);}}
+    function show(k){
+      i=Math.max(1,Math.min(n,k));
+      img.src=url(i);img.alt=title+', slide '+i+' of '+n;
+      count.textContent=i+' / '+n;prev.disabled=i===1;next.disabled=i===n;
+      warm(i+1);warm(i-1);
+    }
+    deck.addEventListener('click',function(e){
+      var b=e.target.closest('[data-step]');if(b)show(i+ +b.dataset.step);});
+    frame.addEventListener('keydown',function(e){
+      if(e.key==='ArrowRight'){show(i+1);e.preventDefault();}
+      else if(e.key==='ArrowLeft'){show(i-1);e.preventDefault();}
+      else if(e.key==='Home'){show(1);e.preventDefault();}
+      else if(e.key==='End'){show(n);e.preventDefault();}});
+    var x0=null;
+    frame.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;},{passive:true});
+    frame.addEventListener('touchend',function(e){
+      if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;
+      if(Math.abs(dx)>40)show(i+(dx<0?1:-1));},{passive:true});
+    frame.addEventListener('click',function(e){
+      var r=frame.getBoundingClientRect();show(i+(e.clientX-r.left>r.width/2?1:-1));});
+  });
+})();
+</script>
+</body>
+</html>
