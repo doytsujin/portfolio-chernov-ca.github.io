@@ -121,5 +121,11 @@
     "url": "https://awaw.ai",
     "kind": "site",
     "blurb": "Compact, governed AI for enterprises: four products, each offered as a pilot in the customer’s own environment, beside recorded applications and the research behind them."
+  },
+  {
+    "name": "Agentic DOOM",
+    "url": "https://agentarena.ca",
+    "kind": "site",
+    "blurb": "A browser DOOM engine written from the file formats, on Freedoom data: monsters under contract, an agent view and possible futures, all in the browser."
   }
 ]

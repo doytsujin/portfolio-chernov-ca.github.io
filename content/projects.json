@@ -1599,5 +1599,41 @@
         "url": "https://www.linkedin.com/company/awaw-ai/"
       }
     ]
+  },
+  {
+    "slug": "agentic-doom",
+    "title": "Agentic DOOM: a browser DOOM engine with monsters under contract and an agent view",
+    "lede": "Press V and the world turns to glyphs, every monster labeled with its state; press F and its next choice is played forward before your eyes.",
+    "summary": "A fun project: an independent reimplementation of the DOOM engine for the web, running on Freedoom’s free game data at agentarena.ca. Its monsters act as declared state machines, and the game can stop at any monster’s decision to show where each of its options leads.",
+    "period": "2026 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "fun"
+    ],
+    "video": [
+      {
+        "src": "img/video/agentic-doom-futures.mp4",
+        "poster": "img/video/agentic-doom-futures-poster.jpg",
+        "width": 1080,
+        "height": 1350,
+        "alt": "Screen recording of Agentic DOOM in the browser: the agent view draws the level in green glyphs with each monster’s state, then the game holds at a monster’s decision and lists each option’s possible future with the damage it would do.",
+        "caption": "Recorded from agentarena.ca as a player sees it, in real time: 39 seconds, keys shown on screen as they are pressed. The agent view, then a monster’s decision held and each option played forward."
+      }
+    ],
+    "body": [
+      "The engine is written from DOOM’s file formats rather than ported: the renderer, collision, monsters, weapons, sound, menus and level progression, compiled from Rust to WebAssembly and drawn with WebGL. It shares no code with id Software’s release, and the game data it loads is Freedoom, a free replacement asset set under a BSD license, so it neither contains nor requires id’s data.",
+      "Monsters run as declared state machines. Each action a monster proposes is checked against its own contract and is granted or refused before it happens. Press V for the agent view, where the same level is drawn in glyphs and every monster carries its state and its last decision; V again goes back.",
+      "Press F and the game holds at the next choice a monster makes, plays each of its options forward three seconds, eight times, and shows where each one leads and how much damage it would do to the player; F again goes on. All of it runs in the browser, with no server."
+    ],
+    "links": [
+      {
+        "label": "agentarena.ca",
+        "url": "https://agentarena.ca"
+      },
+      {
+        "label": "Freedoom",
+        "url": "https://freedoom.github.io"
+      }
+    ]
   }
 ]
