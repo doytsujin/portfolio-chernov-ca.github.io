@@ -783,7 +783,7 @@ def build_index(data: dict) -> str:
     <p class="motto">While with AstraZeneca, guided by its motto &ldquo;What science can
       do,&rdquo; I have had the opportunity to contribute to research in data, AI and
       applied AI.</p>
-    <p class="question">{esc(QUESTION)}<span>Twenty-four systems, one question.
+    <p class="question">{esc(QUESTION)}<span>Twenty-five systems, one question.
       <a href="p/agent-scope.html">Agent Scope</a> answers it on a live cluster: the agent
       proposes, the gate decides, and every decision leaves a record.
       <a href="p/grafferene.html">Grafferene</a> answers it for a cache: a stored answer

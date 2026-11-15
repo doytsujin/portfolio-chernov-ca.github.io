@@ -1499,5 +1499,29 @@
         "url": "https://pseudo.chernov.ca"
       }
     ]
+  },
+  {
+    "slug": "awaw-ai",
+    "title": "awaw.ai: compact, governed AI that runs on hardware an enterprise already has",
+    "lede": "Nano cloud computing is the name given in 2022 to one idea: AI built from small units that decide before they act and keep a record.",
+    "summary": "Where the work is offered as products rather than demos. Four of them, each a pilot that runs in the customer’s own environment, stand beside recorded runs that put the gate to work in nine fields and the peer-reviewed research behind it.",
+    "period": "2022 – present",
+    "affiliation": "Independent work, unaffiliated with any employer.",
+    "image": "project-awaw-ai.webp",
+    "caption": "The opening of awaw.ai under the Graffemeter App Computing name: small models and small units that run on hardware the customer already has, and four products offered as pilots.",
+    "body": [
+      "awaw.ai presents four products. Grafferene is a response cache for LLM endpoints that begins in measure-only mode, reporting what caching would have saved before it serves anything. Agentic Loom builds governed recipes for batch manufacturing and sits beside the MES, not in place of it. Agentic Crawl collects what a goal needs from the web and nothing the sites’ rules forbid. Agent Scope, in preview, is the control plane in which agents propose and a gate decides. Each card states its limits next to its results.",
+      "Below the products, nine applications show one gate deciding real work, from laboratory data and software delivery to statistical programming, a GPU fleet and documents; none is a deployment. System One, a 1.5B judgment model trained on an 8 GB laptop GPU, is the measured case for small models. A practice section says how claims are made: measured under stated conditions, no headline percentages, limits published with results, and fitness for production established in a pilot on the customer’s traffic, data and policies. Four peer-reviewed papers from IEEE CCECE, BigDataService, EMBC and CBS 2026 close the page."
+    ],
+    "links": [
+      {
+        "label": "awaw.ai",
+        "url": "https://awaw.ai"
+      },
+      {
+        "label": "awaw.ai on LinkedIn",
+        "url": "https://www.linkedin.com/company/awaw-ai/"
+      }
+    ]
   }
 ]

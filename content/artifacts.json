@@ -115,5 +115,11 @@
     "url": "https://pseudo.chernov.ca",
     "kind": "site",
     "blurb": "A coding-practice demo: 400 tasks to browse and solve in Python or in blocks that write the Python. Solutions are judged on a separate server that the demo does not open."
+  },
+  {
+    "name": "awaw.ai",
+    "url": "https://awaw.ai",
+    "kind": "site",
+    "blurb": "Compact, governed AI for enterprises: four products, each offered as a pilot in the customer’s own environment, beside recorded applications and the research behind them."
   }
 ]
