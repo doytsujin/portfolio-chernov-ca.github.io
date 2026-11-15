@@ -738,8 +738,7 @@ def build_index(data: dict) -> str:
   <div class="wrap">
     <div class="topbar"><p class="eyebrow">Portfolio</p>{THEME_WIDGET}</div>
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
-    <p class="role">Software Engineer · Full Stack · Agentic AI &amp; scientific data
-      systems · IEEE member</p>
+    <p class="role">🤖 Link-Think-Act · Principal Engineer · AI &amp; Data Infrastructure · Agentic Datasets · Semantic Gateways · Agentic AI &amp; Scientific Data Systems · IEEE Member · Research &amp; Technical Speaker</p>
     <p class="motto">While with AstraZeneca, guided by its motto &ldquo;What science can
       do,&rdquo; I have had the opportunity to contribute to research in data, AI and
       applied AI.</p>
@@ -822,7 +821,7 @@ def build_project_page(p: dict, index: int) -> str:
   <div class="wrap">
     <div class="topbar"><p class="eyebrow">Portfolio · Project {index:02d}</p>{THEME_WIDGET}</div>
     <h1>Alexander <span class="sur">CHERNOV</span></h1>
-    <p class="role">Software Engineer · Full Stack · Agentic AI &amp; scientific data systems</p>
+    <p class="role">🤖 Link-Think-Act · Principal Engineer · AI &amp; Data Infrastructure · Agentic Datasets · Semantic Gateways · Agentic AI &amp; Scientific Data Systems · IEEE Member · Research &amp; Technical Speaker</p>
     <nav class="jump">
       <a href="{pre}index.html">All projects</a>
       <a href="{pre}index.html#publications">Publications</a>
