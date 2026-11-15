@@ -180,6 +180,15 @@ color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 
 .backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
 /* Projects: one link per project, under the section's heading. */
+.tag-filter{display:none;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 1rem}
+.js .tag-filter{display:flex}
+.tag-filter button{font:inherit;font-size:.82rem;line-height:1;padding:.42rem .7rem;cursor:pointer;
+border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink)}
+.tag-filter button:hover{border-color:var(--accent)}
+.tag-filter button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
+.tag-filter .tf-n{opacity:.7;font-size:.75rem;margin-left:.15rem;font-variant-numeric:tabular-nums}
+.tf-count{font-size:.8rem;color:var(--muted);margin-left:.3rem}
+[hidden]{display:none!important}
 .project-index{margin:0 0 2rem}
 .project-index ol{list-style:none;margin:0;padding:0;display:grid;
 grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.2rem .9rem}
@@ -258,8 +267,9 @@ footer.bottom p{margin:0 0 .5rem}
       verify, and a verifiable entry earns the ones that follow it. Where a project has no public
       URL that is stated rather than hidden behind a link that returns 404. Each title is also a
       page of its own, which is what the copy button hands you.</p>
-    <nav class="project-index" aria-label="Projects on this page"><ol><li><a href="#agentic-datasets"><span class="pi-n">01</span><span><strong>Agentic Datasets</strong>: a machine-readable contract for what agents can do with a dataset</span></a></li><li><a href="#per-task-admission-control"><span class="pi-n">02</span><span>Per-task admission control for genomics pipelines</span></a></li><li><a href="#croissant-policy-profile"><span class="pi-n">03</span><span>A policy profile for Croissant, the MLCommons dataset descriptor</span></a></li><li><a href="#selective-visual-inference"><span class="pi-n">04</span><span>Selective visual inference with observable decisions</span></a></li><li><a href="#certified-reuse-quantum"><span class="pi-n">05</span><span>Certified reuse of quantum results, with refusal as a visible outcome</span></a></li><li><a href="#semantic-gateway"><span class="pi-n">06</span><span><strong>Semantic gateway</strong>: search, graph and MCP over any data source</span></a></li><li><a href="#governed-clinical-variable-mapping"><span class="pi-n">07</span><span>Governed clinical variable mapping with browser-local reasoning</span></a></li><li><a href="#reproducible-spectral-scoring"><span class="pi-n">08</span><span>Reproducible spectral scoring with a fit-quality gate</span></a></li><li><a href="#chromatography-fraction-pooling"><span class="pi-n">09</span><span>Chromatography fraction pooling that ends by driving a robot</span></a></li><li><a href="#batch-records-as-typed-programs"><span class="pi-n">10</span><span>Batch records as typed programs</span></a></li><li><a href="#agent-scope"><span class="pi-n">11</span><span><strong>Agent Scope</strong>: a live map of agents, policies and the gate they must pass</span></a></li><li><a href="#grafferene"><span class="pi-n">12</span><span><strong>Grafferene</strong>: measure what a response cache would save before it serves an answer</span></a></li><li><a href="#agentic-crawl"><span class="pi-n">13</span><span><strong>Agentic Crawl</strong>: collect what a goal needs from the web, and nothing the sites’ rules forbid</span></a></li><li><a href="#adam"><span class="pi-n">14</span><span><strong>adam</strong>: AI-written ADaM derivations, accepted only on an exact match</span></a></li><li><a href="#agentic-loom"><span class="pi-n">15</span><span><strong>Agentic Loom</strong>: governed batch recipes in which every step is admitted before it runs</span></a></li><li><a href="#agentic-delivery"><span class="pi-n">16</span><span><strong>Agentic Delivery</strong>: governed software delivery in which agents propose and a gate decides</span></a></li><li><a href="#agentic-lims"><span class="pi-n">17</span><span><strong>Agentic LIMS</strong>: lab data that carries its lineage and decides its own use</span></a></li><li><a href="#system-one"><span class="pi-n">18</span><span><strong>System One</strong>: a small trained model that judges dataset requests</span></a></li><li><a href="#massive-gpu"><span class="pi-n">19</span><span><strong>Massive GPU</strong>: a simulated fleet with a real control path</span></a></li><li><a href="#semantic-gateway-demo"><span class="pi-n">20</span><span><strong>Semantic Gateway demo</strong>: one data estate behind one policy gate</span></a></li><li><a href="#semantic-gateway-pdfs-demo"><span class="pi-n">21</span><span><strong>Semantic Gateway for PDFs</strong>: every value where it stands on its page</span></a></li><li><a href="#agent-scope-gene-agents"><span class="pi-n">22</span><span><strong>Gene agents</strong>: clinical evidence decided under each agent’s own policy, with a gated quantum step</span></a></li><li><a href="#agent-scope-ops-agent"><span class="pi-n">23</span><span><strong>Ops agent</strong>: orders in chat, decided by a gate and read back from a live cluster</span></a></li><li><a href="#pseudo"><span class="pi-n">24</span><span><strong>Pseudo</strong>: coding practice in Python or in blocks, judged on cases the solver never sees</span></a></li><li><a href="#awaw-ai"><span class="pi-n">25</span><span><strong>awaw.ai</strong>: compact, governed AI that runs on hardware an enterprise already has</span></a></li></ol></nav>
-    <article class="project" id="agentic-datasets">
+    <div class="tag-filter" role="group" aria-label="Show projects by tag"><button type="button" data-tag="" aria-pressed="true">All <span class="tf-n">25</span></button><button type="button" data-tag="independent" aria-pressed="false">Independent <span class="tf-n">16</span></button><button type="button" data-tag="affiliated" aria-pressed="false">Affiliated <span class="tf-n">8</span></button><button type="button" data-tag="research" aria-pressed="false">Research <span class="tf-n">7</span></button><button type="button" data-tag="engineering" aria-pressed="false">Engineering <span class="tf-n">5</span></button><button type="button" data-tag="product" aria-pressed="false">Product <span class="tf-n">5</span></button><button type="button" data-tag="demo" aria-pressed="false">Demo <span class="tf-n">8</span></button><button type="button" data-tag="fun" aria-pressed="false">Fun <span class="tf-n">1</span></button><span class="tf-count" aria-live="polite"></span></div>
+    <nav class="project-index" aria-label="Projects on this page"><ol><li data-tags="affiliated research"><a href="#agentic-datasets"><span class="pi-n">01</span><span><strong>Agentic Datasets</strong>: a machine-readable contract for what agents can do with a dataset</span></a></li><li data-tags="affiliated research"><a href="#per-task-admission-control"><span class="pi-n">02</span><span>Per-task admission control for genomics pipelines</span></a></li><li data-tags="affiliated research"><a href="#croissant-policy-profile"><span class="pi-n">03</span><span>A policy profile for Croissant, the MLCommons dataset descriptor</span></a></li><li data-tags="independent research"><a href="#selective-visual-inference"><span class="pi-n">04</span><span>Selective visual inference with observable decisions</span></a></li><li data-tags="research"><a href="#certified-reuse-quantum"><span class="pi-n">05</span><span>Certified reuse of quantum results, with refusal as a visible outcome</span></a></li><li data-tags="affiliated engineering"><a href="#semantic-gateway"><span class="pi-n">06</span><span><strong>Semantic gateway</strong>: search, graph and MCP over any data source</span></a></li><li data-tags="affiliated research engineering"><a href="#governed-clinical-variable-mapping"><span class="pi-n">07</span><span>Governed clinical variable mapping with browser-local reasoning</span></a></li><li data-tags="affiliated engineering"><a href="#reproducible-spectral-scoring"><span class="pi-n">08</span><span>Reproducible spectral scoring with a fit-quality gate</span></a></li><li data-tags="affiliated engineering"><a href="#chromatography-fraction-pooling"><span class="pi-n">09</span><span>Chromatography fraction pooling that ends by driving a robot</span></a></li><li data-tags="affiliated engineering"><a href="#batch-records-as-typed-programs"><span class="pi-n">10</span><span>Batch records as typed programs</span></a></li><li data-tags="independent product"><a href="#agent-scope"><span class="pi-n">11</span><span><strong>Agent Scope</strong>: a live map of agents, policies and the gate they must pass</span></a></li><li data-tags="independent product"><a href="#grafferene"><span class="pi-n">12</span><span><strong>Grafferene</strong>: measure what a response cache would save before it serves an answer</span></a></li><li data-tags="independent product"><a href="#agentic-crawl"><span class="pi-n">13</span><span><strong>Agentic Crawl</strong>: collect what a goal needs from the web, and nothing the sites’ rules forbid</span></a></li><li data-tags="independent demo"><a href="#adam"><span class="pi-n">14</span><span><strong>adam</strong>: AI-written ADaM derivations, accepted only on an exact match</span></a></li><li data-tags="independent product"><a href="#agentic-loom"><span class="pi-n">15</span><span><strong>Agentic Loom</strong>: governed batch recipes in which every step is admitted before it runs</span></a></li><li data-tags="independent demo"><a href="#agentic-delivery"><span class="pi-n">16</span><span><strong>Agentic Delivery</strong>: governed software delivery in which agents propose and a gate decides</span></a></li><li data-tags="independent demo"><a href="#agentic-lims"><span class="pi-n">17</span><span><strong>Agentic LIMS</strong>: lab data that carries its lineage and decides its own use</span></a></li><li data-tags="independent research"><a href="#system-one"><span class="pi-n">18</span><span><strong>System One</strong>: a small trained model that judges dataset requests</span></a></li><li data-tags="independent demo"><a href="#massive-gpu"><span class="pi-n">19</span><span><strong>Massive GPU</strong>: a simulated fleet with a real control path</span></a></li><li data-tags="independent demo"><a href="#semantic-gateway-demo"><span class="pi-n">20</span><span><strong>Semantic Gateway demo</strong>: one data estate behind one policy gate</span></a></li><li data-tags="independent demo"><a href="#semantic-gateway-pdfs-demo"><span class="pi-n">21</span><span><strong>Semantic Gateway for PDFs</strong>: every value where it stands on its page</span></a></li><li data-tags="independent demo"><a href="#agent-scope-gene-agents"><span class="pi-n">22</span><span><strong>Gene agents</strong>: clinical evidence decided under each agent’s own policy, with a gated quantum step</span></a></li><li data-tags="independent demo"><a href="#agent-scope-ops-agent"><span class="pi-n">23</span><span><strong>Ops agent</strong>: orders in chat, decided by a gate and read back from a live cluster</span></a></li><li data-tags="independent fun"><a href="#pseudo"><span class="pi-n">24</span><span><strong>Pseudo</strong>: coding practice in Python or in blocks, judged on cases the solver never sees</span></a></li><li data-tags="independent product"><a href="#awaw-ai"><span class="pi-n">25</span><span><strong>awaw.ai</strong>: compact, governed AI that runs on hardware an enterprise already has</span></a></li></ol></nav>
+    <article class="project" id="agentic-datasets" data-tags="affiliated research">
 <div class="project-head">
 <span class="num">01</span>
 <div class="project-title">
@@ -278,7 +288,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Gebru et al. (2021). Datasheets for datasets. <span class="venue">Communications of the ACM 64(12), 86–92</span>. <a href="https://doi.org/10.1145/3458723" target="_blank" rel="noopener noreferrer">doi:10.1145/3458723</a></li><li>Wilkinson et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. <span class="venue">Scientific Data 3(1), 160018</span>. <a href="https://doi.org/10.1038/sdata.2016.18" target="_blank" rel="noopener noreferrer">doi:10.1038/sdata.2016.18</a></li><li>Jia and Harman (2011). An Analysis and Survey of the Development of Mutation Testing. <span class="venue">IEEE Transactions on Software Engineering 37(5), 649–678</span>. <a href="https://doi.org/10.1109/TSE.2010.62" target="_blank" rel="noopener noreferrer">doi:10.1109/TSE.2010.62</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticdatasets.org" target="_blank" rel="noopener noreferrer">agenticdatasets.org</a><a class="lnk" href="https://agenticdatasets.org/showcase/" target="_blank" rel="noopener noreferrer">Live showcases</a><a class="lnk" href="https://github.com/agentic-datasets/reference" target="_blank" rel="noopener noreferrer">Reference implementation</a><a class="lnk mono" href="https://pypi.org/project/agentic-dataset-conformance/" target="_blank" rel="noopener noreferrer">agentic-dataset-conformance on PyPI</a></p>
 </article>
-<article class="project" id="per-task-admission-control">
+<article class="project" id="per-task-admission-control" data-tags="affiliated research">
 <div class="project-head">
 <span class="num">02</span>
 <div class="project-title">
@@ -299,7 +309,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Di Tommaso et al. (2017). Nextflow enables reproducible computational workflows. <span class="venue">Nature Biotechnology 35(4), 316–319</span>. <a href="https://doi.org/10.1038/nbt.3820" target="_blank" rel="noopener noreferrer">doi:10.1038/nbt.3820</a></li><li>Ewels et al. (2020). The nf-core framework for community-curated bioinformatics pipelines. <span class="venue">Nature Biotechnology 38(3), 276–278</span>. <a href="https://doi.org/10.1038/s41587-020-0439-x" target="_blank" rel="noopener noreferrer">doi:10.1038/s41587-020-0439-x</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://doi.org/10.5281/zenodo.22016112" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22016112</a><a class="lnk mono" href="https://github.com/doytsujin/ok-nfcore-admission-gate" target="_blank" rel="noopener noreferrer">ok-nfcore-admission-gate</a></p>
 </article>
-<article class="project" id="croissant-policy-profile">
+<article class="project" id="croissant-policy-profile" data-tags="affiliated research">
 <div class="project-head">
 <span class="num">03</span>
 <div class="project-title">
@@ -321,7 +331,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Akhtar et al. (2024). Croissant: A Metadata Format for ML-Ready Datasets. <span class="venue">DEEM &#x27;24, SIGMOD/PODS workshop, 1–6</span>. <a href="https://doi.org/10.1145/3650203.3663326" target="_blank" rel="noopener noreferrer">doi:10.1145/3650203.3663326</a></li><li>W3C (2018). ODRL Information Model 2.2. <span class="venue">W3C Recommendation</span>. <a href="https://www.w3.org/TR/odrl-model/" target="_blank" rel="noopener noreferrer">w3.org/TR/odrl-model</a></li><li>Lawson et al. (2021). The Data Use Ontology to streamline responsible access to human biomedical datasets. <span class="venue">Cell Genomics 1(2), 100028</span>. <a href="https://doi.org/10.1016/j.xgen.2021.100028" target="_blank" rel="noopener noreferrer">doi:10.1016/j.xgen.2021.100028</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://doi.org/10.5281/zenodo.22018156" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22018156</a><a class="lnk" href="https://w3id.org/croissant-policy/0.1.0" target="_blank" rel="noopener noreferrer">w3id.org/croissant-policy/0.1.0</a><a class="lnk mono" href="https://github.com/doytsujin/ok-croissant-policy-profile" target="_blank" rel="noopener noreferrer">ok-croissant-policy-profile</a></p>
 </article>
-<article class="project" id="selective-visual-inference">
+<article class="project" id="selective-visual-inference" data-tags="independent research">
 <div class="project-head">
 <span class="num">04</span>
 <div class="project-title">
@@ -346,7 +356,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Kang et al. (2017). NoScope: Optimizing neural network queries over video at scale. <span class="venue">Proceedings of the VLDB Endowment 10(11), 1586–1597</span>. <a href="https://doi.org/10.14778/3137628.3137664" target="_blank" rel="noopener noreferrer">doi:10.14778/3137628.3137664</a></li><li>Geifman and El-Yaniv (2017). Selective classification for deep neural networks. <span class="venue">NeurIPS 2017</span>. <a href="https://arxiv.org/abs/1705.08500" target="_blank" rel="noopener noreferrer">arXiv:1705.08500</a></li><li>Schafer, Santana, Haden and Biasini (2018). A commute in data: The comma2k19 dataset. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1812.05752" target="_blank" rel="noopener noreferrer">arXiv:1812.05752</a></li><li>Zhao et al. (2024). DETRs beat YOLOs on real-time object detection. <span class="venue">IEEE/CVF CVPR 2024, 16965–16974</span>. <a href="https://doi.org/10.1109/CVPR52733.2024.01605" target="_blank" rel="noopener noreferrer">doi:10.1109/CVPR52733.2024.01605</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://vision.agenticdatasets.org" target="_blank" rel="noopener noreferrer">vision.agenticdatasets.org</a></p>
 </article>
-<article class="project" id="certified-reuse-quantum">
+<article class="project" id="certified-reuse-quantum" data-tags="research">
 <div class="project-head">
 <span class="num">05</span>
 <div class="project-title">
@@ -366,7 +376,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Cerezo et al. (2021). Variational quantum algorithms. <span class="venue">Nature Reviews Physics 3(9), 625–644</span>. <a href="https://doi.org/10.1038/s42254-021-00348-9" target="_blank" rel="noopener noreferrer">doi:10.1038/s42254-021-00348-9</a></li><li>Preskill (2018). Quantum Computing in the NISQ era and beyond. <span class="venue">Quantum 2, 79</span>. <a href="https://doi.org/10.22331/q-2018-08-06-79" target="_blank" rel="noopener noreferrer">doi:10.22331/q-2018-08-06-79</a></li><li>Bergholm et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1811.04968" target="_blank" rel="noopener noreferrer">arXiv:1811.04968</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://qubit.agenticdatasets.org" target="_blank" rel="noopener noreferrer">qubit.agenticdatasets.org</a><a class="lnk" href="https://qubit.agenticdatasets.org/bof/" target="_blank" rel="noopener noreferrer">BOF-2099 session page</a><a class="lnk mono" href="https://github.com/doytsujin/ok-quantum-biology-demos" target="_blank" rel="noopener noreferrer">ok-quantum-biology-demos</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Zenodo 10.5281/zenodo.22741061</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22841352" target="_blank" rel="noopener noreferrer">Slides: Zenodo 10.5281/zenodo.22841352</a></p>
 </article>
-<article class="project" id="semantic-gateway">
+<article class="project" id="semantic-gateway" data-tags="affiliated engineering">
 <div class="project-head">
 <span class="num">06</span>
 <div class="project-title">
@@ -388,7 +398,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p class="no-url">No public URL — internal system.</p>
 
 </article>
-<article class="project" id="governed-clinical-variable-mapping">
+<article class="project" id="governed-clinical-variable-mapping" data-tags="affiliated research engineering">
 <div class="project-head">
 <span class="num">07</span>
 <div class="project-title">
@@ -409,7 +419,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p class="no-url">No public URL yet — paper accepted; the proceedings record follows the conference.</p>
 
 </article>
-<article class="project" id="reproducible-spectral-scoring">
+<article class="project" id="reproducible-spectral-scoring" data-tags="affiliated engineering">
 <div class="project-head">
 <span class="num">08</span>
 <div class="project-title">
@@ -431,7 +441,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p class="no-url">No public URL — internal system.</p>
 
 </article>
-<article class="project" id="chromatography-fraction-pooling">
+<article class="project" id="chromatography-fraction-pooling" data-tags="affiliated engineering">
 <div class="project-head">
 <span class="num">09</span>
 <div class="project-title">
@@ -454,7 +464,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p class="no-url">No public URL — internal system.</p>
 
 </article>
-<article class="project" id="batch-records-as-typed-programs">
+<article class="project" id="batch-records-as-typed-programs" data-tags="affiliated engineering">
 <div class="project-head">
 <span class="num">10</span>
 <div class="project-title">
@@ -476,7 +486,7 @@ footer.bottom p{margin:0 0 .5rem}
 <p class="no-url">No public URL — internal system.</p>
 
 </article>
-<article class="project" id="agent-scope">
+<article class="project" id="agent-scope" data-tags="independent product">
 <div class="project-head">
 <span class="num">11</span>
 <div class="project-title">
@@ -499,7 +509,7 @@ footer.bottom p{margin:0 0 .5rem}
 
 <p class="links"><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">agentscope.ca</a><a class="lnk" href="https://www.linkedin.com/company/agentscope-ca/" target="_blank" rel="noopener noreferrer">Agent Scope on LinkedIn</a><a class="lnk mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a></p>
 </article>
-<article class="project" id="grafferene">
+<article class="project" id="grafferene" data-tags="independent product">
 <div class="project-head">
 <span class="num">12</span>
 <div class="project-title">
@@ -523,7 +533,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Zhao et al. (2024). WildChat: 1M ChatGPT Interaction Logs in the Wild. <span class="venue">ICLR 2024</span>. <a href="https://arxiv.org/abs/2405.01470" target="_blank" rel="noopener noreferrer">arXiv:2405.01470</a></li><li>Wang et al. (2019). GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding. <span class="venue">ICLR 2019 (source of the QQP question pairs)</span>. <a href="https://arxiv.org/abs/1804.07461" target="_blank" rel="noopener noreferrer">arXiv:1804.07461</a></li><li>Kwon et al. (2023). Efficient Memory Management for Large Language Model Serving with PagedAttention. <span class="venue">SOSP 2023, 611–626</span>. <a href="https://doi.org/10.1145/3600006.3613165" target="_blank" rel="noopener noreferrer">doi:10.1145/3600006.3613165</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://grafferene.ca" target="_blank" rel="noopener noreferrer">grafferene.ca</a><a class="lnk" href="https://demo.grafferene.ca" target="_blank" rel="noopener noreferrer">demo.grafferene.ca</a><a class="lnk" href="https://grafferene.ca/report.html" target="_blank" rel="noopener noreferrer">Sample report</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23329121" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23329121</a><a class="lnk" href="https://www.linkedin.com/company/grafferene/" target="_blank" rel="noopener noreferrer">Grafferene on LinkedIn</a></p>
 </article>
-<article class="project" id="agentic-crawl">
+<article class="project" id="agentic-crawl" data-tags="independent product">
 <div class="project-head">
 <span class="num">13</span>
 <div class="project-title">
@@ -545,7 +555,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Chakrabarti et al. (1999). Focused crawling: a new approach to topic-specific Web resource discovery. <span class="venue">Computer Networks 31(11–16), 1623–1640</span>. <a href="https://doi.org/10.1016/S1389-1286(99)00052-3" target="_blank" rel="noopener noreferrer">doi:10.1016/S1389-1286(99)00052-3</a></li><li>Koster et al. (2022). Robots Exclusion Protocol. <span class="venue">RFC 9309, IETF</span>. <a href="https://doi.org/10.17487/RFC9309" target="_blank" rel="noopener noreferrer">doi:10.17487/RFC9309</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticcrawl.ca" target="_blank" rel="noopener noreferrer">agenticcrawl.ca</a><a class="lnk" href="https://demo.agenticcrawl.ca" target="_blank" rel="noopener noreferrer">demo.agenticcrawl.ca</a><a class="lnk" href="https://agenticcrawl.ca/results.html" target="_blank" rel="noopener noreferrer">All results, goal by goal</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23328688" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23328688</a></p>
 </article>
-<article class="project" id="adam">
+<article class="project" id="adam" data-tags="independent demo">
 <div class="project-head">
 <span class="num">14</span>
 <div class="project-title">
@@ -566,7 +576,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Straub et al. (2026). admiral: ADaM in R Asset Library. <span class="venue">R package version 1.4.1, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.admiral" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.admiral</a></li><li>Gautier et al. (2026). pharmaverseadam: ADaM Test Data for the ‘Pharmaverse’ Family of Packages. <span class="venue">R package version 1.3.0, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.pharmaverseadam" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.pharmaverseadam</a></li><li>Patil et al. (2026). pharmaversesdtm: SDTM Test Data for the ‘Pharmaverse’ Family of Packages. <span class="venue">R package version 1.4.0, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.pharmaversesdtm" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.pharmaversesdtm</a></li><li>Gower-Page and Martin (2025). diffdf: Dataframe Difference Tool. <span class="venue">R package version 1.1.2, CRAN</span>. <a href="https://doi.org/10.32614/CRAN.package.diffdf" target="_blank" rel="noopener noreferrer">doi:10.32614/CRAN.package.diffdf</a></li><li>McNemar (1947). Note on the sampling error of the difference between correlated proportions or percentages. <span class="venue">Psychometrika 12(2), 153–157</span>. <a href="https://doi.org/10.1007/BF02295996" target="_blank" rel="noopener noreferrer">doi:10.1007/BF02295996</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://adam.chernov.ca" target="_blank" rel="noopener noreferrer">adam.chernov.ca</a><a class="lnk" href="https://demo.adam.chernov.ca" target="_blank" rel="noopener noreferrer">demo.adam.chernov.ca</a><a class="lnk" href="https://adam.chernov.ca/#results" target="_blank" rel="noopener noreferrer">Results and limits</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23361650" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23361650</a></p>
 </article>
-<article class="project" id="agentic-loom">
+<article class="project" id="agentic-loom" data-tags="independent product">
 <div class="project-head">
 <span class="num">15</span>
 <div class="project-title">
@@ -587,7 +597,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>IEC (1997). IEC 61512-1: Batch control — Part 1: Models and terminology (ISA-88). <span class="venue">International standard</span>. <a href="https://webstore.iec.ch/en/publication/5528" target="_blank" rel="noopener noreferrer">webstore.iec.ch</a></li><li>ISA (2022). ISA-TR88.00.02-2022, Machine and Unit States: An implementation example of ISA-88.00.01 (PackML). <span class="venue">Technical report</span>. <a href="https://www.isa.org/products/isa-tr88-00-02-2022-machine-and-unit-states-an-imp" target="_blank" rel="noopener noreferrer">isa.org</a></li><li>IEC (2025). IEC 62541-1: OPC Unified Architecture — Part 1: Overview and concepts. <span class="venue">International standard, edition 1.0</span>. <a href="https://webstore.iec.ch/en/publication/81513" target="_blank" rel="noopener noreferrer">webstore.iec.ch</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticloom.ca" target="_blank" rel="noopener noreferrer">agenticloom.ca</a><a class="lnk" href="https://agenticloom.ca/#standards" target="_blank" rel="noopener noreferrer">Standards: what is built and what is not yet</a><a class="lnk" href="https://agenticloom.ca/#evidence" target="_blank" rel="noopener noreferrer">What has been measured</a><a class="lnk" href="https://www.linkedin.com/company/agenticloom/" target="_blank" rel="noopener noreferrer">Agentic Loom on LinkedIn</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23487481" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23487481</a></p>
 </article>
-<article class="project" id="agentic-delivery">
+<article class="project" id="agentic-delivery" data-tags="independent demo">
 <div class="project-head">
 <span class="num">16</span>
 <div class="project-title">
@@ -608,7 +618,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Newman, Meyers and Torres-Arias (2022). Sigstore: Software Signing for Everybody. <span class="venue">Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (CCS ’22), 2353–2367</span>. <a href="https://doi.org/10.1145/3548606.3560596" target="_blank" rel="noopener noreferrer">doi:10.1145/3548606.3560596</a></li><li>Zhong, Raghunathan and Carlini (2025). ImpossibleBench: Measuring LLMs’ Propensity of Exploiting Test Cases. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2510.20270" target="_blank" rel="noopener noreferrer">arXiv:2510.20270</a></li><li>Shi et al. (2025). Progent: Securing AI Agents with Privilege Control. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2504.11703" target="_blank" rel="noopener noreferrer">arXiv:2504.11703</a></li><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticdelivery.ca" target="_blank" rel="noopener noreferrer">agenticdelivery.ca</a><a class="lnk" href="https://agenticdelivery.ca/#build" target="_blank" rel="noopener noreferrer">Every case, measured</a><a class="lnk" href="https://agenticdelivery.ca/#limits" target="_blank" rel="noopener noreferrer">The limits, stated</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23550941" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23550941</a></p>
 </article>
-<article class="project" id="agentic-lims">
+<article class="project" id="agentic-lims" data-tags="independent demo">
 <div class="project-head">
 <span class="num">17</span>
 <div class="project-title">
@@ -629,7 +639,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency (2021). Water Quality Portal. <span class="venue">Data portal</span>. <a href="https://doi.org/10.5066/P9QRKUVJ" target="_blank" rel="noopener noreferrer">doi:10.5066/P9QRKUVJ</a></li><li>Fishman (ed.) (1993). Methods of analysis by the U.S. Geological Survey National Water Quality Laboratory: determination of inorganic and organic constituents in water and fluvial sediments. <span class="venue">U.S. Geological Survey Open-File Report 93-125</span>. <a href="https://doi.org/10.3133/ofr93125" target="_blank" rel="noopener noreferrer">doi:10.3133/ofr93125</a></li><li>Model Context Protocol (2025). Specification, version 2025-06-18. <span class="venue">modelcontextprotocol.io</span>. <a href="https://modelcontextprotocol.io/specification/2025-06-18" target="_blank" rel="noopener noreferrer">modelcontextprotocol.io</a></li><li>Chernov (2026). Agentic Dataset Reference Implementation and Conformance Suite. <span class="venue">Zenodo</span>. <a href="https://doi.org/10.5281/zenodo.22536342" target="_blank" rel="noopener noreferrer">doi:10.5281/zenodo.22536342</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://agenticlims.ca" target="_blank" rel="noopener noreferrer">agenticlims.ca</a><a class="lnk" href="https://agenticlims.ca/#decided" target="_blank" rel="noopener noreferrer">Decided: the gate and the person</a><a class="lnk" href="https://agenticlims.ca/#limits" target="_blank" rel="noopener noreferrer">The limits, stated</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23625293" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23625293</a></p>
 </article>
-<article class="project" id="system-one">
+<article class="project" id="system-one" data-tags="independent research">
 <div class="project-head">
 <span class="num">18</span>
 <div class="project-title">
@@ -650,7 +660,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Chernov (2026). Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2609.21299" target="_blank" rel="noopener noreferrer">arXiv:2609.21299</a></li><li>Chernov (2026). Agentic Datasets as an Engineering Control Plane. <span class="venue">IEEE Canadian Conference on Electrical and Computer Engineering (CCECE), pp. 326–332</span>. <a href="https://doi.org/10.1109/CCECE68150.2026.11610344" target="_blank" rel="noopener noreferrer">doi:10.1109/CCECE68150.2026.11610344</a></li><li>Qwen Team (Yang et al.) (2024). Qwen2.5 Technical Report. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2412.15115" target="_blank" rel="noopener noreferrer">arXiv:2412.15115</a></li><li>Hu et al. (2021). LoRA: Low-Rank Adaptation of Large Language Models. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener noreferrer">arXiv:2106.09685</a></li><li>Bitext Innovations (2024). Bitext — Customer Service Tagged Training Dataset for LLM-based Virtual Assistants. <span class="venue">Hugging Face dataset</span>. <a href="https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset" target="_blank" rel="noopener noreferrer">huggingface.co/datasets/bitext</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://model.brainapi.org" target="_blank" rel="noopener noreferrer">model.brainapi.org</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23586629" target="_blank" rel="noopener noreferrer">Results note and carousel: Zenodo 10.5281/zenodo.23586629</a><a class="lnk" href="https://brainapi.org" target="_blank" rel="noopener noreferrer">brainapi.org</a><a class="lnk" href="https://demo.brainapi.org" target="_blank" rel="noopener noreferrer">Decision-artifact demo</a></p>
 </article>
-<article class="project" id="massive-gpu">
+<article class="project" id="massive-gpu" data-tags="independent demo">
 <div class="project-head">
 <span class="num">19</span>
 <div class="project-title">
@@ -670,7 +680,7 @@ footer.bottom p{margin:0 0 .5rem}
 
 <p class="links"><a class="lnk" href="https://massivegpu.ca" target="_blank" rel="noopener noreferrer">massivegpu.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23890436" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23890436</a></p>
 </article>
-<article class="project" id="semantic-gateway-demo">
+<article class="project" id="semantic-gateway-demo" data-tags="independent demo">
 <div class="project-head">
 <span class="num">20</span>
 <div class="project-title">
@@ -691,7 +701,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Water Quality Monitoring Council, U.S. Geological Survey and U.S. Environmental Protection Agency (2021). Water Quality Portal. <span class="venue">Data portal</span>. <a href="https://doi.org/10.5066/P9QRKUVJ" target="_blank" rel="noopener noreferrer">doi:10.5066/P9QRKUVJ</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://semanticgateway.ca" target="_blank" rel="noopener noreferrer">semanticgateway.ca</a><a class="lnk" href="https://pdf.semanticgateway.ca" target="_blank" rel="noopener noreferrer">pdf.semanticgateway.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23906429" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23906429</a><a class="lnk" href="https://doi.org/10.5281/zenodo.24096624" target="_blank" rel="noopener noreferrer">PDF demo video: Zenodo 10.5281/zenodo.24096624</a></p>
 </article>
-<article class="project" id="semantic-gateway-pdfs-demo">
+<article class="project" id="semantic-gateway-pdfs-demo" data-tags="independent demo">
 <div class="project-head">
 <span class="num">21</span>
 <div class="project-title">
@@ -712,7 +722,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>National Institute of Standards and Technology (2026). Standard Reference Materials. <span class="venue">Certificates of analysis</span>. <a href="https://www.nist.gov/srm" target="_blank" rel="noopener noreferrer">nist.gov/srm</a></li><li>U.S. Food and Drug Administration (2026). OII FOIA Electronic Reading Room. <span class="venue">Form 483 inspectional observations</span>. <a href="https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room" target="_blank" rel="noopener noreferrer">fda.gov, electronic reading room</a></li><li>European Medicines Agency (2026). Medicines. <span class="venue">EPAR medicine overviews</span>. <a href="https://www.ema.europa.eu/en/medicines" target="_blank" rel="noopener noreferrer">ema.europa.eu/en/medicines</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://pdf.semanticgateway.ca" target="_blank" rel="noopener noreferrer">pdf.semanticgateway.ca</a><a class="lnk" href="https://semanticgateway.ca" target="_blank" rel="noopener noreferrer">semanticgateway.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.24096624" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.24096624</a></p>
 </article>
-<article class="project" id="agent-scope-gene-agents">
+<article class="project" id="agent-scope-gene-agents" data-tags="independent demo">
 <div class="project-head">
 <span class="num">22</span>
 <div class="project-title">
@@ -732,7 +742,7 @@ footer.bottom p{margin:0 0 .5rem}
 <section class="refs" aria-label="References"><h4>References</h4><ol><li>Sarkar, Al-Ars and Bertels (2021). QuASeR: Quantum Accelerated de novo DNA sequence reconstruction. <span class="venue">PLOS ONE 16(4), e0249850</span>. <a href="https://doi.org/10.1371/journal.pone.0249850" target="_blank" rel="noopener noreferrer">doi:10.1371/journal.pone.0249850</a></li><li>Griffith et al. (2017). CIViC is a community knowledgebase for expert crowdsourcing the clinical interpretation of variants in cancer. <span class="venue">Nature Genetics 49(2), 170–174</span>. <a href="https://doi.org/10.1038/ng.3774" target="_blank" rel="noopener noreferrer">doi:10.1038/ng.3774</a></li><li>Bergholm et al. (2018). PennyLane: Automatic differentiation of hybrid quantum-classical computations. <span class="venue">arXiv preprint</span>. <a href="https://arxiv.org/abs/1811.04968" target="_blank" rel="noopener noreferrer">arXiv:1811.04968</a></li></ol></section>
 <p class="links"><a class="lnk" href="https://genequbit.agentscope.ca" target="_blank" rel="noopener noreferrer">genequbit.agentscope.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23006165" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23006165</a><a class="lnk" href="https://doi.org/10.5281/zenodo.22741061" target="_blank" rel="noopener noreferrer">Quantum-biology demos: Zenodo 10.5281/zenodo.22741061</a><a class="lnk mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a></p>
 </article>
-<article class="project" id="agent-scope-ops-agent">
+<article class="project" id="agent-scope-ops-agent" data-tags="independent demo">
 <div class="project-head">
 <span class="num">23</span>
 <div class="project-title">
@@ -752,7 +762,7 @@ footer.bottom p{margin:0 0 .5rem}
 
 <p class="links"><a class="lnk" href="https://infra.agentscope.ca" target="_blank" rel="noopener noreferrer">infra.agentscope.ca</a><a class="lnk" href="https://agentscope.ca" target="_blank" rel="noopener noreferrer">Agent Scope</a><a class="lnk" href="https://doi.org/10.5281/zenodo.23006181" target="_blank" rel="noopener noreferrer">Demo video: Zenodo 10.5281/zenodo.23006181</a><a class="lnk mono" href="https://github.com/doytsujin/ok-admission-gate-demo" target="_blank" rel="noopener noreferrer">ok-admission-gate-demo</a><a class="lnk mono" href="https://www.npmjs.com/package/@agent-scope-ca/graph-canvas" target="_blank" rel="noopener noreferrer">@agent-scope-ca/graph-canvas</a></p>
 </article>
-<article class="project" id="pseudo">
+<article class="project" id="pseudo" data-tags="independent fun">
 <div class="project-head">
 <span class="num">24</span>
 <div class="project-title">
@@ -774,7 +784,7 @@ footer.bottom p{margin:0 0 .5rem}
 
 <p class="links"><a class="lnk" href="https://pseudo.chernov.ca" target="_blank" rel="noopener noreferrer">pseudo.chernov.ca</a></p>
 </article>
-<article class="project" id="awaw-ai">
+<article class="project" id="awaw-ai" data-tags="independent product">
 <div class="project-head">
 <span class="num">25</span>
 <div class="project-title">
@@ -841,6 +851,25 @@ footer.bottom p{margin:0 0 .5rem}
 <script>
 (function(){
   var root=document.documentElement;
+
+  // Tag filter: one tag at a time, or All. The list and the entries are hidden
+  // together, so a visible link never points at a hidden project.
+  var tf=document.querySelector('.tag-filter');
+  if(tf){
+    var tfCount=tf.querySelector('.tf-count');
+    tf.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-tag]');if(!b)return;
+      var want=b.dataset.tag,shown=0,total=0;
+      tf.querySelectorAll('button[data-tag]').forEach(function(x){
+        x.setAttribute('aria-pressed',x===b?'true':'false');});
+      document.querySelectorAll('.project-index li[data-tags], article.project[data-tags]').forEach(function(el){
+        var on=!want||(' '+el.dataset.tags+' ').indexOf(' '+want+' ')>=0;
+        el.hidden=!on;
+        if(el.tagName==='ARTICLE'){total++;if(on)shown++;}
+      });
+      tfCount.textContent=want?('Showing '+shown+' of '+total):'';
+    });
+  }
   function paint(){
     var cur=root.dataset.theme||'light';
     document.querySelectorAll('.theme button').forEach(function(b){

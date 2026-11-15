@@ -47,6 +47,33 @@ AFFILIATION_LOGOS = {
     "AstraZeneca": "img/logo/astrazeneca-symbol.svg",
 }
 
+# The quick filter above the project list, in the order its buttons appear.
+# "affiliated" and "independent" are read off the affiliation line, so a tag
+# can never disagree with what the entry says about who it was done for; the
+# others are set by hand in content/projects.json under "tags".
+TAGS = {
+    "independent": "Independent",
+    "affiliated": "Affiliated",
+    "research": "Research",
+    "engineering": "Engineering",
+    "product": "Product",
+    "demo": "Demo",
+    "fun": "Fun",
+}
+DERIVED_TAGS = {"independent", "affiliated"}
+
+
+def project_tags(p: dict) -> list[str]:
+    """Derived tags first, then the entry's own, in TAGS order."""
+    aff = p.get("affiliation") or ""
+    derived = set()
+    if aff.startswith("Independent"):
+        derived.add("independent")
+    elif aff in AFFILIATION_LOGOS:
+        derived.add("affiliated")
+    have = derived | set(p.get("tags", []))
+    return [t for t in TAGS if t in have]
+
 VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link",
         "meta", "param", "source", "track", "wbr"}
 
@@ -141,7 +168,8 @@ def render_project(p: dict, index: int, *, prefix: str, standalone: bool) -> str
     """One project. `prefix` is the path back to docs/ from the page."""
     slug = esc(p["slug"])
     tag = "div" if standalone else "article"
-    parts = [f'<{tag} class="project"{"" if standalone else f' id="{slug}"'}>']
+    attrs = "" if standalone else f' id="{slug}" data-tags="{" ".join(project_tags(p))}"'
+    parts = [f'<{tag} class="project"{attrs}>']
 
     parts.append('<div class="project-head">')
     parts.append(f'<span class="num">{index:02d}</span>')
@@ -578,6 +606,15 @@ color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 
 .backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
 /* Projects: one link per project, under the section's heading. */
+.tag-filter{display:none;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 1rem}
+.js .tag-filter{display:flex}
+.tag-filter button{font:inherit;font-size:.82rem;line-height:1;padding:.42rem .7rem;cursor:pointer;
+border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink)}
+.tag-filter button:hover{border-color:var(--accent)}
+.tag-filter button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent);color:#fff}
+.tag-filter .tf-n{opacity:.7;font-size:.75rem;margin-left:.15rem;font-variant-numeric:tabular-nums}
+.tf-count{font-size:.8rem;color:var(--muted);margin-left:.3rem}
+[hidden]{display:none!important}
 .project-index{margin:0 0 2rem}
 .project-index ol{list-style:none;margin:0;padding:0;display:grid;
 grid-template-columns:repeat(auto-fill,minmax(17rem,1fr));gap:.2rem .9rem}
@@ -620,6 +657,25 @@ catch(e){document.documentElement.dataset.theme='light';}})();
 BEHAVIOUR = """
 (function(){
   var root=document.documentElement;
+
+  // Tag filter: one tag at a time, or All. The list and the entries are hidden
+  // together, so a visible link never points at a hidden project.
+  var tf=document.querySelector('.tag-filter');
+  if(tf){
+    var tfCount=tf.querySelector('.tf-count');
+    tf.addEventListener('click',function(e){
+      var b=e.target.closest('button[data-tag]');if(!b)return;
+      var want=b.dataset.tag,shown=0,total=0;
+      tf.querySelectorAll('button[data-tag]').forEach(function(x){
+        x.setAttribute('aria-pressed',x===b?'true':'false');});
+      document.querySelectorAll('.project-index li[data-tags], article.project[data-tags]').forEach(function(el){
+        var on=!want||(' '+el.dataset.tags+' ').indexOf(' '+want+' ')>=0;
+        el.hidden=!on;
+        if(el.tagName==='ARTICLE'){total++;if(on)shown++;}
+      });
+      tfCount.textContent=want?('Showing '+shown+' of '+total):'';
+    });
+  }
   function paint(){
     var cur=root.dataset.theme||'light';
     document.querySelectorAll('.theme button').forEach(function(b){
@@ -819,11 +875,30 @@ def index_title(title: str) -> str:
 def project_index(projects: list[dict]) -> str:
     """One link per project, to its entry below, by its full title."""
     items = "".join(
-        f'<li><a href="#{esc(p["slug"])}"><span class="pi-n">{i:02d}</span>'
+        f'<li data-tags="{" ".join(project_tags(p))}"><a href="#{esc(p["slug"])}">'
+        f'<span class="pi-n">{i:02d}</span>'
         f'<span>{index_title(p["title"])}</span></a></li>'
         for i, p in enumerate(projects, start=1)
     )
     return f'<nav class="project-index" aria-label="Projects on this page"><ol>{items}</ol></nav>'
+
+
+def tag_filter(projects: list[dict]) -> str:
+    """Buttons that narrow the list and the entries to one tag. Shown only when
+    the script runs, so without it every project stays on the page."""
+    counts = {t: sum(t in project_tags(p) for p in projects) for t in TAGS}
+    buttons = [f'<button type="button" data-tag="" aria-pressed="true">All '
+               f'<span class="tf-n">{len(projects)}</span></button>']
+    buttons += [
+        f'<button type="button" data-tag="{t}" aria-pressed="false">{esc(label)} '
+        f'<span class="tf-n">{counts[t]}</span></button>'
+        for t, label in TAGS.items() if counts[t]
+    ]
+    return (
+        '<div class="tag-filter" role="group" aria-label="Show projects by tag">'
+        f'{"".join(buttons)}'
+        f'<span class="tf-count" aria-live="polite"></span></div>'
+    )
 
 
 def build_index(data: dict) -> str:
@@ -874,6 +949,7 @@ def build_index(data: dict) -> str:
       verify, and a verifiable entry earns the ones that follow it. Where a project has no public
       URL that is stated rather than hidden behind a link that returns 404. Each title is also a
       page of its own, which is what the copy button hands you.</p>
+    {tag_filter(data["projects"])}
     {project_index(data["projects"])}
     {projects}
   </section>
@@ -987,6 +1063,26 @@ def check_articles(articles: list[dict]) -> list[str]:
         if not ok:
             problems.append(f'articles.json: "{a.get("title")}" has no valid date '
                             f"(got {d!r}); give the publication date as YYYY-MM-DD")
+    return problems
+
+
+def check_tags(projects: list[dict]) -> list[str]:
+    """Every project carries at least one hand-set tag, so a new entry cannot
+    reach the page invisible to every filter but All; only known tags; and
+    never a hand-set affiliated/independent, which the affiliation line decides."""
+    problems: list[str] = []
+    for p in projects:
+        own = p.get("tags", [])
+        for t in own:
+            if t not in TAGS:
+                problems.append(f'projects.json: {p["slug"]}: unknown tag {t!r} '
+                                f'(known: {", ".join(TAGS)})')
+            elif t in DERIVED_TAGS:
+                problems.append(f'projects.json: {p["slug"]}: tag {t!r} is read from the '
+                                'affiliation line; do not set it by hand')
+        if not [t for t in own if t in TAGS and t not in DERIVED_TAGS]:
+            problems.append(f'projects.json: {p["slug"]}: no tag; give it one of '
+                            f'{", ".join(t for t in TAGS if t not in DERIVED_TAGS)}')
     return problems
 
 
@@ -1105,7 +1201,8 @@ def main() -> None:
 
     PROJECT_NUMBERS.update({p["slug"]: i for i, p in enumerate(projects, start=1)})
 
-    problems = check_articles(data["articles"]) + check_use_cases(projects)
+    problems = (check_articles(data["articles"]) + check_use_cases(projects)
+                + check_tags(projects))
     if problems:
         fail(problems)
 

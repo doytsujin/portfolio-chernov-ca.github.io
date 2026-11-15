@@ -6,6 +6,9 @@
     "summary": "Specification plus reference implementation. The contract runs to fifteen assertions and eighty-five executable steps, portable across languages, and has been exercised against four runtimes, two dataset boundaries and one unrelated codebase &mdash; every one of them passing, with seventeen deliberately broken variants all caught.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "research"
+    ],
     "image": null,
     "body": [
       "An open specification and reference implementation for datasets that carry their own behavioural contract. A dataset declares the operations it admits and the conditions under which it admits them, so a caller can decide from the descriptor alone rather than by convention or by asking someone.",
@@ -73,6 +76,9 @@
     "summary": "A Nextflow hook, a policy, and one decision record per task. End-to-end timing came to 119 &micro;s at the median over 210 decisions, published as a corpus anyone can replay. The load-bearing outcome was not that number but establishing by experiment that AWS's managed service honours a directive its own linter called unsupported.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "research"
+    ],
     "image": "project-per-task-admission-control.webp",
     "body": [
       "Measured on a real nf-core pipeline rather than a synthetic one: 119 µs median for the whole gate process over 210 decisions, independently replayable from the published corpus.",
@@ -117,6 +123,9 @@
     "summary": "What the descriptor leaves open, this closes: five operators, one verdict per request, and an audit trail behind it. Authority and conditions turn out to disagree in both directions, neither permit set containing the other, and the price of deciding is published rather than estimated at +0.0 &micro;s warm, +11.7 &micro;s cold.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "research"
+    ],
     "image": "project-croissant-policy-profile.webp",
     "body": [
       "No decision procedure, no bound on what a condition costs to check, no defined outcome for a condition an implementation cannot evaluate, and no record of what was checked.",
@@ -174,6 +183,9 @@
     "summary": "Real drives from two cars, 236,130 frames: a content-triggered refresh hid 2.01 points fewer scene changes than a timer at the same share of skipped model calls. The decision layer now also runs live on ROS 2 and the Vehicle Signal Specification, and a recorded live run replays to the same decision on every frame.",
     "period": "2025 – present",
     "affiliation": "Independent research, unaffiliated with any employer.",
+    "tags": [
+      "research"
+    ],
     "image": "project-agentic-vision-stack.webp",
     "caption": "The live stack as built, drawn as objects: frames arrive over ROS 2, an admission layer decides for each one whether the gated model runs or an earlier result is reused, an independent detector watches alongside, and every decision goes to a ledger and to a read-only VSS overlay. The three figures on the illustration are measured.",
     "body": [
@@ -233,6 +245,9 @@
     "summary": "Two demos, seeded and offline. One puts a nine-qubit assembly problem and a trained classifier behind a gate that logs every admission; the other drops quantum entirely for a fed-batch reactor model, to show what a regulated step is already expected to leave behind. Small enough to verify by brute force, and verified.",
     "period": "2025 – present",
     "affiliation": null,
+    "tags": [
+      "research"
+    ],
     "image": null,
     "body": [
       "Two runnable demonstrations of what it takes to put a computational step inside a governed biology workflow. The first runs a published quantum genomics method and a trained quantum classifier on PennyLane behind a control plane that decides what may run and records what happened — admission control, rate limiting, a circuit cache and an event record, over QAOA <em>de novo</em> assembly with three reads and nine qubits, verified against brute force.",
@@ -312,6 +327,9 @@
     "summary": "Rust and React, desktop and browser. Connected sources become cited answers, a knowledge graph with a live ontology, and tools for Copilot, with access trimmed to each reader. First demonstrated on 4,115 laboratory assets.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "engineering"
+    ],
     "og_image": "project-semantic-gateway-card.webp",
     "video": {
       "src": "img/video/semantic-gateway.mp4",
@@ -380,6 +398,10 @@
     "summary": "Runs against CDISC's public pilot, ranking 415 candidate variables against 110 known-good pairs with embeddings frozen between runs so the comparison holds. Inference happens in the browser on WebGPU. On derivations a frontier model reaches 0.38 top-1 against 0.06 lexical, on a leak-free benchmark.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "research",
+      "engineering"
+    ],
     "image": null,
     "caption": null,
     "no_url_reason": "No public URL yet — paper accepted; the proceedings record follows the conference.",
@@ -433,6 +455,9 @@
     "summary": "Pinned model, pinned thresholds, pinned provenance, 41 tests, and a Pyodide build that matches the native engine. What it caught is the part worth repeating: a component-rescaling step that looked right on every chart, correlation around 0.9, while actual fit quality had gone to &minus;608 with nothing raising an error.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "engineering"
+    ],
     "image": "project-reproducible-spectral-scoring.png",
     "caption": "Six forced-degradation Raman spectra fitted in the browser: all six pass the R² ≥ 0.9 gate, and only the reference scores green. The selected sample fits at R² 0.998 and scores 54.0. Compound code replaced with COMPOUND-A.",
     "no_url_reason": "No public URL — internal system.",
@@ -468,6 +493,9 @@
     "summary": "Takes plate-reader output, draws per-column traces, suggests cut points from second derivatives, and puts an approve-or-edit step in front of the robot. Detection was rebuilt rather than tuned: one sample recovered from 0.26 to 0.98, and an aggregation index that had spanned 1.3&ndash;2.7 settled to 0.09&ndash;0.53.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "engineering"
+    ],
     "image": "project-chromatography-fraction-pooling.png",
     "caption": "Eight Robocolumn chromatograms across two plates, with the algorithm's 16 pool proposals beside them, each awaiting Approve, Reject, Combine or Edit. Synthetic run.",
     "no_url_reason": "No public URL — internal system.",
@@ -512,6 +540,9 @@
     "summary": "A designer for master batch records (MBR) that executes them as electronic batch records (EBR), in Rust and React, with a no-backend browser build for places that will not host a server. One spine underlies every recipe &mdash; source, pre-process, reason, approve, sink &mdash; and the records live in version control, so review, promotion and rollback are the ordinary git ones.",
     "period": "2025 – present",
     "affiliation": "AstraZeneca",
+    "tags": [
+      "engineering"
+    ],
     "image": "project-batch-records-as-typed-programs.png",
     "caption": "A platform mAb downstream purification MBR, executed in the browser build: nine unit operations joined to their in-process controls, checked against five MBR limits, then held at a QA approval node. The executed record on the right flags one step &mdash; viral-inactivation hold above its 120-minute limit. Illustrative batch values; limits follow published platform ranges.",
     "no_url_reason": "No public URL — internal system.",
@@ -555,6 +586,9 @@
     "summary": "A control plane for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Seven recorded demos apply it to gene evidence, cluster operations, software delivery, laboratory data, a GPU fleet, a data estate and a library of PDFs.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "product"
+    ],
     "image": "project-agent-scope-field.webp",
     "caption": "The projection switcher on agentscope.ca, in the governance view. The seven nodes and seven edges are the same in every view; only what anchors the layout changes, and here policy distance becomes spatial distance.",
     "body": [
@@ -638,6 +672,9 @@
     "summary": "An LLM response cache that starts by watching. A week of real traffic yields a report of would-be hits and the stored replies it would have returned, and the owner decides from it whether, and how strictly, serving begins.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "product"
+    ],
     "image": "project-grafferene.webp",
     "caption": "Grafferene drawn as a sphere of graphene cells between an application and its model endpoint: an exact repeat lands on its stored answer, a similar question asked in the same context lands beside its closest neighbors, is checked and gets the stored answer, and everything else passes through to the model. Illustration from grafferene.ca.",
     "body": [
@@ -713,6 +750,9 @@
     "summary": "A goal-driven web crawler. Given a goal and the sites to read, it follows the most promising link next, checks each request against scope, site terms, robots.txt and AI-crawler rules before sending it, and writes down every choice and refusal with its reason. A recorded demo replays its crawls of a generated test corpus.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "product"
+    ],
     "video": [
       {
         "src": "img/video/agentic-crawl-demo.mp4",
@@ -783,6 +823,9 @@
     "summary": "A check for AI-written statistical programs: a model drafts each ADaM column with admiral, the draft runs in isolation on public SDTM data, and the column counts only if it equals the published reference exactly. Programs and verdicts stay on the record with their reasons, and a browser can reproduce every verdict.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/adam-demo.mp4",
@@ -868,6 +911,9 @@
     "summary": "A recipe designer and runner for regulated batch processes. Recipes are built from what each unit of equipment declares, every phase is checked by an admission model while it is written and again at its gate, and a refused step waits for a person who may choose only what the model permits.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "product"
+    ],
     "video": [
       {
         "src": "img/video/agentic-loom-demo.mp4",
@@ -949,6 +995,9 @@
     "summary": "Software delivery with AI agents behind one gate. A coding agent’s change is tested in a sandbox, approved by a person, promoted under a versioned policy and run once; an operations agent’s calls are decided against its grants before they reach the service; and every decision lands on a ledger an auditor can check.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/agentic-delivery-demo.mp4",
@@ -1030,6 +1079,9 @@
     "summary": "Public laboratory results held as an agentic dataset over MCP. Each result keeps its lineage from the monitoring site to the retrieved file, drawn in 3D; an agent assembling a report proposes, a gate inside the dataset rules on every result under a written policy, a person approves what it escalates, and answers drawn from method documents are checked quote by quote.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/agentic-lims-demo.mp4",
@@ -1111,6 +1163,9 @@
     "summary": "A judgment provider for Brain API: LoRA adapters on Qwen2.5-0.5B-Instruct and Qwen2.5-1.5B-Instruct that score a request against every capability a dataset’s policy has already let through, as a probability. The control plane routes on those probabilities and keeps them, with the versions of the model and of the rule that used them.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "research"
+    ],
     "og_image": "deck/system-one/01.webp",
     "carousel": {
       "dir": "img/deck/system-one",
@@ -1199,6 +1254,9 @@
     "summary": "A 3D view of a Kubernetes cluster: 1,125 simulated nodes and 1,000 simulated GPUs beside one real GPU serving a real model. A proposed change goes to a gate under written rules, a person approves what the rules send up, and Git or an evict-only executor carries it out.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/massive-gpu-demo.mp4",
@@ -1238,6 +1296,9 @@
     "summary": "A recording of one session with a running host, on public data. Sources become packs that link only where evidence supports it, one query is routed across them, a full read waits for a person, an agent comes in over MCP, and a model's answer appears only if it holds up against what its tools returned.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/semantic-gateway-demo.mp4",
@@ -1295,6 +1356,9 @@
     "summary": "A recording of one session with a running host, on 118 public documents from NIST, FDA and EMA. Declared rules read typed fields, a model fills only what they miss and only with a quote that stands on the page, every value opens where its page states it, the documents form a knowledge graph, and every request passes the same policy gate as the first Semantic Gateway example.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/semantic-gateway-pdfs-demo.mp4",
@@ -1364,6 +1428,9 @@
     "summary": "An Agent Scope demo on real CIViC evidence for three genes. No controller assigns work, every agent moves only along its state machine, and TP53’s single capability, a QAOA contig assembly on a simulator, is reached through a gateway that keeps its own allow-list.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/agent-scope-gene.mp4",
@@ -1437,6 +1504,9 @@
     "summary": "An Agent Scope demo on a live k3s cluster that the agent reaches only as a scoped service account. Seven orders given in chat are answered, allowed, escalated or refused by a gate that holds a policy file, and each record is kept on a ledger that survives a restart.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "demo"
+    ],
     "video": [
       {
         "src": "img/video/agent-scope-ops.mp4",
@@ -1485,6 +1555,9 @@
     "summary": "A coding-practice app with 400 tasks in 19 groups, solved in Python or built from blocks that show the Python they make. A public demo lets anyone browse the tasks and write solutions; a judging server runs each submission in a sandbox and scores it against cases it keeps to itself.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "fun"
+    ],
     "image": "project-pseudo.webp",
     "caption": "The public demo at pseudo.chernov.ca, task 1 of 400: a solution typed in Python, turned into blocks with one click, and on the right the Python the judge would receive. The demo shows both and runs neither.",
     "body": [
@@ -1507,6 +1580,9 @@
     "summary": "Where the work is offered as products rather than demos. Four of them, each a pilot that runs in the customer’s own environment, stand beside recorded runs that put the gate to work in nine fields and the peer-reviewed research behind it.",
     "period": "2022 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
+    "tags": [
+      "product"
+    ],
     "image": "project-awaw-ai.webp",
     "caption": "The opening of awaw.ai under the Graffemeter App Computing name: small models and small units that run on hardware the customer already has, and four products offered as pilots.",
     "body": [
