@@ -1,0 +1,287 @@
+{
+ "clips": [
+  {
+   "slug": "massive-gpu",
+   "name": "Massive GPU",
+   "site": "https://massivegpu.ca/",
+   "project": "massive-gpu",
+   "local": false,
+   "seconds": 30.03,
+   "bytes": 12392868,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "1,125 simulated nodes and 1,001 GPUs, scheduled by a real Kubernetes",
+     "sub": "GPU load is simulated: a formula published under DCGM's metric names, not a measurement"
+    },
+    {
+     "at": 8.6,
+     "text": "Six layers, one system: machines, nodes, workloads, namespaces, control plane, use",
+     "sub": ""
+    },
+    {
+     "at": 14.8,
+     "text": "Click any GPU: the pod that holds it, and how the scheduler picked it",
+     "sub": ""
+    }
+   ],
+   "mp4_sha256": "66311a5e8194d41053800602254a1a4b9a5f3a484a009bcc01883cc843dccdec",
+   "poster_sha256": "d5b209c7429fec3a3d16f942af287dff31e3ef86c9ebb1c648673bd781a81cf1",
+   "og_sha256": "db531689c6bceca2660c913ba5cb8e09b7680f7cdec76ca80064a7512881d05a"
+  },
+  {
+   "slug": "semantic-gateway",
+   "name": "Semantic Gateway",
+   "site": "https://semanticgateway.ca/",
+   "project": "semantic-gateway-demo",
+   "local": false,
+   "seconds": 30.03,
+   "bytes": 9056679,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "14,987 documents from 9 sources, as one estate",
+     "sub": "Each source becomes a pack; packs are linked only where evidence supports a link"
+    },
+    {
+     "at": 8.6,
+     "text": "19,674 exact links between documents",
+     "sub": "Five layers: sources, documents, packs, concepts, use"
+    },
+    {
+     "at": 15.8,
+     "text": "Click a pack: its exact links, and what this caller may do with it",
+     "sub": ""
+    },
+    {
+     "at": 24.5,
+     "text": "One query, routed: 10 passages from 4 of 9 packs",
+     "sub": "Every hit names its pack and document"
+    }
+   ],
+   "mp4_sha256": "68369070e8899dce87417ce55a0b58dcdbfd84ce0fed009cdcc897f6d00afef4",
+   "poster_sha256": "9403e311030a9058640d38c952e74e01da476a66bd66b062cf897fdb71e0c9d6",
+   "og_sha256": "f19d333494838b0bbeb8f23772990607625524af75e1310fe9a1ffb817df112b"
+  },
+  {
+   "slug": "pdf-gateway",
+   "name": "Semantic Gateway for PDFs",
+   "site": "https://pdf.semanticgateway.ca/",
+   "project": "semantic-gateway-pdfs-demo",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 7134370,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "118 PDFs in 3 packs, drawn as one graph",
+     "sub": "NIST certificates, FDA inspection documents, EMA medicine overviews"
+    },
+    {
+     "at": 6.7,
+     "text": "101 entities the documents name",
+     "sub": "What each document is an instance of, by a declared field"
+    },
+    {
+     "at": 12.5,
+     "text": "Click a document: its pack, its source, and its nearest documents",
+     "sub": ""
+    },
+    {
+     "at": 19.9,
+     "text": "Similarity: each document's nearest documents",
+     "sub": "By the mean of its chunk vectors; an estimate, with its cosine"
+    },
+    {
+     "at": 23.2,
+     "text": "One query, routed: 10 passages from 3 of 3 packs",
+     "sub": "Every hit names its pack and document"
+    }
+   ],
+   "mp4_sha256": "07f1f6eec6d886d1dda104b7b466554d03e15b44f53d1f5007999bc5b5fbf56b",
+   "poster_sha256": "280fb8910417b66d3a3db7adbac028762ae1cd9772273cfc134624a2308051c1",
+   "og_sha256": "052f3295173ac66d32549cf28e705742557c7111f8dda6cddeb0add8ddd68494"
+  },
+  {
+   "slug": "grafferene",
+   "name": "Grafferene",
+   "site": "https://demo.grafferene.ca/",
+   "project": "grafferene",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 4649591,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Recorded LLM traffic, replayed through Grafferene",
+     "sub": "Each dot is a request: answered from the cache, or sent on to the model"
+    },
+    {
+     "at": 5.4,
+     "text": "Ask your own question, as a Tenant A user",
+     "sub": "Decided in your browser with the same embedding model; nothing is sent"
+    },
+    {
+     "at": 14.5,
+     "text": "Your question: sent on to the model",
+     "sub": "Similarity 0.15, threshold 0.92"
+    },
+    {
+     "at": 20.2,
+     "text": "Each request: from the cache, or on to the model",
+     "sub": "Click anything to see what happened"
+    }
+   ],
+   "mp4_sha256": "04eacf9b1d824151e8fb1a4ef4bd93c2130f2f0c9558166e61817205b4f88a0c",
+   "poster_sha256": "26902a3c0c1ea776dab416c8609446a8cfb95d0186b717e24c36b9e26bd4fb8a",
+   "og_sha256": "7262044e95cc6b8b80e83890dc76f313e5b99301ce7ccbffa5ae3c12115c95b3"
+  },
+  {
+   "slug": "agentic-crawl",
+   "name": "Agentic Crawl",
+   "site": "https://demo.agenticcrawl.ca/",
+   "project": "agentic-crawl",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 3302217,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "A crawler with a goal: Find the price and warranty of every tent the outdoor shop sells",
+     "sub": "A generated test corpus: every page and name in it is invented"
+    },
+    {
+     "at": 8.2,
+     "text": "Every request is decided first: taken, refused by the site's rules, or skipped as a copy",
+     "sub": ""
+    },
+    {
+     "at": 15.7,
+     "text": "Half the goal: 21 of 40 found, after 50 requests",
+     "sub": ""
+    },
+    {
+     "at": 26.0,
+     "text": "Every reachable page: 40 of 40 found, in 91 requests",
+     "sub": ""
+    }
+   ],
+   "mp4_sha256": "531bbaaca030f5f25430290ef3412604c7521d47e9488d0c313ed3462369b00f",
+   "poster_sha256": "ca26137330f2aa2100f70e442a6d3d48ef50e036dd0cc94e0dd2f26a20dbb0ee",
+   "og_sha256": "02114637e1b27bb3e404bcd206ddb9ecedd5450b27bba01e1c6a95ad2736c386"
+  },
+  {
+   "slug": "pseudo",
+   "name": "Pseudo",
+   "site": "https://pseudo.chernov.ca/",
+   "project": "pseudo",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 2180770,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "400 coding tasks, solved in Python or put together from blocks",
+     "sub": ""
+    },
+    {
+     "at": 6.1,
+     "text": "Write Python in the editor",
+     "sub": ""
+    },
+    {
+     "at": 14.0,
+     "text": "Or build it from blocks",
+     "sub": "Drag a pattern from the tray into the task's definition"
+    },
+    {
+     "at": 17.4,
+     "text": "The Python the blocks make: what the judge receives",
+     "sub": ""
+    },
+    {
+     "at": 27.0,
+     "text": "A demo: you can browse, reshuffle and write code here",
+     "sub": "Solutions are not run or judged in it"
+    }
+   ],
+   "mp4_sha256": "5b55876f5848c3d37d1db657510997c640672ff29f0f3e2fe669faee964b042a",
+   "poster_sha256": "e7a850e27fb576ce5b56e00e3acff968afcdba35a2bcd0a6850213e40427e97b",
+   "og_sha256": "eee99a06b982d3794a94c3cc0e1897e810da671ed56f73c99ab3cc40665ce169"
+  },
+  {
+   "slug": "agentic-lims",
+   "name": "Agentic LIMS",
+   "site": "https://agenticlims.ca/",
+   "project": "agentic-lims",
+   "local": true,
+   "seconds": 30.0,
+   "bytes": 9365602,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "8,542 results from Dane County, Wisconsin, April to June 2023",
+     "sub": "From monitoring location to report: eight layers, one lineage"
+    },
+    {
+     "at": 8.3,
+     "text": "Give the agent an order: trace nitrate at Lake Monona",
+     "sub": ""
+    },
+    {
+     "at": 16.1,
+     "text": "9 results, traced from Lake Monona - Deep Hole to the report file",
+     "sub": "Collected, analyzed, stored, served, retrieved: every hop drawn"
+    }
+   ],
+   "mp4_sha256": "d531945d7e58346d30851bc8e466c52842a2925fe62e104aa96f9595c79415ed",
+   "poster_sha256": "08b3eca3b151d331eb4a7cce06049c588f5a4735db782ad0e9f0840e5b4d0ab8",
+   "og_sha256": "c2a866934bb471eb730a8cc2cb99cf0166befcffb6b33c1db3bda7a171ea2cc7"
+  },
+  {
+   "slug": "agentic-loom",
+   "name": "Agentic Loom",
+   "site": "https://agenticloom.ca/",
+   "project": "agentic-loom",
+   "local": true,
+   "seconds": 30.0,
+   "bytes": 1622903,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Agentic Loom: recipes checked by an admission model while you write them",
+     "sub": "Units, actions and limits come from each unit's own declaration."
+    },
+    {
+     "at": 4.0,
+     "text": "The palette is built from the descriptors: one tab per unit, one block per declared action",
+     "sub": ""
+    },
+    {
+     "at": 6.5,
+     "text": "The recipe has 1 error: it names no lot yet",
+     "sub": ""
+    },
+    {
+     "at": 11.0,
+     "text": "The plan check follows the unit to the end of the recipe: 0 undeclared effects",
+     "sub": "Each action names the PackML command it issues in each state; the standard supplies what that command leaves."
+    },
+    {
+     "at": 19.9,
+     "text": "A state block asserts where the unit is. Asserting IDLE gives 1 state conflict: load runs only in EXECUTE",
+     "sub": ""
+    },
+    {
+     "at": 25.1,
+     "text": "Asserting EXECUTE agrees with the plan: 0 state conflicts",
+     "sub": ""
+    }
+   ],
+   "mp4_sha256": "1615686615d78fa3bdae5afee407f646f0315fcb680e13d594abdd9b92244525",
+   "poster_sha256": "3888e550f2e8a0fd55a57b7ae05454e641c208926b230c82d00fe7649dd1ecc1",
+   "og_sha256": "1cfe7946915f27d503bdd46b85c1c88e619357cab850d3828419621376c7df31"
+  }
+ ],
+ "og_sha256": "eeafdd7ad800e94b72148b1769913945ae0d97932dbc10219a613114b6620567"
+}

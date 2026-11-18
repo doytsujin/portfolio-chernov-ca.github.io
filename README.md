@@ -47,6 +47,10 @@ Adding a paper: `sections/papers/papers.json`, then `make build`. `make check`
 refuses a PDF under `docs/papers/`: that page lists abstracts, and the papers
 are read at the publisher.
 
+## Featured clips
+
+Eight 30-second recordings of the running demos, recorded and checked by the profile kit and copied here by its clips export: the videos and posters to `docs/featured/clips/`, a preview card per clip to `docs/og/clip-<slug>.jpg`, and a manifest with every file's hash to `content/featured/clips.json`. `build.py` renders `docs/featured/clips.html` and one page per clip, and refuses to build when a file differs from the manifest.
+
 ## Featured documents
 
 Three PDF carousels, Projects, Publications and Writing, are rendered by the

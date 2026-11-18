@@ -580,11 +580,7 @@ def featured_meta(kind: str, m: dict) -> dict:
 
 def build_featured_page(kind: str, m: dict, rows: list[dict]) -> str:
     pre = "../"
-    current = ' aria-current="page"'
-    nav = "".join(
-        f'<a href="{k}.html"{current if k == kind else ""}>{esc(k.capitalize())}</a>'
-        for k in FEATURED
-    )
+    nav = featured_nav(kind, "")
     hub = m["hub"]
     hub_href = pre + hub[len(SITE) + 1:] if hub.startswith(SITE + "/") else hub
     if hub_href == pre:
@@ -637,6 +633,169 @@ def check_featured(name: str, kind: str, rows: list[dict], doc: str) -> list[str
     if got != want:
         problems.append(f"{name}: links differ from the data: missing {sorted(want - got)}, "
                         f"extra {sorted(got - want)}")
+    return problems
+
+
+# --------------------------------------------------------------------------
+# Featured clips: 30-second recordings of the running demos
+# --------------------------------------------------------------------------
+
+# Recorded and checked by the profile kit (colors, single-frame flashes, OCR for names that must not
+# appear), copied here by its clips export with a manifest of hashes. Nothing here re-encodes a clip.
+CLIPS_FILE = FEATURED_DIR / "clips.json"
+CLIPS_DIR = DOCS / "featured" / "clips"
+
+
+def featured_nav(current: str, pre: str) -> str:
+    """The Featured pages' own row: the three documents and the clips. `pre` reaches docs/featured/."""
+    mark = ' aria-current="page"'
+    items = [(k, k.capitalize()) for k in FEATURED] + [("clips", "Clips")]
+    return "".join(f'<a href="{pre}{k}.html"{mark if k == current else ""}>{esc(label)}</a>' for k, label in items)
+
+
+def load_clips() -> tuple[dict, list[str]]:
+    problems: list[str] = []
+    try:
+        m = json.loads(CLIPS_FILE.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}, ["content/featured/clips.json does not exist; run the kit's clips export"]
+    for c in m["clips"]:
+        for path, key in ((CLIPS_DIR / f'{c["slug"]}.mp4', "mp4_sha256"), (CLIPS_DIR / f'{c["slug"]}.jpg', "poster_sha256"),
+                          (DOCS / "og" / f'clip-{c["slug"]}.jpg', "og_sha256")):
+            if not path.is_file():
+                problems.append(f"clips: missing {path.relative_to(ROOT)}")
+            elif sha256_file(path) != c[key]:
+                problems.append(f"clips: {path.relative_to(ROOT)} is not the file the manifest records")
+        if c["project"] not in PROJECT_NUMBERS:
+            problems.append(f'clips: {c["slug"]} names no project here: {c["project"]}')
+        if not c["captions"]:
+            problems.append(f'clips: {c["slug"]} has no captions')
+    og = DOCS / "og" / "featured-clips.jpg"
+    if not og.is_file() or sha256_file(og) != m.get("og_sha256"):
+        problems.append("clips: docs/og/featured-clips.jpg is missing or not the card the manifest records")
+    return m, problems
+
+
+def host(url: str) -> str:
+    return addr(url)
+
+
+def clip_where(c: dict) -> str:
+    if c["local"]:
+        return (f'Recorded from a local build of the app, with real mouse input; '
+                f'<a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a> shows a recorded demo.')
+    return (f'Recorded from <a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a>, '
+            'with real mouse input, in real time.')
+
+
+def clip_links(c: dict, pre: str, video: str) -> str:
+    return (f'<span class="links inline"><a class="lnk" href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">'
+            f'{esc(host(c["site"]))}</a><a class="lnk" href="{pre}../p/{esc(c["project"])}.html">The project</a>'
+            f'<a class="lnk" href="{video}">The video file</a></span>')
+
+
+def clip_entry(c: dict) -> str:
+    """One clip on the clips page: its video loads only when played (preload none), so eight cost a poster each."""
+    s = c["slug"]
+    first = c["captions"][0]
+    return (
+        f'<li class="fcard clip" id="{esc(s)}">'
+        f'<p class="fmeta"><span class="ftag">{round(c["seconds"])}-second clip</span><span>{esc(host(c["site"]))}</span></p>'
+        f'<h3><a class="self" href="clips/{esc(s)}.html">{esc(c["name"])}</a></h3>'
+        f'<video class="clipv" src="clips/{esc(s)}.mp4" poster="clips/{esc(s)}.jpg" controls muted playsinline preload="none" '
+        f'width="1920" height="1080"></video>'
+        f'<p class="clip-says">{esc(first["text"])}</p>'
+        f'{clip_links(c, "", f"clips/{esc(s)}.mp4")}</li>'
+    )
+
+
+def clip_time(at: float) -> str:
+    return f"0:{int(at):02d}"
+
+
+def featured_header(eyebrow: str, nav: str, pre: str) -> str:
+    return f"""
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">{eyebrow}</p>{THEME_WIDGET}</div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">🤖 Link-Think-Act · Principal Engineer · AI &amp; Data Infrastructure · Agentic Datasets · Semantic Gateways · Agentic AI &amp; Scientific Data Systems · IEEE Member · Research &amp; Technical Speaker</p>
+    <nav class="jump">
+      {nav}
+      <a href="{pre}index.html">Portfolio</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>"""
+
+
+def build_clips_page(m: dict) -> str:
+    pre = "../"
+    clips = m["clips"]
+    total = sum(c["bytes"] for c in clips) / 1e6
+    body = f"""{featured_header("Portfolio · Featured", featured_nav("clips", ""), pre)}
+
+<main class="wrap">
+  <a class="backlink" href="{pre}index.html">&larr; the whole portfolio</a>
+  <section id="clips">
+    <div class="section-head"><h2>Clips</h2>{copy_button("clips.html", "Clips")}</div>
+    <p class="section-note">{len(clips)} demos, {round(clips[0]["seconds"])} seconds each, recorded from the running apps
+      with real mouse input: the camera turned and zoomed, things clicked, orders typed. The captions are drawn into the
+      frame and worded from each page's own text; every number in one was read off the screen when it went up.
+      No title cards. {total:.0f} MB in all; each loads only when played.<span class="fstats">{len(clips)} clips</span></p>
+    <ol class="fentries">{"".join(clip_entry(c) for c in clips)}</ol>
+  </section>
+</main>
+{FOOTER}
+"""
+    return shell(title="Clips — Alexander Chernov",
+                 description=f"{len(clips)} running demos, {round(clips[0]['seconds'])} seconds each, recorded with real mouse input: "
+                             "3D views turned and zoomed, things clicked, orders typed.",
+                 canonical=f"{SITE}/featured/clips.html", og_image=f"{SITE}/og/featured-clips.jpg",
+                 og_type="article", prefix=pre, body=body)
+
+
+def build_clip_page(c: dict) -> str:
+    pre = "../../"
+    s = c["slug"]
+    caps = "".join(
+        f'<li><span class="when">{clip_time(x["at"])}</span><span class="what">{esc(x["text"])}'
+        + (f'<span class="where">{esc(x["sub"])}</span>' if x["sub"] else "") + "</span></li>"
+        for x in c["captions"]
+    )
+    first = c["captions"][0]["text"].rstrip(".")
+    body = f"""{featured_header("Portfolio · Featured clip", featured_nav("clips", "../"), pre)}
+
+<main class="wrap">
+  <a class="backlink" href="../clips.html">&larr; all clips</a>
+  <section id="{esc(s)}">
+    <div class="section-head"><h2>{esc(c["name"])}</h2>{copy_button(f"{s}.html", c["name"])}</div>
+    <p class="section-note">{clip_where(c)}</p>
+    <video class="clipv" src="{esc(s)}.mp4" poster="{esc(s)}.jpg" controls autoplay muted loop playsinline preload="auto"
+      width="1920" height="1080"></video>
+    {clip_links(c, "../", f"{esc(s)}.mp4")}
+    <h3 class="clip-h">What the clip says</h3>
+    <ul class="entries clip-caps">{caps}</ul>
+  </section>
+</main>
+{FOOTER}
+"""
+    return shell(title=f'{c["name"]}: a {round(c["seconds"])}-second clip — Alexander Chernov',
+                 description=f'A {round(c["seconds"])}-second recording of {c["name"]} with real mouse input. {first}.',
+                 canonical=f"{SITE}/featured/clips/{s}.html", og_image=f"{SITE}/og/clip-{s}.jpg",
+                 og_type="article", prefix=pre, body=body)
+
+
+def check_clips_page(doc: str, clips: list) -> list[str]:
+    """Every clip listed once, each with its own page, video and poster."""
+    problems: list[str] = []
+    found = doc.count('<li class="fcard clip"')
+    if found != len(clips):
+        problems.append(f"featured/clips.html: {found} clips listed, the manifest has {len(clips)}")
+    for c in clips:
+        for needle in (f'href="clips/{c["slug"]}.html"', f'src="clips/{c["slug"]}.mp4"', f'poster="clips/{c["slug"]}.jpg"'):
+            if needle not in doc:
+                problems.append(f"featured/clips.html: {c['slug']} lacks {needle}")
     return problems
 
 
@@ -812,6 +971,12 @@ margin:0 0 .35rem;font-size:.8rem;color:var(--muted)}
 .fcard .where{margin:0 0 .45rem}
 .fcard .note{margin:0 0 .45rem}
 .fcard .lnk{overflow-wrap:anywhere}
+/* Clips: the video takes the column's width, like every other block. */
+.clipv{display:block;width:100%;height:auto;margin:.5rem 0 .7rem;border:1px solid var(--line);
+border-radius:var(--radius);background:#0b1220}
+.clip-says{font-style:italic;color:var(--muted)}
+.clip-h{margin:1.6rem 0 .3rem;font-size:1rem}
+.clip-caps .when{flex:0 0 3.5rem}
 /* Projects: one link per project, under the section's heading. */
 .tag-filter{display:none;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 1rem}
 .js .tag-filter{display:flex}
@@ -1435,6 +1600,12 @@ def main() -> None:
     for kind in FEATURED:
         pages.append((DOCS / "featured" / f"{kind}.html",
                       build_featured_page(kind, manifest[kind], featured[kind]), DOCS / "featured"))
+    clips, clip_problems = load_clips()
+    if clip_problems:
+        fail(clip_problems)
+    pages.append((DOCS / "featured" / "clips.html", build_clips_page(clips), DOCS / "featured"))
+    for c in clips["clips"]:
+        pages.append((CLIPS_DIR / f'{c["slug"]}.html', build_clip_page(c), CLIPS_DIR))
 
     # Write first, then check: copy-button and inter-page links point at files
     # this same run produces, so a check before the write would fail on pages
@@ -1448,13 +1619,14 @@ def main() -> None:
     for kind in FEATURED:
         doc = (DOCS / "featured" / f"{kind}.html").read_text(encoding="utf-8")
         problems.extend(check_featured(f"featured/{kind}.html", kind, featured[kind], doc))
+    problems.extend(check_clips_page((DOCS / "featured" / "clips.html").read_text(encoding="utf-8"), clips["clips"]))
 
     if problems:
         fail(problems)
 
     total = sum(len(d.encode()) for _, d, _ in pages) / 1024
     print(f"wrote {len(pages)} pages ({total:.1f} kB): index + {len(projects)} projects "
-          f"+ {len(FEATURED)} featured")
+          f"+ {len(FEATURED)} featured + clips and {len(clips['clips'])} clip pages")
 
 
 if __name__ == "__main__":
