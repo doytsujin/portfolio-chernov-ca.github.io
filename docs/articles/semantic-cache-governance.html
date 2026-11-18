@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>The Semantic Cache Is Where Cost, Governance and Security Meet - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="the-semantic-cache-is-where-cost-governance-and-security-meet"><a class="header" href="#the-semantic-cache-is-where-cost-governance-and-security-meet">The Semantic Cache Is Where Cost, Governance and Security Meet</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-10-15. <a href="https://www.linkedin.com/pulse/semantic-cache-where-cost-governance-security-meet-alexander-chernov-p5vlc/">Read the original</a>.</em></p>
+<hr>
+<p>A semantic cache is the cheapest place in an AI stack to save tokens and the riskiest place to serve an answer. When it returns a stored answer to a new question, it decides that an answer written for someone else, at another time, is right for this caller now. That one decision carries the cost, the governance and the security of everything behind it. Reuse can be trusted when it is scoped to the context an answer was written for, checked before serving, refused when the check cannot finish, withdrawn when its source changes, recorded, and measured on real traffic before it answers anyone.</p>
+<p>Grafferene, the semantic cache I have built, works this way, and every result about it here is measured: savings against the inference server’s own counters, correctness on public datasets labeled by people, and a head-to-head run against LiteLLM. The research literature and the vendors’ own documentation reach the same conclusions from other directions, and they are cited where they do.</p>
+<p><img src="semantic-cache-governance/article_figure.webp" alt="A semantic cache deciding whether a stored answer may be served, as objects on one white tabletop. A new question arrives on a rail. Stored answers wait in a cabinet of three separate glass compartments: scoped to the context it was written for. A lens over the answer about to leave: checked before serving. A drop-arm turnstile with its arm down: refused when the check cannot finish. One answer in a tray with an amber tab: withdrawn when its source changes. A paper tape from the cabinet: every decision recorded. At the far right a GPU server: the model, called when no stored answer qualifies."></p>
+<h2 id="three-layers-of-reuse-and-what-each-one-saves"><a class="header" href="#three-layers-of-reuse-and-what-each-one-saves">Three layers of reuse, and what each one saves</a></h2>
+<p>Tokens are the unit of cost in AI, and output is the expensive part. On Anthropic’s current price list an output token costs five times an input token, from the smallest model to the largest. Three kinds of reuse lower that cost, and each works at a different layer.</p>
+<p>Inside the inference server, prefix caching keeps the computed state of a prompt prefix that many requests share; vLLM’s PagedAttention and SGLang’s RadixAttention are the best-known designs. Provider prompt caching brings the same idea to the bill: Anthropic and OpenAI charge a repeated prefix at a fraction of the input price. In both cases the model still runs and writes a new answer, so every output token is still generated and paid for.</p>
+<p>A response cache removes the call. When a new request matches a stored one, the stored answer is returned and the model does no work at all, output included. That is why it saves more than the other two layers, and why it carries the risks the rest of this article is about.</p>
+<p><img src="semantic-cache-governance/fig_layers.webp" alt="Three layers of reuse compared. Prefix caching, inside the inference server: reuses the computed state of a shared prompt prefix; the model runs and writes a new answer; saves part of the work on the input; the answer is always new. Prompt caching, on the provider’s bill: reuses a repeated prefix, billed at a fraction of the input price; the model runs and writes a new answer; saves part of the input cost; the answer is always new. Response cache, in front of the model: reuses a stored answer; the model is not called; saves the whole call, input and output; the answer is reused, so it must be scoped, checked and still valid. Only the response cache removes the call, and only it serves an answer written for someone else."></p>
+<p>The layers overlap. As Grafferene absorbed requests on a benchmark trace at its default threshold of 0.92, vLLM’s prefix-cache hit rate fell from 95.2% to 92.8%, and in a replayed support workload from 50.5% to 47.1%. The two savings do not add, so they have to be measured together.</p>
+<p>How a saving becomes money depends on how inference is paid for. Through a per-token API, every token not sent is money not spent. On GPUs you run yourself, the hourly price stays the same and a saved call becomes capacity. In front of an llm-d router with 16 clients asking the same questions, throughput rose from 48.7 to 84.5 requests per second, and on one cloud L4 GPU the cost of a thousand requests fell from $0.0077 to $0.0047.</p>
+<p>The largest single effect in those runs was not similarity at all. When many clients ask the same question at the same moment, an ordinary cache misses on every one of them, because the answer does not exist yet; networking research calls these delayed hits. Grafferene sends the first request to the model and holds the identical ones behind it until the answer arrives. Sixteen clients made 19 model calls, where going direct made 512 and the cache without this step made 297. A miss costs little in return: under the same load, a median of 19.5 ms more than calling the model directly.</p>
+<h2 id="how-much-traffic-repeats"><a class="header" href="#how-much-traffic-repeats">How much traffic repeats</a></h2>
+<p>A cache can only save what the traffic repeats, and repetition is a property of the workload, not of the cache. Open chat repeats less than intuition suggests. In WildChat, a public collection of real conversations with a chat assistant, 11.8% of first prompts repeat an earlier prompt exactly, but three quarters of those are users resending their own prompt, usually a retry. Only about 3% repeat a prompt that another user had sent. SCALM, an earlier study of real chat queries, found 4.5% to 7.5% answerable from similar ones, the same order of magnitude.</p>
+<p>Structured traffic is different. In a replay of 1,000 customer-support requests from a public, partly synthetic dataset built for support assistants, Grafferene at its default threshold removed 48.6% of model calls and 48.7% of prompt tokens. Support desks, FAQ assistants, evaluation suites that run the same tests on every build, and agents that put the same questions to the same tools ask about a limited set of tasks in a limited number of ways. They are where a semantic cache earns its place, and each one is worth measuring rather than assuming.</p>
+<p>The same replay raises the next question. Of the answers it served, 2.9% came from a stored request with a different intent.</p>
+<h2 id="similar-is-not-the-same"><a class="header" href="#similar-is-not-the-same">Similar is not the same</a></h2>
+<p>Every semantic cache decides by a similarity threshold: if a new question’s embedding is close enough to a stored one, the stored answer is served. The threshold is the weak point, because similarity and meaning are different things.</p>
+<p>QQP, a public set of about 40,000 question pairs that people labeled as the same question or different ones, shows how different. Many of its pairs were chosen to look alike, which makes it a stress test. At a threshold of 0.92, the embedding model Grafferene uses by default serves 46.9% of the pairs that mean the same and 6.8% of those that do not, so one served answer in five joins two questions the labels call different. At 0.98 it serves only 0.5% of the different pairs, and only 11.9% of the same ones. Every step up the threshold buys correctness with savings.</p>
+<p><img src="semantic-cache-governance/fig_threshold.webp" alt="A stricter threshold buys correctness with savings. On QQP, 14,885 same-question and 25,545 different-question pairs labeled by people, with the bge-small-en-v1.5 embedder, the share of pairs served from the cache at thresholds 0.85, 0.90, 0.92, 0.94, 0.96 and 0.98: same-question pairs 80.2, 57.8, 46.9, 35.1, 23.3 and 11.9 percent; different-question pairs 22.9, 10.5, 6.8, 3.8, 1.8 and 0.5 percent. At the default 0.92, one served answer in five joins two different questions. The different-question pairs were chosen to look alike: a stress test, not a base rate."></p>
+<p>Three common embedding models behave alike. Holding wrong serves to one in twenty, none of them served more than 2% of the true rewordings. The numbers do not carry over between models: one of the three puts the median pair of different questions at 0.89, while the default model puts the median pair of same questions at 0.91. They do not carry over between question sets either. On Grafferene’s own FAQ, a threshold of 0.88 served all 13 repeated questions and 8 of 26 paraphrases with none wrong, while a ten-question sample from a notes application needed 0.76, which served 7 of 20 paraphrases with none wrong.</p>
+<p>Controlled tests agree. On Grafferene’s benchmark trace the least similar genuine rewording scored 0.816 and the most similar lookalike 0.902, so no threshold could separate them. In the support replay, the 14 answers served across intents scored between 0.924 and 0.961, inside the range of correct serves, whose median was 0.950.</p>
+<p>The research reaches the same conclusion. vCache, presented at ICLR 2026, showed that correct and incorrect hits have overlapping similarity distributions, so no fixed threshold controls the error rate, and it learns a threshold for each cached prompt instead. MeanCache tunes thresholds per user. A 2026 study of cache eviction on QQP and LMSYS conversations found few semantic hits whose answers could substitute for each other.</p>
+<p>The vendors say it in their own documentation. Redis answers the question “Could I get back a response for a different question than the one I asked?” with “Yes.” Azure API Management warns that semantic caching “can surface responses that are incorrect, outdated, or unsafe for the current request.” LiteLLM writes that similarity matching “suits single-shot prompts and goes badly wrong on agentic traffic.”</p>
+<p>A threshold is an operating point for one traffic mix, one embedding model and one tolerance for error. It is not a safety property, and on its own it cannot make reuse safe.</p>
+<h2 id="a-served-answer-needs-a-reason"><a class="header" href="#a-served-answer-needs-a-reason">A served answer needs a reason</a></h2>
+<p>Governance, applied to a cache, means every served answer can be justified and every justification can be read. Grafferene adds four controls to the similarity match and one practice before it.</p>
+<p>First, matching is scoped. A stored answer is a candidate only within the context it was written for, so a question asked elsewhere cannot borrow it, however similar it looks.</p>
+<p>Second, each semantic hit is verified before it is served. On 2,000 QQP pairs at a threshold of 0.88, similarity alone served 340 right answers and 120 wrong. With verification, Grafferene served 188 right with 20 wrong; similarity alone, tightened until it too made only 20 wrong serves, kept 131 right. Verification takes time, though little next to a model call: with the verifier on a GPU, a verified hit took 15 to 24 ms, where a model call in the support replay took about 400 ms.</p>
+<p>Third, when the check cannot finish, the stored answer is not served and the request goes to the model. An unfinished check costs one model call, not an unchecked answer.</p>
+<p>Fourth, every decision leaves a record: the candidates considered, how similar each was, the verdict and the outcome. Each lookup is also traced in OpenTelemetry, from embedding and vector search through verification to the model call. The difference shows after a semantic hit. LiteLLM records that the response came from its cache and under which key; Grafferene records why.</p>
+<p>The practice is measure-only mode, and it is change control rather than serving. Grafferene makes all its decisions and serves none of them. Every request reaches the model, and the report shows what would have been served, what it would have saved at the operator’s own prices, and a review sample of the least similar matches beside the answers the model actually gave. On a test trace its counts matched a real serving run exactly. A team can choose a threshold from evidence on its own traffic and turn serving on once the review sample holds up.</p>
+<h2 id="the-cache-is-an-attack-surface"><a class="header" href="#the-cache-is-an-attack-surface">The cache is an attack surface</a></h2>
+<p>A shared cache stores answers from many callers and serves them to others. That makes it a security boundary, whether or not it was designed as one, and four threats against it are documented.</p>
+<p>Leakage across tenants is the direct one. With tenant tokens configured, Grafferene refuses any request that names another tenant’s cache and logs the attempt. Its metrics carry no tenant labels, so the monitoring system does not become a second record of who asked what.</p>
+<p>Timing is the quiet one. A hit is fast and a miss is slow: in the support replay, a semantic hit took a median 13.4 ms and a miss 418 ms. Anyone who can time responses can learn whether a question was asked before. Researchers at Stanford audited LLM API providers for prompt caching and found caches shared globally across users at seven of them, OpenAI among them (ICML 2025). InputSnatch reconstructed other users’ inputs from timing alone, against prefix caching in vLLM and semantic caching in GPTCache. Scoping is the structural answer: an answer that is never served across tenants cannot be timed across them.</p>
+<p>Poisoning is the active one. A team from SUSTech and ByteDance showed at NDSS 2026 that an attacker can plant crafted entries in a semantic cache so that other users receive the attacker’s answer; they confirmed it on all three major public clouds and found existing defenses against adversarial prompts ineffective. A second study treats a semantic cache key as a fuzzy hash, where the closeness that makes hits likely works against the collision resistance that keeps them safe, and its attack hijacked responses at a hit rate of 86%. Both attacks depend on an answer written by one caller being served to another on similarity alone, which is what scoping and verification constrain.</p>
+<p>Staleness needs no attacker. An answer that was right yesterday is wrong once its source changes, and a time-to-live only guesses when that happens. When a document changes, Grafferene withdraws every answer built from it, follow-up turns included. In a test with 30 affected requests and 220 unaffected ones, none of the 30 was served stale and none of the 220 was lost. A time-to-live left all 30 stale, and invalidating by source left the 5 follow-up turns stale. Requests still being computed when the document changed wrote no stale answers in any of three runs. Withdrawal takes time in proportion to what was built from the document, not to the size of the cache: 2.3 seconds for 1,000 dependent entries in a store of 100,000, the same as in a store of 25,000. In the demo recording, retiring a model version for one tenant reached 1,001 records, eight hops deep, and left the other tenant’s 119 records with the same version alone.</p>
+<p>Underneath all four, the store and its decision trail are encrypted at rest and survive a restart, and an instance takes itself out of service while its model is unreachable.</p>
+<p>Cost is a security concern too. OWASP’s Top 10 for LLM applications lists Unbounded Consumption, which includes running up a victim’s bill. Holding identical requests behind one model call means a burst of the same question costs one call. A flood of different questions is a matter for budgets and rate limits, which belong to the gateway.</p>
+<h2 id="where-each-tool-fits"><a class="header" href="#where-each-tool-fits">Where each tool fits</a></h2>
+<p>The tools around a model divide the work by layer. Inference servers reuse prefixes inside the engine. Providers discount repeated prefixes on the bill. Gateways route, meter and guard. Semantic caches decide whether an answer can be reused.</p>
+<p>LiteLLM is an open-source AI gateway. It routes requests across providers, tracks spend per key, user and team, rejects requests over budget, and runs guardrails for prompt injection, PII and moderation before and after each call. Those are its strengths, and they sit outside what Grafferene does. Its semantic cache is where the two overlap, so that is where they were measured head to head, on the same embedder and the same 2,000 QQP pairs. On similarity alone they made identical decisions, 340 right and 120 wrong. The differences were verification, which LiteLLM does not have, the record a hit leaves, and change: when a document changed, LiteLLM’s options either left all 30 affected answers stale or flushed all 220 unaffected ones.</p>
+<p>Redis LangCache, Azure API Management’s semantic cache policies, Kong’s AI Semantic Cache plugin and Portkey all match above a similarity threshold and expire entries by time. LangCache defaults to a threshold of 0.85 and Portkey to 0.95; Kong keeps entries for 300 seconds by default and Portkey for seven days. Azure, LangCache and Portkey can also separate callers, by partitions, attributes or namespaces. GPTCache, an early open-source library, evicts by entry count. From the research side, vCache learns a threshold for each cached prompt to meet an error rate the user sets.</p>
+<p>Guardrails check content and gateways enforce budgets, and neither decides whether a stored answer is still right for this caller. That decision belongs to the cache.</p>
+<h2 id="adopting-a-semantic-cache"><a class="header" href="#adopting-a-semantic-cache">Adopting a semantic cache</a></h2>
+<p>The order of work follows from the evidence. Measure first: run the cache in measure-only mode on real traffic and read what it would have served. Choose the threshold for the embedding model and the workload from labeled samples of that traffic, since neither carries over. Turn on verification before serving similar questions, scope every entry to its tenant and context, and connect withdrawal to the sources the answers were built from. Keep the decision records, because they are what an auditor, an incident review or a customer will ask for.</p>
+<p>Grafferene ships as a container image with a Helm chart. It has been tested on single-node Kubernetes in front of vLLM and an llm-d router, with replicas sharing one cache through Postgres and pgvector, and on a million real embeddings its approximate index served every semantic hit the exact search found, 8.5 times faster. Its pilot is the first step above: one week in measure-only mode, in your own infrastructure in front of an OpenAI-compatible endpoint, with your prompts and answers staying there. The pilot is free, and the demo replays recorded WildChat traffic through Grafferene.</p>
+<p>Saving tokens is the reason to run a semantic cache. Scoping, checking, refusing, withdrawing and recording are what make the saved answers safe to serve.</p>
+<p>Sources. Grafferene: https://grafferene.ca · Grafferene demo: https://demo.grafferene.ca · Grafferene demo recording (Zenodo): https://doi.org/10.5281/zenodo.23329121 · Grafferene on LinkedIn: https://www.linkedin.com/company/grafferene/ · Anthropic, pricing: https://platform.claude.com/docs/en/about-claude/pricing · Anthropic, prompt caching: https://platform.claude.com/docs/en/docs/build-with-claude/prompt-caching · OpenAI, prompt caching: https://developers.openai.com/api/docs/guides/prompt-caching · vLLM, automatic prefix caching: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html · Kwon et al., Efficient Memory Management for Large Language Model Serving with PagedAttention, SOSP 2023: https://arxiv.org/abs/2309.06180 · Zheng et al., SGLang: Efficient Execution of Structured Language Model Programs, NeurIPS 2024: https://arxiv.org/abs/2312.07104 · llm-d: https://github.com/llm-d/llm-d · Atre et al., Caching with Delayed Hits, SIGCOMM 2020: https://doi.org/10.1145/3387514.3405883 · Zhao et al., WildChat: 1M ChatGPT Interaction Logs in the Wild, ICLR 2024: https://arxiv.org/abs/2405.01470 · Li et al., SCALM: Towards Semantic Caching for Automated Chat Services with Large Language Models, IWQoS 2024: https://doi.org/10.1109/IWQoS61813.2024.10682957 · Bitext customer support dataset: https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset · GLUE benchmark, Quora Question Pairs: https://gluebenchmark.com/tasks · Schroeder et al., vCache: Verified Semantic Prompt Caching, ICLR 2026: https://arxiv.org/abs/2502.03771 · Gill et al., MeanCache: User-Centric Semantic Caching for LLM Web Services, IPDPS 2025: https://arxiv.org/abs/2403.02694 · Kulkarni et al., Which Eviction Policy Should an LLM Cache Use?: https://arxiv.org/abs/2608.20280 · Bang, GPTCache, NLP-OSS 2023: https://aclanthology.org/2023.nlposs-1.24/ · Redis LangCache concepts: https://redis.io/docs/latest/develop/ai/context-engine/langcache/concepts/ · Azure API Management, llm-semantic-cache-lookup: https://learn.microsoft.com/en-us/azure/api-management/llm-semantic-cache-lookup-policy · Kong AI Semantic Cache reference: https://developer.konghq.com/plugins/ai-semantic-cache/reference/ · Portkey, simple and semantic cache: https://portkey.ai/docs/product/ai-gateway/cache-simple-and-semantic · GPTCache repository: https://github.com/zilliztech/GPTCache · LiteLLM, caching: https://docs.litellm.ai/docs/proxy/caching · LiteLLM, budgets: https://docs.litellm.ai/docs/proxy/users · LiteLLM, guardrails: https://docs.litellm.ai/docs/proxy/guardrails/quick_start · Gu et al., Auditing Prompt Caching in Language Model APIs, ICML 2025: https://arxiv.org/abs/2502.07776 · Zheng et al., InputSnatch: Stealing Input in LLM Services via Timing Side-Channel Attacks: https://arxiv.org/abs/2411.18191 · Wu et al., When Cache Poisoning Meets LLM Systems: Semantic Cache Poisoning and Its Countermeasures, NDSS 2026: https://www.ndss-symposium.org/ndss-paper/when-cache-poisoning-meets-llm-systems-semantic-cache-poisoning-and-its-countermeasures/ · Zhang et al., From Similarity to Vulnerability: Key Collision Attack on LLM Semantic Caching: https://arxiv.org/abs/2601.23088 · OWASP Top 10 for LLM Applications 2025, LLM10 Unbounded Consumption: https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/ · OpenTelemetry: https://opentelemetry.io/docs/</p>
+<p>#SemanticCaching #AIGovernance #AISecurity #LLMOps #AIInfrastructure #TokenEconomy #FinOps #MultiTenancy #AgenticAI #LiteLLM #vLLM #Grafferene #OpenTelemetry #Redis #Kong #DataEngineering #DataGovernance</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/semantic-cache-where-cost-governance-security-meet-alexander-chernov-p5vlc/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="agents-propose-a-gate-decides.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="machine-telemetry-part-3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="agents-propose-a-gate-decides.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="machine-telemetry-part-3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

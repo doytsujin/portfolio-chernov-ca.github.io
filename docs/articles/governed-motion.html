@@ -1,0 +1,301 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>From Governed Data to Governed Motion: A Control Plane for Biomedical Robots - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="from-governed-data-to-governed-motion-a-control-plane-for-biomedical-robots"><a class="header" href="#from-governed-data-to-governed-motion-a-control-plane-for-biomedical-robots">From Governed Data to Governed Motion: A Control Plane for Biomedical Robots</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-08-25. <a href="https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/">Read the original</a>.</em></p>
+<hr>
+<p>For the last few years the hard problem in enterprise AI has been governing <em>data</em> — making sprawling, heterogeneous data usable, traceable, and trustworthy enough to put a model on top of it. I’ve written before about <strong>agentic datasets</strong>: data that carries its own descriptor, policy, provenance, and the ability to refuse to be used in ways its policy forbids.</p>
+<p>But in a laboratory, the AI’s “output” is not a chart or a summary. It is a robot arm moving a plate of live cells through a sterile workspace. When the consumer of a governed decision is a <em>physical manipulator</em>, the same control-plane ideas stop being about tidiness and become about safety. The frontier moves from governing data to governing <strong>motion</strong>.</p>
+<h2 id="in-the-physical-world-a-bad-action-is-not-free"><a class="header" href="#in-the-physical-world-a-bad-action-is-not-free">In the physical world, a bad action is not free</a></h2>
+<p>In many analytical software systems, a wrong output can be caught, recomputed, or rolled back before it touches the world. Robotic actuation is different: a wrong action moves a real manipulator — possibly into a locked sterile zone, through an occupied fixture, or while an operator’s hand is in the workspace — and once motion begins, the consequences can be immediate and irreversible. “Check the policy, then probably act” is not good enough, because the gap between the check and the act is exactly where accidents live.</p>
+<p>So the requirement inverts. It is not enough to <em>log</em> that a rule was violated. The architecture has to make a refused intent <strong>structurally incapable of reaching the normal actuation path</strong>. Refusal has to be structural, not a runtime afterthought. That is a claim about the software architecture and not about the physical system: a controller bug, a bypass path, a hardware fault, or somebody jogging the arm by hand all sit outside it, which is exactly why the layers below still matter.</p>
+<h2 id="a-supervisory-control-plane-above-the-motion-stack"><a class="header" href="#a-supervisory-control-plane-above-the-motion-stack">A supervisory control plane above the motion stack</a></h2>
+<p>The shape that delivers this is a supervisory layer that sits <em>above</em> the low-level controllers and planners — it does not replace them. Each robot is modeled as a long-lived agent with an explicit lifecycle: it reasons, then plans, then executes, then publishes results, then returns to idle.</p>
+<p>The trick is <em>where</em> policy is evaluated. Policies — sterility, human safety, chain of custody, workspace occupancy — are checked in a dedicated <strong>reasoning</strong> phase, before any planner or driver is touched. A denial returns the agent to idle <strong>without ever entering planning or execution</strong>. Because the only side-effectful steps live past that gate, “no actuation on a denied intent” becomes a property of the state machine itself, not a promise made by careful code.</p>
+<p><strong>This plane does not replace functional safety.</strong> Emergency stops, hardware interlocks, safety-rated controllers, collision limits, and workspace monitoring remain the final protective layer, and nothing here weakens them. The supervisory plane operates <em>earlier</em> and answers a different question. Conventional safety asks, “how do we stop an unsafe motion?” The supervisory plane asks, “why was this motion authorized to begin?” Two different predicates: governance decides whether an operation is <em>authorized</em>, functional safety decides whether the resulting motion stays <em>physically safe</em>, and neither one answers the other’s question. Three layers, three jobs: the supervisory plane governs task admission, intent, provenance, and accountability; the safety controller enforces hard real-time physical limits; the motion stack does planning and actuation.</p>
+<p><img src="governed-motion/fig_refusal_gate.webp" alt="A uniform robot lifecycle in which policy is evaluated during Reasoning. An approved intent proceeds to Planning and Executing — the only steps with physical side effects. A denial returns to Idle without ever crossing that line, so pre-actuation refusal is a structural property of the architecture rather than a runtime check. Admission is not the end of it: authorization is re-checked while executing, and a predicate that stops holding suspends the task into a recovery path that ends in a safe state, an escalation, or an accountable human handoff."></p>
+<p>Three properties then follow from the architecture — enforced by construction, provided its state and side-effect boundaries are respected:</p>
+<ul>
+<li><strong>Refusal.</strong> Unsafe intents are rejected before the robot can move, and each refusal record says <em>which</em> policy was violated and why.</li>
+<li><strong>Traceability.</strong> Every decision, plan, execution event, and telemetry sample carries the originating intent’s trace identifier, so the full causal chain can be reconstructed after the fact.</li>
+<li><strong>Observability.</strong> An operator can watch, live, what each agent is doing, why it decided what it decided, and where a task was interrupted — without stopping the running system.</li>
+</ul>
+<h2 id="what-a-governed-intent-carries"><a class="header" href="#what-a-governed-intent-carries">What a governed intent carries</a></h2>
+<p>The word <em>intent</em> is doing a lot of work above, so it’s worth making concrete. A governed intent is not a natural-language command or a bare motion request. It is a structured runtime artifact that carries enough context for policy to be evaluated <em>before</em> anything moves: the identity of the requesting workflow, the sample and batch in play, the required sterility and workspace state, the permitted equipment, the operator’s authorization, time constraints, the applicable policy set, and a trace identifier.</p>
+<pre><code class="language-yaml">intent: transfer_plate
+source: incubator_2
+destination: reader_1
+sample:
+  batch: batch_24
+  plate: plate_07
+required_state:
+  sterility: sterile
+  workspace: unoccupied
+requested_by:
+  workflow: assay_run_12
+  operator_role: automation_operator
+policy_set: biosafety_v3
+trace_id: tr-8f31
+</code></pre>
+<p>The policy engine therefore evaluates not just <em>what</em> the robot is asked to do, but <em>under which conditions</em> it is allowed to do it. This is the same move as an agentic dataset’s descriptor — identity, provenance, policy, and chain of custody travelling with the thing being governed — applied to a motion request instead of a data asset.</p>
+<p>An intent is also not a <em>trajectory</em>. It states which operation is authorized and under what conditions; how the arm actually gets there — the joint path, the velocity profile, the collision checks — stays with the planner. Keeping those separate is what lets one policy hold across machines that move in completely different ways.</p>
+<h2 id="beyond-the-gate-authorization-can-go-stale"><a class="header" href="#beyond-the-gate-authorization-can-go-stale">Beyond the gate: authorization can go stale</a></h2>
+<p>Admission control is necessary but not always sufficient. Some conditions are stable for the length of a task; others are <em>leases</em> that can expire mid-motion. A workspace becomes occupied, a sterile boundary is opened, an instrument enters a fault state — after the intent was authorized but before it completed. For those conditions the authorization has to stay continuously valid, or be re-checked at defined execution checkpoints. Governed motion needs both pre-actuation admission <em>and</em> runtime revocation: a policy-triggered suspension the moment a safety predicate stops holding.</p>
+<p>The underlying shift is short to state and long to build. <strong>Authorization is a state, not a one-time decision.</strong> An intent has to be authorized when it starts, remain authorized while the predicates it relied on still hold, be revocable the moment they stop, and terminate through a path somebody is accountable for. A gate that answers once and never again is not governing motion; it is stamping requests.</p>
+<p>Refusal before actuation is likewise only one failure mode. Once a task is underway, the system needs defined responses for loss of telemetry, a planner timeout, a controller disconnect, a revoked policy, or a partially completed transfer. The safe response might be to stop, hold position, retreat to a known pose, quarantine the sample, or hand off to a human — but it has to be an explicit part of the lifecycle, not exception-handling buried inside a driver. Governing <em>how a task stops</em> matters as much as governing whether it starts.</p>
+<h2 id="what-the-control-plane-must-guarantee"><a class="header" href="#what-the-control-plane-must-guarantee">What the control plane must guarantee</a></h2>
+<p>Stated as testable properties rather than aspirations, a governed-motion system should guarantee:</p>
+<ul>
+<li><strong>No unauthorized actuation</strong> — a denied intent cannot reach a planner, controller, or actuator.</li>
+<li><strong>No orphaned motion</strong> — every physical action stays bound to an active intent, a policy decision, and a trace.</li>
+<li><strong>Revocable authority</strong> — if a safety-relevant condition changes, execution can be suspended or terminated in flight.</li>
+<li><strong>Deterministic recovery policy</strong> — every recognized failure condition maps to a defined recovery or escalation transition. What the architecture can guarantee is the <em>response</em>, not that the plant physically reaches the target state: an actuator that has failed will not retreat to a safe pose because a policy says so.</li>
+<li><strong>Accountable human authority</strong> — an operator can inspect, interrupt, or assume control without stepping outside the audit trail.</li>
+</ul>
+<p>That last one matters. Human oversight belongs <em>inside</em> the control model, not as an external escape hatch. An operator may pause, abort, or take over, but each intervention stays attributable and policy-bound. Emergency action is always available; an administrative <em>override</em> is a different thing, and should demand explicit authority, a rationale, and an audit record. Automation does not remove human responsibility — a good control plane makes it legible. Expressed this way, the guarantees become things you can actually check: as event-log verification rules today, and as invariants or model-checking conditions as the system hardens.</p>
+<h2 id="why-this-matters-for-bionic-and-biomedical-systems"><a class="header" href="#why-this-matters-for-bionic-and-biomedical-systems">Why this matters for bionic and biomedical systems</a></h2>
+<p>Biomedical automation is exactly the setting where this pays off. Sterility, human-safety lockouts, sample integrity, and chain-of-custody are not optional features; they are the reason the system is allowed to run at all. A supervisory layer that makes every action explain itself — and every refusal carry its rationale into an audit trail — is what turns “we automated the lab” into an automation architecture whose decisions can be inspected, traced, and validated. The architecture does not confer approval; it produces the evidence any approval would have to rest on.</p>
+<p>It also generalizes across hardware, and that is more than a convenience — it is where the architecture earns its keep. The same intent-level workflow — <em>transfer this plate</em> — runs on a Cartesian liquid handler and on a six-axis articulated arm. The boundary is the useful part: a governed intent names the operation and its conditions, an embodiment-specific planner turns that into a trajectory, and the controller actuates it. Policy attaches at the semantic layer and stops there. The kinematics differ per machine; the governance does not, so it is written once at the intent level instead of being reimplemented, slightly differently, inside every robot’s controller.</p>
+<h2 id="the-honest-next-step"><a class="header" href="#the-honest-next-step">The honest next step</a></h2>
+<p>To be precise about what is proven and what is designed: I validated the admission invariant in simulation, verifying it directly from the recorded event log — refused intents never reached a planner or driver, and every trace reconstructed end to end. The runtime revocation, recovery, and human-authority guarantees above extend the same supervisory state-machine model, but they are architectural commitments rather than measurements, and none of them has been run on hardware. Simulation proves the design is internally consistent; it does not prove it survives contact with a real motion stack.</p>
+<p>If you would rather see the gate than read about it, there is a small public demonstrator: <a href="https://doytsujin.github.io/ok-governed-motion/">a two-link arm and a discrete lifecycle running in the browser</a>, where you can put an operator in the workspace, lock the sterile zone, and watch intents get refused with the invariant checks updating live (<a href="https://github.com/doytsujin/ok-governed-motion">source</a>). It is a demonstrator and not an experiment, and it says so on its own front page: no physics, no hardware, no sensing, and the policies, the workcell and the conditions that trigger a refusal were all written by the same hand. What you are watching is an architecture doing what it was constructed to do — useful for seeing the shape of the idea, and not evidence that a real robot is safer.</p>
+<p>That is the work I’m on now: pushing the supervisory layer down onto a real robotics middleware as an <strong>admission gate</strong>, so that a policy denial is bound to controller <em>activation</em>: the controller that would drive the task is never activated, and an inactive controller claims no command interfaces, so a refused request has no path to the hardware. “No actuation on denial” is then enforced by the middleware rather than by the supervisor politely declining. Worth being exact about what that does and does not mean — it is not a matter of shutting the robot down. Whatever is holding the arm in place stays active; what never happens is the denied task acquiring a claim on the interfaces it would need to move. Runtime revocation and safe-state recovery harden on that same real stack. Transport jitter, scheduling, and real control budgets are where the interesting engineering lives.</p>
+<h2 id="the-pitch-in-one-line"><a class="header" href="#the-pitch-in-one-line">The pitch, in one line</a></h2>
+<p>We learned to make <strong>data that can refuse to be misused</strong>. Move the same idea into the physical world and you get <strong>motion requests that must prove they are authorized before they become physical actions</strong> — a control plane where refusal, traceability, revocation, and recovery are properties of the architecture, not features bolted on after something goes wrong.</p>
+<p><em>Part of this thinking is in a paper presented at IEEE CBS 2026 (Cyborg and Bionic Systems), Munich, September 2026, and forthcoming in IEEE Xplore.</em></p>
+<p>#AgenticAI #Robotics #BionicSystems #LabAutomation #ControlPlane #Safety #ROS2 #Bioprocessing #DataGovernance</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="throughput-is-the-easy-part.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="a-game-is-a-data-problem.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="throughput-is-the-easy-part.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="a-game-is-a-data-problem.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

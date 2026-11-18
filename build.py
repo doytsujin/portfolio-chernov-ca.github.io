@@ -9,8 +9,13 @@ written, because a static page fails silently -- a stray unclosed tag swallows
 the rest of the document and the build would otherwise report success.
 
 Output:
-  docs/index.html         the whole portfolio
-  docs/p/<slug>.html      one page per project
+  docs/index.html            the whole portfolio
+  docs/p/<slug>.html         one page per project
+  docs/featured/<kind>.html  the web version of each Featured PDF beside it
+
+Writing (docs/articles/) and Papers (docs/papers/) are built by their own
+Makefile targets; this script only links to them and checks that every local
+link it writes resolves to a file.
 
 Each project gets its own URL because LinkedIn strips the fragment before it
 fetches a link, so ten anchors into one page would all preview as the same
@@ -20,6 +25,7 @@ card. Its own URL is what gives it its own title, description and image.
 from __future__ import annotations
 
 import datetime
+import hashlib
 import html
 import json
 import pathlib
@@ -417,7 +423,7 @@ def render_talk(t: dict) -> str:
 
 
 def render_article(a: dict) -> str:
-    reprint = f"https://chernov.ca/articles/{a['slug']}.html"
+    reprint = f"articles/{a['slug']}.html"
     extra = ""
     if a.get("linkedin"):
         extra = (
@@ -428,8 +434,7 @@ def render_article(a: dict) -> str:
         '<li class="entry">'
         f'<span class="when">{esc(a["date"])}</span>'
         f'<span class="what">'
-        f'<a class="title-link" href="{esc(reprint)}" target="_blank" '
-        f'rel="noopener noreferrer">{esc(a["title"])}</a>{extra}'
+        f'<a class="title-link" href="{esc(reprint)}">{esc(a["title"])}</a>{extra}'
         "</span></li>"
     )
 
@@ -450,6 +455,189 @@ def render_artifact(a: dict) -> str:
         f'<span class="blurb">{esc(a["blurb"])}</span>{links_html}'
         "</li>"
     )
+
+
+# --------------------------------------------------------------------------
+# Featured: web versions of the three PDF documents
+# --------------------------------------------------------------------------
+
+# The PDFs, the data they were rendered from and a manifest come from the
+# profile kit's export step; nothing here decides which entries appear. The
+# manifest carries both hashes, so a page rendered from other data than the
+# PDF beside it is refused rather than published under the same name.
+FEATURED = ("projects", "publications", "writing")
+FEATURED_DIR = CONTENT / "featured"
+FEATURED_HUB_LABEL = {
+    "projects": "Every project in full",
+    "publications": "Abstracts",
+    "writing": "All reprints",
+}
+
+
+def sha256_file(path: pathlib.Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def load_featured() -> tuple[dict, dict, list[str]]:
+    problems: list[str] = []
+    try:
+        manifest = json.loads((FEATURED_DIR / "manifest.json").read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}, {}, ["content/featured/manifest.json does not exist; run the kit's export"]
+    rows: dict = {}
+    for kind in FEATURED:
+        m = manifest.get(kind)
+        if not m:
+            problems.append(f"featured: the manifest has no {kind!r}")
+            continue
+        data = FEATURED_DIR / f"{kind}.json"
+        pdf = DOCS / "featured" / f"{kind}.pdf"
+        cover = DOCS / "img" / "featured" / f"{kind}-cover.png"
+        missing = [x for x in (data, pdf, cover) if not x.is_file()]
+        if missing:
+            problems += [f"featured: missing {x.relative_to(ROOT)}" for x in missing]
+            continue
+        if sha256_file(data) != m["data_sha256"]:
+            problems.append(f"featured: content/featured/{kind}.json is not the data its PDF was rendered from")
+        if sha256_file(pdf) != m["pdf_sha256"]:
+            problems.append(f"featured: docs/featured/{kind}.pdf is not the PDF the manifest records")
+        rows[kind] = json.loads(data.read_text(encoding="utf-8"))
+        if len(rows[kind]) != m["entries"]:
+            problems.append(f"featured: {kind} has {len(rows[kind])} entries, the manifest {m['entries']}")
+    return manifest, rows, problems
+
+
+def addr(url: str) -> str:
+    return re.sub(r"^https?://(www\.)?", "", url).rstrip("/")
+
+
+def featured_link_text(label: str, url: str) -> str:
+    if not label:
+        return esc(addr(url))
+    if label.endswith(" at"):
+        return f"{esc(label)} {esc(addr(url))}"
+    return esc(label)
+
+
+def featured_links(links: list[dict]) -> str:
+    items = "".join(
+        f'<a class="lnk" href="{esc(l["url"])}" target="_blank" rel="noopener noreferrer">'
+        f'{featured_link_text(l["label"], l["url"])}</a>'
+        for l in links
+    )
+    return f'<span class="links inline">{items}</span>'
+
+
+def us_date(iso: str) -> str:
+    d = datetime.date.fromisoformat(iso)
+    return f"{d:%B} {d.day}, {d.year}"
+
+
+def featured_entry(kind: str, x: dict) -> str:
+    if kind == "projects":
+        return (
+            f'<li class="fcard" id="{esc(x["slug"])}">'
+            f'<p class="fmeta"><span class="ftag">{esc(x["tag"])}</span><span>{esc(x["period"])}</span></p>'
+            f'<h3><a class="self" href="../p/{esc(x["slug"])}.html">{esc(x["name"])}</a></h3>'
+            f'<p>{esc(x["desc"])}</p>{featured_links(x["links"])}</li>'
+        )
+    if kind == "publications":
+        status = f'<span class="ftag">{esc(x["status"])}</span>' if x["status"] else "<span></span>"
+        note = f'<p class="note">{esc(x["note"])}</p>' if x.get("note") else ""
+        first = x["links"][0]["url"]
+        return (
+            f'<li class="fcard"><p class="fmeta">{status}<span>{esc(x["date"])}</span></p>'
+            f'<h3><a class="self" href="{esc(first)}" target="_blank" rel="noopener noreferrer">'
+            f'{esc(x["title"])}</a></h3>'
+            f'<p class="where">{esc(x["venue"])}</p><p>{esc(x["line"])}</p>{note}'
+            f'{featured_links(x["links"])}</li>'
+        )
+    return (
+        f'<li class="fcard"><p class="fmeta"><span>{esc(us_date(x["date"]))}</span></p>'
+        f'<h3><a class="self" href="../articles/{esc(x["slug"])}.html">{esc(x["title"])}</a></h3>'
+        f'{featured_links([{"label": "Read on LinkedIn", "url": x["url"]}])}</li>'
+    )
+
+
+def featured_expected_links(kind: str, x: dict) -> list[str]:
+    return [x["url"]] if kind == "writing" else [l["url"] for l in x["links"]]
+
+
+def featured_title(kind: str, x: dict) -> str:
+    return x["name"] if kind == "projects" else x["title"]
+
+
+def featured_meta(kind: str, m: dict) -> dict:
+    n, what = m["stats"][0]
+    return dict(
+        title=f'{m["name"]} — Alexander Chernov',
+        description=f'{m["sub"]} {n} {what} with their links, as a web page and a PDF.',
+        canonical=f"{SITE}/featured/{kind}.html",
+        og_image=f"{SITE}/og/featured-{kind}.png",
+        og_type="article",
+    )
+
+
+def build_featured_page(kind: str, m: dict, rows: list[dict]) -> str:
+    pre = "../"
+    current = ' aria-current="page"'
+    nav = "".join(
+        f'<a href="{k}.html"{current if k == kind else ""}>{esc(k.capitalize())}</a>'
+        for k in FEATURED
+    )
+    hub = m["hub"]
+    hub_href = pre + hub[len(SITE) + 1:] if hub.startswith(SITE + "/") else hub
+    if hub_href == pre:
+        hub_href = f"{pre}index.html"
+    stats = " · ".join(f"{n} {esc(t)}" for n, t in m["stats"])
+    size = (DOCS / "featured" / f"{kind}.pdf").stat().st_size
+    entries = "".join(featured_entry(kind, x) for x in rows)
+    body = f"""
+<header class="top">
+  <div class="wrap">
+    <div class="topbar"><p class="eyebrow">Portfolio · Featured</p>{THEME_WIDGET}</div>
+    <h1>Alexander <span class="sur">CHERNOV</span></h1>
+    <p class="role">🤖 Link-Think-Act · Principal Engineer · AI &amp; Data Infrastructure · Agentic Datasets · Semantic Gateways · Agentic AI &amp; Scientific Data Systems · IEEE Member · Research &amp; Technical Speaker</p>
+    <nav class="jump">
+      {nav}
+      <a href="{pre}index.html">Portfolio</a>
+      <a href="https://chernov.ca">chernov.ca</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <a class="backlink" href="{pre}index.html">&larr; the whole portfolio</a>
+  <section id="{kind}">
+    <div class="section-head"><h2>{esc(m["name"])}</h2>{copy_button(f"{kind}.html", m["name"])}</div>
+    <p class="section-note">{esc(m["sub"])}<span class="fstats">{stats}</span></p>
+    <p class="fdoc"><a class="lnk" href="{kind}.pdf">PDF · {m["pages"]} pages · {round(size / 1024)} kB</a><a class="lnk" href="{esc(hub_href)}">{esc(FEATURED_HUB_LABEL[kind])}</a></p>
+    <ol class="fentries">{entries}</ol>
+  </section>
+</main>
+{FOOTER}
+"""
+    return shell(**featured_meta(kind, m), prefix=pre, body=body)
+
+
+def check_featured(name: str, kind: str, rows: list[dict], doc: str) -> list[str]:
+    """The page lists exactly the entries and links of the data its PDF was
+    rendered from: same count, every title, and no link more or less."""
+    problems: list[str] = []
+    found = doc.count('<li class="fcard"')
+    if found != len(rows):
+        problems.append(f"{name}: {found} entries, the data has {len(rows)}")
+    m = re.search(r'<ol class="fentries">(.*?)</ol>', doc, re.S)
+    listed = m.group(1) if m else ""
+    for x in rows:
+        if esc(featured_title(kind, x)) not in listed:
+            problems.append(f"{name}: title missing: {featured_title(kind, x)[:50]!r}")
+    got = {html.unescape(h) for h in re.findall(r'href="(https://[^"]*)"', listed)}
+    want = {u for x in rows for u in featured_expected_links(kind, x)}
+    if got != want:
+        problems.append(f"{name}: links differ from the data: missing {sorted(want - got)}, "
+                        f"extra {sorted(got - want)}")
+    return problems
 
 
 # --------------------------------------------------------------------------
@@ -609,6 +797,21 @@ color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .artifact .blurb{display:block;margin-top:.35rem;font-size:.87rem;color:var(--muted)}
 
 .backlink{display:inline-block;margin-bottom:1.2rem;font-size:.85rem}
+/* Featured: the web version of a PDF document, one card per entry. */
+nav.jump a[aria-current="page"]{border-color:var(--accent);color:var(--accent);font-weight:700}
+.fstats{display:block;margin-top:.3rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.fdoc{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.6rem}
+ol.fentries{list-style:none;margin:0;padding:0}
+.fcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+padding:clamp(1rem,2.5vw,1.4rem);margin-bottom:1rem;scroll-margin-top:1rem}
+.fmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;
+margin:0 0 .35rem;font-size:.8rem;color:var(--muted)}
+.ftag{color:var(--accent);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.fcard h3{margin:0 0 .4rem;font-size:clamp(1.05rem,2.3vw,1.3rem);line-height:1.3}
+.fcard p{margin:0 0 .45rem}
+.fcard .where{margin:0 0 .45rem}
+.fcard .note{margin:0 0 .45rem}
+.fcard .lnk{overflow-wrap:anywhere}
 /* Projects: one link per project, under the section's heading. */
 .tag-filter{display:none;flex-wrap:wrap;align-items:center;gap:.4rem;margin:0 0 1rem}
 .js .tag-filter{display:flex}
@@ -967,7 +1170,8 @@ def build_index(data: dict) -> str:
 
   <section id="publications">
     {section_head("publications", "Publications", p)}
-    <p class="section-note">Peer-reviewed, newest first.</p>
+    <p class="section-note">Peer-reviewed, newest first. The abstracts are on the
+      <a href="papers/">papers page</a>.</p>
     <ul class="entries">{"".join(render_publication(x) for x in data["publications"])}</ul>
   </section>
 
@@ -979,9 +1183,9 @@ def build_index(data: dict) -> str:
 
   <section id="writing">
     {section_head("writing", "Writing", p)}
-    <p class="section-note">Long-form articles. Each title links to the reprint at
-      <a href="https://chernov.ca/articles/" target="_blank" rel="noopener noreferrer">chernov.ca/articles</a>;
-      where the piece also ran on LinkedIn, that original is linked beside it.</p>
+    <p class="section-note">Long-form articles. Each title links to its reprint in
+      <a href="articles/">the articles book</a> on this site; where the piece also ran on
+      LinkedIn, that original is linked beside it.</p>
     <ul class="entries">{"".join(render_article(x) for x in data["articles"])}</ul>
   </section>
 </main>
@@ -1132,6 +1336,14 @@ def check(name: str, doc: str, base: pathlib.Path) -> list[str]:
             problems.append(f"{name}: empty href")
         elif not (href.startswith(("https://", "#")) or re.fullmatch(r"[\w./#-]+", href)):
             problems.append(f"{name}: href is neither https, an anchor, nor a local path: {href}")
+        elif not href.startswith(("https://", "#")):
+            # A local link must land on a file this site serves; a directory
+            # means its index.html, as the server answers it.
+            path = base / href.split("#")[0]
+            if href.split("#")[0].endswith("/"):
+                path = path / "index.html"
+            if not path.resolve().is_file():
+                problems.append(f"{name}: local link to a missing file: {href}")
 
     for src in re.findall(r'<img src="([^"]*)"', doc):
         if not (base / src).resolve().is_file():
@@ -1205,8 +1417,9 @@ def main() -> None:
 
     PROJECT_NUMBERS.update({p["slug"]: i for i, p in enumerate(projects, start=1)})
 
+    manifest, featured, featured_problems = load_featured()
     problems = (check_articles(data["articles"]) + check_use_cases(projects)
-                + check_tags(projects))
+                + check_tags(projects) + featured_problems)
     if problems:
         fail(problems)
 
@@ -1219,6 +1432,9 @@ def main() -> None:
         for old in p.get("aliases", []):
             pages.append((DOCS / "p" / f"{old}.html", build_alias_page(p), DOCS / "p"))
     pages.append((DOCS / "index.html", build_index(data), DOCS))
+    for kind in FEATURED:
+        pages.append((DOCS / "featured" / f"{kind}.html",
+                      build_featured_page(kind, manifest[kind], featured[kind]), DOCS / "featured"))
 
     # Write first, then check: copy-button and inter-page links point at files
     # this same run produces, so a check before the write would fail on pages
@@ -1229,12 +1445,16 @@ def main() -> None:
 
     for path, doc, base in pages:
         problems.extend(check(path.relative_to(DOCS).as_posix(), doc, base))
+    for kind in FEATURED:
+        doc = (DOCS / "featured" / f"{kind}.html").read_text(encoding="utf-8")
+        problems.extend(check_featured(f"featured/{kind}.html", kind, featured[kind], doc))
 
     if problems:
         fail(problems)
 
     total = sum(len(d.encode()) for _, d, _ in pages) / 1024
-    print(f"wrote {len(pages)} pages ({total:.1f} kB): index + {len(projects)} projects")
+    print(f"wrote {len(pages)} pages ({total:.1f} kB): index + {len(projects)} projects "
+          f"+ {len(FEATURED)} featured")
 
 
 if __name__ == "__main__":

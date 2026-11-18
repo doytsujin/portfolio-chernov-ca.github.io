@@ -1,0 +1,299 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>At 100,000 Devices, Throughput Is the Easy Part - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="at-100000-devices-throughput-is-the-easy-part"><a class="header" href="#at-100000-devices-throughput-is-the-easy-part">At 100,000 Devices, Throughput Is the Easy Part</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-08-31. <a href="https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/">Read the original</a>.</em></p>
+<hr>
+<p><em>Part 1 of two: where the load actually lands.</em></p>
+<p>When someone says a hundred thousand pieces of equipment are connected to a streaming platform, the first question is almost always whether Kafka can handle it. It is a reasonable question, and it is close to the least interesting one available. At that scale the hard engineering is in bursts, backpressure, partition skew, replay, late data, recovery behaviour, failure domains, and reconstructing what actually happened — and a throughput benchmark answers none of it.</p>
+<p>This gets more interesting in biopharma, where a “device” might be an environmental sensor, a bioreactor, a chromatography skid, a laboratory instrument, a PAT system, a sequencer, or an imaging platform. One device rarely means one signal.</p>
+<p>I have not benchmarked a cluster of this size and this article does not claim to. What I did instead was measure the things that do not need a broker: the partitioner, the reporting schedule, and the arithmetic of recovery. Those are exactly computable over a real key space, and they run in the browser at <a href="https://doytsujin.github.io/ok-kafka-estate-calc/">doytsujin.github.io/ok-kafka-estate-calc</a> if you want to put your own estate in — no cluster, nothing uploaded.</p>
+<p>This part is about <strong>where the load lands</strong>: the arithmetic of the estate, what a key actually is, and the one measurement that decides how a partitioned log behaves under it. <strong>Part 2</strong> is about what happens when things move — recovery, reporting schedules, deployments and certificates. Everything here that is not measured — the estate, the device rates, the storage figures — is arithmetic from stated assumptions, and I have marked it as such.</p>
+<h2 id="start-with-the-arithmetic"><a class="header" href="#start-with-the-arithmetic">Start with the arithmetic</a></h2>
+<p>A useful first approximation is <code>events/sec = devices × events/device/sec</code>.</p>
+<p>With 100,000 devices, a small change in reporting frequency changes the architecture dramatically.</p>
+<p><img src="throughput-is-the-easy-part/fig_rate_table.webp" alt="What 100,000 devices cost at four reporting rates, from one event a minute to ten a second, in messages per second, MB/s and raw payload per day."></p>
+<p>Two orders of magnitude in device rate is four orders of magnitude of difference in what you have to build, and those are only raw payload numbers. They exclude replication, protocol overhead, retries, indexes, downstream processing, derived events, and consumer traffic.</p>
+<h2 id="one-device-is-not-one-measurement"><a class="header" href="#one-device-is-not-one-measurement">One device is not one measurement</a></h2>
+<p>A bioreactor or chromatography skid might expose temperature, pH, dissolved oxygen, agitation, pressure, flow, conductivity, UV, valve states, pump speeds, alarms, recipe state and batch state — potentially dozens or hundreds of tags. A naive architecture therefore turns 100,000 devices × 100 measurements × 1 sample/sec into ten million measurements per second. That does not mean ten million Kafka messages per second. The representation is a design decision, and it is made before anything reaches the broker.</p>
+<p>Instead of publishing every tag independently, an edge or acquisition layer can produce one contextualised observation.</p>
+<p><img src="throughput-is-the-easy-part/fig_observation.webp" alt="One observation carrying equipment, batch, timestamp, temperature, pH, dissolved oxygen, RPM, pressure and recipe state, in place of nine separate tag updates."></p>
+<p>Where sampling semantics allow it, a hundred individual measurements become one semantically useful equipment observation. That is not an optimisation. It changes the shape of the entire distributed system, because the unit that gets ordered, partitioned, replayed and audited is now an equipment state rather than a scalar.</p>
+<h2 id="a-100k-device-estate-is-heterogeneous"><a class="header" href="#a-100k-device-estate-is-heterogeneous">A 100K-device estate is heterogeneous</a></h2>
+<p>I would not model a large biopharma environment as 100,000 identical producers. An illustrative estate looks more like the one below, and it is the one the harness runs on.</p>
+<p><img src="throughput-is-the-easy-part/fig_estate_table.webp" alt="Five device classes, their populations and their reporting behaviour, with each class’s share of the cluster event rate drawn beside it."></p>
+<p>That averages around <strong>78,000 events/sec</strong>, or roughly <strong>6.7 TB/day</strong> of raw event data at 1 KB per event. With replication factor 3 the brokers are writing on the order of <strong>20 TB/day across replicas</strong>. Keep seven days online and the storage footprint is substantial before you add safety margin, segment overhead, tiered storage or consumer traffic.</p>
+<p>Note where the volume lives. Five per cent of the devices produce nearly two thirds of the events. The estate is not one workload with one number attached to it, and treating it as one is how the interesting failures get averaged away.</p>
+<p>A “100,000-device Kafka architecture” is therefore not a workload specification. Device count tells you the size of the estate. The distribution of event rates tells you what system you actually have to build.</p>
+<p>This is unquestionably a serious streaming workload. Average throughput is still not the part I would worry about most.</p>
+<h2 id="partitioning-solves-ordering-and-creates-its-own-questions"><a class="header" href="#partitioning-solves-ordering-and-creates-its-own-questions">Partitioning solves ordering, and creates its own questions</a></h2>
+<p>For equipment telemetry a natural Kafka key is <code>equipment_id</code>, which keeps every observation from <code>BR-001</code> in the order it was produced. That does not mean one partition per piece of equipment: 100,000 devices is not 100,000 partitions, and a cluster configured that way would collapse under its own metadata.</p>
+<p>Instead, <code>hash(equipment_id) → partition</code> distributes large numbers of equipment streams across a manageable partition set while preserving ordering per equipment identifier. The precise partition count depends on throughput, workload isolation, consumer parallelism, recovery requirements and operational constraints.</p>
+<p>Hashing does not eliminate the next problem, which is skew — and this is the one I most wanted a number for.</p>
+<h2 id="the-hot-equipment-problem-measured"><a class="header" href="#the-hot-equipment-problem-measured">The hot-equipment problem, measured</a></h2>
+<p>I put all 100,000 equipment ids through Kafka’s murmur2 keyed-partitioning calculation and weighted each key by its modelled event rate. The exact transcription, seed and modulo are in the calculator’s source at <a href="https://github.com/doytsujin/ok-kafka-estate-calc">github.com/doytsujin/ok-kafka-estate-calc</a>. Then I gave one analytical instrument a firmware defect and let it publish at 20,000 events/sec instead of 10.</p>
+<p><img src="throughput-is-the-easy-part/fig_skew_table.webp" alt="The full sweep, 16 partitions to 1024: key-count balance, load balance, load balance with the hot device, the saturated partition’s throughput and the cluster mean, side by side."></p>
+<p><img src="throughput-is-the-easy-part/article_figure.webp" alt="The same measurement, drawn. Left: the cluster average falls by exactly the partition ratio, 64x while the partition that is actually saturated barely moves. Right: key counts stay within 5% of uniform the whole way, so the hash is working exactly as advertised, while load skew with one hot device reaches 209x. Both panels are log-log."></p>
+<p>The first column is the hash doing its job. Key counts stay within five per cent of uniform, which is the result everyone expects and quietly stops checking after.</p>
+<p>The rest of the table is the actual behaviour. Even with no hot device, load skew is already worse than key skew and grows with partition count, because devices do not all publish at the same rate and the hash cannot know that. Add one hot device and the ratio goes to 13.89× at 64 partitions and 209.56× at 1024.</p>
+<p>Read the last two columns together, because that is the finding. Going from 16 partitions to 1024 improves the cluster average by exactly 64x — from 6.12 MB/s to 0.096 MB/s — and improves the actual bottleneck by a factor of 1.25, from 25.1 MB/s to 20.1 MB/s.</p>
+<p>The 64 is not a measurement. It is 1024/16. The mean is total load over partition count, the total load did not change, so the average was always going to improve by exactly the factor you multiplied the denominator by. It is arithmetically incapable of reporting anything else, and it will do this on your cluster too, whatever is wrong with it. <strong>Every partition you add makes the dashboard look better and the problem stay the same.</strong> A single key is an unsplittable unit of load, and no partition count divides it.</p>
+<p><img src="throughput-is-the-easy-part/fig_partition_load.webp" alt="What the skew looks like from inside, at 64 partitions. Sixty-three partitions sit in a tight band around 1,000-1,500 events/sec and one carries 21,273. The dashed line is the cluster mean at 1,531/sec — a value no partition on this chart is actually experiencing, and the number a broker dashboard reports."></p>
+<p>I ran the whole thing again under an independent SHA-256 partitioner as a control. The numbers land within noise of murmur2 throughout, which is the point: this is a property of the workload, not of a hash function, and it will not be tuned away.</p>
+<p>That is also why aggregate dashboards are insufficient rather than merely coarse. At this scale I want to be able to move down through the levels.</p>
+<p><img src="throughput-is-the-easy-part/fig_drilldown.webp" alt="The levels an aggregate dashboard skips. The cluster figure is the one on the wall; the partition two steps down is where the saturation is; and the individual producer at the end is a single key that cannot be divided further."></p>
+<p>The failure lives several layers below the average, and the average gets more reassuring the further you drill away from it.</p>
+<h2 id="kafka-probably-should-not-carry-the-rawest-scientific-signal"><a class="header" href="#kafka-probably-should-not-carry-the-rawest-scientific-signal">Kafka probably should not carry the rawest scientific signal</a></h2>
+<p>Suppose an instrument produces a 10 kHz waveform, a large microscopy image, a chromatogram, sequencing output or a large spectrum. You can push these payloads through Kafka. For an enterprise biopharma architecture it is usually the wrong abstraction.</p>
+<p><img src="throughput-is-the-easy-part/fig_edge_split.webp" alt="The split at the edge. Raw scientific data goes to object storage; what enters Kafka is a SpectrumCaptured event carrying the dataset and equipment identifiers, the batch, the location, a checksum and a quality status — small enough to order, replay and audit."></p>
+<p>The object store holds the large payload. Kafka carries an event describing what happened, and that event is a few hundred bytes rather than a few hundred megabytes.</p>
+<p>The event stream now carries meaning and state while object storage carries bulk scientific data. Kafka does not have to become a scientific file system in order to be central to the architecture.</p>
+<h2 id="three-data-planes"><a class="header" href="#three-data-planes">Three data planes</a></h2>
+<p>For a large biopharma environment I find it useful to separate three classes of information.</p>
+<p><strong>Operational events</strong> — <code>EquipmentStarted</code>, <code>BatchStarted</code>, <code>ValveOpened</code>, <code>AlarmRaised</code>, <code>SampleCollected</code>, <code>RunCompleted</code>, <code>QualityCheckFailed</code>. Compact, semantically rich, and a description of things that happened.</p>
+<p><strong>Telemetry</strong> — temperature, pressure, pH, flow, dissolved oxygen, RPM, environmental measurements. Higher-volume continuous information, and the plane most likely to be aggregated or downsampled before it reaches the enterprise streaming layer.</p>
+<p><strong>Bulk scientific data</strong> — spectra, images, chromatograms, sequencing data, microscopy, raw instrument files. These belong in object storage or another system optimised for large scientific objects, with Kafka carrying the event announcing that the object exists, where it is, what generated it, and how it relates to the surrounding process.</p>
+<p>The three planes then work together instead of forcing every form of data through the same transport abstraction.</p>
+<h2 id="kafka-becomes-the-nervous-system-not-the-entire-body"><a class="header" href="#kafka-becomes-the-nervous-system-not-the-entire-body">Kafka becomes the nervous system, not the entire body</a></h2>
+<p>Put the three planes and the estate together and the architecture takes a definite shape.</p>
+<p><img src="throughput-is-the-easy-part/fig_architecture.webp" alt="Two planes leave the gateway and only one of them is a message stream. Bulk scientific data goes to object storage; events go to Kafka and from there to MES, LIMS and Quality, then into the data platform and the AI/ML layer, and finally into the digital twin that depends on all of it."></p>
+<p>At that point Kafka is not simply a message broker. It is closer to a nervous system carrying operational state across the estate — which means it stops being an application dependency and becomes production infrastructure, with everything that implies about how changes to it are made.</p>
+<h2 id="what-this-part-settles-and-what-it-does-not"><a class="header" href="#what-this-part-settles-and-what-it-does-not">What this part settles, and what it does not</a></h2>
+<p>One number is now firm, and it is not the one on the dashboard. Load skew is a property of the workload and not of the hash: a single key is an unsplittable unit of load, no partition count divides it, and every partition you add makes the average look better while the bottleneck stays exactly where it was. The cluster mean is arithmetically incapable of reporting anything else.</p>
+<p>That is a statement about a system standing still. It says where the load sits when the estate is running normally, which is the easy case. It says nothing about what happens when twelve thousand devices reconnect at once, when every device in the fleet reports on the same second, when a deployment changes a schema, or when a certificate expires quietly on a Sunday.</p>
+<p>Those are the cases where estates actually fail, and none of them shows up in an average either. That is Part 2.</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="nothing-fails-at-the-average.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="governed-motion.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="nothing-fails-at-the-average.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="governed-motion.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

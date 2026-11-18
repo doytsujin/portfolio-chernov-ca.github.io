@@ -117,6 +117,18 @@ def main() -> None:
             lede=p.get("lede", ""),
             image=p.get("og_image") or p.get("image") or first_video(p).get("poster", "").removeprefix("img/") or None)))
 
+    # The Featured documents: the PDF's own cover page in the image slot.
+    manifest_path = ROOT / "content" / "featured" / "manifest.json"
+    if manifest_path.is_file():
+        manifest = json.loads(manifest_path.read_text())
+        for kind, m in manifest.items():
+            stats = " · ".join(f"{n} {t}" for n, t in m["stats"])
+            cards.append((f"featured-{kind}", card_html(
+                eyebrow="Featured · web page and PDF",
+                title=m["name"],
+                lede=f'{m["sub"]} {stats}.',
+                image=f"featured/{kind}-cover.png")))
+
     # Optional card names on the command line render only those cards
     # (e.g. `python3 make_og.py site adam`); with none, every card is rendered.
     wanted = set(sys.argv[1:])

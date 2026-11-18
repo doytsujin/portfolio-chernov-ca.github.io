@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>What to Train on Telemetry - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="what-to-train-on-telemetry"><a class="header" href="#what-to-train-on-telemetry">What to Train on Telemetry</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-10-12. <a href="https://www.linkedin.com/pulse/what-train-telemetry-alexander-chernov-b4eqc/">Read the original</a>.</em></p>
+<hr>
+<p><em>Part 3 of three on machine and user telemetry. Part 1 was the pipeline, Part 2 was how much of the data to keep, and this part is what to train on it.</em></p>
+<p>A training set is not everything the lake holds. It is the part that was known at the time of each prediction, is still valid, and is permitted for training. The same few kinds of model serve machines and users, from failure risk to next-step suggestions, and in both cases the way that training set is built matters more than the choice of algorithm.</p>
+<p>Five rules build it. Compute every feature as it was known when the prediction would have been made. Split by time, and keep each training window inside the validity windows from Part 2. Where outcomes arrive slowly, predict earlier proxy targets and check them against the outcomes as they arrive. Account for how the data was sampled. Treat training as an operation the dataset must permit.</p>
+<p>Part 1 built one pipeline for machine and user telemetry, and Part 2 decided what it keeps and for how long. Each record now carries its versions, a validity window and its policy. Training is where those fields matter most, because a model learns every relationship in its training set, including the ones that no longer hold. For equipment, the examples come from the estate in my two articles on 100,000 devices: bioreactors, chromatography skids, analytical instruments and sequencers on one streaming platform.</p>
+<p><img src="machine-telemetry-part-3/article_figure.webp" alt="A training set built from what the pipeline kept, left to right. A clear acrylic tray full of glass event cards (lake: everything kept). One line of cards passes through a slim steel arch (known then, still valid, permitted). Two cards lie set aside in front of it, one with an amber tab (invalid: set aside) and one with a padlock tag (not permitted: set aside). The admitted cards stand in an ordered rack, split by a divider into a long left group (train: the past) and a short right group (test: the future). At the right, a glass cube on a steel plinth (model: trained on the past, tested on the future)."></p>
+<h2 id="six-kinds-of-model-each-with-a-machine-side-and-a-user-side"><a class="header" href="#six-kinds-of-model-each-with-a-machine-side-and-a-user-side">Six kinds of model, each with a machine side and a user side</a></h2>
+<p>Failure risk and remaining useful life on the equipment side have a counterpart in renewal risk on the user side. Both ask how long until an event, and survival models answer that well. Most machines have not failed yet and most accounts have not lapsed. A survival model counts each of them as what it is, a unit that has lasted at least this long, instead of dropping it or treating it as one that never fails. Gradient-boosted classifiers with calibrated probabilities are the common alternative when a fixed horizon, such as the next 30 days, is enough.</p>
+<p>The next operator action and the next command are the same kind of problem: predicting the next step in a sequence. The vocabulary of steps and the cost of a wrong suggestion differ between the two. Collaborative filtering over who did what is the simple start, and a sequence model over sessions is the stronger one. On a line it suggests the step operators usually take next after an alarm. In a design tool it suggests a command the user has not found yet.</p>
+<p>Recurring micro-stops and manual interventions on a line are candidates for automation, and repeated command sequences in a product are candidates for one-click assistant actions. Frequent-sequence mining finds both, ranked by how often a sequence occurs times how long it takes.</p>
+<p>A firmware or recipe change that makes a machine slower or noisier is the counterpart of a release that makes a command slower or crash more often. Change-point and anomaly detection on per-version metrics find both, and the envelope from Part 1 already carries the versions to split by. In the 100,000-device articles, one analytical instrument was modeled with a firmware defect that made it publish 20,000 events a second instead of 10. A detector on per-version event rates exists to catch exactly that.</p>
+<p>Fleet segments and user segments come from clustering usage: machines that run the same duty cycle, users who work the same way.</p>
+<p>The last pair asks whether an intervention helped: whether maintenance extended a machine’s life, whether outreach kept an account. That is uplift modeling, and it is a causal question. It needs a comparison group that did not receive the intervention. A randomized holdout is the strongest design where withholding the intervention is safe and acceptable, as it usually is for outreach. Preventive maintenance on a high-risk machine usually cannot be withheld, so the comparison comes from a staggered rollout or an adjusted observational cohort, with the assumptions behind it stated, and the causal reading is weaker. Without a comparison group, the model learns which machines were chosen for maintenance, not what the maintenance did.</p>
+<p><img src="machine-telemetry-part-3/fig_models.webp" alt="Six kinds of model, each with a machine side and a user side, by problem family, method and task type. Time to an event, with survival models, predictive: failure risk and remaining useful life; renewal risk. Next step, with sequence models, predictive: the step operators usually take next after an alarm; a command the user has not found yet. Automation candidates, with frequent-sequence mining, descriptive: recurring micro-stops and manual interventions; repeated command sequences, as one-click actions. Regression, with change-point detection, descriptive: a firmware or recipe change that makes a machine slower; a release that makes a command slower or crash more. Segments, with clustering, descriptive: machines that run the same duty cycle; users who work the same way. Uplift, which needs a comparison group, causal: whether maintenance extended a machine’s life; whether outreach kept an account."></p>
+<h2 id="features-as-they-were-known-at-prediction-time"><a class="header" href="#features-as-they-were-known-at-prediction-time">Features as they were known at prediction time</a></h2>
+<p>Every feature is computed as it was when the prediction would have been made. A model that sees a value from after that moment learns something it will never have in production. The common leaks sit close to the label: a work order written after a failure, or a cancellation-flow event recorded once a user has already decided to leave.</p>
+<p>A value has two times, not one: the time it describes and the time it became known. A sensor’s readings may be corrected backward after a recalibration, and sessions are rebuilt when a definition changes. A training row should see each value as it was known at prediction time, not as corrected later.</p>
+<p><img src="machine-telemetry-part-3/fig_timeline.webp" alt="A value has two times: the time it describes and the time it became known. On a timeline, day 8: a sensor reading describes day 8. Day 10: the prediction is made. Day 12: a correction for day 8 is written, shown as a dashed arc reaching back to day 8 (corrects the day-8 value). The stretch from day 8 to day 10 is marked known by day 10, used for training. The stretch from day 10 to day 12 is marked written after day 10, excluded. The day-10 training row sees the day-8 reading as it was known on day 10."></p>
+<p>At 100,000 devices the second time is routine. When a site of 12,000 devices loses its link for twenty minutes, the devices buffer and replay on reconnection, so every buffered reading describes a moment during the outage but becomes known only after it. A prediction made during the outage could not have seen those readings, and its training row must not either. The earlier articles ended on whether the exact state of a batch can be reconstructed at a point in time. A training row asks the same question about the moment of each prediction.</p>
+<p>Feature stores do point-in-time joins for this, and the detail matters. Feast, by default, constrains only the time a value describes, so a value backfilled or corrected afterward can still reach the training set unless the time it was written is also used. Its filter_by_created_timestamp option adds that second condition on the offline stores that support it, and the others raise an error rather than ignore it.</p>
+<p>The features come from the metric layer of Part 1. The dashboard, the model and the agent then compute cycle time or retention the same way.</p>
+<p>The three data planes from the 100,000-device articles map onto a training set. Operational events such as AlarmRaised or QualityCheckFailed supply the labels, the telemetry plane supplies the features, and bulk data such as spectra and images stays in object storage, reached through the pointer its event carries.</p>
+<h2 id="split-by-time-inside-the-validity-windows"><a class="header" href="#split-by-time-inside-the-validity-windows">Split by time, inside the validity windows</a></h2>
+<p>Training sets are split by time, not at random: train on the past, test on the future. Telemetry is autocorrelated, and a random split puts near-copies of the test rows into training, which makes a model look better than it will be. Splitting by machine or by user as well keeps one unit’s behavior from appearing on both sides.</p>
+<p>Evaluation follows the rule of the 100,000-device articles: nothing fails at the average. A model scored across the whole fleet is scored mostly on the devices that report most and fail least, so it is evaluated per equipment class, per site and per segment.</p>
+<p>Part 2 gave every record a validity window, and the training set respects it. A window that spans a recalibration, a recipe or firmware change, or a metric redefinition teaches the model a relationship that no longer holds. There are three ways across such a change. Train only inside the current window. Carry the version as a feature, so the model can tell the regimes apart. Or rebuild the history under the current definition by replay from the lake, as Part 1 described. Which one fits depends on how much data the current window holds.</p>
+<p>Erasure and withdrawn consent, which Part 2 also counted as validity events, reach the training set through its snapshot. Each run builds its set from a snapshot of the lake and records the revision it used, as the Agentic Datasets assertion cited in Part 2 requires of every result. Experiment trackers such as MLflow log the dataset and a digest beside the run.</p>
+<p>That record names the input, not its rows, and Part 2’s snapshots expire. So each run also keeps its training snapshot, or an index of the records in it, for as long as its model is in use. A withdrawn record is then left out of every future set, and each earlier model that saw it can be found and assessed for retraining or retirement.</p>
+<h2 id="proxy-targets-for-slow-outcomes"><a class="header" href="#proxy-targets-for-slow-outcomes">Proxy targets for slow outcomes</a></h2>
+<p>Some outcomes take a long time to arrive. A renewal happens once a year, and a failure may happen once in the life of a machine. Waiting for them leaves too few examples, too late.</p>
+<p>The workable approach is to predict an earlier proxy target, such as 30 days of inactivity for an account or a rising vibration band for a bearing. A proxy is not the outcome. Inactivity is not non-renewal and vibration is not failure, so the two are kept as separate labels. As confirmed outcomes come in, they become the ground truth the proxy is checked against. A proxy that stops predicting its outcome is retired, like any metric that no longer informs a decision.</p>
+<h2 id="account-for-how-the-data-was-sampled"><a class="header" href="#account-for-how-the-data-was-sampled">Account for how the data was sampled</a></h2>
+<p>Every decision in Part 2 shapes a training set. Full command sequences were kept for a hashed sample of sessions. The inclusion rule is known, so models trained on them can carry sample weights that restore the population.</p>
+<p>High-rate waveforms were captured only in a window around a fault, so a waveform set is almost all faults. A model trained on it sees failure far more often than failure happens. Weights cannot repair that on their own, because the normal stretches were never recorded. The model needs normal windows captured on purpose, then weighted to their real share.</p>
+<p>In the illustrative estate of the 100,000-device articles, five percent of the devices produce nearly two thirds of the events. A training set drawn per event learns those devices, not the fleet, and one faulty instrument would fill it. So examples are drawn or weighted per device, as Part 2 counted independent units rather than events.</p>
+<p>The hot store holds about a week of data and is not a training source at all.</p>
+<h2 id="training-is-a-use-the-data-must-permit"><a class="header" href="#training-is-a-use-the-data-must-permit">Training is a use the data must permit</a></h2>
+<p>Whether a dataset may be trained on depends on where it came from, the policy attached to it, its quality, whether it is still valid, and whether it represents the population the model will serve. That is decided per dataset, before the run.</p>
+<p>On the equipment side, the question is often contractual: telemetry from a customer’s plant is covered by an agreement that may or may not include training a model. On the user side, it is the purpose users were told about when the data was collected.</p>
+<p>Croissant 1.1, the MLCommons metadata format for machine-learning datasets, can now write conditions of use into a dataset’s description. My public Croissant policy profile adds the part that decides them. A dataset declares the operations it admits and the conditions for each, and a gate refuses any operation the dataset does not declare. Training is one operation among the others, so data collected for support or for a batch record is refused for training until its description admits it.</p>
+<p>The description does not create the right. It records what the contract, the consent and the law already allow, and the gate enforces that record. A description that admits training without them behind it is a defect, not a permission.</p>
+<p>This extends the chain from Part 1. Access rules and lineage followed the data from event to session to metric to agent tool. They now continue to the training set and the model.</p>
+<h2 id="scores-reach-agents-through-the-metric-layer"><a class="header" href="#scores-reach-agents-through-the-metric-layer">Scores reach agents through the metric layer</a></h2>
+<p>Most of these models are best served in batch. Daily scores are written into the metric layer, where the dashboards and agents of Part 1 already read. Suggestions are precomputed into an online store.</p>
+<p>A real-time endpoint is worth having only where the session context matters, such as the next command in an open session. A provisioned endpoint bills for every hour it is up, called or not, while a batch job bills only while it runs. So the rule is to precompute wherever the session context is not needed.</p>
+<p>Agents read scores through the same governed tools as metrics, served through the Model Context Protocol. A maintenance agent reads a machine’s failure risk with the features that contributed most to it, computed with SHAP. SHAP says which inputs moved the score, not what caused the failure. A customer-success agent reads an account’s renewal risk the same way, and the in-product assistant reads next-command and repetition candidates. Every action an agent takes on a score leaves a decision record.</p>
+<h2 id="the-loop-changes-its-own-labels"><a class="header" href="#the-loop-changes-its-own-labels">The loop changes its own labels</a></h2>
+<p>Outcomes return to the lake as the next round’s labels, and here the models affect their own data. A machine maintained because its risk score was high does not fail, and an account contacted because it looked at risk may renew. Trained naively on those outcomes, the next model learns that high-risk machines do not fail. The absence of a failure after maintenance is not evidence that the risk score was wrong.</p>
+<p>Where withholding the intervention is safe, a randomized holdout keeps a clean signal and doubles as the uplift model’s comparison group. Where it is not, as for a high-risk machine, the comparison designs from the uplift paragraph apply, with their assumptions stated. The decision records say which units were acted on, so the next training set can tell treated units from untreated ones.</p>
+<p>Drift checks compare live features and scores with the training data. Part 2’s validity events, such as a recalibration, a release or a metric redefinition, are known causes of drift. Each one can open a retraining review directly, without waiting for a drift check to notice.</p>
+<p>The techniques here are established ones: point-in-time joins, time-based splits, survival models, sampling adjustments, holdouts and uplift. What the series adds is that the versions, validity windows and use permissions that govern telemetry and agent actions also govern the data a model is trained on.</p>
+<p>Sources. One Pipeline for Machines and People (Part 1): https://www.linkedin.com/pulse/one-pipeline-machines-people-alexander-chernov-dn9qc/ · How Much Telemetry Is Enough (Part 2): https://www.linkedin.com/pulse/how-much-telemetry-enough-alexander-chernov-n3xnc/ · At 100,000 Devices, Throughput Is the Easy Part: https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/ · At 100,000 Devices, Nothing Fails at the Average: https://www.linkedin.com/pulse/100000-devices-nothing-fails-average-alexander-chernov-cdcec/ · Feast, point-in-time joins: https://docs.feast.dev/getting-started/concepts/point-in-time-joins · scikit-learn, cross-validation of time series data: https://scikit-learn.org/stable/modules/cross_validation.html · lifelines, introduction to survival analysis and censoring: https://lifelines.readthedocs.io/en/latest/Survival%20Analysis%20intro.html · Gutierrez and Gérardy, Causal Inference and Uplift Modelling: A Review of the Literature, PMLR 67 (2017): https://proceedings.mlr.press/v67/gutierrez17a.html · Lundberg and Lee, A Unified Approach to Interpreting Model Predictions, NeurIPS 2017: https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions · MLflow dataset tracking: https://mlflow.org/docs/latest/ml/dataset/ · Agentic Datasets conformance assertions: https://github.com/agentic-datasets/reference/blob/main/CONFORMANCE.md · Croissant 1.1 specification, data use conditions: https://docs.mlcommons.org/croissant/docs/croissant-spec-1.1.html · Croissant policy profile: https://github.com/doytsujin/ok-croissant-policy-profile · Croissant policy profile, archived release: https://doi.org/10.5281/zenodo.22018156 · Model Context Protocol specification: https://modelcontextprotocol.io/specification</p>
+<p>#MachineLearning #MLOps #DataEngineering #IndustrialIoT #Telemetry #PredictiveMaintenance #FeatureStore #DataGovernance #AgenticAI</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/what-train-telemetry-alexander-chernov-b4eqc/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="semantic-cache-governance.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="machine-telemetry-part-2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="semantic-cache-governance.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="machine-telemetry-part-2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

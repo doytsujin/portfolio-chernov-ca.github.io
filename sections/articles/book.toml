@@ -1,0 +1,21 @@
+[book]
+title = "Articles"
+authors = ["Alexander Chernov"]
+language = "en"
+src = "src"
+
+[build]
+# `make articles` copies book/html into docs/articles. This book has no PDF
+# renderer, so the path is stated instead of inherited.
+build-dir = "book/html"
+
+[output.html]
+no-section-label = true
+default-theme = "light"
+preferred-dark-theme = "light"
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"

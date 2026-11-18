@@ -1,0 +1,110 @@
+# The Semantic Cache Is Where Cost, Governance and Security Meet
+
+*By [Alexander Chernov](https://www.linkedin.com/in/thedoytsujin/). First published on LinkedIn, 2026-10-15. [Read the original](https://www.linkedin.com/pulse/semantic-cache-where-cost-governance-security-meet-alexander-chernov-p5vlc/).*
+
+---
+
+A semantic cache is the cheapest place in an AI stack to save tokens and the riskiest place to serve an answer. When it returns a stored answer to a new question, it decides that an answer written for someone else, at another time, is right for this caller now. That one decision carries the cost, the governance and the security of everything behind it. Reuse can be trusted when it is scoped to the context an answer was written for, checked before serving, refused when the check cannot finish, withdrawn when its source changes, recorded, and measured on real traffic before it answers anyone.
+
+Grafferene, the semantic cache I have built, works this way, and every result about it here is measured: savings against the inference server's own counters, correctness on public datasets labeled by people, and a head-to-head run against LiteLLM. The research literature and the vendors' own documentation reach the same conclusions from other directions, and they are cited where they do.
+
+![A semantic cache deciding whether a stored answer may be served, as objects on one white tabletop. A new question arrives on a rail. Stored answers wait in a cabinet of three separate glass compartments: scoped to the context it was written for. A lens over the answer about to leave: checked before serving. A drop-arm turnstile with its arm down: refused when the check cannot finish. One answer in a tray with an amber tab: withdrawn when its source changes. A paper tape from the cabinet: every decision recorded. At the far right a GPU server: the model, called when no stored answer qualifies.](semantic-cache-governance/article_figure.webp)
+
+## Three layers of reuse, and what each one saves
+
+Tokens are the unit of cost in AI, and output is the expensive part. On Anthropic's current price list an output token costs five times an input token, from the smallest model to the largest. Three kinds of reuse lower that cost, and each works at a different layer.
+
+Inside the inference server, prefix caching keeps the computed state of a prompt prefix that many requests share; vLLM's PagedAttention and SGLang's RadixAttention are the best-known designs. Provider prompt caching brings the same idea to the bill: Anthropic and OpenAI charge a repeated prefix at a fraction of the input price. In both cases the model still runs and writes a new answer, so every output token is still generated and paid for.
+
+A response cache removes the call. When a new request matches a stored one, the stored answer is returned and the model does no work at all, output included. That is why it saves more than the other two layers, and why it carries the risks the rest of this article is about.
+
+![Three layers of reuse compared. Prefix caching, inside the inference server: reuses the computed state of a shared prompt prefix; the model runs and writes a new answer; saves part of the work on the input; the answer is always new. Prompt caching, on the provider's bill: reuses a repeated prefix, billed at a fraction of the input price; the model runs and writes a new answer; saves part of the input cost; the answer is always new. Response cache, in front of the model: reuses a stored answer; the model is not called; saves the whole call, input and output; the answer is reused, so it must be scoped, checked and still valid. Only the response cache removes the call, and only it serves an answer written for someone else.](semantic-cache-governance/fig_layers.webp)
+
+The layers overlap. As Grafferene absorbed requests on a benchmark trace at its default threshold of 0.92, vLLM's prefix-cache hit rate fell from 95.2% to 92.8%, and in a replayed support workload from 50.5% to 47.1%. The two savings do not add, so they have to be measured together.
+
+How a saving becomes money depends on how inference is paid for. Through a per-token API, every token not sent is money not spent. On GPUs you run yourself, the hourly price stays the same and a saved call becomes capacity. In front of an llm-d router with 16 clients asking the same questions, throughput rose from 48.7 to 84.5 requests per second, and on one cloud L4 GPU the cost of a thousand requests fell from $0.0077 to $0.0047.
+
+The largest single effect in those runs was not similarity at all. When many clients ask the same question at the same moment, an ordinary cache misses on every one of them, because the answer does not exist yet; networking research calls these delayed hits. Grafferene sends the first request to the model and holds the identical ones behind it until the answer arrives. Sixteen clients made 19 model calls, where going direct made 512 and the cache without this step made 297. A miss costs little in return: under the same load, a median of 19.5 ms more than calling the model directly.
+
+## How much traffic repeats
+
+A cache can only save what the traffic repeats, and repetition is a property of the workload, not of the cache. Open chat repeats less than intuition suggests. In WildChat, a public collection of real conversations with a chat assistant, 11.8% of first prompts repeat an earlier prompt exactly, but three quarters of those are users resending their own prompt, usually a retry. Only about 3% repeat a prompt that another user had sent. SCALM, an earlier study of real chat queries, found 4.5% to 7.5% answerable from similar ones, the same order of magnitude.
+
+Structured traffic is different. In a replay of 1,000 customer-support requests from a public, partly synthetic dataset built for support assistants, Grafferene at its default threshold removed 48.6% of model calls and 48.7% of prompt tokens. Support desks, FAQ assistants, evaluation suites that run the same tests on every build, and agents that put the same questions to the same tools ask about a limited set of tasks in a limited number of ways. They are where a semantic cache earns its place, and each one is worth measuring rather than assuming.
+
+The same replay raises the next question. Of the answers it served, 2.9% came from a stored request with a different intent.
+
+## Similar is not the same
+
+Every semantic cache decides by a similarity threshold: if a new question's embedding is close enough to a stored one, the stored answer is served. The threshold is the weak point, because similarity and meaning are different things.
+
+QQP, a public set of about 40,000 question pairs that people labeled as the same question or different ones, shows how different. Many of its pairs were chosen to look alike, which makes it a stress test. At a threshold of 0.92, the embedding model Grafferene uses by default serves 46.9% of the pairs that mean the same and 6.8% of those that do not, so one served answer in five joins two questions the labels call different. At 0.98 it serves only 0.5% of the different pairs, and only 11.9% of the same ones. Every step up the threshold buys correctness with savings.
+
+![A stricter threshold buys correctness with savings. On QQP, 14,885 same-question and 25,545 different-question pairs labeled by people, with the bge-small-en-v1.5 embedder, the share of pairs served from the cache at thresholds 0.85, 0.90, 0.92, 0.94, 0.96 and 0.98: same-question pairs 80.2, 57.8, 46.9, 35.1, 23.3 and 11.9 percent; different-question pairs 22.9, 10.5, 6.8, 3.8, 1.8 and 0.5 percent. At the default 0.92, one served answer in five joins two different questions. The different-question pairs were chosen to look alike: a stress test, not a base rate.](semantic-cache-governance/fig_threshold.webp)
+
+Three common embedding models behave alike. Holding wrong serves to one in twenty, none of them served more than 2% of the true rewordings. The numbers do not carry over between models: one of the three puts the median pair of different questions at 0.89, while the default model puts the median pair of same questions at 0.91. They do not carry over between question sets either. On Grafferene's own FAQ, a threshold of 0.88 served all 13 repeated questions and 8 of 26 paraphrases with none wrong, while a ten-question sample from a notes application needed 0.76, which served 7 of 20 paraphrases with none wrong.
+
+Controlled tests agree. On Grafferene's benchmark trace the least similar genuine rewording scored 0.816 and the most similar lookalike 0.902, so no threshold could separate them. In the support replay, the 14 answers served across intents scored between 0.924 and 0.961, inside the range of correct serves, whose median was 0.950.
+
+The research reaches the same conclusion. vCache, presented at ICLR 2026, showed that correct and incorrect hits have overlapping similarity distributions, so no fixed threshold controls the error rate, and it learns a threshold for each cached prompt instead. MeanCache tunes thresholds per user. A 2026 study of cache eviction on QQP and LMSYS conversations found few semantic hits whose answers could substitute for each other.
+
+The vendors say it in their own documentation. Redis answers the question "Could I get back a response for a different question than the one I asked?" with "Yes." Azure API Management warns that semantic caching "can surface responses that are incorrect, outdated, or unsafe for the current request." LiteLLM writes that similarity matching "suits single-shot prompts and goes badly wrong on agentic traffic."
+
+A threshold is an operating point for one traffic mix, one embedding model and one tolerance for error. It is not a safety property, and on its own it cannot make reuse safe.
+
+## A served answer needs a reason
+
+Governance, applied to a cache, means every served answer can be justified and every justification can be read. Grafferene adds four controls to the similarity match and one practice before it.
+
+First, matching is scoped. A stored answer is a candidate only within the context it was written for, so a question asked elsewhere cannot borrow it, however similar it looks.
+
+Second, each semantic hit is verified before it is served. On 2,000 QQP pairs at a threshold of 0.88, similarity alone served 340 right answers and 120 wrong. With verification, Grafferene served 188 right with 20 wrong; similarity alone, tightened until it too made only 20 wrong serves, kept 131 right. Verification takes time, though little next to a model call: with the verifier on a GPU, a verified hit took 15 to 24 ms, where a model call in the support replay took about 400 ms.
+
+Third, when the check cannot finish, the stored answer is not served and the request goes to the model. An unfinished check costs one model call, not an unchecked answer.
+
+Fourth, every decision leaves a record: the candidates considered, how similar each was, the verdict and the outcome. Each lookup is also traced in OpenTelemetry, from embedding and vector search through verification to the model call. The difference shows after a semantic hit. LiteLLM records that the response came from its cache and under which key; Grafferene records why.
+
+The practice is measure-only mode, and it is change control rather than serving. Grafferene makes all its decisions and serves none of them. Every request reaches the model, and the report shows what would have been served, what it would have saved at the operator's own prices, and a review sample of the least similar matches beside the answers the model actually gave. On a test trace its counts matched a real serving run exactly. A team can choose a threshold from evidence on its own traffic and turn serving on once the review sample holds up.
+
+## The cache is an attack surface
+
+A shared cache stores answers from many callers and serves them to others. That makes it a security boundary, whether or not it was designed as one, and four threats against it are documented.
+
+Leakage across tenants is the direct one. With tenant tokens configured, Grafferene refuses any request that names another tenant's cache and logs the attempt. Its metrics carry no tenant labels, so the monitoring system does not become a second record of who asked what.
+
+Timing is the quiet one. A hit is fast and a miss is slow: in the support replay, a semantic hit took a median 13.4 ms and a miss 418 ms. Anyone who can time responses can learn whether a question was asked before. Researchers at Stanford audited LLM API providers for prompt caching and found caches shared globally across users at seven of them, OpenAI among them (ICML 2025). InputSnatch reconstructed other users' inputs from timing alone, against prefix caching in vLLM and semantic caching in GPTCache. Scoping is the structural answer: an answer that is never served across tenants cannot be timed across them.
+
+Poisoning is the active one. A team from SUSTech and ByteDance showed at NDSS 2026 that an attacker can plant crafted entries in a semantic cache so that other users receive the attacker's answer; they confirmed it on all three major public clouds and found existing defenses against adversarial prompts ineffective. A second study treats a semantic cache key as a fuzzy hash, where the closeness that makes hits likely works against the collision resistance that keeps them safe, and its attack hijacked responses at a hit rate of 86%. Both attacks depend on an answer written by one caller being served to another on similarity alone, which is what scoping and verification constrain.
+
+Staleness needs no attacker. An answer that was right yesterday is wrong once its source changes, and a time-to-live only guesses when that happens. When a document changes, Grafferene withdraws every answer built from it, follow-up turns included. In a test with 30 affected requests and 220 unaffected ones, none of the 30 was served stale and none of the 220 was lost. A time-to-live left all 30 stale, and invalidating by source left the 5 follow-up turns stale. Requests still being computed when the document changed wrote no stale answers in any of three runs. Withdrawal takes time in proportion to what was built from the document, not to the size of the cache: 2.3 seconds for 1,000 dependent entries in a store of 100,000, the same as in a store of 25,000. In the demo recording, retiring a model version for one tenant reached 1,001 records, eight hops deep, and left the other tenant's 119 records with the same version alone.
+
+Underneath all four, the store and its decision trail are encrypted at rest and survive a restart, and an instance takes itself out of service while its model is unreachable.
+
+Cost is a security concern too. OWASP's Top 10 for LLM applications lists Unbounded Consumption, which includes running up a victim's bill. Holding identical requests behind one model call means a burst of the same question costs one call. A flood of different questions is a matter for budgets and rate limits, which belong to the gateway.
+
+## Where each tool fits
+
+The tools around a model divide the work by layer. Inference servers reuse prefixes inside the engine. Providers discount repeated prefixes on the bill. Gateways route, meter and guard. Semantic caches decide whether an answer can be reused.
+
+LiteLLM is an open-source AI gateway. It routes requests across providers, tracks spend per key, user and team, rejects requests over budget, and runs guardrails for prompt injection, PII and moderation before and after each call. Those are its strengths, and they sit outside what Grafferene does. Its semantic cache is where the two overlap, so that is where they were measured head to head, on the same embedder and the same 2,000 QQP pairs. On similarity alone they made identical decisions, 340 right and 120 wrong. The differences were verification, which LiteLLM does not have, the record a hit leaves, and change: when a document changed, LiteLLM's options either left all 30 affected answers stale or flushed all 220 unaffected ones.
+
+Redis LangCache, Azure API Management's semantic cache policies, Kong's AI Semantic Cache plugin and Portkey all match above a similarity threshold and expire entries by time. LangCache defaults to a threshold of 0.85 and Portkey to 0.95; Kong keeps entries for 300 seconds by default and Portkey for seven days. Azure, LangCache and Portkey can also separate callers, by partitions, attributes or namespaces. GPTCache, an early open-source library, evicts by entry count. From the research side, vCache learns a threshold for each cached prompt to meet an error rate the user sets.
+
+Guardrails check content and gateways enforce budgets, and neither decides whether a stored answer is still right for this caller. That decision belongs to the cache.
+
+## Adopting a semantic cache
+
+The order of work follows from the evidence. Measure first: run the cache in measure-only mode on real traffic and read what it would have served. Choose the threshold for the embedding model and the workload from labeled samples of that traffic, since neither carries over. Turn on verification before serving similar questions, scope every entry to its tenant and context, and connect withdrawal to the sources the answers were built from. Keep the decision records, because they are what an auditor, an incident review or a customer will ask for.
+
+Grafferene ships as a container image with a Helm chart. It has been tested on single-node Kubernetes in front of vLLM and an llm-d router, with replicas sharing one cache through Postgres and pgvector, and on a million real embeddings its approximate index served every semantic hit the exact search found, 8.5 times faster. Its pilot is the first step above: one week in measure-only mode, in your own infrastructure in front of an OpenAI-compatible endpoint, with your prompts and answers staying there. The pilot is free, and the demo replays recorded WildChat traffic through Grafferene.
+
+Saving tokens is the reason to run a semantic cache. Scoping, checking, refusing, withdrawing and recording are what make the saved answers safe to serve.
+
+Sources. Grafferene: https://grafferene.ca · Grafferene demo: https://demo.grafferene.ca · Grafferene demo recording (Zenodo): https://doi.org/10.5281/zenodo.23329121 · Grafferene on LinkedIn: https://www.linkedin.com/company/grafferene/ · Anthropic, pricing: https://platform.claude.com/docs/en/about-claude/pricing · Anthropic, prompt caching: https://platform.claude.com/docs/en/docs/build-with-claude/prompt-caching · OpenAI, prompt caching: https://developers.openai.com/api/docs/guides/prompt-caching · vLLM, automatic prefix caching: https://docs.vllm.ai/en/latest/features/automatic_prefix_caching.html · Kwon et al., Efficient Memory Management for Large Language Model Serving with PagedAttention, SOSP 2023: https://arxiv.org/abs/2309.06180 · Zheng et al., SGLang: Efficient Execution of Structured Language Model Programs, NeurIPS 2024: https://arxiv.org/abs/2312.07104 · llm-d: https://github.com/llm-d/llm-d · Atre et al., Caching with Delayed Hits, SIGCOMM 2020: https://doi.org/10.1145/3387514.3405883 · Zhao et al., WildChat: 1M ChatGPT Interaction Logs in the Wild, ICLR 2024: https://arxiv.org/abs/2405.01470 · Li et al., SCALM: Towards Semantic Caching for Automated Chat Services with Large Language Models, IWQoS 2024: https://doi.org/10.1109/IWQoS61813.2024.10682957 · Bitext customer support dataset: https://huggingface.co/datasets/bitext/Bitext-customer-support-llm-chatbot-training-dataset · GLUE benchmark, Quora Question Pairs: https://gluebenchmark.com/tasks · Schroeder et al., vCache: Verified Semantic Prompt Caching, ICLR 2026: https://arxiv.org/abs/2502.03771 · Gill et al., MeanCache: User-Centric Semantic Caching for LLM Web Services, IPDPS 2025: https://arxiv.org/abs/2403.02694 · Kulkarni et al., Which Eviction Policy Should an LLM Cache Use?: https://arxiv.org/abs/2608.20280 · Bang, GPTCache, NLP-OSS 2023: https://aclanthology.org/2023.nlposs-1.24/ · Redis LangCache concepts: https://redis.io/docs/latest/develop/ai/context-engine/langcache/concepts/ · Azure API Management, llm-semantic-cache-lookup: https://learn.microsoft.com/en-us/azure/api-management/llm-semantic-cache-lookup-policy · Kong AI Semantic Cache reference: https://developer.konghq.com/plugins/ai-semantic-cache/reference/ · Portkey, simple and semantic cache: https://portkey.ai/docs/product/ai-gateway/cache-simple-and-semantic · GPTCache repository: https://github.com/zilliztech/GPTCache · LiteLLM, caching: https://docs.litellm.ai/docs/proxy/caching · LiteLLM, budgets: https://docs.litellm.ai/docs/proxy/users · LiteLLM, guardrails: https://docs.litellm.ai/docs/proxy/guardrails/quick_start · Gu et al., Auditing Prompt Caching in Language Model APIs, ICML 2025: https://arxiv.org/abs/2502.07776 · Zheng et al., InputSnatch: Stealing Input in LLM Services via Timing Side-Channel Attacks: https://arxiv.org/abs/2411.18191 · Wu et al., When Cache Poisoning Meets LLM Systems: Semantic Cache Poisoning and Its Countermeasures, NDSS 2026: https://www.ndss-symposium.org/ndss-paper/when-cache-poisoning-meets-llm-systems-semantic-cache-poisoning-and-its-countermeasures/ · Zhang et al., From Similarity to Vulnerability: Key Collision Attack on LLM Semantic Caching: https://arxiv.org/abs/2601.23088 · OWASP Top 10 for LLM Applications 2025, LLM10 Unbounded Consumption: https://genai.owasp.org/llmrisk/llm102025-unbounded-consumption/ · OpenTelemetry: https://opentelemetry.io/docs/
+
+
+#SemanticCaching #AIGovernance #AISecurity #LLMOps #AIInfrastructure #TokenEconomy #FinOps #MultiTenancy #AgenticAI #LiteLLM #vLLM #Grafferene #OpenTelemetry #Redis #Kong #DataEngineering #DataGovernance
+
+---
+
+<small>© 2026 Alexander Chernov. All rights reserved. First published on [LinkedIn](https://www.linkedin.com/pulse/semantic-cache-where-cost-governance-security-meet-alexander-chernov-p5vlc/), which remains the canonical version; this page is a reprint by the author.</small>

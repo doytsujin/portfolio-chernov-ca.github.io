@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Governing a Quantum Pipeline, Part 2 - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="governing-a-quantum-pipeline-part-2"><a class="header" href="#governing-a-quantum-pipeline-part-2">Governing a Quantum Pipeline, Part 2</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-06-06. <a href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/">Read the original</a>.</em></p>
+<hr>
+<p><em>This is the second of two parts, and it builds directly on the first. In Part 1 I took a published quantum-genomics method — QuASeR’s de novo assembly — ran it on PennyLane as pure quantum <strong>optimisation</strong>, and wrapped it in a small control plane: a dataset descriptor governing the data, an agent lifecycle governing the work, and a gateway governing the quantum resource. Nothing in that pipeline was trained. Here I add the part I deliberately held back: the <strong>AI</strong>. The same stack that lets you <strong>solve</strong> a circuit lets you <strong>train</strong> one, so I bolt a trained quantum model onto the very same pipeline — and govern it the very same way.</em></p>
+<p>If you have not read Part 1, the one-paragraph version is this: a real bioinformatics step (assembling a DNA sequence from short overlapping reads) was cast as a TSP → QUBO → cost-Hamiltonian → <strong>QAOA</strong> chain and run on nine qubits in PennyLane, reconstructing the contig <code>GCGCA</code> and matching the brute-force optimum. Around it sat a descriptor (schema, provenance, qubit/iteration budgets, checked <em>before</em> execution), a five-state agent (<em>reason → bind → execute → publish</em>), and a control-plane gateway (admission control, backend abstraction, a semantic circuit cache, and a structured event log). That is the pipeline this article extends.</p>
+<p><img src="governed-quantum-pipeline-part-2/article_figure.webp" alt="Figure: a trained variational quantum classifier added downstream of the QAOA assembly stage — a solver and a learner on one PennyLane front-end, under a single descriptor / agent / gateway control plane."></p>
+<h2 id="differentiable-quantum-programming-the-ai-side-of-the-stack"><a class="header" href="#differentiable-quantum-programming-the-ai-side-of-the-stack">Differentiable quantum programming: the AI side of the stack</a></h2>
+<p>The central idea in PennyLane is simple to state and consequential in practice: a quantum circuit can be <em>differentiated</em>.</p>
+<p>You describe a circuit as a <strong>QNode</strong>, and you can then take gradients through it with the same automatic-differentiation engines that train neural networks — PyTorch, TensorFlow, JAX, or NumPy/autograd. A parameterised quantum circuit becomes, mathematically, just another differentiable block you can drop into a larger model and optimise end to end. That is what people mean when they say PennyLane lets you “train quantum circuits like neural networks.”</p>
+<p>The mechanism underneath is worth a sentence, because it is what makes the claim more than an analogy. You cannot backpropagate through quantum hardware the way you can through a tensor in memory — a real device only gives you measurements. PennyLane gets the gradient anyway through the <strong>parameter-shift rule</strong>: to find how the output changes with a given gate parameter, it runs the same circuit twice with that parameter nudged by a fixed amount and takes the difference. The result is an <em>exact</em> analytic gradient that can be obtained on real hardware, not a finite-difference approximation — which is precisely why the same training loop works whether the QNode runs on a simulator or a quantum device. The autodiff engine stitches those per-gate gradients together, and gradient descent does the rest.</p>
+<p>This is the complement to Part 1. QAOA <em>solves</em> a fixed problem: it tunes a circuit’s parameters to minimise one cost Hamiltonian, and when it is done you read off an answer. A <strong>trained model</strong> is different in kind — it <em>learns</em> from data, so that it generalises to inputs it has never seen. Both are variational circuits optimised by gradient descent; only one of them is machine learning. Part 1 exercised the first. Part 2 adds the second, on the same hardware-agnostic stack and behind the same governance.</p>
+<h2 id="adding-a-trained-stage-to-the-pipeline"><a class="header" href="#adding-a-trained-stage-to-the-pipeline">Adding a trained stage to the pipeline</a></h2>
+<p>The natural place for AI in this pipeline is <em>downstream of assembly</em>. Part 1 reconstructs a contig; it does not interpret it. So I added a second stage that does: a <strong>variational quantum classifier</strong> (VQC) that labels the reconstructed sequence by nucleotide composition — <strong>GC-rich vs AT-rich</strong>, a real and simple genomic property.</p>
+<p><img src="governed-quantum-pipeline-part-2/two_stages.webp" alt="Figure: the two-stage governed pipeline. Sequencing reads feed a QAOA de novo assembly stage (Part 1 — quantum optimisation, nothing trained), whose contig feeds a trained variational quantum classifier (Part 2 — quantum machine learning, the AI), then on to downstream stages — both stages on one PennyLane front-end, under one descriptor / agent / gateway control plane."></p>
+<p>The classifier is genuinely trained, and the construction is worth seeing in detail because every piece has a neural-network counterpart. Each sequence is reduced to a four-number feature vector — the frequencies of A, T, G, and C — scaled into angles and <strong>angle-encoded</strong> onto a four-qubit circuit (PennyLane’s <code>AngleEmbedding</code>). On top of that sit three layers of an entangling template (<code>BasicEntanglerLayers</code>), which is where the <em>trainable</em> weights live — the quantum analogue of a small stack of dense layers. The circuit’s output is the expectation of a single Pauli-Z measurement on one qubit, a number in [−1, 1], to which a trainable bias is added; the sign of the result is the predicted class. Training minimises a plain mean-squared-error loss between that output and ±1 targets, using the Adam optimiser — the identical recipe you would reach for with a classical model, except the forward pass runs a quantum circuit and the gradients come from the parameter-shift rule above.</p>
+<p>What it trains <em>on</em> matters as much as how. The model learns from a balanced, labelled set of short DNA sequences — equal numbers of GC-rich and AT-rich examples, with the ambiguous borderline around a 50% GC fraction deliberately excluded so the label is never in doubt — split into a training portion and a held-out test portion it never sees during optimisation. Reporting accuracy on that held-out split, rather than on the data it trained on, is the difference between a model that <em>learned</em> and one that merely memorised. Applied to the contig <code>GCGCA</code> that Part 1 assembled, the trained circuit returns <em>GC-rich</em>, correctly and with a comfortable margin.</p>
+<p>It is a small, honest task. The point is not that a quantum classifier beats a one-line <code>if</code> statement on GC content — it obviously does not. The point is that a <em>trained quantum model</em> is now a first-class stage in the pipeline, sitting immediately downstream of a quantum <em>optimiser</em>, both written against the same PennyLane front-end. The data-to-AI-to-quantum arc stops being a slogan here: it is one workflow in which the same gradient machinery runs a solver and a learner back to back.</p>
+<h2 id="governed-exactly-like-the-optimisation-stage"><a class="header" href="#governed-exactly-like-the-optimisation-stage">Governed exactly like the optimisation stage</a></h2>
+<p>The part I care most about is that adding AI did <em>not</em> mean adding a second, ungoverned escape hatch. The trained stage runs under the same control plane Part 1 built, with the differences you would expect made explicit rather than hidden:</p>
+<ul>
+<li><strong>Its own descriptor.</strong> The classification stage carries its own dataset descriptor — output schema (<code>GC-rich</code> / <code>AT-rich</code>), provenance that names the trained-VQC method and links back to the assembly stage as its source, and resource policies. Where the assembly descriptor bounded a qubit budget and an iteration budget, this one bounds a qubit budget and a <strong>training-step budget</strong> — a learned model’s distinctive cost is the training, so that is what the policy governs, checked before the stage runs.</li>
+<li><strong>The same agent lifecycle.</strong> The classifier stage is driven by the same <em>reason → bind → execute → publish</em> agent. It evaluates its training and qubit budgets in the reasoning phase, <em>before</em> it trains anything, and it publishes the label with full provenance. The reasoning-before-execution barrier that made the optimisation stage safe to automate makes the AI stage safe to automate for the same reason.</li>
+<li><strong>The same gateway.</strong> The classifier’s circuit is admitted through the same control-plane gateway as the QAOA circuit — the same admission control against the tenant’s allowed backends, the same rate limits, the same semantic cache (classify the identical contig twice and the second is served from cache), and the same structured event record. The AI does not get a private door to the quantum resource.</li>
+<li><strong>The same contract discipline.</strong> As with assembly’s “reconstruction matches the optimum,” the AI stage publishes against a contract — the predicted label is checked against ground truth, and the trained model has to clear a held-out-accuracy floor before its output is accepted. A model that trained badly fails its contract rather than silently shipping a guess.</li>
+</ul>
+<p>There is a quieter payoff in that first bullet. Because the classification descriptor names the assembly stage as its source, the two stages are not just adjacent — they are <em>linked</em>, and the link is recorded. The provenance now reads as a chain: raw reads → the QAOA-assembled contig → the trained-VQC label, each step naming the one before it and the method that produced it. That is what lets you answer, after the fact, not only “what did the AI predict” but “what was it predicting <em>about</em>, and where did that come from” — the question that governance exists to keep answerable when a learned model sits in the middle of a pipeline.</p>
+<p>Run the full two-stage pipeline and the behaviour is exactly the union of the two stories: the assembly is admitted and executes, the trained classifier labels the contig and passes its contract, an identical resubmission is served from the cache, and a request for an unapproved backend is denied before it reaches the device. Two stages — one that solves a circuit, one that trains one — under a single, auditable control plane.</p>
+<h2 id="the-observation"><a class="header" href="#the-observation">The observation</a></h2>
+<p>Strip away the branding and PennyLane is a useful lens on where quantum computing is heading: hardware-agnostic, compiler-backed, autodifferentiation-native, and openly reproducible. It treats a quantum program as differentiable software that lives inside the ordinary machine-learning toolchain — and it exposes many different machines through one interface.</p>
+<p>That is what “quantum is becoming a software discipline” looks like when you write it in actual code. And taken across both parts, it is where the data-to-AI-to-quantum progression stops being a slogan. Part 1 showed that a quantum <em>optimisation</em> stage can be run like a governed production workflow. Part 2 showed that a <em>trained</em> quantum model slots into that same workflow under the same governance — that AI and quantum are not separate stories bolted together, but two stages of one optimisation loop, governed alike. The interesting frontier is not only making quantum circuits trainable; it is making the whole hybrid pipeline — optimiser and learner together — something you can operate, audit, and trust.</p>
+<p>A self-contained, runnable companion accompanies the series: the QuASeR QAOA chain, the trained VQC classifier, and the shared descriptor runtime and gateway. The default run exercises both stages of this Part 2 pipeline (<code>python3 governed_stage.py</code>); the Part 1 pipeline alone is <code>python3 governed_stage.py --stage1-only</code>.</p>
+<p>References:
+PennyLane (GitHub): <a href="https://github.com/PennyLaneAI/pennylane">https://github.com/PennyLaneAI/pennylane</a>
+PennyLane: <a href="https://pennylane.ai/">https://pennylane.ai/</a>
+QuASeR — Sarkar, Al-Ars, Bertels, <em>PLoS ONE</em> 16(4):e0249850 (2021): <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249850">https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0249850</a></p>
+<p>#QuantumComputing #PennyLane #QuantumMachineLearning #DifferentiableProgramming #QuantumSoftware #ControlPlane #AgenticDatasets #OpenSource</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="every-stage-reported-success.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="governed-quantum-pipeline-part-1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="every-stage-reported-success.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="governed-quantum-pipeline-part-1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

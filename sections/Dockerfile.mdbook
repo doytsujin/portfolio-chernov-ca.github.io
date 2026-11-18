@@ -1,0 +1,8 @@
+FROM docker.io/hollowman6/mdbook-pdf:latest
+
+# Install Rust and mdbook-mermaid
+RUN apt-get update && \
+    apt-get install -y curl build-essential git && \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
+    /root/.cargo/bin/cargo install mdbook-mermaid && \
+    ln -s /root/.cargo/bin/mdbook-mermaid /usr/local/bin/mdbook-mermaid

@@ -1,4 +1,4 @@
-.PHONY: build og clip varscope-clip gateway-clip check deploy deploy-dry serve help
+.PHONY: build papers articles orcid-check og clip varscope-clip gateway-clip check deploy deploy-dry serve help
 
 # --- deploy to the edge ---------------------------------------------------
 # Same Akamai/Linode node as chernov.ca, provisioned in dk-semantic-backend-host.
@@ -19,8 +19,27 @@ RSYNC_FLAGS := -az --delete --chmod=D755,F644 --exclude .git --exclude .keep --e
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-12s\033[0m %s\n", $$1, $$2}'
 
-build: ## Render content/*.json into docs/index.html
+build: papers ## Render content/*.json into docs/index.html
 	@python3 build.py
+
+# Writing and Papers are static pages beside the portfolio. Their output is
+# committed under docs/, so a normal build needs neither a container nor the
+# articles repository; only the papers list is regenerated, from its manifest.
+papers: ## Generate docs/papers/index.html from its template and manifest
+	@python3 scripts/generate-papers-index.py sections/papers/index.html sections/papers/papers.json docs/papers/index.html
+
+DOCKER      := $(shell command -v podman 2>/dev/null || echo docker)
+MDBOOK_IMAGE := mdbook-mermaid-image:local
+
+articles: ## Rebuild the articles book in a container into docs/articles
+	$(DOCKER) image exists $(MDBOOK_IMAGE) || $(DOCKER) build -t $(MDBOOK_IMAGE) -f sections/Dockerfile.mdbook sections
+	$(DOCKER) run --rm --entrypoint /bin/sh -v $(CURDIR)/sections/articles:/book:Z $(MDBOOK_IMAGE) \
+		-c "mdbook-mermaid install /book && mdbook build /book"
+	rm -rf docs/articles
+	cp -r sections/articles/book/html docs/articles
+
+orcid-check: ## Compare the papers page with the public ORCID record (needs network)
+	@python3 scripts/orcid-diff.py
 
 og: ## Re-render docs/og/*.png link-preview cards (needs Chrome; cards are committed)
 	@python3 make_og.py
@@ -80,6 +99,15 @@ check: ## Verify the payload before anything leaves this machine
 		|| { echo "refusing: no $(DIST)/CNAME -- GitHub Pages would drop the domain"; exit 1; }
 	@test -f "$(DIST)/og/site.png" \
 		|| { echo "refusing: no $(DIST)/og/site.png -- every link would preview blank"; exit 1; }
+	@test -f "$(DIST)/articles/index.html" \
+		|| { echo "refusing: no $(DIST)/articles/index.html -- Writing links to it"; exit 1; }
+	@test -f "$(DIST)/papers/index.html" \
+		|| { echo "refusing: no $(DIST)/papers/index.html -- Papers links to it"; exit 1; }
+	@# Papers are listed as abstracts and read at the publisher, so a PDF under
+	@# papers/ is a refusal rather than a warning.
+	@if find "$(DIST)/papers" -name '*.pdf' -print -quit | grep -q .; then \
+		echo "refusing: a PDF is staged under $(DIST)/papers -- that section is abstracts only"; exit 1; \
+	fi
 
 deploy: build ## Build and publish to the edge
 	@$(MAKE) check

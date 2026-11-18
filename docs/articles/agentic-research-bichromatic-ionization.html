@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Physics Reproducible by Agentic Construction - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="physics-reproducible-by-agentic-construction"><a class="header" href="#physics-reproducible-by-agentic-construction">Physics Reproducible by Agentic Construction</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-05-31. <a href="https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/">Read the original</a>.</em></p>
+<hr>
+<p><em>I once contributed to a paper — a piece of classic strong-field physics — on how an electron escapes an atom under a two-colour laser field. The physics still holds. What I want to revisit is not the result but the <strong>process</strong> — because the way I would build that same research today, as a governed and reproducible workflow, is completely different from the pen-and-paper way it was actually done. So this is an old result used as a worked example of an agentic research workflow: first what it says, then how I would build it now.</em></p>
+<p>Years ago, with two colleagues, I helped derive an analytical expression for the ionization of an atom in a bichromatic laser field — a fundamental frequency together with its second harmonic. The result generalized the well-known Keldysh formula to the two-colour case, and it showed something pleasing: adding the second harmonic, with the right phase and intensity, can sharply enhance ionization. Coherent control, on paper.</p>
+<p>I am not here to re-litigate the physics. I am here because the <em>process</em> is the interesting part now. So let me do two things — explain what the result actually says, and then rebuild it the way I now build research infrastructure: as an agentic, reproducible workflow rather than a derivation you have to re-read in order to trust.</p>
+<h2 id="what-the-result-is-about"><a class="header" href="#what-the-result-is-about">What the result is about</a></h2>
+<p>Start with a bound electron sitting in the potential well of an atom. Shine an intense laser on it and something counter-intuitive becomes possible: the electron can <em>tunnel</em> out. The oscillating electric field, added to the atom’s own potential, bends the wall that holds the electron in — far enough, for long enough, that there is a finite probability of escape. And because the field oscillates in time, that wall is not static. It breathes, rising and falling each optical cycle.</p>
+<p>Whether “tunnelling” is even the right picture is governed by a single dimensionless number: the <strong>Keldysh adiabaticity parameter</strong> <code>γ</code>. When <code>γ</code> is small, the field changes slowly compared with the time the electron needs to cross the barrier, and the process really does look like tunnelling through a quasi-static wall. When <code>γ</code> is large, the wall flickers too fast for that picture, and ionization is better described as the simultaneous absorption of many photons. The strength of the Keldysh framework is that one expression bridges both regimes.</p>
+<p>Now make the field <strong>two-colour</strong>: a strong fundamental at frequency <code>ω</code> plus its second harmonic at <code>2ω</code>, with a relative strength <code>α = E₂/E₁</code> and a controllable relative phase. The second harmonic breaks the symmetry of the field — it makes one half-cycle push harder than the other — and that asymmetry is a knob you can turn. Using the <strong>imaginary-time method</strong> (a standard technique for tunnelling problems, in which the electron’s path under the barrier is followed in imaginary time), we derived the escape probability in the form</p>
+<p><code>D = exp(−(q²/ω)·F(γ, α))</code>,</p>
+<p>where <code>F</code> is a “tunnelling exponent” that carries all of the physics and the under-barrier time is fixed by a transcendental equation. The smaller <code>F</code> is, the larger the ionization probability <code>D</code>.</p>
+<p>Any result of this kind has to respect its limits, and checking them is half the work:</p>
+<ul>
+<li>with the second harmonic switched off (<code>α → 0</code>), <code>F</code> must collapse back to the original monochromatic Keldysh result — and it does;</li>
+<li>in the strong-field, slowly varying limit (small <code>γ</code>) it must reproduce the familiar static-field tunnelling exponent — and it does;</li>
+<li>and in between, the second harmonic interferes constructively and <em>lowers</em> <code>F</code>, which <em>raises</em> the ionization probability. That enhancement — coherent control of ionization by a second colour — was the point of the paper.</li>
+</ul>
+<p><img src="agentic-research-bichromatic-ionization/physics_figure.webp" alt="How the result works: a bound electron tunnels out of an atom through the barrier formed by its potential and a two-colour (ω + 2ω) field; the second harmonic breaks the field’s symmetry and, in the right regime, lowers the tunnelling exponent F so the ionization probability D rises, reducing to the monochromatic Keldysh limit as α → 0."></p>
+<h2 id="where-this-physics-is-put-to-work-today"><a class="header" href="#where-this-physics-is-put-to-work-today">Where this physics is put to work today</a></h2>
+<p>It would be easy to read all of this as a museum piece. It is not. The specific move at the heart of the result — <em>shaping a laser field out of two colours to control how an atom ionizes</em> — turns out to be one of the central tools of modern ultrafast and strong-field physics. A few of the places it shows up:</p>
+<ul>
+<li><strong>Attosecond science and high-harmonic generation.</strong> Tunnelling ionization is the <em>first</em> step of high-harmonic generation: an electron is freed, driven back by the oscillating field, and recombines, emitting a burst of extreme-ultraviolet light. Two-colour <code>ω + 2ω</code> fields — exactly the bichromatic configuration here — are a standard way to break the field’s sub-cycle symmetry, steer that recollision, and carve out the <em>isolated attosecond pulses</em> that let us film electron motion in real time. The relative phase between the two colours is the control knob.</li>
+<li><strong>Terahertz generation from two-colour plasmas.</strong> Focus a fundamental and its second harmonic together into a gas, and the asymmetric field drives a net electron drift current as it ionizes — and that current radiates intense, broadband terahertz light. The <code>ω + 2ω</code> asymmetry that <em>enhances</em> ionization in this result is the very same asymmetry that makes two-colour air plasma one of the most widely used table-top THz sources, with uses from spectroscopy to security imaging.</li>
+<li><strong>Imaging molecules with their own electrons.</strong> Because tunnelling ionization is so sensitive to the field and to the orbital the electron leaves from, it has become a <em>probe</em>: laser-induced electron diffraction and high-harmonic spectroscopy use the ionized-then-returning electron to read out molecular structure and watch bonds rearrange on femtosecond-to-attosecond timescales. The Keldysh framework that this result extends is still the language those measurements are interpreted in.</li>
+<li><strong>Coherent control, more broadly.</strong> The underlying principle — that interference between two driving pathways (here <code>ω</code> and <code>2ω</code>) controls the outcome of a quantum process — is the same idea behind coherent control of photoionization, and even of chemical reactions: tune a phase, and you bias where the electron goes or which channel opens. Directional control of photoelectron emission with <code>ω + 2ω</code> fields is now a routine diagnostic.</li>
+<li><strong>Lightwave electronics.</strong> At the frontier, the same ability to steer electrons with a tailored optical field, faster than a single cycle of light, is what “petahertz” or lightwave electronics is built on — driving and reading ultrafast currents in gases and solids with shaped fields. Two-colour control of ionization is one of the simplest members of that family.</li>
+</ul>
+<p>None of this depends on the particular formula we derived; the point is that the <em>physics it describes</em> — adiabaticity, tunnelling, and two-colour coherent control of ionization — is alive and applied. A result that looked, at the time, like a clean analytical curiosity sits upstream of attosecond metrology, table-top THz sources, and molecular movies.</p>
+<h2 id="how-that-research-happened--and-what-was-left-implicit"><a class="header" href="#how-that-research-happened--and-what-was-left-implicit">How that research happened — and what was left implicit</a></h2>
+<p>At the time, this was pen-and-paper work. The derivation <em>was</em> the artifact. The limiting cases were our tests, but we ran them in our heads and wrote them up in prose. Reproducibility lived in the printed equations: if you wanted to check the result, you re-did the algebra. Provenance was the reference list. There was no shared code, no dataset, no environment to re-run — and that was completely normal. A good analytical paper was exactly this.</p>
+<p>It worked. But notice what was <em>implicit</em>. The assumptions — a single active electron, a particular relative phase, a short-range approximation that ignores the Coulomb tail — together with the checks and the chain from equation to number, all lived in the prose and in our heads. Nothing carried them but the paper itself. If a number was wrong, or an assumption mattered more than we thought, nothing would <em>tell</em> you. You had to already know.</p>
+<h2 id="the-same-result-today-as-an-agentic-workflow"><a class="header" href="#the-same-result-today-as-an-agentic-workflow">The same result, today, as an agentic workflow</a></h2>
+<p>So I rebuilt the result — not to improve the physics, but to run it the way I now build research infrastructure. The organizing idea is the <strong>agentic dataset</strong>: instead of a result being an inert number in a table, it is data that carries its own context and can take part in its own validation.</p>
+<p>Concretely, the reproduced result carries four things:</p>
+<ul>
+<li>a <strong>descriptor</strong> — what it is, the schema of its outputs, and the assumptions that were once implicit, now written down explicitly;</li>
+<li>a <strong>contract</strong> — the guarantees the result must satisfy to count as valid at all;</li>
+<li><strong>provenance</strong> — a content hash of the data together with a fingerprint of the exact code that produced it, so any stored number can be traced back to the computation that made it;</li>
+<li><strong>triggers</strong> — conditions that fire automatically: change the parameter grid and the contract re-runs, because stale data should never pass silently.</li>
+</ul>
+<p>Those four are not independent labels; they interlock, and that is what makes the dataset <em>active</em> rather than passive. The descriptor is what makes the once-implicit assumptions <strong>addressable</strong> — “single active electron”, “zero relative phase”, “short-range potential” become named fields you can point at, not caveats buried in a paragraph. The contract is what turns the descriptor’s promises into something a machine can check, and it travels <em>with</em> the data, so the guarantees are not a separate test file someone has to remember to run. Provenance is what lets a <em>downstream</em> result notice it has gone stale: a content hash that no longer matches is a signal, not just a receipt. And triggers are what close the loop, so the dataset can ask to be re-validated when its inputs move, refuse to be used outside the range its contract actually covers, and tell whatever depends on it that it now needs to relearn. The shift is small to state and large in consequence — from a number you have to remember the caveats for, to data that carries and <em>enforces</em> its own caveats. A dataset that knows its own schema, limits, and lineage can be validated, audited, and refused automatically, instead of relying on whoever happens to be running the pipeline to remember the rules.</p>
+<p>The limiting cases we once checked in our heads become <strong>executable contracts</strong> — and they double as the test suite:</p>
+<ul>
+<li><code>α → 0</code> reproduces the Keldysh function <code>f(γ)</code> to machine precision (10⁻¹⁶);</li>
+<li>the small-<code>γ</code> static-field limit converges to its known value;</li>
+<li>the second harmonic lowers <code>F</code>, so the ionization probability <code>D</code> rises — in the demo, by a factor of about 10⁷ as <code>α</code> goes from 0 to 1;</li>
+<li>and every stored number is re-derivable from the pinned code, exactly.</li>
+</ul>
+<p>The computation itself runs as a staged <strong>pipe</strong> — <code>ground → compute → validate → record</code>. <em>Ground</em> fixes the inputs and assumptions; <em>compute</em> evaluates the physics; <em>validate</em> runs the contracts; <em>record</em> emits a provenance artifact alongside the output. The stages are explicit and ordered for the same reason a build pipeline is: each one has a defined job, and the result is “published” only once it has passed validation. None of that is specific to physics — it is the same descriptor / contract / provenance / pipe pattern I use for sprawling enterprise data, here applied to a classic, decades-old equation.</p>
+<p><img src="agentic-research-bichromatic-ionization/agentic_workflow.webp" alt="The agentic workflow: the original result is wrapped as an agentic dataset (descriptor, contract, provenance, triggers) and run through a staged pipe — ground → compute → validate → record — where the paper’s limiting cases become executable contracts that double as CI tests, and the run emits a provenance artifact alongside the regenerated figure."></p>
+<p>The payoff is concrete. The figure below is produced <em>by</em> the workflow — it is not pasted in. Re-run the pipe and the figure, the numbers, and the provenance artifact regenerate together, each stamped with the code fingerprint that made them.</p>
+<p><img src="agentic-research-bichromatic-ionization/bichromatic_demo.webp" alt="The original result, reproduced and contract-checked by the workflow. Left: the computed exponent F(γ, α=0) lands exactly on the reference Keldysh curve. Right: switching on the second harmonic raises the ionization probability D across the Keldysh range."></p>
+<p>The demo itself is small — the physics, an agentic-dataset wrapper, the contracts, and the pipe, with the contracts doubling as CI tests. The interesting part isn’t the lines of code. It’s that the result now travels with the evidence that it is correct.</p>
+<h3 id="could-an-llm-agent-help-here"><a class="header" href="#could-an-llm-agent-help-here">Could an LLM agent help here?</a></h3>
+<p>Worth being precise: there is no language model anywhere in this demo. The “agent” that drives the pipe is a small deterministic controller — it evaluates policies and records what happened, and nothing about it is intelligent. But it is fair to ask where an LLM-based agent <em>would</em> genuinely earn its place in a workflow like this, because the honest answer is “in a few specific spots, and always behind the contracts.”</p>
+<p>The natural ones are all drafting and triage — the bookkeeping, not the judgment:</p>
+<ul>
+<li><strong>Writing the descriptor from the prose.</strong> The assumptions that were implicit in the original paper are exactly the sort of thing a language model is good at surfacing: read the derivation, propose the schema and the list of assumptions, and hand a physicist a <em>draft</em> descriptor to correct rather than a blank form to fill in.</li>
+<li><strong>Proposing the contracts.</strong> The limiting cases are stated, in words, in the paper — “it must reduce to Keldysh as <code>α → 0</code>.” An LLM can turn those sentences into <em>candidate</em> executable checks, which a human approves before they ever become gates.</li>
+<li><strong>Explaining a failure.</strong> When a contract trips, an agent that can read the telemetry and the provenance can draft a diagnosis — “the small-<code>γ</code> check drifted after the grid changed; suspect the under-barrier solver tolerance” — and shorten the loop from <em>red</em> to <em>understood</em>.</li>
+<li><strong>A natural-language way in.</strong> “What assumptions does this result rest on? Is it still valid at <code>γ = 2</code>?” is answerable straight from the descriptor and the contracts; an LLM is a reasonable interface to that — <em>as long as it answers from the governed artifacts, not from its own memory.</em></li>
+</ul>
+<p>The thread through all of those is a single rule: the LLM <strong>proposes; the control plane disposes.</strong> Its descriptor draft is still validated, its suggested contract still has to be approved and then actually pass, its failure diagnosis is a hypothesis the checks confirm or refute. And that is the quietly useful part — the agentic-dataset machinery is exactly what you need to keep a probabilistic assistant honest. A language model is fluent and confident and sometimes wrong; contracts, provenance, and triggers are precisely the apparatus that lets you accept its <em>speed</em> without trusting its <em>say-so</em>. You let it draft, and you let the executable checks decide. That division of labour — LLM for the language, contracts for the truth — is the same one the next section draws for automation in general.</p>
+<h2 id="where-agents-help--and-where-they-dont"><a class="header" href="#where-agents-help--and-where-they-dont">Where agents help — and where they don’t</a></h2>
+<p>I want to be careful here, because this is where the hype usually goes wrong. Automation and AI agents are very good at the bookkeeping: carrying the derivation, running the checks, hashing the provenance, regenerating the figure when an input changes. They are <em>not</em> the ones who decide that a single-active-electron model is the right idealization, or that the constructive-interference regime is the physically interesting one, or that the result is worth believing. That judgment is still the physicist’s.</p>
+<p>This is the same point I keep coming back to: the tool does not remove the need to understand the problem. It removes the excuse for the problem to be irreproducible.</p>
+<h2 id="the-systems-takeaway"><a class="header" href="#the-systems-takeaway">The systems takeaway</a></h2>
+<p>A classic result, reproducible only by re-reading the algebra. The same result today — described, contract-checked, provenance-stamped, and re-runnable by anyone. The physics did not change. What changed is that the <em>process</em> became an infrastructure question, exactly the shift from data, to AI, to governed scientific workflows that I keep writing about.</p>
+<p>That is what I mean by agentic research workflows: datasets that carry their own contracts and provenance, pipelines that validate themselves, and results that arrive with their evidence attached. The derivation was finished long ago. The reproducibility is what I would build today.</p>
+<p>#AgenticAI #ResearchInfrastructure #ReproducibleResearch #ComputationalPhysics #DataEngineering #ScientificComputing #Provenance #QuantumControl</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="governed-quantum-pipeline-part-1.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="quantum-enabled-biology.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="governed-quantum-pipeline-part-1.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="quantum-enabled-biology.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

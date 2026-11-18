@@ -13,17 +13,49 @@ returns 404.
 ## Build
 
 ```sh
-make build      # render content/*.json -> docs/
+make build      # render content/*.json -> docs/ (runs `make papers` first)
 make og         # re-render the link-preview cards (needs Chrome)
 make serve      # build, then serve docs/ on 127.0.0.1:8000
+make papers     # sections/papers/ -> docs/papers/index.html
+make articles   # rebuild the articles book into docs/articles/ (podman)
+make orcid-check  # compare the papers list with the public ORCID record
 ```
 
 `build.py` is standard library only. There is no framework, no bundler and no
 install step: the output is self-contained HTML plus the images it references.
 
-    docs/index.html      the whole portfolio
-    docs/p/<slug>.html   one page per project
-    docs/og/<slug>.png   its 1200x630 link-preview card
+    docs/index.html            the whole portfolio
+    docs/p/<slug>.html         one page per project
+    docs/og/<slug>.png         its 1200x630 link-preview card
+    docs/featured/<name>.html  the web version of a Featured PDF
+    docs/featured/<name>.pdf   the PDF itself
+    docs/articles/             Writing: reprints of the LinkedIn articles (mdBook)
+    docs/papers/index.html     Papers: abstracts of the published papers
+
+## Writing and Papers
+
+Both moved here from chernov.ca in November 2026; chernov.ca redirects its old
+addresses. Their output is committed under `docs/`, so a normal build needs
+neither a container nor the articles repository.
+
+Adding an article: add it to `sections/articles/articles.json`, run
+`scripts/import-articles.py <articles checkout>` (it copies the Markdown and
+re-encodes the images into `sections/articles/src/`), then `make articles`,
+then add the entry to `content/articles.json` and `make build`.
+
+Adding a paper: `sections/papers/papers.json`, then `make build`. `make check`
+refuses a PDF under `docs/papers/`: that page lists abstracts, and the papers
+are read at the publisher.
+
+## Featured documents
+
+Three PDF carousels, Projects, Publications and Writing, are rendered by the
+LinkedIn profile kit and copied here by its export step: the PDFs to
+`docs/featured/`, the data they were rendered from and a manifest to
+`content/featured/`, and each cover page to `docs/img/featured/`. `build.py`
+renders a web version of each from that same data, and refuses to build when
+the data or the PDF is not the one the manifest records, or when a page lists
+other entries or links than its data.
 
 ## Two hostnames, one canonical
 

@@ -3,3 +3,6 @@ __pycache__/
 .DS_Store
 image-src/
 image-prompts/redact.local.json
+
+# mdBook output; `make articles` copies it into docs/articles
+sections/articles/book

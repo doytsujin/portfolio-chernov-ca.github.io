@@ -1,0 +1,415 @@
+[
+ {
+  "slug": "agentic-datasets",
+  "tag": "Research",
+  "period": "2025 – present",
+  "name": "Agentic Datasets",
+  "desc": "A machine-readable contract for what agents can do with a dataset",
+  "links": [
+   {
+    "label": "agenticdatasets.org",
+    "url": "https://agenticdatasets.org"
+   },
+   {
+    "label": "Live showcases",
+    "url": "https://agenticdatasets.org/showcase/"
+   },
+   {
+    "label": "Reference implementation",
+    "url": "https://github.com/agentic-datasets/reference"
+   }
+  ]
+ },
+ {
+  "slug": "per-task-admission-control",
+  "tag": "Research",
+  "period": "2025 – present",
+  "name": "Per-task admission control for genomics pipelines",
+  "desc": "A gate that decides, for every task in a bioinformatics pipeline, whether it may run — and records why either way.",
+  "links": [
+   {
+    "label": "Zenodo 10.5281/zenodo.22016112",
+    "url": "https://doi.org/10.5281/zenodo.22016112"
+   },
+   {
+    "label": "ok-nfcore-admission-gate",
+    "url": "https://github.com/doytsujin/ok-nfcore-admission-gate"
+   }
+  ]
+ },
+ {
+  "slug": "croissant-policy-profile",
+  "tag": "Research",
+  "period": "2025 – present",
+  "name": "A policy profile for Croissant, the MLCommons dataset descriptor",
+  "desc": "Croissant can write down data-use conditions. No version of it specifies how any of them is evaluated.",
+  "links": [
+   {
+    "label": "Zenodo 10.5281/zenodo.22018156",
+    "url": "https://doi.org/10.5281/zenodo.22018156"
+   },
+   {
+    "label": "w3id.org/croissant-policy/0.1.0",
+    "url": "https://w3id.org/croissant-policy/0.1.0"
+   },
+   {
+    "label": "ok-croissant-policy-profile",
+    "url": "https://github.com/doytsujin/ok-croissant-policy-profile"
+   }
+  ]
+ },
+ {
+  "slug": "selective-visual-inference",
+  "tag": "Research",
+  "period": "2025 – present",
+  "name": "Selective visual inference with observable decisions",
+  "desc": "The descriptor decides whether to look again — and the decision, not only the detection, is what gets recorded.",
+  "links": [
+   {
+    "label": "vision.agenticdatasets.org",
+    "url": "https://vision.agenticdatasets.org"
+   }
+  ]
+ },
+ {
+  "slug": "certified-reuse-quantum",
+  "tag": "Research",
+  "period": "2025 – present",
+  "name": "Certified reuse of quantum results, with refusal as a visible outcome",
+  "desc": "A variational quantum algorithm resubmits nearly the same circuit over and over. Whether the previous answer may be reused is a decision someone has to be able to audit.",
+  "links": [
+   {
+    "label": "qubit.agenticdatasets.org",
+    "url": "https://qubit.agenticdatasets.org"
+   },
+   {
+    "label": "BOF-2099 session page",
+    "url": "https://qubit.agenticdatasets.org/bof/"
+   },
+   {
+    "label": "ok-quantum-biology-demos",
+    "url": "https://github.com/doytsujin/ok-quantum-biology-demos"
+   }
+  ]
+ },
+ {
+  "slug": "agent-scope",
+  "tag": "Product",
+  "period": "2026 – present",
+  "name": "Agent Scope",
+  "desc": "A live map of agents, policies and the gate they must pass",
+  "links": [
+   {
+    "label": "agentscope.ca",
+    "url": "https://agentscope.ca"
+   },
+   {
+    "label": "Agent Scope on LinkedIn",
+    "url": "https://www.linkedin.com/company/agentscope-ca/"
+   },
+   {
+    "label": "@agent-scope-ca/graph-canvas",
+    "url": "https://www.npmjs.com/package/@agent-scope-ca/graph-canvas"
+   }
+  ]
+ },
+ {
+  "slug": "grafferene",
+  "tag": "Product",
+  "period": "2026 – present",
+  "name": "Grafferene",
+  "desc": "Measure what a response cache would save before it serves an answer",
+  "links": [
+   {
+    "label": "grafferene.ca",
+    "url": "https://grafferene.ca"
+   },
+   {
+    "label": "demo.grafferene.ca",
+    "url": "https://demo.grafferene.ca"
+   },
+   {
+    "label": "Sample report",
+    "url": "https://grafferene.ca/report.html"
+   }
+  ]
+ },
+ {
+  "slug": "agentic-crawl",
+  "tag": "Product",
+  "period": "2026 – present",
+  "name": "Agentic Crawl",
+  "desc": "Collect what a goal needs from the web, and nothing the sites’ rules forbid",
+  "links": [
+   {
+    "label": "agenticcrawl.ca",
+    "url": "https://agenticcrawl.ca"
+   },
+   {
+    "label": "demo.agenticcrawl.ca",
+    "url": "https://demo.agenticcrawl.ca"
+   },
+   {
+    "label": "All results, goal by goal",
+    "url": "https://agenticcrawl.ca/results.html"
+   }
+  ]
+ },
+ {
+  "slug": "adam",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "adam",
+  "desc": "AI-written ADaM derivations, accepted only on an exact match",
+  "links": [
+   {
+    "label": "adam.chernov.ca",
+    "url": "https://adam.chernov.ca"
+   },
+   {
+    "label": "demo.adam.chernov.ca",
+    "url": "https://demo.adam.chernov.ca"
+   },
+   {
+    "label": "Results and limits",
+    "url": "https://adam.chernov.ca/#results"
+   }
+  ]
+ },
+ {
+  "slug": "agentic-loom",
+  "tag": "Product",
+  "period": "2026 – present",
+  "name": "Agentic Loom",
+  "desc": "Governed batch recipes in which every step is admitted before it runs",
+  "links": [
+   {
+    "label": "agenticloom.ca",
+    "url": "https://agenticloom.ca"
+   },
+   {
+    "label": "Standards: what is built and what is not yet",
+    "url": "https://agenticloom.ca/#standards"
+   },
+   {
+    "label": "What has been measured",
+    "url": "https://agenticloom.ca/#evidence"
+   }
+  ]
+ },
+ {
+  "slug": "agentic-delivery",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Agentic Delivery",
+  "desc": "Governed software delivery in which agents propose and a gate decides",
+  "links": [
+   {
+    "label": "agenticdelivery.ca",
+    "url": "https://agenticdelivery.ca"
+   },
+   {
+    "label": "Every case, measured",
+    "url": "https://agenticdelivery.ca/#build"
+   },
+   {
+    "label": "The limits, stated",
+    "url": "https://agenticdelivery.ca/#limits"
+   }
+  ]
+ },
+ {
+  "slug": "agentic-lims",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Agentic LIMS",
+  "desc": "Lab data that carries its lineage and decides its own use",
+  "links": [
+   {
+    "label": "agenticlims.ca",
+    "url": "https://agenticlims.ca"
+   },
+   {
+    "label": "Decided: the gate and the person",
+    "url": "https://agenticlims.ca/#decided"
+   },
+   {
+    "label": "The limits, stated",
+    "url": "https://agenticlims.ca/#limits"
+   }
+  ]
+ },
+ {
+  "slug": "system-one",
+  "tag": "Research",
+  "period": "2026 – present",
+  "name": "System One",
+  "desc": "A small trained model that judges dataset requests",
+  "links": [
+   {
+    "label": "model.brainapi.org",
+    "url": "https://model.brainapi.org"
+   },
+   {
+    "label": "Results note and carousel: Zenodo 10.5281/zenodo.23586629",
+    "url": "https://doi.org/10.5281/zenodo.23586629"
+   },
+   {
+    "label": "brainapi.org",
+    "url": "https://brainapi.org"
+   }
+  ]
+ },
+ {
+  "slug": "massive-gpu",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Massive GPU",
+  "desc": "A simulated fleet with a real control path",
+  "links": [
+   {
+    "label": "massivegpu.ca",
+    "url": "https://massivegpu.ca"
+   },
+   {
+    "label": "Agent Scope",
+    "url": "https://agentscope.ca"
+   },
+   {
+    "label": "Demo video: Zenodo 10.5281/zenodo.23890436",
+    "url": "https://doi.org/10.5281/zenodo.23890436"
+   }
+  ]
+ },
+ {
+  "slug": "semantic-gateway-demo",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Semantic Gateway demo",
+  "desc": "One data estate behind one policy gate",
+  "links": [
+   {
+    "label": "semanticgateway.ca",
+    "url": "https://semanticgateway.ca"
+   },
+   {
+    "label": "pdf.semanticgateway.ca",
+    "url": "https://pdf.semanticgateway.ca"
+   },
+   {
+    "label": "Agent Scope",
+    "url": "https://agentscope.ca"
+   }
+  ]
+ },
+ {
+  "slug": "semantic-gateway-pdfs-demo",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Semantic Gateway for PDFs",
+  "desc": "Every value where it stands on its page",
+  "links": [
+   {
+    "label": "pdf.semanticgateway.ca",
+    "url": "https://pdf.semanticgateway.ca"
+   },
+   {
+    "label": "semanticgateway.ca",
+    "url": "https://semanticgateway.ca"
+   },
+   {
+    "label": "Agent Scope",
+    "url": "https://agentscope.ca"
+   }
+  ]
+ },
+ {
+  "slug": "agent-scope-gene-agents",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Gene agents",
+  "desc": "Clinical evidence decided under each agent’s own policy, with a gated quantum step",
+  "links": [
+   {
+    "label": "genequbit.agentscope.ca",
+    "url": "https://genequbit.agentscope.ca"
+   },
+   {
+    "label": "Agent Scope",
+    "url": "https://agentscope.ca"
+   },
+   {
+    "label": "Demo video: Zenodo 10.5281/zenodo.23006165",
+    "url": "https://doi.org/10.5281/zenodo.23006165"
+   }
+  ]
+ },
+ {
+  "slug": "agent-scope-ops-agent",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Ops agent",
+  "desc": "Orders in chat, decided by a gate and read back from a live cluster",
+  "links": [
+   {
+    "label": "infra.agentscope.ca",
+    "url": "https://infra.agentscope.ca"
+   },
+   {
+    "label": "Agent Scope",
+    "url": "https://agentscope.ca"
+   },
+   {
+    "label": "Demo video: Zenodo 10.5281/zenodo.23006181",
+    "url": "https://doi.org/10.5281/zenodo.23006181"
+   }
+  ]
+ },
+ {
+  "slug": "pseudo",
+  "tag": "For fun",
+  "period": "2026 – present",
+  "name": "Pseudo",
+  "desc": "Coding practice in Python or in blocks, judged on cases the solver never sees",
+  "links": [
+   {
+    "label": "pseudo.chernov.ca",
+    "url": "https://pseudo.chernov.ca"
+   }
+  ]
+ },
+ {
+  "slug": "awaw-ai",
+  "tag": "Product",
+  "period": "2022 – present",
+  "name": "awaw.ai",
+  "desc": "Compact, governed AI that runs on hardware an enterprise already has",
+  "links": [
+   {
+    "label": "awaw.ai",
+    "url": "https://awaw.ai"
+   },
+   {
+    "label": "awaw.ai on LinkedIn",
+    "url": "https://www.linkedin.com/company/awaw-ai/"
+   }
+  ]
+ },
+ {
+  "slug": "agentic-doom",
+  "tag": "For fun",
+  "period": "2026 – present",
+  "name": "Agentic DOOM",
+  "desc": "A browser DOOM engine with monsters under contract and an agent view",
+  "links": [
+   {
+    "label": "agentarena.ca",
+    "url": "https://agentarena.ca"
+   },
+   {
+    "label": "Freedoom",
+    "url": "https://freedoom.github.io"
+   }
+  ]
+ }
+]

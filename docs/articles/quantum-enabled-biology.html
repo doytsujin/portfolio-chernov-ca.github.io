@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>From Data to AI to Quantum-Enabled Biology - Articles</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="favicon-8114d1fc.png">
+        <link rel="stylesheet" href="css/variables-8adf115d.css">
+        <link rel="stylesheet" href="css/general-2459343d.css">
+        <link rel="stylesheet" href="css/chrome-ae938929.css">
+        <link rel="stylesheet" href="css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "";
+            const default_light_theme = "light";
+            const default_dark_theme = "light";
+            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="toc-6606f40d.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Articles</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="from-data-to-ai-to-quantum-enabled-biology"><a class="header" href="#from-data-to-ai-to-quantum-enabled-biology">From Data to AI to Quantum-Enabled Biology</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-05-30. <a href="https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/">Read the original</a>.</em></p>
+<hr>
+<p>I’ve been looking at the work coming out of The University of Osaka’s <strong>Center for Quantum Information and Quantum Biology — QIQB</strong>.</p>
+<p>What caught my attention was less the quantum hardware itself than the broader research architecture around it. QIQB brings together several areas that are often discussed separately: quantum computing, quantum information devices, quantum communication and security, quantum measurement and sensing, and quantum biology.</p>
+<p>That combination matters because the future of quantum research goes beyond building better devices. It is equally about building the surrounding infrastructure that makes those devices useful: cloud access, software stacks, experiment control, data workflows, security, reproducibility, and interdisciplinary collaboration.</p>
+<p>It also points to a wider arc I want to trace here — the movement from data, to AI, to quantum-enabled biology — and why each step in that arc builds on the infrastructure beneath it rather than standing alone.</p>
+<p>QIQB: <a href="https://qiqb.osaka-u.ac.jp/en/">https://qiqb.osaka-u.ac.jp/en/</a></p>
+<p>Osaka University Quantum Computing Cloud: <a href="https://www.qiqb-cloud.jp/">https://www.qiqb-cloud.jp/</a></p>
+<p>OQTOPUS: <a href="https://oqtopus-team.github.io/">https://oqtopus-team.github.io/</a></p>
+<p><img src="quantum-enabled-biology/article_figure.webp" alt="An orchestrated scientific workflow in which usable data, governed AI, and accessible quantum infrastructure build on one another to advance reproducible biological discovery."></p>
+<h2 id="why-qiqb-stands-out"><a class="header" href="#why-qiqb-stands-out">Why QIQB Stands Out</a></h2>
+<p>Public sources point to several notable elements: QIQB’s six research areas, the OQTOPUS open-source quantum cloud stack, a QIQB quantum-cloud portal, and the July 2025 launch of a domestically developed superconducting quantum computer at QIQB.</p>
+<p>The striking part is that it shows quantum computing as more than a laboratory capability — it is becoming a platform capability.</p>
+<p>That distinction is important.</p>
+<p>A laboratory capability may demonstrate that a machine exists and can run experiments. A platform capability asks a bigger question:</p>
+<p>How can researchers, students, engineers, and application developers access, use, reproduce, govern, and integrate this capability into real scientific workflows?</p>
+<p>That is where the systems dimension begins.</p>
+<h2 id="from-quantum-hardware-to-quantum-infrastructure"><a class="header" href="#from-quantum-hardware-to-quantum-infrastructure">From Quantum Hardware to Quantum Infrastructure</a></h2>
+<p>The most visible part of quantum computing is usually the hardware: superconducting qubits, trapped ions, photonics, cryogenic systems, microwave control, optical control, error mitigation, and experimental stability.</p>
+<p>But hardware alone is not the full story.</p>
+<p>To make quantum systems useful across disciplines, we also need infrastructure around the hardware:</p>
+<ul>
+<li>cloud execution environments;</li>
+<li>open-source software stacks;</li>
+<li>scheduling and workload management;</li>
+<li>experiment control;</li>
+<li>compilers and transpilers;</li>
+<li>hybrid quantum-classical workflows;</li>
+<li>error mitigation;</li>
+<li>access control;</li>
+<li>provenance and auditability;</li>
+<li>reproducibility;</li>
+<li>integration with classical high-performance computing and data platforms.</li>
+</ul>
+<p>This is why the OQTOPUS direction is notable. An open-source stack for cloud-based quantum computers suggests that quantum computing is becoming as much a software, operations, and platform engineering discipline as a physics and hardware challenge.</p>
+<p>That is a major shift.</p>
+<p>OQTOPUS also does not stand alone. It joins a growing ecosystem of frameworks for actually writing and running quantum programs: IBM’s Qiskit, Google’s Cirq, and Xanadu’s PennyLane for hybrid quantum-classical and quantum machine learning, alongside managed cloud services such as Amazon Braket and Microsoft Azure Quantum that expose several hardware backends behind a single interface. The fact that a researcher today reaches first for a software development kit, a transpiler, and a cloud endpoint — rather than a cryogenic lab — is itself a clear sign of how far quantum computing has moved toward a software and platform discipline.</p>
+<p>Qiskit (IBM): <a href="https://www.ibm.com/quantum/qiskit">https://www.ibm.com/quantum/qiskit</a></p>
+<p>Amazon Braket (AWS): <a href="https://aws.amazon.com/braket/">https://aws.amazon.com/braket/</a></p>
+<h2 id="how-data-ai-and-quantum-build-on-one-another"><a class="header" href="#how-data-ai-and-quantum-build-on-one-another">How Data, AI, and Quantum Build on One Another</a></h2>
+<p>One reason this topic interests me is that modern biology is increasingly becoming a data-intensive discipline.</p>
+<p>Genomics, proteomics, imaging, electronic health records, lab automation, molecular simulation, and biomedical literature all produce massive and heterogeneous data streams. The challenge is no longer collecting data. It is making that data usable, trustworthy, reproducible, and actionable.</p>
+<p>This is where AI has already changed the landscape.</p>
+<p>Machine learning and foundation models are being used to search literature, classify biomedical signals, analyze images, predict molecular properties, support drug discovery, and assist with biological interpretation.</p>
+<p>But AI systems also introduce new infrastructure requirements:</p>
+<ul>
+<li>data provenance;</li>
+<li>model governance;</li>
+<li>traceability;</li>
+<li>validation;</li>
+<li>monitoring;</li>
+<li>reproducibility;</li>
+<li>careful control over automated decisions.</li>
+</ul>
+<p>Quantum computing and quantum sensing add another layer to this evolution.</p>
+<p>In biology, quantum-related capabilities may become relevant through quantum chemistry, molecular simulation, nanoscale sensing, optimization, and hybrid quantum-classical workflows. These capabilities do not replace classical data platforms or AI systems. Instead, they may become specialized components inside larger scientific workflows.</p>
+<p>What makes this powerful is that the layers compound. Each one builds on the one before it. Usable, well-described data is what makes AI dependable. Governed AI is what makes a quantum resource worth pointing at a real biological question. And a reproducible workflow is what turns any single result into something other researchers can build on. The progression from data to AI to quantum is therefore additive, not a hand-off: data plus AI plus quantum adds up to capability that no single layer delivers on its own.</p>
+<p>That is why the connection from data to AI to quantum computing matters.</p>
+<p>The future research environment may not be a single model, a single database, or a single quantum computer. It may be an orchestrated scientific platform where biological datasets, AI models, simulation tools, quantum resources, lab instruments, and human researchers interact through governed workflows.</p>
+<p>In that kind of environment, infrastructure becomes central.</p>
+<p>We need systems that can answer practical questions:</p>
+<ul>
+<li>What data was used?</li>
+<li>Which model or simulation produced this result?</li>
+<li>Which assumptions were applied?</li>
+<li>Was a quantum resource used, and under what conditions?</li>
+<li>Can the result be reproduced?</li>
+<li>Was the workflow approved, monitored, and governed?</li>
+<li>Can another researcher understand the full chain from biological question to computational result?</li>
+</ul>
+<p>This is where I see a direct connection to intelligent control planes, dataset descriptors, provenance, and policy-governed scientific computation.</p>
+<p>Quantum biology may be an emerging field, but the data and infrastructure questions it raises are already familiar: how to make complex scientific workflows reliable, explainable, reusable, and trustworthy.</p>
+<h2 id="why-quantum-biology-is-a-careful-but-important-direction"><a class="header" href="#why-quantum-biology-is-a-careful-but-important-direction">Why Quantum Biology Is a Careful but Important Direction</a></h2>
+<p>Quantum biology should be discussed carefully.</p>
+<p>It should not be treated as a shortcut to claim that quantum computers are already transforming all biological research. That would be too sweeping.</p>
+<p>But the research direction is important.</p>
+<p>Biological systems involve molecular interactions, energy transfer, electronic structure, sensing, noise, and dynamics at very small scales. Some of these questions naturally touch quantum chemistry, quantum measurement, and nanoscale sensing.</p>
+<p>It is tempting to ask:</p>
+<p>Can quantum computers solve biology on their own?</p>
+<p>A more realistic and productive question is:</p>
+<p>How can quantum methods, quantum-inspired methods, quantum sensing, and high-quality computational infrastructure improve the way we study biological systems?</p>
+<p>That question connects quantum biology with computational biology, AI, data engineering, and scientific infrastructure.</p>
+<h2 id="the-canadian-context"><a class="header" href="#the-canadian-context">The Canadian Context</a></h2>
+<p>This topic is also relevant in Canada.</p>
+<p>The University of Waterloo’s <strong>Institute for Quantum Computing</strong> is one of Canada’s major quantum research hubs, bringing together science, mathematics, and engineering around quantum information science and technology.</p>
+<p>Institute for Quantum Computing, University of Waterloo: <a href="https://uwaterloo.ca/institute-for-quantum-computing/">https://uwaterloo.ca/institute-for-quantum-computing/</a></p>
+<p>The University of Toronto’s <strong>Centre for Quantum Information and Quantum Control</strong> is a second important Canadian reference point. It frames quantum research across physics, chemistry, mathematics, computer science, electrical engineering, and related disciplines.</p>
+<p>Centre for Quantum Information and Quantum Control, University of Toronto: <a href="https://cqiqc.physics.utoronto.ca/">https://cqiqc.physics.utoronto.ca/</a></p>
+<p>This matters because quantum research increasingly depends on interdisciplinary capacity. It spans far more than physics: computer science, electrical engineering, materials science, chemistry, mathematics, security, cloud infrastructure, and eventually domain-specific scientific applications.</p>
+<p>Canada’s expanding quantum ecosystem is well positioned for this kind of interdisciplinary work.</p>
+<h2 id="ieee-quantum-week--qce-2026-in-toronto"><a class="header" href="#ieee-quantum-week--qce-2026-in-toronto">IEEE Quantum Week / QCE 2026 in Toronto</a></h2>
+<p>A timely connection is <strong>IEEE Quantum Week 2026</strong>, also known as the <strong>IEEE International Conference on Quantum Computing and Engineering — QCE 2026</strong>.</p>
+<p>The 2026 event is scheduled for <strong>September 13–18, 2026</strong>, at the <strong>Metro Toronto Convention Centre</strong> in Toronto, Ontario, Canada.</p>
+<p>IEEE Quantum Week / QCE 2026: <a href="https://qce.quantum.ieee.org/2026/">https://qce.quantum.ieee.org/2026/</a></p>
+<p>What makes QCE compelling is that it sits exactly at the intersection implied by the name: quantum computing and engineering.</p>
+<p>That engineering dimension matters.</p>
+<p>As quantum systems mature, the field needs more than theoretical breakthroughs and hardware demonstrations. It needs practical engineering around:</p>
+<ul>
+<li>cloud access;</li>
+<li>software tooling;</li>
+<li>compilers and transpilers;</li>
+<li>hybrid quantum-classical workflows;</li>
+<li>benchmarking;</li>
+<li>education and workforce development;</li>
+<li>security;</li>
+<li>reliability;</li>
+<li>reproducibility;</li>
+<li>application integration.</li>
+</ul>
+<p>In other words, quantum computing is becoming a systems discipline.</p>
+<h2 id="the-systems-question"><a class="header" href="#the-systems-question">The Systems Question</a></h2>
+<p>For me, the most interesting part isn’t the quantum hardware itself.</p>
+<p>It is the systems question around it:</p>
+<p><strong>How do we make advanced scientific infrastructure accessible, observable, governable, and usable by researchers across disciplines?</strong></p>
+<p>That question applies to quantum computing, but also to computational biology, biomedical data platforms, AI-driven research workflows, and large-scale scientific data infrastructure.</p>
+<p>It connects directly to several themes I care about:</p>
+<ul>
+<li>reproducible computational biology workflows;</li>
+<li>policy-governed data pipelines;</li>
+<li>provenance and auditability;</li>
+<li>intelligent control planes for scientific computation;</li>
+<li>agentic research workflows;</li>
+<li>data products that can trigger validation, relearning, and analysis;</li>
+<li>infrastructure that is explainable enough to be trusted.</li>
+</ul>
+<p>This is why the QIQB example sticks with me.</p>
+<p>It is about more than a quantum computer. It is about the underlying pattern of scientific infrastructure becoming cloud-accessible, software-defined, interdisciplinary, and workflow-driven.</p>
+<h2 id="closing-thought"><a class="header" href="#closing-thought">Closing Thought</a></h2>
+<p>Quantum computing is often discussed as a future technology.</p>
+<p>But the infrastructure questions are already present now.</p>
+<p>Who can access these systems?
+How are experiments submitted and reproduced?
+How are results tracked?
+How are workflows governed?
+How do we connect quantum systems with classical computing, biomedical data, chemistry, sensing, and AI?</p>
+<p>These are not secondary questions. They are part of making quantum technology practically useful.</p>
+<p>That is why I will be watching QIQB, Canada’s quantum ecosystem, and IEEE Quantum Week / QCE 2026 with interest.</p>
+<p>Handled as one governed, reproducible system, data, AI, and quantum infrastructure stop being separate stories. They build on one another — a compounding advance for biology.</p>
+<p>#QuantumComputing #QuantumBiology #ScientificComputing #ComputationalBiology #ResearchInfrastructure #AI #DataEngineering #IEEEQuantumWeek #QCE2026 #CanadaQuantum #OpenSource</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="agentic-research-bichromatic-ionization.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="ai-new-calculator.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="agentic-research-bichromatic-ionization.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="ai-new-calculator.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr-ef4e11c1.min.js"></script>
+        <script src="mark-09e88c2c.min.js"></script>
+        <script src="searcher-c2a407aa.js"></script>
+
+        <script src="clipboard-1626706a.min.js"></script>
+        <script src="highlight-abc7f01d.js"></script>
+        <script src="book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="mermaid-eefea253.min.js"></script>
+        <script src="mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>

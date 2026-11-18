@@ -1,0 +1,71 @@
+{
+ "projects": {
+  "name": "Projects",
+  "hub": "https://portfolio.chernov.ca/",
+  "sub": "Live sites, demos, specifications and code.",
+  "stats": [
+   [
+    21,
+    "projects"
+   ],
+   [
+    6,
+    "research"
+   ],
+   [
+    5,
+    "product"
+   ],
+   [
+    8,
+    "live demo"
+   ],
+   [
+    2,
+    "for fun"
+   ]
+  ],
+  "pages": 9,
+  "entries": 21,
+  "pdf_sha256": "ac23cb7b31dd2b338dbd4140347799715d6ed4863b793ad3c7998a4dad83df22",
+  "data_sha256": "9210b0c6f3c3feb6301ad7edb6037827fe68097ebcc09626df1f2a1d4c33239f"
+ },
+ "publications": {
+  "name": "Publications",
+  "hub": "https://portfolio.chernov.ca/papers/",
+  "sub": "Conference and workshop papers, preprints, a report and a journal article.",
+  "stats": [
+   [
+    12,
+    "papers"
+   ],
+   [
+    10,
+    "published"
+   ],
+   [
+    2,
+    "accepted"
+   ]
+  ],
+  "pages": 8,
+  "entries": 12,
+  "pdf_sha256": "30207677e5f2f88875c3f50b3c393edf667962546740c3dc1ec694d55918ceed",
+  "data_sha256": "39fa778231102f098e55bfb05d860c0a967c4f7391d141d5d9ca08c855a3bf20"
+ },
+ "writing": {
+  "name": "Writing",
+  "hub": "https://portfolio.chernov.ca/articles/",
+  "sub": "Articles on LinkedIn, March to November 2026.",
+  "stats": [
+   [
+    20,
+    "articles"
+   ]
+  ],
+  "pages": 5,
+  "entries": 20,
+  "pdf_sha256": "c6ffa71834d8e392440f061430f2628a9f780196a2c453d80f531a01d01baf1d",
+  "data_sha256": "e1b6b7e1ffe93d698c9af77d6992480a84d327cacfeec09d45f1875497959fe7"
+ }
+}

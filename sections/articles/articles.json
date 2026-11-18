@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "from-protocols-to-control-planes",
+    "title": "From Protocols to Control Planes: What MCP Teaches Us About Building Agentic Systems at Scale",
+    "date": "2026-03-29",
+    "url": "https://www.linkedin.com/pulse/from-protocols-control-planes-what-mcp-teaches-us-building-chernov-qswse/"
+  },
+  {
+    "slug": "ai-new-calculator",
+    "title": "AI Amplifies People Who Know How to Think",
+    "date": "2026-05-10",
+    "url": "https://www.linkedin.com/pulse/ai-amplifies-people-who-know-how-think-alexander-chernov-qffpe/"
+  },
+  {
+    "slug": "quantum-enabled-biology",
+    "title": "From Data to AI to Quantum-Enabled Biology",
+    "date": "2026-05-30",
+    "url": "https://www.linkedin.com/pulse/from-data-ai-quantum-enabled-biology-alexander-chernov-p1jre/"
+  },
+  {
+    "slug": "agentic-research-bichromatic-ionization",
+    "title": "Physics Reproducible by Agentic Construction",
+    "date": "2026-05-31",
+    "url": "https://www.linkedin.com/pulse/physics-reproducible-construction-agentic-research-workflow-chernov-vdqee/"
+  },
+  {
+    "slug": "governed-quantum-pipeline-part-1",
+    "title": "Governing a Quantum Pipeline, Part 1",
+    "date": "2026-06-03",
+    "url": "https://www.linkedin.com/pulse/governing-quantum-pipeline-part-1-alexander-chernov-8s1ae/"
+  },
+  {
+    "slug": "governed-quantum-pipeline-part-2",
+    "title": "Governing a Quantum Pipeline, Part 2",
+    "date": "2026-06-06",
+    "url": "https://www.linkedin.com/pulse/governing-quantum-pipeline-part-2-alexander-chernov-3qfme/"
+  },
+  {
+    "slug": "should-you-argue-with-an-llm",
+    "title": "Should You Argue With an LLM?",
+    "date": "2026-08-22",
+    "url": "https://www.linkedin.com/pulse/should-you-argue-llm-alexander-chernov-qmqgc/"
+  },
+  {
+    "slug": "a-game-is-a-data-problem",
+    "title": "A Game Is a Data Problem: What Reimplementing an Engine Taught Me About Silent Contract Failure",
+    "date": "2026-08-23",
+    "url": "https://www.linkedin.com/pulse/game-data-problem-what-reimplementing-engine-taught-me-chernov-2smsc/"
+  },
+  {
+    "slug": "governed-motion",
+    "title": "From Governed Data to Governed Motion: A Control Plane for Biomedical Robots",
+    "date": "2026-08-25",
+    "url": "https://www.linkedin.com/pulse/from-governed-data-motion-control-plane-biomedical-robots-chernov-fblxc/"
+  },
+  {
+    "slug": "throughput-is-the-easy-part",
+    "title": "At 100,000 Devices, Throughput Is the Easy Part",
+    "date": "2026-08-31",
+    "url": "https://www.linkedin.com/pulse/100000-devices-throughput-easy-part-alexander-chernov-tz7bc/"
+  },
+  {
+    "slug": "nothing-fails-at-the-average",
+    "title": "At 100,000 Devices, Nothing Fails at the Average",
+    "date": "2026-09-01",
+    "url": "https://www.linkedin.com/pulse/100000-devices-nothing-fails-average-alexander-chernov-cdcec/"
+  },
+  {
+    "slug": "every-stage-reported-success",
+    "title": "Every Stage Reported Success. The Data Was Wrong.",
+    "date": "2026-08-16",
+    "url": "https://www.linkedin.com/pulse/every-stage-reported-success-data-wrong-alexander-chernov-yablc/"
+  },
+  {
+    "slug": "harmless-ai-not-the-model",
+    "title": "Harmless AI Is Not a Property of the Model",
+    "date": "2026-09-13",
+    "url": "https://www.linkedin.com/pulse/harmless-ai-property-model-alexander-chernov-b2aac/"
+  },
+  {
+    "slug": "machine-telemetry-part-1",
+    "title": "One Pipeline for Machines and People",
+    "date": "2026-10-06",
+    "url": "https://www.linkedin.com/pulse/one-pipeline-machines-people-alexander-chernov-dn9qc/"
+  },
+  {
+    "slug": "machine-telemetry-part-2",
+    "title": "How Much Telemetry Is Enough",
+    "date": "2026-10-09",
+    "url": "https://www.linkedin.com/pulse/how-much-telemetry-enough-alexander-chernov-n3xnc/"
+  },
+  {
+    "slug": "machine-telemetry-part-3",
+    "title": "What to Train on Telemetry",
+    "date": "2026-10-12",
+    "url": "https://www.linkedin.com/pulse/what-train-telemetry-alexander-chernov-b4eqc/"
+  },
+  {
+    "slug": "semantic-cache-governance",
+    "title": "The Semantic Cache Is Where Cost, Governance and Security Meet",
+    "date": "2026-10-15",
+    "url": "https://www.linkedin.com/pulse/semantic-cache-where-cost-governance-security-meet-alexander-chernov-p5vlc/"
+  },
+  {
+    "slug": "agents-propose-a-gate-decides",
+    "title": "Agents Propose, a Gate Decides: Governed Delivery for Agent-Written Software",
+    "date": "2026-10-24",
+    "url": "https://www.linkedin.com/pulse/agents-propose-gate-decides-governed-delivery-software-chernov-fi9cc/"
+  },
+  {
+    "slug": "scaling-agent-frameworks",
+    "title": "Scaling LangGraph, LlamaIndex, and CrewAI, Part 1: State and Recovery",
+    "date": "2026-11-06",
+    "url": "https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-1-state-recovery-chernov-msshc/"
+  },
+  {
+    "slug": "scaling-agent-frameworks-part-2",
+    "title": "Scaling LangGraph, LlamaIndex, and CrewAI, Part 2: Load, Inference, and Authorization",
+    "date": "2026-11-15",
+    "url": "https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-2-load-alexander-chernov-7g3sc/"
+  }
+]
