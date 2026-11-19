@@ -412,6 +412,8 @@ def render_talk(t: dict) -> str:
         for l in t.get("links", [])
     )
     flag = '<span class="tag">upcoming</span>' if t.get("upcoming") else ""
+    if t.get("status"):  # e.g. selected by the program committee but not presented
+        flag += f'<span class="tag">{esc(t["status"])}</span>'
     links_html = f'<span class="links inline">{links}</span>' if links else ""
     return (
         '<li class="entry">'
@@ -458,20 +460,23 @@ def render_artifact(a: dict) -> str:
 
 
 # --------------------------------------------------------------------------
-# Featured: web versions of the three PDF documents
+# Featured: web versions of the four PDF documents
 # --------------------------------------------------------------------------
 
 # The PDFs, the data they were rendered from and a manifest come from the
 # profile kit's export step; nothing here decides which entries appear. The
 # manifest carries both hashes, so a page rendered from other data than the
 # PDF beside it is refused rather than published under the same name.
-FEATURED = ("projects", "publications", "writing")
+FEATURED = ("projects", "publications", "talks", "writing")
 FEATURED_DIR = CONTENT / "featured"
 FEATURED_HUB_LABEL = {
     "projects": "Every project in full",
     "publications": "Abstracts",
+    "talks": "All talks and sessions",
     "writing": "All reprints",
 }
+FEATURED_NAV_LABEL = {"projects": "Projects", "publications": "Publications",
+                      "talks": "Tech Talks", "writing": "Writing"}
 
 
 def sha256_file(path: pathlib.Path) -> str:
@@ -552,6 +557,15 @@ def featured_entry(kind: str, x: dict) -> str:
             f'<p class="where">{esc(x["venue"])}</p><p>{esc(x["line"])}</p>{note}'
             f'{featured_links(x["links"])}</li>'
         )
+    if kind == "talks":
+        status = f'<span class="ftag">{esc(x["status"])}</span>' if x["status"] else "<span></span>"
+        first = x["links"][0]["url"]
+        return (
+            f'<li class="fcard"><p class="fmeta">{status}<span>{esc(x["date"])}</span></p>'
+            f'<h3><a class="self" href="{esc(first)}" target="_blank" rel="noopener noreferrer">'
+            f'{esc(x["title"])}</a></h3>'
+            f'<p class="where">{esc(x["venue"])}</p>{featured_links(x["links"])}</li>'
+        )
     return (
         f'<li class="fcard"><p class="fmeta"><span>{esc(us_date(x["date"]))}</span></p>'
         f'<h3><a class="self" href="../articles/{esc(x["slug"])}.html">{esc(x["title"])}</a></h3>'
@@ -583,8 +597,8 @@ def build_featured_page(kind: str, m: dict, rows: list[dict]) -> str:
     nav = featured_nav(kind, "")
     hub = m["hub"]
     hub_href = pre + hub[len(SITE) + 1:] if hub.startswith(SITE + "/") else hub
-    if hub_href == pre:
-        hub_href = f"{pre}index.html"
+    if hub_href == pre or hub_href.startswith(pre + "#"):  # the index itself, or a section of it
+        hub_href = f"{pre}index.html{hub_href[len(pre):]}"
     stats = " · ".join(f"{n} {esc(t)}" for n, t in m["stats"])
     size = (DOCS / "featured" / f"{kind}.pdf").stat().st_size
     entries = "".join(featured_entry(kind, x) for x in rows)
@@ -647,9 +661,9 @@ CLIPS_DIR = DOCS / "featured" / "clips"
 
 
 def featured_nav(current: str, pre: str) -> str:
-    """The Featured pages' own row: the three documents and the clips. `pre` reaches docs/featured/."""
+    """The Featured pages' own row: the four documents and the clips. `pre` reaches docs/featured/."""
     mark = ' aria-current="page"'
-    items = [(k, k.capitalize()) for k in FEATURED] + [("clips", "Clips")]
+    items = [(k, FEATURED_NAV_LABEL[k]) for k in FEATURED] + [("clips", "Clips")]
     return "".join(f'<a href="{pre}{k}.html"{mark if k == current else ""}>{esc(label)}</a>' for k, label in items)
 
 

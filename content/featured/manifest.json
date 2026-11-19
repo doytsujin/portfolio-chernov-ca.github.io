@@ -27,7 +27,7 @@
   ],
   "pages": 9,
   "entries": 21,
-  "pdf_sha256": "ac23cb7b31dd2b338dbd4140347799715d6ed4863b793ad3c7998a4dad83df22",
+  "pdf_sha256": "e8ab263ffa29edd3b3c9b3ee550fe19f6263fdea98e7c0e3260f343234c59f71",
   "data_sha256": "9210b0c6f3c3feb6301ad7edb6037827fe68097ebcc09626df1f2a1d4c33239f"
  },
  "publications": {
@@ -50,8 +50,31 @@
   ],
   "pages": 8,
   "entries": 12,
-  "pdf_sha256": "30207677e5f2f88875c3f50b3c393edf667962546740c3dc1ec694d55918ceed",
+  "pdf_sha256": "a8410bc105f64c56d55b5adc954b4426546ed3c1a0089be9030925a3a934143e",
   "data_sha256": "39fa778231102f098e55bfb05d860c0a967c4f7391d141d5d9ca08c855a3bf20"
+ },
+ "talks": {
+  "name": "Tech Talks",
+  "hub": "https://portfolio.chernov.ca/#talks",
+  "sub": "Conference and community talks, November 2025 to November 2026.",
+  "stats": [
+   [
+    10,
+    "talks"
+   ],
+   [
+    8,
+    "presented"
+   ],
+   [
+    2,
+    "selected, not presented"
+   ]
+  ],
+  "pages": 5,
+  "entries": 10,
+  "pdf_sha256": "997b37fbfa8a05d5b29cc3c75e8596a9726879803d20347cbeab01893d010995",
+  "data_sha256": "6ee620e5415bb27ed71cb55208bf3231bfe142018eedd20b5b097d66651358c1"
  },
  "writing": {
   "name": "Writing",
@@ -65,7 +88,7 @@
   ],
   "pages": 5,
   "entries": 20,
-  "pdf_sha256": "c6ffa71834d8e392440f061430f2628a9f780196a2c453d80f531a01d01baf1d",
+  "pdf_sha256": "7caac5556bf34921df518b409ae79825aff7c726cc1831afeaebba58b7e87631",
   "data_sha256": "e1b6b7e1ffe93d698c9af77d6992480a84d327cacfeec09d45f1875497959fe7"
  }
 }

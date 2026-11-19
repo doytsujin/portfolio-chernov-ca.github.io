@@ -1,0 +1,122 @@
+[
+ {
+  "title": "Agentic Datasets: Giving AI Agents More Autonomy Without Losing Control",
+  "venue": "AI+AI Toronto 2026 — the Agentic AI Summit",
+  "date": "November 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Slides",
+    "url": "https://doi.org/10.5281/zenodo.24202758"
+   }
+  ]
+ },
+ {
+  "title": "From ClickOps to GitOps",
+  "venue": "DynamicsCon Regional: Toronto",
+  "date": "June 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Making AI Systems Practical",
+  "venue": "Big Data & Analytics Summit Canada, Toronto",
+  "date": "June 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Building a Doom-Like World to Explore Agentic Systems",
+  "venue": "NDC Toronto 2026",
+  "date": "May 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "MCP Under Production Pressure: Designing Agentic Control Planes at Scale",
+  "venue": "MCP Dev Summit North America 2026, New York",
+  "date": "April 2026",
+  "status": "Selected, not presented",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "From Pipelines to Agents: Building Intelligent, Self-Managing Data Products on Kubernetes",
+  "venue": "Optimized AI Conference 2026, Atlanta",
+  "date": "March 2026",
+  "status": "Selected, not presented",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Simulated Worlds for Agent Engineering",
+  "venue": "AgentCon 2026, Toronto",
+  "date": "March 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Making Agents Practical",
+  "venue": "AgentCon 2026, Toronto",
+  "date": "March 2026",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Agentic Datasets",
+  "venue": "Cloud Native Meetup, Toronto",
+  "date": "December 2025",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ },
+ {
+  "title": "Agentic Datasets on AKS: Data Products with Active Workflows",
+  "venue": "AI Community Conference, Toronto",
+  "date": "November 2025",
+  "status": "",
+  "links": [
+   {
+    "label": "Listed at",
+    "url": "https://portfolio.chernov.ca/#talks"
+   }
+  ]
+ }
+]
