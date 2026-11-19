@@ -27,7 +27,7 @@
   ],
   "pages": 9,
   "entries": 21,
-  "pdf_sha256": "e8ab263ffa29edd3b3c9b3ee550fe19f6263fdea98e7c0e3260f343234c59f71",
+  "pdf_sha256": "a3a6a98e4111960ba618e78e07e825122ec40c44b7b859234540c0c090c5eaac",
   "data_sha256": "9210b0c6f3c3feb6301ad7edb6037827fe68097ebcc09626df1f2a1d4c33239f"
  },
  "publications": {
@@ -50,7 +50,7 @@
   ],
   "pages": 8,
   "entries": 12,
-  "pdf_sha256": "a8410bc105f64c56d55b5adc954b4426546ed3c1a0089be9030925a3a934143e",
+  "pdf_sha256": "cb18cc27207309d14b96d0661e850cf72a3ab0423f9c06478a6252cfdf31e4f7",
   "data_sha256": "39fa778231102f098e55bfb05d860c0a967c4f7391d141d5d9ca08c855a3bf20"
  },
  "talks": {
@@ -73,7 +73,7 @@
   ],
   "pages": 5,
   "entries": 10,
-  "pdf_sha256": "997b37fbfa8a05d5b29cc3c75e8596a9726879803d20347cbeab01893d010995",
+  "pdf_sha256": "da4af91a50f7d367e40212bf0501c0333f9e479ea0723b71c0d58566b211d2d4",
   "data_sha256": "6ee620e5415bb27ed71cb55208bf3231bfe142018eedd20b5b097d66651358c1"
  },
  "writing": {
@@ -88,7 +88,7 @@
   ],
   "pages": 5,
   "entries": 20,
-  "pdf_sha256": "7caac5556bf34921df518b409ae79825aff7c726cc1831afeaebba58b7e87631",
+  "pdf_sha256": "3b98e697bcfb5044b9def1baa903183fa3c29945d131d45c5c64ca68e2be75a1",
   "data_sha256": "e1b6b7e1ffe93d698c9af77d6992480a84d327cacfeec09d45f1875497959fe7"
  }
 }

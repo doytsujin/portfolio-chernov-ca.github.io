@@ -412,14 +412,14 @@ def render_talk(t: dict) -> str:
         for l in t.get("links", [])
     )
     flag = '<span class="tag">upcoming</span>' if t.get("upcoming") else ""
-    if t.get("status"):  # e.g. selected by the program committee but not presented
-        flag += f'<span class="tag">{esc(t["status"])}</span>'
+    # A note, not a warning: e.g. selected by the program committee but not presented.
+    note = f'<span class="snote">{esc(t["status"])}</span>' if t.get("status") else ""
     links_html = f'<span class="links inline">{links}</span>' if links else ""
     return (
         '<li class="entry">'
         f'<span class="when">{esc(t["date"])}{flag}</span>'
         f'<span class="what"><strong>{esc(t["title"])}</strong>'
-        f'<span class="where">{esc(t["venue"])}</span>{links_html}'
+        f'<span class="where">{esc(t["venue"])}</span>{note}{links_html}'
         "</span></li>"
     )
 
@@ -558,7 +558,7 @@ def featured_entry(kind: str, x: dict) -> str:
             f'{featured_links(x["links"])}</li>'
         )
     if kind == "talks":
-        status = f'<span class="ftag">{esc(x["status"])}</span>' if x["status"] else "<span></span>"
+        status = f'<span class="snote">{esc(x["status"])}</span>' if x["status"] else "<span></span>"
         first = x["links"][0]["url"]
         return (
             f'<li class="fcard"><p class="fmeta">{status}<span>{esc(x["date"])}</span></p>'
@@ -980,6 +980,8 @@ padding:clamp(1rem,2.5vw,1.4rem);margin-bottom:1rem;scroll-margin-top:1rem}
 .fmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;
 margin:0 0 .35rem;font-size:.8rem;color:var(--muted)}
 .ftag{color:var(--accent);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.snote{color:var(--muted);font-style:italic}
+.what .snote{display:block;font-size:.85rem;margin-top:.15rem}
 .fcard h3{margin:0 0 .4rem;font-size:clamp(1.05rem,2.3vw,1.3rem);line-height:1.3}
 .fcard p{margin:0 0 .45rem}
 .fcard .where{margin:0 0 .45rem}
