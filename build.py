@@ -714,7 +714,8 @@ def clip_entry(c: dict) -> str:
     first = c["captions"][0]
     return (
         f'<li class="fcard clip" id="{esc(s)}">'
-        f'<p class="fmeta"><span class="ftag">{round(c["seconds"])}-second clip</span><span>{esc(host(c["site"]))}</span></p>'
+        f'<p class="fmeta"><span class="ftag">{round(c["seconds"])}-second clip</span>'
+        f'<a class="fsite" href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a></p>'
         f'<h3><a class="self" href="clips/{esc(s)}.html">{esc(c["name"])}</a></h3>'
         f'<video class="clipv" src="clips/{esc(s)}.mp4" poster="clips/{esc(s)}.jpg" controls muted playsinline preload="none" '
         f'width="1920" height="1080"></video>'
@@ -980,6 +981,8 @@ padding:clamp(1rem,2.5vw,1.4rem);margin-bottom:1rem;scroll-margin-top:1rem}
 .fmeta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.2rem 1rem;
 margin:0 0 .35rem;font-size:.8rem;color:var(--muted)}
 .ftag{color:var(--accent);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.fmeta a.fsite{color:inherit;text-decoration:none}
+.fmeta a.fsite:hover{text-decoration:underline}
 .snote{color:var(--muted);font-style:italic}
 .what .snote{display:block;font-size:.85rem;margin-top:.15rem}
 .fcard h3{margin:0 0 .4rem;font-size:clamp(1.05rem,2.3vw,1.3rem);line-height:1.3}
