@@ -37,6 +37,7 @@ articles: ## Rebuild the articles book in a container into docs/articles
 		-c "mdbook-mermaid install /book && mdbook build /book"
 	rm -rf docs/articles
 	cp -r sections/articles/book/html docs/articles
+	python3 scripts/articles-og.py docs/articles
 
 orcid-check: ## Compare the papers page with the public ORCID record (needs network)
 	@python3 scripts/orcid-diff.py

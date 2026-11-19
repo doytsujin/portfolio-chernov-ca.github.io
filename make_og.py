@@ -129,6 +129,21 @@ def main() -> None:
                 lede=f'{m["sub"]} {stats}.',
                 image=f"featured/{kind}-cover.png")))
 
+    # The articles book and the papers page, each with the matching Featured cover in the image slot.
+    articles = json.loads((ROOT / "sections" / "articles" / "articles.json").read_text())
+    cards.append(("articles", card_html(
+        eyebrow="Writing",
+        title="Articles",
+        lede=f"{len(articles)} articles, first published on LinkedIn and reprinted here, newest first.",
+        image="featured/writing-cover.png")))
+    papers = [x for x in json.loads((ROOT / "sections" / "papers" / "papers.json").read_text())
+              if x.get("published") is True]
+    cards.append(("papers", card_html(
+        eyebrow="Papers",
+        title="Papers",
+        lede=f"Abstracts of {len(papers)} published papers. Full papers are at the publisher.",
+        image="featured/publications-cover.png")))
+
     # Optional card names on the command line render only those cards
     # (e.g. `python3 make_og.py site adam`); with none, every card is rendered.
     wanted = set(sys.argv[1:])

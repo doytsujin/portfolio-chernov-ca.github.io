@@ -84,6 +84,39 @@ def to_webp(source: Path, destination_dir: Path) -> str:
     return name
 
 
+# The link-preview image of each reprint is the article's LinkedIn cover, cut the way LinkedIn
+# shows it: the centre of the banner at 1200x630. The first file found is used; an article with
+# none gets the Writing card instead (scripts/articles-og.py), rather than a guessed figure.
+COVERS = ("images/banner_16x9.png", "images/cover.png")
+OG_SIZE = (1200, 630)
+
+
+def import_cover(repo: Path, slug: str, assets: Path) -> str:
+    try:
+        from PIL import Image
+    except ImportError:
+        raise SystemExit("refusing: Pillow is needed to cut the link-preview covers")
+    for rel in COVERS:
+        found = repo / "articles" / slug / rel
+        if found.is_file():
+            image = Image.open(found).convert("RGB")
+            w, h = image.size
+            target = OG_SIZE[0] / OG_SIZE[1]
+            if w / h > target:
+                cw, ch = round(h * target), h
+            else:
+                cw, ch = w, round(w / target)
+            left, top = (w - cw) // 2, (h - ch) // 2
+            image = image.crop((left, top, left + cw, top + ch)).resize(OG_SIZE, Image.LANCZOS)
+            assets.mkdir(parents=True, exist_ok=True)
+            image.save(assets / "og.jpg", "JPEG", quality=88, optimize=True, progressive=True)
+            return rel
+    stale = assets / "og.jpg"
+    if stale.exists():
+        stale.unlink()
+    return ""
+
+
 def import_one(repo: Path, entry: dict) -> str:
     slug = entry["slug"]
     if not entry.get("url"):
@@ -140,7 +173,8 @@ def import_one(repo: Path, entry: dict) -> str:
         f"canonical version; this page is a reprint by the author.</small>\n"
     )
     (SRC / f"{slug}.md").write_text(page, encoding="utf-8")
-    return f"{slug} ({len(rewritten)} image(s))"
+    cover = import_cover(repo, slug, assets)
+    return f"{slug} ({len(rewritten)} image(s), cover: {cover or 'none, the Writing card'})"
 
 
 def main():
