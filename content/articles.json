@@ -1,5 +1,11 @@
 [
   {
+    "title": "AI Is Stochastic, and the Process Inherits It",
+    "date": "2026-11-19",
+    "slug": "ai-is-stochastic",
+    "linkedin": "https://www.linkedin.com/pulse/ai-stochastic-process-inherits-alexander-chernov-btf0c/"
+  },
+  {
     "title": "Scaling LangGraph, LlamaIndex, and CrewAI, Part 2: Load, Inference, and Authorization",
     "date": "2026-11-15",
     "slug": "scaling-agent-frameworks-part-2",

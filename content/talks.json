@@ -3,7 +3,8 @@
     "title": "Agentic Datasets: Giving AI Agents More Autonomy Without Losing Control",
     "venue": "AI+AI Toronto 2026 — the Agentic AI Summit",
     "date": "November 2026",
-    "links": [{ "label": "Slides", "url": "https://doi.org/10.5281/zenodo.24202758" }]
+    "links": [{ "label": "Slides", "url": "https://doi.org/10.5281/zenodo.24202758" },
+              { "label": "Article", "url": "https://www.linkedin.com/pulse/ai-stochastic-process-inherits-alexander-chernov-btf0c/" }]
   },
   {
     "title": "Is Quantum Ready for Biology? What It Would Take to Put a Quantum Step Inside a Regulated Biopharma Pipeline",

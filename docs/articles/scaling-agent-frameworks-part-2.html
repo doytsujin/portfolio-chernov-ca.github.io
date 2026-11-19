@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "light";
-            window.path_to_searchindex_js = "searchindex-59e0d8f0.js";
+            window.path_to_searchindex_js = "searchindex-0c065059.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6606f40d.js"></script>
+        <script src="toc-791b4c98.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,6 +178,7 @@
 <p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-11-15. <a href="https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-2-load-alexander-chernov-7g3sc/">Read the original</a>.</em></p>
 <hr>
 <p><em>Part 2 of two on scaling agent frameworks. Part 1 was state and recovery. This part is load, inference, and authorization.</em></p>
+<p><em>Updated 2026-11-19 with a follow-up test of the Redis fallback, in “Control fan-out and backpressure”.</em></p>
 <p>An agent platform scales when each workload has its own pool and its own scaling signal, and when limits and authorization sit outside the framework. Limits need the same care as any other distributed state. In a rate-limit test, one LiteLLM key got three times its limit through three proxy instances while their shared Redis was down. Set to fail closed, the same outage let none through.</p>
 <p>Part 1 showed that LangGraph, LlamaIndex, and CrewAI define what an agent workflow does and leave the distributed system that runs it to the platform, and that recovery needs a stable idempotency key saved before each side effect. Every framework capability below is stated as its vendor documents it, read on 2026-11-05. The measured result comes from the LiteLLM test, described below, and from my published work, each named where it appears.</p>
 <h2 id="separate-orchestration-from-execution"><a class="header" href="#separate-orchestration-from-execution">Separate orchestration from execution</a></h2>
@@ -198,6 +199,8 @@
 <p>Request rate alone cannot size an agentic platform. As an illustrative average: 50 runs per second × 8 model calls per run = 400 model calls per second, and 400 calls per second × 800 output tokens per call = 320,000 output tokens per second. That excludes input processing, retry amplification, bursts, and scheduling overhead. Actual sizing also depends on model architecture, hardware, batching, prompt lengths, and latency targets.</p>
 <p>Limits are themselves distributed state. LiteLLM’s documentation shows why: counters are shared through Redis, and while Redis is unreachable each instance falls back to its own memory and keeps serving, so a key is admitted up to “N times the limit across N instances” unless the deployment opts to fail closed.</p>
 <p>A rate-limit test with LiteLLM 1.106.2 gives the numbers. One key limited to 20 requests per minute received 120 requests in a minute, spread across three proxy instances: with Redis up, 20 got through; with Redis stopped, 60, exactly 20 per instance; a single instance with Redis stopped admitted 20. With <code>fail_closed_rate_limit_enforcement</code> on, the same outage admitted none and answered all 120 with a 503, and with Redis up the setting changed nothing.</p>
+<p><em>Update, 2026-11-19:</em> a follow-up test cut the connection to Redis five seconds into the minute and restored it 30 seconds later, with the same limit and request stream. With fail-closed enforcement, the proxies refused every request for the rest of the minute, including the 49 sent after Redis was back. By default LiteLLM stops calling Redis for a minute after five failed connections in a row, so the refusals outlast a short outage; <code>REDIS_CIRCUIT_BREAKER_FAILURE_THRESHOLD</code> and <code>REDIS_CIRCUIT_BREAKER_RECOVERY_TIMEOUT</code> set both values.</p>
+<p>The same test ran two middle grounds a reader suggested, written as a LiteLLM pre-call hook rather than LiteLLM settings. Dividing the limit by the replica count held an outage with Redis unreachable from the start to exactly 20, but admitted 40 when Redis dropped mid-window, because the local counts start at zero. Leasing blocks of tokens from the global budget never admitted more than 20 in any of six conditions, but admitted none when Redis was unreachable from the start. Neither keeps both the limit and availability.</p>
 <p><img src="scaling-agent-frameworks-part-2/article_figure.webp" alt="An agent platform under load as objects on one white tabletop. Run cards arrive on a rail: runs arrive. They pass three steel turnstiles: three gateway instances. One dial above the gates is cabled to all three: one shared limit for all three. Beyond the gates stand three separate plinths, each with its own gauge: a CPU worker rack, orchestration workers scaled on queue latency; a GPU server, inference scaled on waiting requests; a glass vitrine around a worker block, code execution, isolated, scaled on pending jobs. At the far right a lens on an articulated arm examines one card before it leaves: each action authorized outside the framework."></p>
 <h2 id="inference-as-a-separate-tier"><a class="header" href="#inference-as-a-separate-tier">Inference as a separate tier</a></h2>
 <p>Inference divides into three layers, and they should not share a scaling lifecycle:</p>
@@ -328,7 +331,7 @@
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="welcome.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="ai-is-stochastic.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -342,7 +345,7 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="welcome.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="ai-is-stochastic.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

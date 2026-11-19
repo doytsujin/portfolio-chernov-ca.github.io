@@ -6,6 +6,8 @@
 
 *Part 2 of two on scaling agent frameworks. Part 1 was state and recovery. This part is load, inference, and authorization.*
 
+*Updated 2026-11-19 with a follow-up test of the Redis fallback, in "Control fan-out and backpressure".*
+
 An agent platform scales when each workload has its own pool and its own scaling signal, and when limits and authorization sit outside the framework. Limits need the same care as any other distributed state. In a rate-limit test, one LiteLLM key got three times its limit through three proxy instances while their shared Redis was down. Set to fail closed, the same outage let none through.
 
 Part 1 showed that LangGraph, LlamaIndex, and CrewAI define what an agent workflow does and leave the distributed system that runs it to the platform, and that recovery needs a stable idempotency key saved before each side effect. Every framework capability below is stated as its vendor documents it, read on 2026-11-05. The measured result comes from the LiteLLM test, described below, and from my published work, each named where it appears.
@@ -36,6 +38,10 @@ Request rate alone cannot size an agentic platform. As an illustrative average: 
 Limits are themselves distributed state. LiteLLM's documentation shows why: counters are shared through Redis, and while Redis is unreachable each instance falls back to its own memory and keeps serving, so a key is admitted up to "N times the limit across N instances" unless the deployment opts to fail closed.
 
 A rate-limit test with LiteLLM 1.106.2 gives the numbers. One key limited to 20 requests per minute received 120 requests in a minute, spread across three proxy instances: with Redis up, 20 got through; with Redis stopped, 60, exactly 20 per instance; a single instance with Redis stopped admitted 20. With `fail_closed_rate_limit_enforcement` on, the same outage admitted none and answered all 120 with a 503, and with Redis up the setting changed nothing.
+
+*Update, 2026-11-19:* a follow-up test cut the connection to Redis five seconds into the minute and restored it 30 seconds later, with the same limit and request stream. With fail-closed enforcement, the proxies refused every request for the rest of the minute, including the 49 sent after Redis was back. By default LiteLLM stops calling Redis for a minute after five failed connections in a row, so the refusals outlast a short outage; `REDIS_CIRCUIT_BREAKER_FAILURE_THRESHOLD` and `REDIS_CIRCUIT_BREAKER_RECOVERY_TIMEOUT` set both values.
+
+The same test ran two middle grounds a reader suggested, written as a LiteLLM pre-call hook rather than LiteLLM settings. Dividing the limit by the replica count held an outage with Redis unreachable from the start to exactly 20, but admitted 40 when Redis dropped mid-window, because the local counts start at zero. Leasing blocks of tokens from the global budget never admitted more than 20 in any of six conditions, but admitted none when Redis was unreachable from the start. Neither keeps both the limit and availability.
 
 ![An agent platform under load as objects on one white tabletop. Run cards arrive on a rail: runs arrive. They pass three steel turnstiles: three gateway instances. One dial above the gates is cabled to all three: one shared limit for all three. Beyond the gates stand three separate plinths, each with its own gauge: a CPU worker rack, orchestration workers scaled on queue latency; a GPU server, inference scaled on waiting requests; a glass vitrine around a worker block, code execution, isolated, scaled on pending jobs. At the far right a lens on an articulated arm examines one card before it leaves: each action authorized outside the framework.](scaling-agent-frameworks-part-2/article_figure.webp)
 

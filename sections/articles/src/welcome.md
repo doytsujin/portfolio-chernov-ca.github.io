@@ -6,6 +6,7 @@ canonical version.
 
 | Article | First published |
 |---|---|
+| [AI Is Stochastic, and the Process Inherits It](./ai-is-stochastic.md) | [2026-11-19](https://www.linkedin.com/pulse/ai-stochastic-process-inherits-alexander-chernov-btf0c/) |
 | [Scaling LangGraph, LlamaIndex, and CrewAI, Part 2: Load, Inference, and Authorization](./scaling-agent-frameworks-part-2.md) | [2026-11-15](https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-2-load-alexander-chernov-7g3sc/) |
 | [Scaling LangGraph, LlamaIndex, and CrewAI, Part 1: State and Recovery](./scaling-agent-frameworks.md) | [2026-11-06](https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-1-state-recovery-chernov-msshc/) |
 | [Agents Propose, a Gate Decides: Governed Delivery for Agent-Written Software](./agents-propose-a-gate-decides.md) | [2026-10-24](https://www.linkedin.com/pulse/agents-propose-gate-decides-governed-delivery-software-chernov-fi9cc/) |
