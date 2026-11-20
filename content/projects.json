@@ -1631,6 +1631,14 @@
         "url": "https://agentarena.ca"
       },
       {
+        "label": "The engine: engine.agentarena.ca",
+        "url": "https://engine.agentarena.ca"
+      },
+      {
+        "label": "Engine page as a PDF: Zenodo 10.5281/zenodo.24400724",
+        "url": "https://doi.org/10.5281/zenodo.24400724"
+      },
+      {
         "label": "Freedoom",
         "url": "https://freedoom.github.io"
       }
