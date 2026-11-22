@@ -24,6 +24,18 @@
     "abstract": "Reports a small model trained under Brain API to judge which capability of an Agentic Dataset a request is for, among the capabilities policy has already admitted; policy decides what may run, and every decision is recorded with the model's version. On generated dataset families never seen in training, the trained 1.5B model selects the right capability 98.1% of the time against 92.6% for the same base model prompted, and reaches 98.1% against 98.2% for a 7B reference at a fifth of its median latency. All 3,393 decision records re-derive from their recorded inputs to the same bytes."
   },
   {
+    "topic_id": "e2a06310-00b6-49f2-b0fb-3504dcf1a535",
+    "paper_id": "eee0c39e-8b45-4bf5-8647-6ae61b1cb282",
+    "title": "What an Agent Reads With and Without a Semantic Gateway",
+    "authors": ["Alexander Chernov"],
+    "year": 2026,
+    "published": true,
+    "venue": "Zenodo (technical note)",
+    "citation": "Technical note, Zenodo, 21 November 2026; first published on LinkedIn the same day. DOI 10.5281/zenodo.24433067. CC BY 4.0.",
+    "url": "https://doi.org/10.5281/zenodo.24433067",
+    "abstract": "Measures what a model reads when an agent answers 16 written questions over one data estate in three setups, with the same model, answer check and written truths: through Semantic Gateway, through each data pack's own tools, and with every pack's passages in the prompt. Through the gateway the agent answered all 16 and the model read 202,626 tokens, against 13 and 385,538 with per-pack tools and 11 and 400,895 with everything in the prompt, under a bar fixed before the run; the saving comes from questions about the estate as a whole, and there is none on questions one pack answers. Removing the packs a caller may not use before routing gave 2,200 searches with no violations and kept the most restricted caller's recall@10 at 1.000, against 0.612 when filtering afterwards."
+  },
+  {
     "topic_id": "448e936f-b63e-4ee5-af8c-b48ff5bdd9bf",
     "paper_id": "7be73d37-9952-45d8-a11e-95b1fd4b008e",
     "title": "A Policy Profile for Croissant: Refusal as a Property of the Dataset",
