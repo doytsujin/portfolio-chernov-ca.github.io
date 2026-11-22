@@ -28,6 +28,20 @@
   "date": "December 2026"
  },
  {
+  "title": "What an Agent Reads With and Without a Semantic Gateway",
+  "venue": "Zenodo (technical note)",
+  "status": "",
+  "line": "Measures what a model reads when an agent answers 16 written questions over one data estate in three setups, with the same model, answer check and written truths: through Semantic Gateway, through each data pack's own tools, and with every pack's passages in the prompt.",
+  "note": "",
+  "links": [
+   {
+    "label": "",
+    "url": "https://doi.org/10.5281/zenodo.24433067"
+   }
+  ],
+  "date": "November 2026"
+ },
+ {
   "title": "System One: a small trained model that judges dataset requests",
   "venue": "Zenodo (report)",
   "status": "",

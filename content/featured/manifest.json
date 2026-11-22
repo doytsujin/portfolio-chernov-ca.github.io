@@ -27,20 +27,20 @@
   ],
   "pages": 9,
   "entries": 21,
-  "pdf_sha256": "8c03556f3b7ae4d233c26325fb8033cbc943a18be7dcba6e7178a656cf6f4f13",
-  "data_sha256": "9210b0c6f3c3feb6301ad7edb6037827fe68097ebcc09626df1f2a1d4c33239f"
+  "pdf_sha256": "da127e3b18c09114953be9404006d9283d8f4205459282aae2c93cffccefae72",
+  "data_sha256": "9d98be7f5fbf49341d56bf63e4d42235e0a9fd9b67a839a99dbe987ea79150e8"
  },
  "publications": {
   "name": "Publications",
   "hub": "https://portfolio.chernov.ca/papers/",
-  "sub": "Conference and workshop papers, preprints, a report and a journal article.",
+  "sub": "Conference and workshop papers, preprints, a report, a technical note and a journal article.",
   "stats": [
    [
-    12,
+    13,
     "papers"
    ],
    [
-    10,
+    11,
     "published"
    ],
    [
@@ -48,10 +48,10 @@
     "accepted"
    ]
   ],
-  "pages": 8,
-  "entries": 12,
-  "pdf_sha256": "7539d5ee84276abc4b5add2ab3c7a3008175d683df8b93513d36fa5ca647faec",
-  "data_sha256": "39fa778231102f098e55bfb05d860c0a967c4f7391d141d5d9ca08c855a3bf20"
+  "pages": 9,
+  "entries": 13,
+  "pdf_sha256": "9119720fd2bd042ee8bcd33aaf61c2a2482650cb81501bbea529a194e793ea8c",
+  "data_sha256": "fe9f43c8beee8efbc3e7ee77c9907be1195f89f006c7f065eb91ca5bc89177b2"
  },
  "talks": {
   "name": "Tech Talks",
@@ -73,7 +73,7 @@
   ],
   "pages": 5,
   "entries": 10,
-  "pdf_sha256": "a5f865020a1b7962b1e75c892f5c7aeaac6d69298c68bc3fb1b741d62ddc6698",
+  "pdf_sha256": "60b3cce8e17b621ea8a236374fcbdb9f96859bca5c48a54ee9b61d098e80e5ef",
   "data_sha256": "9b6afbeb9f12d6aeac2422ade87c8be48f21f52b47e61a516cf7cc297f0aa7be"
  },
  "writing": {
@@ -88,7 +88,7 @@
   ],
   "pages": 6,
   "entries": 22,
-  "pdf_sha256": "21bd13571c55c9d1bfd38fb20ba703da337173ad9b6bb33c599c07b437dd3de9",
+  "pdf_sha256": "58209d09a46406a8457545c9b5cacc2b4cc3616009a9a46c62fc32c570173ae6",
   "data_sha256": "785427a07b5a0bc409406012af003a9b82421af331ce975a844e73b312dd1e12"
  }
 }
