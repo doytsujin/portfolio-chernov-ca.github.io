@@ -4,6 +4,7 @@
 
 ---
 
+- [What an Agent Reads With and Without a Semantic Gateway](./what-an-agent-reads.md)
 - [AI Is Stochastic, and the Process Inherits It](./ai-is-stochastic.md)
 - [Scaling LangGraph, LlamaIndex, and CrewAI, Part 2: Load, Inference, and Authorization](./scaling-agent-frameworks-part-2.md)
 - [Scaling LangGraph, LlamaIndex, and CrewAI, Part 1: State and Recovery](./scaling-agent-frameworks.md)

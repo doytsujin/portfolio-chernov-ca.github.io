@@ -36,10 +36,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "light";
-            window.path_to_searchindex_js = "searchindex-0c065059.js";
+            window.path_to_searchindex_js = "searchindex-212d1cf9.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-791b4c98.js"></script>
+        <script src="toc-d204e431.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -185,6 +185,7 @@ canonical version.</p>
 <tr><th>Article</th><th>First published</th></tr>
 </thead>
 <tbody>
+<tr><td><a href="#what-an-agent-reads-with-and-without-a-semantic-gateway">What an Agent Reads With and Without a Semantic Gateway</a></td><td><a href="https://www.linkedin.com/pulse/what-agent-reads-without-semantic-gateway-alexander-chernov-wtmic/">2026-11-21</a></td></tr>
 <tr><td><a href="#ai-is-stochastic-and-the-process-inherits-it">AI Is Stochastic, and the Process Inherits It</a></td><td><a href="https://www.linkedin.com/pulse/ai-stochastic-process-inherits-alexander-chernov-btf0c/">2026-11-19</a></td></tr>
 <tr><td><a href="#scaling-langgraph-llamaindex-and-crewai-part-2-load-inference-and-authorization">Scaling LangGraph, LlamaIndex, and CrewAI, Part 2: Load, Inference, and Authorization</a></td><td><a href="https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-2-load-alexander-chernov-7g3sc/">2026-11-15</a></td></tr>
 <tr><td><a href="#scaling-langgraph-llamaindex-and-crewai-part-1-state-and-recovery">Scaling LangGraph, LlamaIndex, and CrewAI, Part 1: State and Recovery</a></td><td><a href="https://www.linkedin.com/pulse/scaling-langgraph-llamaindex-crewai-part-1-state-recovery-chernov-msshc/">2026-11-06</a></td></tr>
@@ -212,6 +213,55 @@ canonical version.</p>
 <p><small>© 2026 Alexander Chernov. All rights reserved. Each article was first
 published on LinkedIn; the linked original remains the canonical
 version.</small></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="what-an-agent-reads-with-and-without-a-semantic-gateway"><a class="header" href="#what-an-agent-reads-with-and-without-a-semantic-gateway">What an Agent Reads With and Without a Semantic Gateway</a></h1>
+<p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-11-21. <a href="https://www.linkedin.com/pulse/what-agent-reads-without-semantic-gateway-alexander-chernov-wtmic/">Read the original</a>.</em></p>
+<hr>
+<p>On 16 written questions over one data estate, an agent working through Semantic Gateway answered all 16 and made the model read 202,626 tokens. Given the same packs without the gateway, the agent answered 13 and read 385,538 tokens; with every pack’s passages placed in the prompt instead, it answered 11 and read 400,895. The gateway’s share was 0.53 and 0.51 of what the two alternatives read, under a bar of 0.70 fixed before any money was spent. The saving came from questions about the estate as a whole, where the gateway returns facts that the other setups had to assemble from passages. On questions that one pack answers, there was no saving.</p>
+<p>Tokens are what a model is paid for and what fills its context. A design that makes the model read less for the same answer is cheaper per question and leaves more room in the context for the work itself.</p>
+<h2 id="three-ways-to-give-an-agent-the-same-data"><a class="header" href="#three-ways-to-give-an-agent-the-same-data">Three ways to give an agent the same data</a></h2>
+<p>The estate is Semantic Gateway’s demo of public water-quality data: results, monitoring locations, projects, drinking-water regulations, fertilizer use, weather and method publications, with four ontology packs, in 12 searchable packs. Every pack is governed by a versioned policy, and every caller sees only the packs it may use. The agent was given the same estate in three ways:</p>
+<ul>
+<li><strong>The gateway as built</strong> — four estate tools: a search routed across the packs, the exact links between packs with their defects, the concepts the packs share with any conflict among them, and the evidence for any one link, mapping or decision. Apart from the search, each returns what the estate knows as a fact, computed from the packs.</li>
+<li><strong>Each pack’s own tools</strong> — for every pack the caller may use, a description, a search and a read, and no estate layer. The policy gate was unchanged.</li>
+<li><strong>Everything in the prompt</strong> — no tools. The host ran every search the caller may run, 10 passages from each pack, and placed the results in the question.</li>
+</ul>
+<p>The questions were the gateway’s existing chat evaluation: 12 with an answer in the estate, 3 that ask for something the caller may not see, and 1 the estate cannot answer, asked as four different callers. Every answer went through the same check: it is shown only if every quote appears in a passage a tool returned and every number appears in what the tools returned. Each question also has a truth written before the run, such as that the nitrate limit is 10 mg/L and comes from the regulation. The model, its settings and the check were the same in all three setups. The bar was written down before the run: the gateway passes if it reads at most 70% of the tokens of each alternative and gets at most one question fewer right.</p>
+<p><img src="what-an-agent-reads/fig_tokens_table.webp" alt="Table. What the model read and what it got right, on 16 written questions, with the same model and the same answer check in each setup. The gateway as built: 202,626 tokens, 16 of 16 questions passed, $0.87. Each pack’s own tools, no estate layer: 385,538 tokens, 13 of 16, $1.11. Every pack’s passages in the prompt: 400,895 tokens, 11 of 16, $2.23. Tokens are input, cache reads and cache writes over every turn."></p>
+<h2 id="where-the-saving-comes-from"><a class="header" href="#where-the-saving-comes-from">Where the saving comes from</a></h2>
+<p>The saving is on questions about the estate as a whole. “Which packs hold nitrate?” took 4,764 tokens through the gateway, which answered it from the concepts the packs share. With each pack’s own tools the agent searched pack after pack and read 24,012; with every pack’s passages in the prompt it read 39,291. “Where do the packs disagree about how nitrate is reported?” took 4,780 tokens through the gateway, which computes the conflict across the result records: nitrate reported “as N” in some and “as NO3” in others. Both alternatives read about 40,000 tokens and failed the written truth, which asks for both bases: from passages, both found nitrate reported as nitrogen, and neither found the records reported as NO3. The question about the links between results and projects, and their defects, cost the agent with per-pack tools 8 turns and 115,299 tokens. The gateway answered it in 2 turns and 26,043.</p>
+<p>Facts computed once from the packs replace passages the model would otherwise have to read and combine. That is where both the tokens and the right answers come from.</p>
+<h2 id="where-it-does-not"><a class="header" href="#where-it-does-not">Where it does not</a></h2>
+<p>On a question that one pack answers, the gateway saved nothing. “What is the maximum contaminant level for nitrate in drinking water?” took 22,114 tokens through the gateway over three turns, against 11,653 over two turns with the packs’ own tools and 14,210 in one with every passage in the prompt. The routed search also returns its own account of which packs it opened and which it did not, which costs tokens when the answer sits in one place. For a single-pack question, a pack’s own search is the cheaper tool.</p>
+<h2 id="a-count-is-not-a-run"><a class="header" href="#a-count-is-not-a-run">A count is not a run</a></h2>
+<p>Before the paid run, the requests were counted with the API’s token-counting endpoint, which generates nothing. That count assumed that an agent without the estate layer searches every pack once. On that assumption the gateway read 0.14 of the per-pack setup’s tokens. In the paid run the agent searched fewer packs than every one, and the measured share was 0.53. The count gave a ceiling; the run gave the result. The same count also measured the decision layer: in the gateway’s admission of proposed ontology mappings, leaving the decision to the Brain API instead of the model kept 934 tokens per proposal out of the model’s context, 51% of what each proposal sends.</p>
+<h2 id="removing-what-a-caller-may-not-see-before-routing"><a class="header" href="#removing-what-a-caller-may-not-see-before-routing">Removing what a caller may not see, before routing</a></h2>
+<p>The same design choice keeps the gateway’s answers inside each caller’s permissions. A pack a caller may not use is removed before the search is routed, not filtered out of the results afterwards. Across six callers and 440 queries each, the host’s own search returned nothing from a pack the caller may not use: 2,200 searches, no violations, with the sixth caller, which may use no pack, refused every search. A planted version that routes first and filters later leaked 12,952 times.</p>
+<p>Removing first also keeps the recall. The visitor, who may use 5 of the 12 packs, kept recall@10 at 1.000 when hidden packs were removed before routing. Filtering afterwards dropped it to 0.612, because the search’s budget of four packs was spent on packs the visitor could not use. For callers who may use most packs, the two approaches differ by less than 0.003. Control and cost are decided by the same step.</p>
+<h2 id="limits"><a class="header" href="#limits">Limits</a></h2>
+<ul>
+<li><strong>One estate and 16 questions.</strong> The questions were written for the gateway’s own evaluation, before this comparison existed. A second estate and more questions would show how far the result travels.</li>
+<li><strong>One model and one setting.</strong> A different model may search more or less eagerly without the estate layer, which moves the alternatives’ totals.</li>
+<li><strong>Three questions favored the gateway by construction.</strong> Each needs a fact only the estate layer computes: a count of links, a conflict across packs, a pack the caller may know about but not read. The alternatives failed them for that reason. The setup with everything in the prompt also had no read tool, so it could not ask for the approval one question needs.</li>
+</ul>
+<h2 id="what-the-framing-enables"><a class="header" href="#what-the-framing-enables">What the framing enables</a></h2>
+<p>Measuring tokens per answered question turns the value of a semantic layer into a number that can be tested, and its limits into a rule: route questions about the estate to the estate’s facts, and questions about one source to that source. Placing the policy before routing makes the cheaper path and the permitted path the same path. The next measurement is a second estate.</p>
+<h2 id="references"><a class="header" href="#references">References</a></h2>
+<h3 id="the-system"><a class="header" href="#the-system">The system</a></h3>
+<ul>
+<li>Semantic Gateway. <a href="https://semanticgateway.ca">https://semanticgateway.ca</a></li>
+<li>A. Chernov, “Semantic Gateway: Agent Scope demo video (one data estate behind a policy gate),” Zenodo, 2026. <a href="https://doi.org/10.5281/zenodo.23906429">https://doi.org/10.5281/zenodo.23906429</a></li>
+<li>A. Chernov, “Brain API: An Intent-Aware Control Plane for Policy-Governed Agentic Systems,” arXiv:2609.21299, 2026. <a href="https://arxiv.org/abs/2609.21299">https://arxiv.org/abs/2609.21299</a></li>
+<li>Agentic Dataset Reference Implementation and Conformance Suite, Zenodo. <a href="https://doi.org/10.5281/zenodo.22536342">https://doi.org/10.5281/zenodo.22536342</a></li>
+</ul>
+<h3 id="the-method"><a class="header" href="#the-method">The method</a></h3>
+<ul>
+<li>Anthropic, “Token counting.” <a href="https://docs.claude.com/en/docs/build-with-claude/token-counting">https://docs.claude.com/en/docs/build-with-claude/token-counting</a></li>
+</ul>
+<p>Every link above was checked on 2026-11-21.</p>
+<p>#AgenticAI #AIAgents #LLM #RAG #TokenCost #SemanticLayer #DataGovernance #AIGovernance #KnowledgeGraph #AgenticDatasets #BrainAPI #SemanticGateway</p>
+<hr>
+<p><small>© 2026 Alexander Chernov. All rights reserved. First published on <a href="https://www.linkedin.com/pulse/what-agent-reads-without-semantic-gateway-alexander-chernov-wtmic/">LinkedIn</a>, which remains the canonical version; this page is a reprint by the author.</small></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="ai-is-stochastic-and-the-process-inherits-it"><a class="header" href="#ai-is-stochastic-and-the-process-inherits-it">AI Is Stochastic, and the Process Inherits It</a></h1>
 <p><em>By <a href="https://www.linkedin.com/in/thedoytsujin/">Alexander Chernov</a>. First published on LinkedIn, 2026-11-19. <a href="https://www.linkedin.com/pulse/ai-stochastic-process-inherits-alexander-chernov-btf0c/">Read the original</a>.</em></p>
@@ -250,7 +300,7 @@ version.</small></p>
 <p>The product understates the problem in two ways.</p>
 <p><strong>First</strong>, a gate catches only the errors that its policy can name. A wrong action that the policy allows passes any gate. The 99% catch rate above is an assumption; a real gate catches what its rules describe and nothing else.</p>
 <p><strong>Second</strong>, a constant per-step reliability is optimistic for long chains. Sinha et al. measure long-horizon execution in LLMs and find that per-step accuracy falls as the number of steps grows. They also find a self-conditioning effect: models become more likely to make mistakes when their context contains their own earlier errors. A long agent run therefore does worse than a fixed p predicts.</p>
-<h2 id="what-the-framing-enables"><a class="header" href="#what-the-framing-enables">What the framing enables</a></h2>
+<h2 id="what-the-framing-enables-1"><a class="header" href="#what-the-framing-enables-1">What the framing enables</a></h2>
 <p>Treating an agent decision as a process step with a yield turns a general worry about AI reliability into quantities an engineer can design with. The number of agent decisions per unit of work becomes a design parameter, like the number of steps in a process. The agent’s reliability becomes something to measure over repeated trials, in the pass^k sense, rather than a single benchmark score. The gate’s catch rate and escalation rate become the figures that size the human review behind it. The model stays stochastic. The control around it does not have to be: the same request, data and policy give the same decision.</p>
 <h2 id="sources"><a class="header" href="#sources">Sources</a></h2>
 <h3 id="the-talk-and-the-system"><a class="header" href="#the-talk-and-the-system">The talk and the system</a></h3>
@@ -1183,7 +1233,7 @@ trace_id: tr-8f31
 <p>That is a regulator putting a conversational habit on a risk register. It is the right instinct. In a system where a person’s pushback moves the output and the moved output persists, agreeableness is not a personality quirk. It is a failure mode with a measurable rate.</p>
 <p>Which points at the design conclusion. If the correctness of your system depends on a model holding its ground under pressure, you have built on the one property these models reliably do not have. Put the check outside the conversation. A test that runs, a source that is retrieved, a rule that is evaluated before the action commits — something with no opinion about whether you are happy. The model is a good generator and a poor witness to itself, and everything useful follows from designing around that rather than arguing with it.</p>
 <hr>
-<h2 id="references"><a class="header" href="#references">References</a></h2>
+<h2 id="references-1"><a class="header" href="#references-1">References</a></h2>
 <ol>
 <li>Laban et al., <a href="https://arxiv.org/abs/2311.08596">“Are You Sure? Challenging LLMs Leads to Performance Drops in The FlipFlop Experiment”</a>, arXiv:2311.08596.</li>
 <li>Fanous et al., <a href="https://arxiv.org/abs/2502.08177">“SycEval: Evaluating LLM Sycophancy”</a>, Stanford, 2025, arXiv:2502.08177.</li>

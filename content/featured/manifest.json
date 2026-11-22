@@ -27,7 +27,7 @@
   ],
   "pages": 9,
   "entries": 21,
-  "pdf_sha256": "010878de1c0f1d6b04b42cc8da0ddba936ced8e225305b2881215b812919749f",
+  "pdf_sha256": "8c03556f3b7ae4d233c26325fb8033cbc943a18be7dcba6e7178a656cf6f4f13",
   "data_sha256": "9210b0c6f3c3feb6301ad7edb6037827fe68097ebcc09626df1f2a1d4c33239f"
  },
  "publications": {
@@ -50,7 +50,7 @@
   ],
   "pages": 8,
   "entries": 12,
-  "pdf_sha256": "db43ea2d5c34204b24e16d69de43363fd5cefecd9d8d425206963097ce86695d",
+  "pdf_sha256": "7539d5ee84276abc4b5add2ab3c7a3008175d683df8b93513d36fa5ca647faec",
   "data_sha256": "39fa778231102f098e55bfb05d860c0a967c4f7391d141d5d9ca08c855a3bf20"
  },
  "talks": {
@@ -73,7 +73,7 @@
   ],
   "pages": 5,
   "entries": 10,
-  "pdf_sha256": "4ca36de2f5750d3c1bb58460a10611b951af7b0bc619d0d76a81adfc505f6a7e",
+  "pdf_sha256": "a5f865020a1b7962b1e75c892f5c7aeaac6d69298c68bc3fb1b741d62ddc6698",
   "data_sha256": "9b6afbeb9f12d6aeac2422ade87c8be48f21f52b47e61a516cf7cc297f0aa7be"
  },
  "writing": {
@@ -82,13 +82,13 @@
   "sub": "Articles on LinkedIn, March to November 2026.",
   "stats": [
    [
-    21,
+    22,
     "articles"
    ]
   ],
-  "pages": 5,
-  "entries": 21,
-  "pdf_sha256": "fa6a704c2fd9dc09b2c3886af7a8d56af1fcc763288b03d377c386c4daef02ff",
-  "data_sha256": "0072bb8bc9415feac260149d99e3d8182721d2d9cfb494a4bae79724edee54e8"
+  "pages": 6,
+  "entries": 22,
+  "pdf_sha256": "21bd13571c55c9d1bfd38fb20ba703da337173ad9b6bb33c599c07b437dd3de9",
+  "data_sha256": "785427a07b5a0bc409406012af003a9b82421af331ce975a844e73b312dd1e12"
  }
 }
