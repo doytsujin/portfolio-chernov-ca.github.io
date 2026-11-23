@@ -375,6 +375,14 @@
    {
     "label": "pseudo.chernov.ca",
     "url": "https://pseudo.chernov.ca"
+   },
+   {
+    "label": "code.pseudo.chernov.ca",
+    "url": "https://code.pseudo.chernov.ca"
+   },
+   {
+    "label": "archlab.pseudo.chernov.ca",
+    "url": "https://archlab.pseudo.chernov.ca"
    }
   ]
  },

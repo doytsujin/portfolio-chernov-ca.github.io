@@ -281,6 +281,121 @@
    "mp4_sha256": "1615686615d78fa3bdae5afee407f646f0315fcb680e13d594abdd9b92244525",
    "poster_sha256": "e137e33b2a1e004bf1a74758e7f681f157fb922921d57336789b2d17dc78dbf4",
    "og_sha256": "a488e356cd292035d63018d6b6079403704b58477441e944e80a23912df59ce3"
+  },
+  {
+   "slug": "archlab",
+   "name": "Pseudo{archlab}",
+   "site": "https://archlab.pseudo.chernov.ca/",
+   "project": "pseudo",
+   "local": true,
+   "seconds": 30.0,
+   "bytes": 2325551,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Build an architecture from blocks",
+     "sub": "its graph forms beside them, checked at every drop"
+    },
+    {
+     "at": 15.4,
+     "text": "The set checks: 4 components, every dependency in it",
+     "sub": "The blocks are a1 as saved: a run uses exactly these"
+    },
+    {
+     "at": 19.8,
+     "text": "Run it: e0-steady-load, on these blocks",
+     "sub": "its kept run beside it: completed, 104 of 104 requests sent"
+    },
+    {
+     "at": 23.9,
+     "text": "Live: every component up",
+     "sub": "5 tasks a second into the gateway"
+    },
+    {
+     "at": 26.2,
+     "text": "Runnable architectures from blocks",
+     "sub": "for training, tests and validation"
+    }
+   ],
+   "mp4_sha256": "92df275bfe3783e1746d7fe0eb1c03e106cdf5b0d05c2ee776b4ebcbf19095a3",
+   "poster_sha256": "61670d6ef4e22a9323eacf2adb82e77c32f2aaebbb5bfdb32517ac261b63932a",
+   "site_shows": "the same page, which cannot run anything",
+   "og_sha256": "0bd9c3a75626dd1d49ecfb4fdce17798a2016282d1c6b4c87591631c0999c9d1"
+  },
+  {
+   "slug": "archlab-tour",
+   "name": "Pseudo{archlab}, the longer cut",
+   "site": "https://archlab.pseudo.chernov.ca/",
+   "project": "pseudo",
+   "local": true,
+   "seconds": 101.0,
+   "bytes": 4974339,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Build an architecture from blocks",
+     "sub": "a1, empty: its components come from the palette"
+    },
+    {
+     "at": 4.8,
+     "text": "Checked as you build",
+     "sub": "api-gateway depends on queue: not in the set yet"
+    },
+    {
+     "at": 18.0,
+     "text": "The set checks: 4 components, every dependency in it",
+     "sub": "The blocks are a1 as saved: a run uses exactly these"
+    },
+    {
+     "at": 21.7,
+     "text": "YAML: the architecture file the blocks make",
+     "sub": "as Save writes it"
+    },
+    {
+     "at": 24.6,
+     "text": "Run experiment: e0-steady-load, on these blocks",
+     "sub": "5 tasks a second into the gateway for 20 s, then 8 s to drain"
+    },
+    {
+     "at": 27.9,
+     "text": "Its kept run, opened while this one starts",
+     "sub": "completed, 104 of 104 requests sent"
+    },
+    {
+     "at": 32.3,
+     "text": "Live: every component up",
+     "sub": "the graph of the blocks, running"
+    },
+    {
+     "at": 38.5,
+     "text": "The run, step by step as it happens",
+     "sub": "the load stops at 20 s, then 8 s to drain"
+    },
+    {
+     "at": 58.6,
+     "text": "Finished: completed",
+     "sub": "104 of 104 requests sent; the run is kept, with what it measured"
+    },
+    {
+     "at": 63.7,
+     "text": "Assessment a1: requirements an operator would state, each judged by running it",
+     "sub": "its last complete report: 6 of 6 pass; 6 seeded defects, each caught"
+    },
+    {
+     "at": 68.5,
+     "text": "Run assessment: each requirement judged live, one after another",
+     "sub": "first: submit-latency"
+    },
+    {
+     "at": 87.8,
+     "text": "submit-latency: pass",
+     "sub": "p95 8.86 ms (at most 50), availability 1.0000 (at least 0.999) at 10/s over 136 requests"
+    }
+   ],
+   "mp4_sha256": "4d2b8885e4817c65fce361df129b19a27b5a702f3f412d206faea8b5915a378d",
+   "poster_sha256": "570faa5d7210aecd143786fe53103bc89f1573275984e1b8e233ab8b78d90cb3",
+   "site_shows": "the same page, which cannot run anything",
+   "og_sha256": "bf10c6c57f3bf6b694fca2c2b2508e7ec021508ae16746790ddcbc46280b4771"
   }
  ],
  "og_sha256": "7d3fafedb8c493513ad37004fb327f7c047e769ec75f9a661277c81a0790d0bc"

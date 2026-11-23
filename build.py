@@ -651,7 +651,7 @@ def check_featured(name: str, kind: str, rows: list[dict], doc: str) -> list[str
 
 
 # --------------------------------------------------------------------------
-# Featured clips: 30-second recordings of the running demos
+# Featured clips: recordings of the running demos, 30 seconds each but for a longer cut
 # --------------------------------------------------------------------------
 
 # Recorded and checked by the profile kit (colors, single-frame flashes, OCR for names that must not
@@ -696,8 +696,11 @@ def host(url: str) -> str:
 
 def clip_where(c: dict) -> str:
     if c["local"]:
+        # What the public site shows instead: a recorded demo, unless the clip says otherwise (Pseudo{archlab}: the
+        # same page, which cannot run anything).
         return (f'Recorded from a local build of the app, with real mouse input; '
-                f'<a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a> shows a recorded demo.')
+                f'<a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a> shows '
+                f'{esc(c.get("site_shows", "a recorded demo"))}.')
     return (f'Recorded from <a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a>, '
             'with real mouse input, in real time.')
 
@@ -725,7 +728,14 @@ def clip_entry(c: dict) -> str:
 
 
 def clip_time(at: float) -> str:
-    return f"0:{int(at):02d}"
+    m, s = divmod(int(at), 60)
+    return f"{m}:{s:02d}"
+
+
+def clip_lengths(clips: list) -> str:
+    """How long the clips are, from the files: "30 seconds each", or the range when one differs."""
+    lengths = sorted({round(c["seconds"]) for c in clips})
+    return f"{lengths[0]} seconds each" if len(lengths) == 1 else f"{lengths[0]} to {lengths[-1]} seconds"
 
 
 def featured_header(eyebrow: str, nav: str, pre: str) -> str:
@@ -754,7 +764,7 @@ def build_clips_page(m: dict) -> str:
   <a class="backlink" href="{pre}index.html">&larr; the whole portfolio</a>
   <section id="clips">
     <div class="section-head"><h2>Clips</h2>{copy_button("clips.html", "Clips")}</div>
-    <p class="section-note">{len(clips)} demos, {round(clips[0]["seconds"])} seconds each, recorded from the running apps
+    <p class="section-note">{len(clips)} clips, {clip_lengths(clips)}, recorded from the running apps
       with real mouse input: the camera turned and zoomed, things clicked, orders typed. The captions are drawn into the
       frame and worded from each page's own text; every number in one was read off the screen when it went up.
       No title cards. {total:.0f} MB in all; each loads only when played.<span class="fstats">{len(clips)} clips</span></p>
@@ -764,7 +774,7 @@ def build_clips_page(m: dict) -> str:
 {FOOTER}
 """
     return shell(title="Clips — Alexander Chernov",
-                 description=f"{len(clips)} running demos, {round(clips[0]['seconds'])} seconds each, recorded with real mouse input: "
+                 description=f"{len(clips)} clips of the running demos, {clip_lengths(clips)}, recorded with real mouse input: "
                              "3D views turned and zoomed, things clicked, orders typed.",
                  canonical=f"{SITE}/featured/clips.html", og_image=f"{SITE}/og/featured-clips.jpg",
                  og_type="article", prefix=pre, body=body)
