@@ -370,7 +370,7 @@
   "tag": "For fun",
   "period": "2026 – present",
   "name": "Pseudo",
-  "desc": "Coding practice in Python or in blocks, judged on cases the solver never sees",
+  "desc": "Coding practice judged on unseen cases, and runnable architectures from blocks in Pseudo{archlab}",
   "links": [
    {
     "label": "pseudo.chernov.ca",

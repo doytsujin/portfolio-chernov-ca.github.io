@@ -1550,7 +1550,7 @@
   },
   {
     "slug": "pseudo",
-    "title": "Pseudo: coding practice in Python or in blocks, judged on cases the solver never sees",
+    "title": "Pseudo: coding practice judged on unseen cases, and runnable architectures from blocks in Pseudo{archlab}",
     "lede": "A solution counts here when it is right on inputs it never saw and grows the way the task expects, not when it matches the examples.",
     "summary": "A coding-practice app with 400 tasks in 19 groups, solved in Python or built from blocks that show the Python they make. A public demo lets anyone browse the tasks and write solutions; a judging server runs each submission in a sandbox and scores it against cases it keeps to itself. Beside it, Pseudo{archlab} turns blocks into runnable architectures of agent software and tests them in experiments and assessments.",
     "period": "2026 – present",
