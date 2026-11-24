@@ -369,20 +369,29 @@
   "slug": "pseudo",
   "tag": "For fun",
   "period": "2026 – present",
-  "name": "Pseudo",
-  "desc": "Coding practice judged on unseen cases, and runnable architectures from blocks in Pseudo{archlab}",
+  "name": "Pseudo{code}",
+  "desc": "Coding practice in Python or in blocks, judged on cases the solver never sees",
   "links": [
-   {
-    "label": "pseudo.chernov.ca",
-    "url": "https://pseudo.chernov.ca"
-   },
    {
     "label": "code.pseudo.chernov.ca",
     "url": "https://code.pseudo.chernov.ca"
-   },
+   }
+  ]
+ },
+ {
+  "slug": "pseudo-archlab",
+  "tag": "For fun",
+  "period": "2026 – present",
+  "name": "Pseudo{archlab}",
+  "desc": "Runnable architectures of agent software, built from blocks",
+  "links": [
    {
     "label": "archlab.pseudo.chernov.ca",
     "url": "https://archlab.pseudo.chernov.ca"
+   },
+   {
+    "label": "Demo videos: Zenodo 10.5281/zenodo.24474410",
+    "url": "https://doi.org/10.5281/zenodo.24474410"
    }
   ]
  },

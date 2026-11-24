@@ -111,10 +111,16 @@
     "blurb": "The Semantic Field Canvas renderer as a React package. Apache-2.0."
   },
   {
-    "name": "Pseudo",
-    "url": "https://pseudo.chernov.ca",
+    "name": "Pseudo{code}",
+    "url": "https://code.pseudo.chernov.ca",
     "kind": "site",
     "blurb": "A coding-practice demo: 400 tasks to browse and solve in Python or in blocks that write the Python. Solutions are judged on a separate server that the demo does not open."
+  },
+  {
+    "name": "Pseudo{archlab}",
+    "url": "https://archlab.pseudo.chernov.ca",
+    "kind": "site",
+    "blurb": "A lab demo: architectures of agent software assembled from blocks, with their experiments, kept runs and assessment verdicts to browse. Runs happen on the lab machine, not on the demo."
   },
   {
     "name": "awaw.ai",
