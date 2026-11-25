@@ -453,5 +453,26 @@
     "url": "https://agentiumdb.org/#limits"
    }
   ]
+ },
+ {
+  "slug": "brain-api",
+  "tag": "Research",
+  "period": "2026 – present",
+  "name": "Brain API",
+  "desc": "Decide and record what AI agents may do",
+  "links": [
+   {
+    "label": "brainapi.org",
+    "url": "https://brainapi.org"
+   },
+   {
+    "label": "The paper: abstract, results and figures",
+    "url": "https://brainapi.org/paper/"
+   },
+   {
+    "label": "Demo: what a decision artifact records",
+    "url": "https://demo.brainapi.org"
+   }
+  ]
  }
 ]
