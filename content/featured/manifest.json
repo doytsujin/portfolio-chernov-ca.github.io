@@ -27,7 +27,7 @@
   ],
   "pages": 10,
   "entries": 22,
-  "pdf_sha256": "17f94a729de32471e2ea04d200545914cb9b78525406dc39cd07abb28a175cf8",
+  "pdf_sha256": "5389483ca3e74f691f92d2c5cfea3dc3e394a21a2b7741966e4c890fecec3a50",
   "data_sha256": "ee7a36cdea8c1116167561285fd449d9148c1e18485e92558d0b5d6cbddf932f"
  },
  "publications": {
@@ -50,8 +50,8 @@
   ],
   "pages": 9,
   "entries": 13,
-  "pdf_sha256": "6f7d40ec4a644dcf21410ae181ff7363410fe0c2ab5276458b198f91611ad7db",
-  "data_sha256": "fe9f43c8beee8efbc3e7ee77c9907be1195f89f006c7f065eb91ca5bc89177b2"
+  "pdf_sha256": "e46c51fe8cd15fe746689e347c9f882871a1e3e95f68c66c8489f06ccdb1a435",
+  "data_sha256": "c72a34f9bc023658d5a7d02d6fe5d14305e98aa8bc37c00f8f5f010b1f1f049d"
  },
  "talks": {
   "name": "Tech Talks",
@@ -73,7 +73,7 @@
   ],
   "pages": 5,
   "entries": 10,
-  "pdf_sha256": "018c30d81bb4eee0212ddd35f32c5afc81f58df194235302060383d54b90afec",
+  "pdf_sha256": "dde3b7e7403f488e201e6a46bfaad3b18e3fcce3d6d7eaf81defcd1a94afc52d",
   "data_sha256": "9b6afbeb9f12d6aeac2422ade87c8be48f21f52b47e61a516cf7cc297f0aa7be"
  },
  "writing": {
@@ -88,7 +88,7 @@
   ],
   "pages": 6,
   "entries": 22,
-  "pdf_sha256": "cdf4fb624024f3f99d8ba371e72365043d56fa86de720dc6620751a0d04b936e",
+  "pdf_sha256": "2aa9f3884eaa13094a3ed0f68f27dc57eb2505b58cb488593fd670da89e579b5",
   "data_sha256": "785427a07b5a0bc409406012af003a9b82421af331ce975a844e73b312dd1e12"
  }
 }

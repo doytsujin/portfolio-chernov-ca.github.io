@@ -1,10 +1,10 @@
 [
  {
-  "title": "Multi-Seed Voronoi AgentCells: Policy-Aware Dispatch with a Containment Guarantee",
+  "title": "Multi-Prototype Agent Dispatch with Pre-Decision Masking: A Measurement Study",
   "venue": "1st IEEE Big Data Workshop on Agentic AI for Big Data (AAI-BD 2026), held in conjunction with the 2026 IEEE International Conference on Big Data (IEEE BigData 2026)",
-  "status": "Conditionally accepted",
-  "line": "A dispatch rule for agent systems: each agent cell owns a set of seeds in embedding space, and authorization is folded into the distance, so no task reaches an unauthorized cell while an authorized one exists.",
-  "note": "Conditional acceptance, pending final review of the revised submission.",
+  "status": "Accepted",
+  "line": "A measurement study of one rule that decides, from one set of similarity scores, which agent serves a request, whether the caller may use that agent, and whether any agent should serve it.",
+  "note": "Accepted as a poster paper.",
   "links": [
    {
     "label": "Listed at",
