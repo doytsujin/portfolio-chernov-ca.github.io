@@ -583,7 +583,7 @@
     "slug": "agent-scope",
     "title": "Agent Scope: a live map of agents, policies and the gate they must pass",
     "lede": "A topology map shows what is connected to what. The question in front of it is usually another: may this run here, and is it ready?",
-    "summary": "A control plane for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Seven recorded demos apply it to gene evidence, cluster operations, software delivery, laboratory data, a GPU fleet, a data estate and a library of PDFs.",
+    "summary": "A control plane for agent systems. The same nodes rearrange by governance, readiness, provenance or risk; an operator chat answers by reading the live cluster; and changes pass a gate that refuses by default and keeps its reason. Eight recorded demos apply it to gene evidence, cluster operations, software delivery, laboratory data, a GPU fleet, a data estate, a library of PDFs and datasets that ask before they act.",
     "period": "2026 – present",
     "affiliation": "Independent work, unaffiliated with any employer.",
     "tags": [
@@ -595,7 +595,7 @@
       "Agent Scope draws an agent system — the agents, their policies, gateways, data sources and the workloads they act on — as one set of nodes and edges, and lets the viewer choose what anchors the layout. Ten projections ship: eight built in, and two that a Kubernetes profile contributes at runtime, which the client has never heard of and does not need to. Each link carries a small envelope of values the control plane already knows, such as policy compatibility, trust, readiness and provenance, and every value also drives its own visual channel, so one link can read as well governed and poorly provenanced at the same time.",
       "Questions asked in words are answered by issuing real read commands against the live cluster — pods, events, logs, nodes, namespaces — and reporting what came back, not by inferring from the prompt. Asked which pods in a namespace were not ready, it named six, and <code>kubectl</code> showed the same six.",
       "Mutations pass an admission gate first. In the recorded run, scaling a standard-tier workload from 2 to 4 replicas was admitted and reached the cluster; the same request against a critical-tier workload was refused, and its replica count stayed at 3. The only difference was a label on the resource, so the decision is made on data rather than in code. A mutation needs a proof-of-admission token that only the gate can construct; a request no rule matches is refused; and allows and denials alike leave a decision artifact with the rule, the reason and a trace id.",
-      "Seven demos put the same gate and the same decision record in front of a different agent in a different domain. Each was recorded from the running system and archived on Zenodo, and each has its own live site and its own entry in this portfolio, listed below.",
+      "Eight demos put the same gate and the same decision record in front of a different agent in a different domain. Each was recorded from the running system and archived on Zenodo, and each has its own live site and its own entry in this portfolio, listed below.",
       "Everything described here runs and is measured on a real cluster: the projections, the read commands, the enforced gate and the decision artifacts, kept on a hash-chained ledger that survives a restart. The site publishes that status row by row, and the next step, reading policy from a cluster resource, goes through the one seam where policy is already assembled. The trace view in the gene-agent and ops-agent demos is the published <code>@agent-scope-ca/graph-canvas</code> component, available on npm."
     ],
     "use_cases": [
@@ -647,6 +647,13 @@
         "text": "118 public PDFs from NIST, FDA and EMA, read into typed fields by declared rules, with a model only for what the rules miss. Each value opens boxed where its page states it, the documents form a knowledge graph, and every request passes the same gate.",
         "page": "semantic-gateway-pdfs-demo",
         "site": "https://pdf.semanticgateway.ca"
+      },
+      {
+        "kind": "Datasets",
+        "name": "Agentium DB: datasets that ask before they act",
+        "text": "Eight generated datasets put every request to Brain API, which decides from policy, a trained model and a route rule. Agentium DB checks each decision, writes it to its ledger and only then runs it; a SQL statement runs only as the capability it is the form of. A changed decision is refused with nothing run, and the ledger replays with the model not allowed to answer.",
+        "page": "agentium-db",
+        "site": "https://agentiumdb.org"
       }
     ],
     "links": [
