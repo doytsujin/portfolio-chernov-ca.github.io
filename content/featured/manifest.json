@@ -5,7 +5,7 @@
   "sub": "Live sites, demos, specifications and code.",
   "stats": [
    [
-    22,
+    23,
     "projects"
    ],
    [
@@ -17,7 +17,7 @@
     "product"
    ],
    [
-    8,
+    9,
     "live demo"
    ],
    [
@@ -26,9 +26,9 @@
    ]
   ],
   "pages": 10,
-  "entries": 22,
-  "pdf_sha256": "5389483ca3e74f691f92d2c5cfea3dc3e394a21a2b7741966e4c890fecec3a50",
-  "data_sha256": "ee7a36cdea8c1116167561285fd449d9148c1e18485e92558d0b5d6cbddf932f"
+  "entries": 23,
+  "pdf_sha256": "c3f5b72553f6ae7948714a219974eb0229e7e909099b3f9aacdc4b7360c8d7b0",
+  "data_sha256": "311573a5ac3de5d49fd1294a4fa4ae90258cd1983b2cf54a7ab251e7f2faa8cb"
  },
  "publications": {
   "name": "Publications",
@@ -50,7 +50,7 @@
   ],
   "pages": 9,
   "entries": 13,
-  "pdf_sha256": "e46c51fe8cd15fe746689e347c9f882871a1e3e95f68c66c8489f06ccdb1a435",
+  "pdf_sha256": "b052daf9f9dddfe784c55610ed96616fe5365a7a3720442f43227cb6dff966d8",
   "data_sha256": "c72a34f9bc023658d5a7d02d6fe5d14305e98aa8bc37c00f8f5f010b1f1f049d"
  },
  "talks": {
@@ -73,7 +73,7 @@
   ],
   "pages": 5,
   "entries": 10,
-  "pdf_sha256": "dde3b7e7403f488e201e6a46bfaad3b18e3fcce3d6d7eaf81defcd1a94afc52d",
+  "pdf_sha256": "71aa6184f94763290e56f5dd2b2a24ef522f02f9f6a3f4ce467791c52e9c9e4d",
   "data_sha256": "9b6afbeb9f12d6aeac2422ade87c8be48f21f52b47e61a516cf7cc297f0aa7be"
  },
  "writing": {
@@ -88,7 +88,7 @@
   ],
   "pages": 6,
   "entries": 22,
-  "pdf_sha256": "2aa9f3884eaa13094a3ed0f68f27dc57eb2505b58cb488593fd670da89e579b5",
+  "pdf_sha256": "9ba933445f0c8ac19709b215505b694426919579429edaede477107bb5ef0ea1",
   "data_sha256": "785427a07b5a0bc409406012af003a9b82421af331ce975a844e73b312dd1e12"
  }
 }

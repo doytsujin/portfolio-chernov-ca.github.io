@@ -432,5 +432,26 @@
     "url": "https://doi.org/10.5281/zenodo.24400724"
    }
   ]
+ },
+ {
+  "slug": "agentium-db",
+  "tag": "Live demo",
+  "period": "2026 – present",
+  "name": "Agentium DB",
+  "desc": "Datasets that ask Brain API before they act",
+  "links": [
+   {
+    "label": "agentiumdb.org",
+    "url": "https://agentiumdb.org"
+   },
+   {
+    "label": "Asked in SQL",
+    "url": "https://agentiumdb.org/#sql"
+   },
+   {
+    "label": "The limits, stated",
+    "url": "https://agentiumdb.org/#limits"
+   }
+  ]
  }
 ]
