@@ -1713,10 +1713,19 @@
     ],
     "video": [
       {
+        "src": "img/video/agentium-db-clip.mp4",
+        "poster": "img/video/agentium-db-clip-poster.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Screen recording of the first request in the Agentium DB demo: an analyst asks a dataset in words; Brain API’s policy filter, System One and route rule decide, Agentium DB’s checks pass, the decision ledger records it, and only then the executor runs it; then System One’s judgment of every admitted capability.",
+        "caption": "The first request: 33 seconds of the recording below, captions on screen and no sound, the same clip as on brainapi.org. An analyst asks the bog-wildlife dataset in words. Brain API’s policy admits 4 of 12 capabilities, System One judges get_site in scope at 0.9997, and the route rule selects it; Agentium DB passes all 14 checks, writes ledger line 0, and only then runs it."
+      },
+      {
         "src": "img/video/agentium-db-demo.mp4",
         "poster": "img/video/agentium-db-demo-poster.jpg",
         "width": 1920,
         "height": 1080,
+        "autoplay": false,
         "alt": "Screen recording of the Agentium DB demo in Agent Scope: eight generated datasets under their descriptors, Brain API’s policy filter, System One and route rule above them, one request’s path lit through the decision, the checks, the ledger and the executor, statements typed in SQL with their result tables, and the trace of the last request.",
         "caption": "The demo as recorded: 3 minutes 28 seconds, captions on screen and no sound. A request in words decided by Brain API and checked, recorded and only then run by Agentium DB; held-out requests in the corpus’s own order, 4 run and 2 refused by policy; a forged grant and a changed byte refused with nothing run; a statement in SQL run as its capability, a DROP TABLE refused before Brain API is asked, and a selection moved on the wire refused; and the ledger replayed with the model not allowed to answer, 8 of 8 decisions the same. Every number in a caption is read from what the system reported, and the recording stops if an outcome is not the one its caption names. The file is the one archived on Zenodo."
       }
