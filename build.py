@@ -695,6 +695,10 @@ def host(url: str) -> str:
 
 
 def clip_where(c: dict) -> str:
+    if c.get("where"):
+        # The clip's own line (the kit's tours.CLIPS "where"): how it was made, with {site} as the link.
+        link = (f'<a href="{esc(c["site"])}" target="_blank" rel="noopener noreferrer">{esc(host(c["site"]))}</a>')
+        return link.join(esc(part) for part in c["where"].split("{site}"))
     if c["local"]:
         # What the public site shows instead: a recorded demo, unless the clip says otherwise (Pseudo{archlab}: the
         # same page, which cannot run anything).
@@ -765,7 +769,7 @@ def build_clips_page(m: dict) -> str:
   <section id="clips">
     <div class="section-head"><h2>Clips</h2>{copy_button("clips.html", "Clips")}</div>
     <p class="section-note">{len(clips)} clips, {clip_lengths(clips)}, recorded from the running apps
-      with real mouse input: the camera turned and zoomed, things clicked, orders typed. The captions are drawn into the
+      with real input: the camera turned and zoomed, things clicked, keys pressed, orders typed. The captions are drawn into the
       frame and worded from each page's own text; every number in one was read off the screen when it went up.
       No title cards. {total:.0f} MB in all; each loads only when played.<span class="fstats">{len(clips)} clips</span></p>
     <ol class="fentries">{"".join(clip_entry(c) for c in clips)}</ol>
@@ -774,8 +778,8 @@ def build_clips_page(m: dict) -> str:
 {FOOTER}
 """
     return shell(title="Clips — Alexander Chernov",
-                 description=f"{len(clips)} clips of the running demos, {clip_lengths(clips)}, recorded with real mouse input: "
-                             "3D views turned and zoomed, things clicked, orders typed.",
+                 description=f"{len(clips)} clips of the running demos, {clip_lengths(clips)}, recorded with real input: "
+                             "3D views turned and zoomed, things clicked, keys pressed, orders typed.",
                  canonical=f"{SITE}/featured/clips.html", og_image=f"{SITE}/og/featured-clips.jpg",
                  og_type="article", prefix=pre, body=body)
 
@@ -806,7 +810,7 @@ def build_clip_page(c: dict) -> str:
 {FOOTER}
 """
     return shell(title=f'{c["name"]}: a {round(c["seconds"])}-second clip — Alexander Chernov',
-                 description=f'A {round(c["seconds"])}-second recording of {c["name"]} with real mouse input. {first}.',
+                 description=f'A {round(c["seconds"])}-second recording of {c["name"]} with real {"input" if c.get("where") else "mouse input"}. {first}.',
                  canonical=f"{SITE}/featured/clips/{s}.html", og_image=f"{SITE}/og/clip-{s}.jpg",
                  og_type="article", prefix=pre, body=body)
 

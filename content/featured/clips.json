@@ -283,6 +283,79 @@
    "og_sha256": "a488e356cd292035d63018d6b6079403704b58477441e944e80a23912df59ce3"
   },
   {
+   "slug": "agentic-doom",
+   "name": "Agentic DOOM",
+   "site": "https://agentarena.ca/",
+   "project": "agentic-doom",
+   "local": true,
+   "seconds": 30.0,
+   "bytes": 27379142,
+   "captions": [
+    {
+     "at": 2.2,
+     "text": "V: the agent view, where the world is drawn in glyphs and every monster is labeled with its state and its last decision.",
+     "sub": "Monsters run as declared state machines: each action one proposes is checked against its own contract and granted or refused."
+    },
+    {
+     "at": 5.5,
+     "text": "J turns on System One (experimental), a small trained decision model: it scores a monster's choices wherever its contract leaves more than one, and picks one when it is confident enough.",
+     "sub": "A label ending in “System One” marks one of its picks. The contract still grants or refuses every action."
+    },
+    {
+     "at": 17.3,
+     "text": "It now also picks for a monster that has lost sight of you, from what that monster remembers:",
+     "sub": "when and where it last saw you, whether its way ahead is clear, whether it is following a wall, and how far it has moved lately."
+    },
+    {
+     "at": 22.1,
+     "text": "System One picked 248 of 290 choices so far.",
+     "sub": "Where it is not confident enough, the script picks, and everything it picks is still checked against the monster's contract."
+    }
+   ],
+   "mp4_sha256": "4fc7b7b16c937a5eb0a94565415e626e20b3e8e5863a334a8b0a0e04642882bb",
+   "poster_sha256": "802fa5c81ce6a3f52de3d548d6f928a239c91c0a796a66cab649aef40bdca82a",
+   "where": "Recorded from a local copy of the build live at {site}, with real key presses, in real time.",
+   "accepted_short": {
+    "check": "check_flashes --plant",
+    "why": "in a moving game every frame changes 15,000 to 30,000 pixels, so the planted 1,000-pixel line is under the 50 % share rule; the three emptied frames are found",
+    "by": "the owner: take accepted 2026-11-20, exported 2026-11-25",
+    "checks": [
+     "check_flashes --plant"
+    ]
+   },
+   "og_sha256": "177135e99b7447945a21723e88953bf911a269c04170a5c2a35cb559055de847"
+  },
+  {
+   "slug": "agentium-db",
+   "name": "Agentium DB",
+   "site": "https://agentiumdb.org/",
+   "project": "agentium-db",
+   "local": false,
+   "seconds": 33.3,
+   "bytes": 1842324,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "An analyst asks the bog-wildlife dataset, in words.",
+     "sub": ""
+    },
+    {
+     "at": 12.7,
+     "text": "Brain API: policy admitted 4 of 12, System One judged get_site in scope at 0.9997, the route rule selected it. Agentium DB passed all 14 checks, wrote ledger line 0, and only then ran it.",
+     "sub": ""
+    },
+    {
+     "at": 26.6,
+     "text": "The decision artifact keeps System One's judgment of every admitted capability: get_site 0.9997, the next 0.0004.",
+     "sub": ""
+    }
+   ],
+   "mp4_sha256": "460166235e6a2ac83a205a0e1be39fc8437a299804c7f20d282bcb74d0022ce0",
+   "poster_sha256": "a93b7126c20ee65ef99d5ce35de06f446402ba7373f15f6e11f3dc37a9e2e828",
+   "where": "Cut from the recording {site} shows, made from the running system with orders typed into the chat, in real time: the first request, faded in and out.",
+   "og_sha256": "a274c43376aacd51714810535f699992c167239017ad3852ca9929a9ed127a35"
+  },
+  {
    "slug": "archlab",
    "name": "Pseudo{archlab}",
    "site": "https://archlab.pseudo.chernov.ca/",
