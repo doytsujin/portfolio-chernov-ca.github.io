@@ -469,6 +469,260 @@
    "poster_sha256": "570faa5d7210aecd143786fe53103bc89f1573275984e1b8e233ab8b78d90cb3",
    "site_shows": "the same page, which cannot run anything",
    "og_sha256": "bf10c6c57f3bf6b694fca2c2b2508e7ec021508ae16746790ddcbc46280b4771"
+  },
+  {
+   "slug": "agent-scope",
+   "name": "Agent Scope",
+   "site": "https://agentscope.ca/",
+   "project": "agent-scope",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 1252471,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Agent Scope: a field, not a graph. The layout is the question.",
+     "sub": "Pick a dimension. The nodes do not change and neither do the edges — only what anchors the layout."
+    },
+    {
+     "at": 3.9,
+     "text": "connectivity: What is connected to what.",
+     "sub": "The default every topology map draws, and the one question it can answer."
+    },
+    {
+     "at": 8.9,
+     "text": "governance: Policy distance becomes spatial distance.",
+     "sub": "Two governed clusters, and one workload adrift between them."
+    },
+    {
+     "at": 14.2,
+     "text": "readiness: Ranked by fitness for work.",
+     "sub": "Left to right by whether a node can be handed work right now."
+    },
+    {
+     "at": 19.4,
+     "text": "provenance: Lineage reads downward.",
+     "sub": "Sources at the top, derived work beneath."
+    },
+    {
+     "at": 24.6,
+     "text": "risk: What hurts most sits in the middle.",
+     "sub": "Concentric by blast radius."
+    }
+   ],
+   "mp4_sha256": "d1a19aa39b593a84221ec9c5d57fbee3174dbc5113dfb038a523a3bb7dee4fe1",
+   "poster_sha256": "8523043e3c7d1cfdd2a6fa0e8ba8335d255d0c6d633d633711a08743ed384b63",
+   "where": "Recorded from {site} at 150 % page zoom, with real mouse input, in real time.",
+   "og_sha256": "4a9ba460feecad6e2c18f383b55af5e0f6a3073aeaf88a1b162a9cadba814478"
+  },
+  {
+   "slug": "agentic-datasets",
+   "name": "Agentic Datasets",
+   "site": "https://agenticdatasets.org/showcase/",
+   "project": "agentic-datasets",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 1325523,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Agentic Datasets: The decision to act is the unit of governance",
+     "sub": "Change who is asking, and watch the verdict, the deciding clause and the evidence row change with it."
+    },
+    {
+     "at": 5.2,
+     "text": "Analyst, internal clearance, search and compare: GRANTED, PRINCIPAL_AUTHORIZED, BPD-DATA-014",
+     "sub": "Admitted scope: analyst @ purification-batches [compare_batches] ≤ internal"
+    },
+    {
+     "at": 10.3,
+     "text": "Clinical reviewer, restricted clearance, but only search here: REFUSED, INSUFFICIENT_PRIVILEGE, AD-POL-005",
+     "sub": "Admitted scope: none"
+    },
+    {
+     "at": 16.3,
+     "text": "External auditor, public clearance, search only: REFUSED, INSUFFICIENT_PRIVILEGE, AD-POL-005",
+     "sub": "Admitted scope: none"
+    },
+    {
+     "at": 23.6,
+     "text": "The refusal is on record too: REFUSED, INSUFFICIENT_PRIVILEGE, AD-POL-005, policy 2026.09.01",
+     "sub": "An evidence row exists either way — including for the refusals, which is AD-010"
+    }
+   ],
+   "mp4_sha256": "38925d18c9a360d1745303d75e23f7d6c1401f094b4c7e792bf47d782bb05b80",
+   "poster_sha256": "5663d8e9f24535201927d772ac6220414e59e2b3ca9247708641e60108717e0b",
+   "where": "Recorded from {site} at 135 % page zoom, with real mouse input, in real time; every verdict computed in the page.",
+   "og_sha256": "81a30413789a318e14b4642689555d64de2f3854cce7a3bbcf91da27ba987a0b"
+  },
+  {
+   "slug": "adam",
+   "name": "adam",
+   "site": "https://demo.adam.chernov.ca/",
+   "project": "adam",
+   "local": false,
+   "seconds": 36.0,
+   "bytes": 2229888,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "adam: A model's derivation counts only when it reproduces the reference, row for row",
+     "sub": "Accepted, of every variable: gpt-5 118 of 159, qwen2.5-coder 7B 35 of 159"
+    },
+    {
+     "at": 7.9,
+     "text": "ADSL.DTH30FL, the program gpt-5 wrote: rejected: 303 of 306 rows differ",
+     "sub": "Accepted only if its column equals the published reference exactly"
+    },
+    {
+     "at": 17.6,
+     "text": "Re-run here, R in the browser (webR 0.5.9): rejected: 303 of 306 rows differ. Same verdict as the recorded run.",
+     "sub": ""
+    },
+    {
+     "at": 26.4,
+     "text": "ADSL.SCRFDT, the program gpt-5 wrote: accepted",
+     "sub": "Accepted only if its column equals the published reference exactly"
+    },
+    {
+     "at": 33.9,
+     "text": "Re-run here, R in the browser (webR 0.5.9): accepted. Same verdict as the recorded run.",
+     "sub": ""
+    }
+   ],
+   "mp4_sha256": "5fd095eea1d629967c043cd7b72aedfa9e5ef2e6131e5504282a7d18fbe13a66",
+   "poster_sha256": "9cda1b8fc5700519ba9b4e95d13fa58b035da5df39cdfb984ebb1a26baf62bd4",
+   "where": "Recorded from {site}, with real mouse input and typing, in real time; R was started in the browser by one re-run before the take, so the two re-runs on camera are warm.",
+   "og_sha256": "609e0aed987c824ffef1ea06855a87569be7354d56eb94ac24302251c4222226"
+  },
+  {
+   "slug": "brain-api",
+   "name": "Brain API",
+   "site": "https://demo.brainapi.org/",
+   "project": "brain-api",
+   "local": false,
+   "seconds": 30.0,
+   "bytes": 1832641,
+   "captions": [
+    {
+     "at": 0.0,
+     "text": "Brain API: The governed decision between intent and execution, kept as a record",
+     "sub": "Each policy is a real constraint from the OPA Gatekeeper library"
+    },
+    {
+     "at": 4.9,
+     "text": "host-namespaces: deploy.variant-a denied by rule on 'capability.spec.hostPID' (+1 more)",
+     "sub": "deploy.variant-b admissible: selected deploy.variant-b"
+    },
+    {
+     "at": 10.3,
+     "text": "Audit questions answerable: admission control 2 of 6, Brain API 6 of 6",
+     "sub": "One proposed object is adjudicated; or one goal is resolved among alternatives, and the choice is kept"
+    },
+    {
+     "at": 15.4,
+     "text": "Its record: deploy.variant-a admitted: false, 2 violations kept",
+     "sub": "denied by rule on 'capability.spec.hostPID' and 'capability.spec.hostIPC'"
+    },
+    {
+     "at": 20.8,
+     "text": "Against the Gatekeeper library's own cases: 42 decided, 42 agree with its verdicts",
+     "sub": "51 cases, 19 allow against 23 deny; the other 9 are outside the rule grammar, reported rather than dropped"
+    }
+   ],
+   "mp4_sha256": "1aae15606ef46d0293674e0ce19d0129441bf45e0ae5319ec032991ddc29ca64",
+   "poster_sha256": "5c5b290aac47a716cd4997f15d96c9de16fe9ba9b04c866e3f5c03feb0eb6473",
+   "og_sha256": "8a0a081fb1764c6d6b9f0518b0cb74c81d209efd677af3996f9be4850ca8ad60"
+  },
+  {
+   "slug": "gene-agents",
+   "name": "Gene agents",
+   "site": "https://genequbit.agentscope.ca/",
+   "project": "agent-scope-gene-agents",
+   "local": false,
+   "seconds": 35.17,
+   "bytes": 2162291,
+   "captions": [
+    {
+     "at": 0.3,
+     "text": "Each agent holds a versioned policy file and cites its sha256 on every decision.",
+     "sub": "Therapy claims need level B evidence or better: 140 of 269 EGFR items are refused."
+    },
+    {
+     "at": 10.3,
+     "text": "The operator asks TP53 for a quantum capability: QAOA assembly of a toy contig.",
+     "sub": "The call goes through the gateway. The agents have no other way out."
+    },
+    {
+     "at": 21.3,
+     "text": "On a simulator it returns GCGCA, checked against brute force.",
+     "sub": "The right ordering wins by 0.0005 over the runner-up. That is shown, not hidden."
+    },
+    {
+     "at": 30.3,
+     "text": "Asked for ibm_hardware, the gateway refuses before anything is submitted.",
+     "sub": "It is not on the gateway's allow-list. A request during cooldown was refused by the agent itself."
+    }
+   ],
+   "mp4_sha256": "b93b788d555158992cb81233b12d90d8445e48063be7c27e135c4c148f3aea59",
+   "poster_sha256": "eeb179a5683a98b6a52419eac15618a2487727fa126747a26a44cccfe08643b7",
+   "where": "Cut from the recording {site} shows, made from the running app driven by a script, with commands typed into its chat, in real time; four of its captions, faded in and out.",
+   "og_sha256": "3fb56ce7ff19f2585194abc1f0570dcefff6e5aafa05934266280242dc4042a5"
+  },
+  {
+   "slug": "ops-agent",
+   "name": "Ops agent",
+   "site": "https://infra.agentscope.ca/",
+   "project": "agent-scope-ops-agent",
+   "local": false,
+   "seconds": 30.9,
+   "bytes": 1414393,
+   "captions": [
+    {
+     "at": 0.4,
+     "text": "An ordinary scale is allowed and made. Read back at once: 2 asked for, 1 ready so far.",
+     "sub": "The new pod is still starting, and the record says so."
+    },
+    {
+     "at": 14.4,
+     "text": "The same verb on a critical workload is escalated to a human.",
+     "sub": "The decision says actuated: false, and the read-back shows the freezer unchanged at 1."
+    }
+   ],
+   "mp4_sha256": "928c8a7e0cb6c79821e810b2f50a6804553b2e9c54bd685af866414e6f8ac1d7",
+   "poster_sha256": "344d6ce22ffdb92a7b6a5c501812c3610dfad808061896e7d7dd545dba431b91",
+   "where": "Cut from the recording {site} shows, made from the running app against a live k3s cluster, with orders typed into its chat, in real time; two of its captions, faded in and out.",
+   "og_sha256": "862dbb9c98a08b1c196f682c1856ecea2610d1927d76060da3b19712a43561c2"
+  },
+  {
+   "slug": "agentic-delivery",
+   "name": "Agentic Delivery",
+   "site": "https://agenticdelivery.ca/",
+   "project": "agentic-delivery",
+   "local": false,
+   "seconds": 35.33,
+   "bytes": 1713421,
+   "captions": [
+    {
+     "at": 0.2,
+     "text": "This change reverses an order and edits the existing tests to agree. Its own tests pass.",
+     "sub": "The runner signed: suite: 1 test file(s) changed; base fails. The person approves anyway."
+    },
+    {
+     "at": 8.5,
+     "text": "Approved by a person, still referred: the gate names the tests the change edited.",
+     "sub": "ListOrders.test_first_page, ListOrders.test_last_page_is_short, Routes.test_orders_query"
+    },
+    {
+     "at": 22.7,
+     "text": "A test module that patches the code back passes its own suite. Referred:",
+     "sub": "the tests as they were before the change fail against its code."
+    }
+   ],
+   "mp4_sha256": "c623e9c657aaaaf747bd9103f6bfa83e4bdb9b126491bb448b5795140574c7db",
+   "poster_sha256": "73d3efd21c285aa63fada074d55a64e15c0fbcd5266a40ca08faf4e6521050e4",
+   "where": "Cut from the recording {site} shows, made from the running system on a local k3s cluster, with commands typed into its chat and the attempts scripted, in real time; three of its captions, faded in and out.",
+   "og_sha256": "e618d846aa8037108c0487b7c94f03df7ab4e46d608b748aa6ee3a8a74849c81"
   }
  ],
  "og_sha256": "7d3fafedb8c493513ad37004fb327f7c047e769ec75f9a661277c81a0790d0bc"
